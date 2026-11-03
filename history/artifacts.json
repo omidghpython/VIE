@@ -90,6 +90,32 @@
       "bytes": 342986,
       "sha256": "e17e015a935c05bb8b98735a8cf5f03a1df9d0f562621db357bda76c06b64c25",
       "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "simple_vs_operadic_v1",
+      "path": "history/results/simple_vs_operadic_v1.zip",
+      "original_filename": "results_simple_vs_operadic_v1.zip",
+      "bytes": 446210,
+      "sha256": "6e9fe49b1e8314347c1ce7693758352e143d5494f66c23efb03190f486ff1f77",
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/simple-vs-operadic-v1.md",
+          "sha256": "973525e90dc72a5ed935e3921210726ca51b243e04924fc8c4cf82b7a5d8908c"
+        },
+        {
+          "path": "history/reports/simple-vs-operadic-v1-qualitative-audit.md",
+          "sha256": "01b9511c40f412729ecae215bef57334059e18bb4129f77de1dfcf6db4b49394"
+        },
+        {
+          "path": "history/reports/simple-vs-operadic-v1-qualitative-audit.json",
+          "sha256": "591c58245e7cbd1ccd868fe4b14091b6100d4e9f2d8e0a2131544a701bf74fee"
+        },
+        {
+          "path": "history/reports/simple-vs-operadic-v1-verification.json",
+          "sha256": "a32bade5a90f0184c365bb44a8a78a458a0b6d73126c69c749c738456d6fdbd4"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -189,9 +215,15 @@
   },
   "current_experiment": {
     "id": "simple_vs_operadic_v1",
-    "status": "prepared_pending_actual_user_run",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "judge_in_comparison": null,
-    "expected_results_file": "results/simple_vs_operadic_v1_results.zip"
+    "expected_results_file": "results/simple_vs_operadic_v1_results.zip",
+    "result_artifact": "history/results/simple_vs_operadic_v1.zip",
+    "report": "history/reports/simple-vs-operadic-v1.md",
+    "semantic_accuracy_measured_independently": false,
+    "answer_accuracy_measured": false,
+    "overall_winner": null,
+    "next_implementation_authorized": false
   }
 }

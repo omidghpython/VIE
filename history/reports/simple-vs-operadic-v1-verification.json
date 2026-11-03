@@ -1,0 +1,168 @@
+{
+  "artifact_sha256": "6e9fe49b1e8314347c1ce7693758352e143d5494f66c23efb03190f486ff1f77",
+  "artifact_bytes": 446210,
+  "nested_zip_matches_outer_files": 46,
+  "samples_count": 40,
+  "samples_sha256": "723a5d6e7e50f0e6b598aed4444d96127df9470b6853a6d5445a0d50b535db5c",
+  "sample_types": {
+    "bridge": 20,
+    "comparison": 20
+  },
+  "code_sha256_verified": "c00216bfece069fa1ee5684638a43678825d14043ba216c5377f23907800ced2",
+  "runtime_identity": {
+    "qwen_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "bitsandbytes": "0.50.2"
+    },
+    "backend": "LocalQwen"
+  },
+  "exact_prompts_verified_against_delivered_code": true,
+  "original_questions_preserved_no_gold_or_context_in_prompts": true,
+  "structural_replay_matches_all_records": true,
+  "same_raw_operadic_outputs_as_prior_max4": 40,
+  "phase_order_matches_alternating_protocol": true,
+  "extra_phase_retries": 0,
+  "empty_outputs": 0,
+  "backend_errors": 0,
+  "first_call_cost": {
+    "simple": {
+      "llm_calls": 40,
+      "prompt_tokens": 2575,
+      "completion_tokens": 1558,
+      "total_tokens": 4133
+    },
+    "operadic": {
+      "llm_calls": 40,
+      "prompt_tokens": 24462,
+      "completion_tokens": 3926,
+      "total_tokens": 28388
+    }
+  },
+  "total_cost": {
+    "simple": {
+      "llm_calls": 40,
+      "prompt_tokens": 2575,
+      "completion_tokens": 1558,
+      "total_tokens": 4133
+    },
+    "operadic": {
+      "llm_calls": 47,
+      "prompt_tokens": 29691,
+      "completion_tokens": 4611,
+      "total_tokens": 34302
+    }
+  },
+  "first_operadic_valid": 33,
+  "final_operadic_valid": 37,
+  "final_operadic_invalid_indices": [
+    2,
+    32,
+    39
+  ],
+  "final_valid_operadic_node_counts": {
+    "3": 20,
+    "1": 3,
+    "2": 14
+  },
+  "structural_retries": [
+    {
+      "index": 2,
+      "status": "invalid",
+      "errors": [
+        "q3: placeholders and declared dependencies must match exactly.",
+        "q3: placeholders and declared dependencies must match exactly."
+      ]
+    },
+    {
+      "index": 15,
+      "status": "valid",
+      "errors": [
+        "q2: placeholders and declared dependencies must match exactly.",
+        null
+      ]
+    },
+    {
+      "index": 18,
+      "status": "valid",
+      "errors": [
+        "Plan must contain 1..4 nodes.",
+        null
+      ]
+    },
+    {
+      "index": 20,
+      "status": "valid",
+      "errors": [
+        "q3: answer_type must be one of ['boolean', 'date', 'number', 'organization', 'other', 'person', 'place', 'work'].",
+        null
+      ]
+    },
+    {
+      "index": 32,
+      "status": "invalid",
+      "errors": [
+        "Plan must contain 1..4 nodes.",
+        "Plan must contain 1..4 nodes."
+      ]
+    },
+    {
+      "index": 35,
+      "status": "valid",
+      "errors": [
+        "q2: each non-root node needs exactly one consumer; no shared or orphan nodes.",
+        null
+      ]
+    },
+    {
+      "index": 39,
+      "status": "invalid",
+      "errors": [
+        "q2: each non-root node needs exactly one consumer; no shared or orphan nodes.",
+        "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+      ]
+    }
+  ],
+  "call_token_ranges": {
+    "simple": {
+      "prompt_tokens": {
+        "min": 57,
+        "max": 78
+      },
+      "completion_tokens": {
+        "min": 18,
+        "max": 76
+      }
+    },
+    "operadic": {
+      "prompt_tokens": {
+        "min": 603,
+        "max": 807
+      },
+      "completion_tokens": {
+        "min": 42,
+        "max": 179
+      }
+    }
+  },
+  "simple_numbering_heuristic_counts": {
+    "4": 9,
+    "2": 9,
+    "1": 1,
+    "3": 16,
+    "0": 5
+  },
+  "simple_numbering_heuristic_exceptions": [
+    19,
+    25,
+    26,
+    33,
+    40
+  ],
+  "manual_review_all_fields_blank": true,
+  "judge_calls": 0,
+  "retrieval_calls": 0,
+  "final_rag_answering": false
+}
