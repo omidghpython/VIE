@@ -1,0 +1,83 @@
+{
+  "release": "hotpotqa_simple_vs_operadic_v1",
+  "based_on": "accepted v3.2.4-max4",
+  "verified_at": "2026-11-03T18:40:40.891555+00:00",
+  "python_tested": "3.12.14",
+  "comparison_code_sha256": "c00216bfece069fa1ee5684638a43678825d14043ba216c5377f23907800ced2",
+  "unchanged_operadic_pilot_code_sha256": "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+  "simple_prompt": "Break the question into at most four ordered subquestions needed to answer it. Refer to earlier answers when needed. Return only the numbered subquestions, not their answers.",
+  "simple_prompt_sha256": "0d94631a4e7c678cceb6de8cd3fa97686bdf65b1a6414a754efd9e90a453f54b",
+  "operadic_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "sample_snapshot_sha256": "723a5d6e7e50f0e6b598aed4444d96127df9470b6853a6d5445a0d50b535db5c",
+  "sample_file_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "methods": {
+    "simple": {
+      "generation_calls": 1,
+      "numbered_text_requested": true,
+      "typed_tree_validation": false,
+      "automatic_repair": false,
+      "requested_max_items": 4,
+      "over_limit_output_policy": "Preserve full raw output and report heuristic flag; do not truncate or repair."
+    },
+    "operadic": {
+      "implementation": "Unchanged generate_plan from accepted max4",
+      "maximum_generation_calls": 2,
+      "max_nodes": 4,
+      "structural_validation": true
+    }
+  },
+  "common": {
+    "same_model_revision_quantization": true,
+    "same_40_questions": true,
+    "input_tokens_cap": 8500,
+    "output_tokens_cap_per_call": 3072,
+    "no_question_truncation": true,
+    "no_gold_or_evidence_in_generation_prompts": true,
+    "judge_calls": 0,
+    "semantic_repair_calls": 0,
+    "retrieval_calls": 0,
+    "final_answer_calls": 0,
+    "method_order": "Alternate per question, independent messages, one loaded Qwen instance"
+  },
+  "comparison_scope": "Compare first calls separately from post-structural-repair operadic output. This is a practical prompt/pipeline comparison, not an isolated proof of operadic theory or a full RAG evaluation.",
+  "outputs": [
+    "comparison.csv",
+    "summary.json",
+    "review.md",
+    "manual_review.csv",
+    "comparison.csv.state with exact messages/raw outputs/per-call and cumulative cost/history"
+  ],
+  "software_tests": {
+    "full_suite": {
+      "passed": 137,
+      "failed": 0,
+      "seconds": 17.544
+    },
+    "focused_after_test_file_handle_cleanup": {
+      "passed": 13,
+      "failed": 0,
+      "seconds": 3.137
+    },
+    "new_tests": 13,
+    "live_accuracy_test": false
+  },
+  "additional_checks": [
+    "Original core modules and operadic pilot byte-identical to max4.",
+    "Exact sample/baseline bytes preserved.",
+    "Windows launchers retain CRLF.",
+    "Comparison CLI --help works without model dependencies."
+  ],
+  "new_live_model_calls": 0,
+  "semantic_correctness_measured": false,
+  "answer_accuracy_measured": false,
+  "actual_results": "pending user execution",
+  "quality_priority": "Correct and complete decomposition; cost diagnostic only. No automatic winner.",
+  "runtime_probe": {
+    "torch_available": false,
+    "transformers_available": false,
+    "nvidia_device_files": []
+  },
+  "native_windows_execution_tested": false,
+  "run_command": "run_comparison_test.bat",
+  "results_to_return": "results/simple_vs_operadic_v1_results.zip"
+}
