@@ -1,0 +1,181 @@
+{
+  "snapshot_date_tehran": "2026-11-03",
+  "accepted_baseline": "v3.2.4-max4",
+  "independent_judge_decision": "pending_user_decision; not installed or implemented",
+  "results": [
+    {
+      "version": "v3.1",
+      "path": "history/results/v3.1.zip",
+      "original_filename": "results.zip",
+      "bytes": 279183,
+      "sha256": "92e0e94743d5f34e5a78851e7daa9ec4c8e54f0925db6427875acbd21695a79c",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2",
+      "path": "history/results/v3.2.zip",
+      "original_filename": "resultsv3.2.zip",
+      "bytes": 235395,
+      "sha256": "8086d5c5a00960191d90ec53e4a848a6ac2e64f86c31c755cc87c03dd562e7e4",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.1",
+      "path": "history/results/v3.2.1.zip",
+      "original_filename": "decomposition_pilot_v3_2_1_results.zip",
+      "bytes": 137140,
+      "sha256": "70aa3083f41dd448eba3826c5babc70d0ad1429e7801809f7afebeaba0dcb778",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.2",
+      "path": "history/results/v3.2.2.zip",
+      "original_filename": "results_v_3.2.2.zip",
+      "bytes": 279313,
+      "sha256": "47384567ad2ef6817da33d15c34af78b900ef84ada9f98aa86d0f9fa29e33f03",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.3",
+      "path": "history/results/v3.2.3.zip",
+      "original_filename": "results_v_3_2_3.zip",
+      "bytes": 290774,
+      "sha256": "59f402ef234a33c66ccd8c4aeaf5e6588fc1377c844453ec1f9f9ace1db0232d",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.4",
+      "path": "history/results/v3.2.4.zip",
+      "original_filename": "results_v_3_2_4.zip",
+      "bytes": 299590,
+      "sha256": "66e896b1febf7674e5ba0f5ae32dfadcb6ef415699b7926423ee006ff5e99c57",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.5",
+      "path": "history/results/v3.2.5.zip",
+      "original_filename": "results_v_3_2_5.zip",
+      "bytes": 400468,
+      "sha256": "ae9511ccffb54ca0018baa45096a53409f71cd3c44b150decae8352e523c9af5",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.4-max4",
+      "path": "history/results/v3.2.4-max4.zip",
+      "original_filename": "results_v3_2_4_max4.zip",
+      "bytes": 301777,
+      "sha256": "9d96e341c291b334d5daab03fe732c722e1dcfc96837f909d6b9c256ad662e9e",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.4-max5",
+      "path": "history/results/v3.2.4-max5.zip",
+      "original_filename": "results_v3_2_4_max5.zip",
+      "bytes": 302272,
+      "sha256": "8c58ffafd2baf917fdb9dbae9af67fdc28f0e2b02f7338ae64c6a616e7098755",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.4-max3",
+      "path": "history/results/v3.2.4-max3.zip",
+      "original_filename": "results_v3_2_4_max3.zip",
+      "bytes": 302951,
+      "sha256": "b33404ce07b0afc1e2b04a509227265c189d2048ea34b78a60321ae4bdd851b4",
+      "kind": "user_supplied_actual_run"
+    },
+    {
+      "version": "v3.2.5-no-types-10",
+      "path": "history/results/v3.2.5-no-types-10.zip",
+      "original_filename": "results_v3_2_5_no_types_10.zip",
+      "bytes": 342986,
+      "sha256": "e17e015a935c05bb8b98735a8cf5f03a1df9d0f562621db357bda76c06b64c25",
+      "kind": "user_supplied_actual_run"
+    }
+  ],
+  "source_packages": [
+    {
+      "version": "v3.2",
+      "branch": "downloads/hotpotqa-v3.2",
+      "commit": "d391cdea8e07f0812cbc2b0f7024b537384d1267",
+      "filename": "hotpotqa_operadic_modular_windows_v3_2.zip",
+      "sha256": "bf3041d3cd6d533a20f8fa37b564799426a2761da82b95da4b9ed07172be2cc3",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/d391cdea8e07f0812cbc2b0f7024b537384d1267/hotpotqa_operadic_modular_windows_v3_2.zip"
+    },
+    {
+      "version": "v3.2.1",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.1",
+      "commit": "74ae47c7b1542d5516466f72bc5e22fe793f3d05",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_1.zip",
+      "sha256": "fb247bc3c4c89b44c67c07329fdf84ef52d7092c438bd96ba29a2e6be1d40486",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/74ae47c7b1542d5516466f72bc5e22fe793f3d05/hotpotqa_decomposition_pilot_v3_2_1.zip"
+    },
+    {
+      "version": "v3.2.2",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.2",
+      "commit": "fe38377eaf1a942fe9fb52dfac848a738b53da5b",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_2.zip",
+      "sha256": "58d6ced42e92f8492698f2bf05a234e97996fbbc4d49612e34b1e120f691fe5b",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/fe38377eaf1a942fe9fb52dfac848a738b53da5b/hotpotqa_decomposition_pilot_v3_2_2.zip"
+    },
+    {
+      "version": "v3.2.3",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.3",
+      "commit": "eac278e13406416cb44ecb2fe721eb6b6d8c7343",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_3.zip",
+      "sha256": "3d3656d7e9bf5d03fca31542e7291714a7df99567b85babac355dacf3ab88654",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/eac278e13406416cb44ecb2fe721eb6b6d8c7343/hotpotqa_decomposition_pilot_v3_2_3.zip"
+    },
+    {
+      "version": "v3.2.4",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.4",
+      "commit": "b3efed0b093b28ccda9d545ec85cdf1ad80f5c99",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_4.zip",
+      "sha256": "91b3ecd881cd040abb67a2ca0155dc9a049e1dc25191bfab3238be283fbba73e",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/b3efed0b093b28ccda9d545ec85cdf1ad80f5c99/hotpotqa_decomposition_pilot_v3_2_4.zip"
+    },
+    {
+      "version": "v3.2.5",
+      "branch": "downloads/hotpotqa-review-pilot-v3.2.5",
+      "commit": "c7b415e57fb497a8958604a6aac4101145f0f787",
+      "filename": "hotpotqa_review_pilot_v3_2_5.zip",
+      "sha256": "6b05ee36f78a367a9e02fb584ea9427fa9dd0c4f2d955a8b9b4d12f904ee071c",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/c7b415e57fb497a8958604a6aac4101145f0f787/hotpotqa_review_pilot_v3_2_5.zip"
+    },
+    {
+      "version": "v3.2.4-max4",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.4-max4",
+      "commit": "7e5077e9e3f34f4a15809216445e34f61dc3c211",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_4_max4.zip",
+      "sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/7e5077e9e3f34f4a15809216445e34f61dc3c211/hotpotqa_decomposition_pilot_v3_2_4_max4.zip"
+    },
+    {
+      "version": "v3.2.4-max5",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.4-max5",
+      "commit": "fed5d9a73599c787369b1d71dbff1112e547c3b5",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_4_max5.zip",
+      "sha256": "8f997ed8ead4eda0da2da1aa3c77e81f1bb327dc6e852881fa2396c41d61b4f1",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/fed5d9a73599c787369b1d71dbff1112e547c3b5/hotpotqa_decomposition_pilot_v3_2_4_max5.zip"
+    },
+    {
+      "version": "v3.2.4-max3",
+      "branch": "downloads/hotpotqa-decomposition-pilot-v3.2.4-max3",
+      "commit": "87bfbe1a086c88c4dd0fb254116cf944cb3925eb",
+      "filename": "hotpotqa_decomposition_pilot_v3_2_4_max3.zip",
+      "sha256": "b28f7e913ba892bd597280a9ba98426099288df99599466962977a85e7a3ff71",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/87bfbe1a086c88c4dd0fb254116cf944cb3925eb/hotpotqa_decomposition_pilot_v3_2_4_max3.zip"
+    },
+    {
+      "version": "v3.2.5-no-types-10",
+      "branch": "downloads/hotpotqa-review-v3.2.5-no-types-10",
+      "commit": "46e13dca4f1e8163a5a71cabc8e2daadd3426a6b",
+      "filename": "hotpotqa_review_pilot_v3_2_5_no_types_10.zip",
+      "sha256": "670c2079c84ca9608d48d7d15140c95e8718109375e6f985f40f563e65b5d2da",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/46e13dca4f1e8163a5a71cabc8e2daadd3426a6b/hotpotqa_review_pilot_v3_2_5_no_types_10.zip"
+    }
+  ],
+  "original_v31_source": {
+    "path": "history/hotpotqa_operadic_modular_windows_v3_1.zip",
+    "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
+  }
+}
