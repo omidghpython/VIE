@@ -1,0 +1,48 @@
+{
+  "release": "hotpotqa_max4_bridge_first_probe_v2",
+  "based_on": "max4_direction_probe_v1; original max4 core",
+  "verified_at": "2026-11-04T22:03:52.061967+03:30",
+  "core_code_sha256": "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+  "runner_sha256": "53cf52610f8000716e2c8099b97c06870a05542eae5b617c484eb1132fe40dcf",
+  "case_sha256": "d0d87db293210b6d5bab5fd463160bbb592e9f7251ee43813c41c8f6e97f1ddc",
+  "direction_template_sha256": "4377c8be3c8dd471a1ef638af2e45262f23bb9c562082f67e009989d843c9b75",
+  "bridge_first_sha256": "1eeef1b07257f9a4b6b33538d2fde575589b49534e785aa1978bcbd12e2d86d5",
+  "control_messages_match_previous_experiment": true,
+  "core_and_original_40_question_runner_unchanged": true,
+  "methods": [
+    "direction_template",
+    "bridge_first"
+  ],
+  "change": "Only bridge_first arm adds explicit q1=identify geographic entity, q2=original property, final=q2 instructions. No sample-specific tree/example inserted.",
+  "case_count": 5,
+  "planned_calls": 10,
+  "calls_per_arm_case": 1,
+  "repair_calls": 0,
+  "judge_calls": 0,
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "limits": {
+    "max_nodes": 4,
+    "input_tokens": 8500,
+    "output_tokens": 3072
+  },
+  "software_tests": {
+    "passed": 134,
+    "failed": 0,
+    "seconds": 13.753,
+    "command": "python -m unittest discover -s tests -q",
+    "scope": "124 original tests plus10 paired-probe guards for input isolation, budgets, telemetry, resume, no semantic winner, new prompt identity and no manual-reference leakage."
+  },
+  "live_model_calls_in_build": 0,
+  "native_windows_execution_tested": false,
+  "windows_crlf_checked": true,
+  "runtime_probe": {
+    "torch": false,
+    "transformers": false,
+    "nvidia_smi": null
+  },
+  "run": "run_bridge_first_probe.bat",
+  "expected_results": "results/max4_bridge_first_probe_v2_results.zip",
+  "semantic_improvement_established": false,
+  "limitations": "Five reused development questions, including known failure; measure three repairs and two potential regressions. No held-out accuracy/generalization claim."
+}
