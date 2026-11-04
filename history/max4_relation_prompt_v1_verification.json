@@ -1,0 +1,33 @@
+{
+  "experiment": "max4_relation_prompt_v1",
+  "date": "2026-11-04",
+  "baseline": "v3.2.4-max4",
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "code_sha256": "db632e03e937f7f16769c69650620c1ce48e383217392a2c2f10125087aa6b04",
+  "plan_prompt_sha256": "440d080e874db405f6be6ae150d00d96c935ae95513be3221750b377f072241b",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "samples_file_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "runtime_ast_except_PLAN_SYSTEM_unchanged": true,
+  "all_other_core_and_pilot_python_unchanged": true,
+  "offline_tests": {
+    "passed": 124,
+    "failed": 0,
+    "meaning": "Software validation and saved-output replay; not live model accuracy."
+  },
+  "validated_prompt_examples": 3,
+  "prompt_characters_before": 2539,
+  "prompt_characters_after": 3784,
+  "actual_prompt_tokens_measured": false,
+  "live_results": "pending_user_run",
+  "output_zip": "results/decomposition_max4_relation_prompt_v1_results.zip",
+  "non_runtime_changes": [
+    "README_WINDOWS_FA.txt",
+    "CHANGES_FA.md",
+    "run_decomposition_test.bat output path only",
+    "two existing test assertions for changed examples",
+    "verification metadata and reference copies"
+  ],
+  "zip_sha256": "115fab5366dce581ad3afbd6559b1cbb06b75ea0a902b068afa9d78ad4eb6af0",
+  "zip_bytes": 269539,
+  "zip_files": 58
+}
