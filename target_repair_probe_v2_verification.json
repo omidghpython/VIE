@@ -1,0 +1,45 @@
+{
+  "release": "hotpotqa_target_repair_probe_v2",
+  "based_on": "max4_target_repair_v1 on original v3.2.4-max4",
+  "verified_at": "2026-11-04T18:44:21.186685+03:30",
+  "python_tested": "3.12.14",
+  "runner_sha256": "e7ed2e3264da5d82c70260f65f31ca968fd10587af0d0c0e3706ff66d2b92fe5",
+  "unchanged_pilot_core_code_sha256": "02863f72f5d717e3f92df9aa84816567da23cae4744fd6a73f2b4c412d4e5346",
+  "messages_sha256": "a3b7ea9d856a378b9f989ccb6a099e905a2427938aaf6c0d595366a3408a4f08",
+  "fixture_sha256": "fc94126c986637e8b4cb6ca1863ef1bf57ec5853cf45c2e251e8553f94066970",
+  "question_ids": [
+    "5ac0b1835542992a796ded65"
+  ],
+  "source_index": 36,
+  "new_model_calls_per_run": 1,
+  "system_prompt_unchanged": true,
+  "core_files_and_40_question_runner_unchanged": true,
+  "change": "Only user repair feedback changed for a single saved first output; independent runner and reporting added.",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "limits": {
+    "max_nodes": 4,
+    "input_tokens": 8500,
+    "repair_output_tokens": 3072
+  },
+  "software_tests": {
+    "full_suite_passed": 148,
+    "full_suite_failed": 0,
+    "full_suite_seconds": 14.13,
+    "after_cost_report_change_new_tests_passed": 9,
+    "scope": "One-call budget, checkpoint/no silent retries, raw failures, unchanged first output/system, no gold/old repair in model input, no automatic semantic-success claim, archive and telemetry, integrity protections."
+  },
+  "live_model_calls_in_build": 0,
+  "native_windows_tested": false,
+  "windows_batch_crlf_checked": true,
+  "reason_live_run_pending": "No GPU/nvidia-smi, torch or transformers in build environment.",
+  "historical_repair_tokens": {
+    "prompt_tokens": 741,
+    "completion_tokens": 69,
+    "total_tokens": 810
+  },
+  "expected_results": "results/target_repair_probe_v2_results.zip",
+  "run": "run_target_repair_probe.bat",
+  "semantic_accuracy_established": false,
+  "limits_of_inference": "One failure-selected development case, not held-out evaluation; no generalization claim."
+}
