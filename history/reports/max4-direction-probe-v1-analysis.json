@@ -1,0 +1,107 @@
+{
+  "experiment": "max4_direction_probe_v1",
+  "code_fixture_messages_runtime_verified": true,
+  "all_ten_inspections_replayed": true,
+  "telemetry_verified": true,
+  "internal_zip_matching_files": 10,
+  "baseline_14_matches_original_raw": true,
+  "summary": {
+    "experiment": "max4_direction_probe_v1",
+    "case_count": 5,
+    "phase_status": {
+      "baseline": {
+        "observed": 5
+      },
+      "direction_template": {
+        "observed": 5
+      }
+    },
+    "structure_status": {
+      "baseline": {
+        "valid": 3,
+        "invalid": 2
+      },
+      "direction_template": {
+        "valid": 5
+      }
+    },
+    "cost_per_arm": {
+      "baseline": {
+        "llm_calls": 5,
+        "prompt_tokens": 3052,
+        "completion_tokens": 351,
+        "total_tokens": 3403,
+        "execution_time_sec": 48.28021310000008,
+        "retrieval_steps": 0
+      },
+      "direction_template": {
+        "llm_calls": 5,
+        "prompt_tokens": 3672,
+        "completion_tokens": 382,
+        "total_tokens": 4054,
+        "execution_time_sec": 47.71431710000002,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 10,
+      "prompt_tokens": 6724,
+      "completion_tokens": 733,
+      "total_tokens": 7457,
+      "execution_time_sec": 95.9945302000001,
+      "retrieval_steps": 0
+    },
+    "completed_calls": 10,
+    "pending_phases": 0,
+    "semantic_accuracy_measured": false,
+    "automatic_winner": null,
+    "inference_backend": "LocalQwen",
+    "scope": "One first-generation call per arm/case, 10 total; alternating arm order. Synthetic development cases and a known failure are not held-out validation. Structural validity does not establish correct direction. Core original max4 is unchanged."
+  },
+  "token_delta_per_five_cases": 651,
+  "token_percent_change": 19.130179253599767,
+  "manual_audit": [
+    {
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "case": "Original #14",
+      "baseline_assessment": "Direction reversed in q1 and q2.",
+      "template_assessment": "q1 correctly describes the Innviertel southeast of the river, but asks length before identifying river; final q2 is a statement with type other, not the requested numeric length.",
+      "outcome": "partial_direction_improvement_target_failure"
+    },
+    {
+      "question_id": "synthetic_direction_1",
+      "question": "The district of Velora lies northeast of a lake that covers how many square kilometers?",
+      "case": "Synthetic1 unknown lake as reference",
+      "baseline_assessment": "Unidentified lake in leaf; final is a statement, other.",
+      "template_assessment": "Unidentified lake remains; final becomes Is this true?/boolean instead of numeric area.",
+      "outcome": "no_correct_decomposition_boolean_target_failure"
+    },
+    {
+      "question_id": "synthetic_direction_2",
+      "question": "A lake northeast of the district of Velora covers how many square kilometers?",
+      "case": "Synthetic2 unknown lake as subject",
+      "baseline_assessment": "Two independent leaves, q2 orphan; target question carries entire hop chain.",
+      "template_assessment": "Correct two-step chain: identify lake northeast of Velora; ask its area in square kilometers.",
+      "outcome": "appropriate_two_step_decomposition"
+    },
+    {
+      "question_id": "synthetic_direction_3",
+      "question": "The town of Merovin is west of a mountain that is how many meters high?",
+      "case": "Synthetic3 unknown mountain as reference",
+      "baseline_assessment": "Direction is preserved in q1, but final points to a consumed node and is invalid.",
+      "template_assessment": "Structure fixed but asks height before identifying mountain; final is a statement typed other, not numeric height.",
+      "outcome": "structure_improved_target_failure"
+    },
+    {
+      "question_id": "synthetic_direction_4",
+      "question": "A mountain west of the town of Merovin is how many meters high?",
+      "case": "Synthetic4 unknown mountain as subject",
+      "baseline_assessment": "Direction, numeric target and units preserved; one-node question retains whole multihop request.",
+      "template_assessment": "Correct two-step chain: identify mountain west of Merovin; ask its height in meters.",
+      "outcome": "appropriate_two_step_decomposition"
+    }
+  ],
+  "manual_audit_scope": "Assistant qualitative development-case assessment, not blinded independent semantic accuracy. No new model calls.",
+  "conclusion": "Partial improvement: two appropriate chains and corrected direction in original14 leaf; original14 and two other cases still wrong final targets. Do not promote globally; no pipeline change made."
+}

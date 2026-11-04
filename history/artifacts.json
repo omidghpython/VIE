@@ -190,6 +190,24 @@
           "sha256": "b9e9716e7020452ab908fc4e2bce536df6bc7ebfbf68a9972fa2dc4f7234c1b3"
         }
       ]
+    },
+    {
+      "version": "max4_direction_probe_v1",
+      "path": "history/results/max4_direction_probe_v1.zip",
+      "original_filename": "results_max4_direction_probe_v1.zip",
+      "sha256": "b887ce951458c647379b892e7b71ad12abe77146108471c50e6dc5e8de0eb6a7",
+      "bytes": 24019,
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/max4-direction-probe-v1-analysis.md",
+          "sha256": "bc5305f640158f9d27e0bf7d9a6af1d46b7f4c233aa657cb21fba5f3372b19c5"
+        },
+        {
+          "path": "history/reports/max4-direction-probe-v1-analysis.json",
+          "sha256": "665873f5f350ce5c913fc1d28f91087d446ee659897fca37b59e19b612e1a109"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -321,7 +339,7 @@
   },
   "current_experiment": {
     "id": "max4_direction_probe_v1",
-    "status": "prepared_pending_actual_run",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "code_commit": "3e0af81ff8368d921a5a86b6870df02f8ed1194b",
     "scope": "Five development cases, paired first-generation calls; baseline vs appended direction templates; original core restored unchanged.",
@@ -330,9 +348,13 @@
     "protocol": "history/reports/max4-direction-probe-v1-protocol.txt",
     "offline_tests_passed": 132,
     "planned_live_calls": 10,
-    "live_model_calls": 0,
+    "live_model_calls": 10,
     "direct_download_verified": true,
-    "semantic_accuracy_measured_independently": false
+    "semantic_accuracy_measured_independently": false,
+    "result_artifact": "history/results/max4_direction_probe_v1.zip",
+    "report": "history/reports/max4-direction-probe-v1-analysis.md",
+    "analysis_live_model_calls": 0,
+    "recommendation": "Partial improvement; do not promote. Two appropriate synthetic chains and original14 leaf direction fixed, but three final targets/bridge selection still wrong. Development set only."
   },
   "experiment_history": [
     {
