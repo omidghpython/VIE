@@ -1,0 +1,111 @@
+{
+  "experiment": "max4_bridge_first_probe_v2",
+  "code_fixture_messages_runtime_verified": true,
+  "all_ten_inspections_replayed": true,
+  "telemetry_verified": true,
+  "internal_zip_matching_files": 10,
+  "all_five_control_results_match_previous_run": true,
+  "summary": {
+    "experiment": "max4_bridge_first_probe_v2",
+    "case_count": 5,
+    "phase_status": {
+      "direction_template": {
+        "observed": 5
+      },
+      "bridge_first": {
+        "observed": 5
+      }
+    },
+    "structure_status": {
+      "direction_template": {
+        "valid": 5
+      },
+      "bridge_first": {
+        "valid": 5
+      }
+    },
+    "cost_per_arm": {
+      "direction_template": {
+        "llm_calls": 5,
+        "prompt_tokens": 3672,
+        "completion_tokens": 382,
+        "total_tokens": 4054,
+        "execution_time_sec": 48.76612630000227,
+        "retrieval_steps": 0
+      },
+      "bridge_first": {
+        "llm_calls": 5,
+        "prompt_tokens": 4352,
+        "completion_tokens": 348,
+        "total_tokens": 4700,
+        "execution_time_sec": 44.856080599999586,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 10,
+      "prompt_tokens": 8024,
+      "completion_tokens": 730,
+      "total_tokens": 8754,
+      "execution_time_sec": 93.62220690000186,
+      "retrieval_steps": 0
+    },
+    "completed_calls": 10,
+    "pending_phases": 0,
+    "semantic_accuracy_measured": false,
+    "automatic_winner": null,
+    "inference_backend": "LocalQwen",
+    "scope": "One first-generation call per arm/case, 10 total; alternating arm order. Synthetic development cases and a known failure are not held-out validation. Structural validity does not establish correct direction. Both arms include the previous direction template; bridge_first alone adds explicit entity-then-property instructions. Core original max4 is unchanged."
+  },
+  "token_delta": 646,
+  "token_percent_change": 15.934879131721758,
+  "manual_audit": [
+    {
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "case": "original14",
+      "control_assessment": "q1 direction correct but asks length; final statement other.",
+      "bridge_first_assessment": "q1 now river/place then length/number, but river southeast of Innviertel reverses original Innviertel southeast of river.",
+      "outcome": "target_form_improved_direction_regressed",
+      "complete_candidate_decomposition": false
+    },
+    {
+      "question_id": "synthetic_direction_1",
+      "question": "The district of Velora lies northeast of a lake that covers how many square kilometers?",
+      "case": "synthetic1",
+      "control_assessment": "q1 unidentified lake area, final boolean.",
+      "bridge_first_assessment": "q1 identifies a lake northeast of Velora, reversing original Velora northeast of lake; q2 numeric area correct target form.",
+      "outcome": "target_form_improved_wrong_direction",
+      "complete_candidate_decomposition": false
+    },
+    {
+      "question_id": "synthetic_direction_2",
+      "question": "A lake northeast of the district of Velora covers how many square kilometers?",
+      "case": "synthetic2",
+      "control_assessment": "Appropriate lake identification then numeric area.",
+      "bridge_first_assessment": "Lake restriction lost: Which place northeast of Velora can identify a town, district or other place; broad place label is valid but question must still specify lake.",
+      "outcome": "previous_success_regressed_entity_kind_lost",
+      "complete_candidate_decomposition": false
+    },
+    {
+      "question_id": "synthetic_direction_3",
+      "question": "The town of Merovin is west of a mountain that is how many meters high?",
+      "case": "synthetic3",
+      "control_assessment": "q1 asks height while retaining Merovin; final statement other.",
+      "bridge_first_assessment": "q1 drops Merovin, asks which place is west of mountain, and embeds how many meters high in identification; q2 asks height of that unspecified wrong-side place.",
+      "outcome": "wrong_entity_and_lost_named_constraint",
+      "complete_candidate_decomposition": false
+    },
+    {
+      "question_id": "synthetic_direction_4",
+      "question": "A mountain west of the town of Merovin is how many meters high?",
+      "case": "synthetic4",
+      "control_assessment": "Appropriate mountain identification then height in meters.",
+      "bridge_first_assessment": "Mountain restriction lost to Which place; final How high omits explicit meters.",
+      "outcome": "previous_success_regressed_entity_kind_and_units_lost",
+      "complete_candidate_decomposition": false
+    }
+  ],
+  "scope": "Assistant qualitative assessment on reused development cases, not independent semantic accuracy. Candidate 0/5 fully preserves required direction/entity kind/constraints/target; control has two appropriate chains. No new live calls in analysis.",
+  "conclusion": "Do not promote: numeric final shape improved but original14 direction regresses and both prior synthetic successes lose entity-kind constraints. No code or prompt changed in analysis."
+}

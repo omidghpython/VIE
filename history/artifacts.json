@@ -208,6 +208,24 @@
           "sha256": "665873f5f350ce5c913fc1d28f91087d446ee659897fca37b59e19b612e1a109"
         }
       ]
+    },
+    {
+      "version": "max4_bridge_first_probe_v2",
+      "path": "history/results/max4_bridge_first_probe_v2.zip",
+      "original_filename": "results_max4_bridge_first_probe_v2.zip",
+      "sha256": "0d273ebea824fa0b2afe629771569b57366e40f7f5e28c3efc11df742c3d554a",
+      "bytes": 24735,
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/max4-bridge-first-probe-v2-analysis.md",
+          "sha256": "0fde86c2c2fc8a8590d9cf03f5f2d09968bbfe17e056da5e0fd80d474b5a6cac"
+        },
+        {
+          "path": "history/reports/max4-bridge-first-probe-v2-analysis.json",
+          "sha256": "77a4fcdf5f97ec3503f57dbdbbcd3558c4e8f6db988d9b52a285337cf29d1989"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -347,7 +365,7 @@
   },
   "current_experiment": {
     "id": "max4_bridge_first_probe_v2",
-    "status": "prepared_pending_actual_run",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "code_commit": "630bb5928e7530f1ee62788ab10cf84f053ebc57",
     "scope": "Five paired cases: previous direction template vs plus bridge-first node-order instructions. Original core unchanged.",
@@ -356,9 +374,13 @@
     "protocol": "history/reports/max4-bridge-first-probe-v2-protocol.txt",
     "offline_tests_passed": 134,
     "planned_live_calls": 10,
-    "live_model_calls": 0,
+    "live_model_calls": 10,
     "direct_download_verified": true,
-    "semantic_accuracy_measured_independently": false
+    "semantic_accuracy_measured_independently": false,
+    "result_artifact": "history/results/max4_bridge_first_probe_v2.zip",
+    "report": "history/reports/max4-bridge-first-probe-v2-analysis.md",
+    "analysis_live_model_calls": 0,
+    "recommendation": "Do not promote: numeric shape improved but direction regressed in14; two prior successful chains lose entity kinds. Five-case assistant audit only."
   },
   "experiment_history": [
     {
