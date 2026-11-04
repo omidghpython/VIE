@@ -1,0 +1,47 @@
+{
+  "release": "hotpotqa_max4_direction_probe_v1",
+  "base": "original v3.2.4-max4",
+  "baseline_commit": "7e5077e9e3f34f4a15809216445e34f61dc3c211",
+  "verified_at": "2026-11-04T21:33:42.799137+03:30",
+  "rollback": "All core files and decomposition_pilot.py identical to original max4; value_target_check/TargetPlanError and repair probe v1/v2 absent. Original root_answer_check and structural retry preserved.",
+  "core_code_sha256": "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+  "runner_sha256": "d09ea7472bcdfe1bf5cbdde464de0a90f6b7279fe786239ab668f7327ef219c8",
+  "case_sha256": "d0d87db293210b6d5bab5fd463160bbb592e9f7251ee43813c41c8f6e97f1ddc",
+  "baseline_plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "direction_template_sha256": "4377c8be3c8dd471a1ef638af2e45262f23bb9c562082f67e009989d843c9b75",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "case_count": 5,
+  "case_origins": {
+    "observed_failure": 1,
+    "synthetic_development": 4
+  },
+  "calls_per_case": 2,
+  "total_planned_calls": 10,
+  "calls_per_arm_case": 1,
+  "repair_calls": 0,
+  "judge_calls": 0,
+  "max_nodes": 4,
+  "max_input_tokens": 8500,
+  "max_new_tokens": 3072,
+  "experimental_change": "Append symbolic S/D/O direction templates only to experimental arm; baseline examples/hints, question and model settings unchanged.",
+  "comparison": "Two fresh first-generation calls per question, alternating arm order. No comparison to repaired full-pipeline outcome.",
+  "software_tests": {
+    "passed": 132,
+    "failed": 0,
+    "seconds": 13.399,
+    "command": "python -m unittest discover -s tests -q",
+    "scope": "Original124 plus8 new tests: paired budget, exact message difference, no reference leakage, raw failures, telemetry, no judge/repair, checkpoint resume and integrity."
+  },
+  "live_model_calls_in_build": 0,
+  "native_windows_tested": false,
+  "windows_launcher_crlf_checked": true,
+  "runtime_probe": {
+    "torch": false,
+    "transformers": false,
+    "nvidia_smi": null
+  },
+  "run": "run_direction_probe.bat",
+  "expected_results": "results/max4_direction_probe_v1_results.zip",
+  "semantic_improvement_established": false,
+  "limitation": "Five development cases including one known failure; no generalization or automatic semantic winner."
+}

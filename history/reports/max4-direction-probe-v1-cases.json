@@ -1,0 +1,45 @@
+{
+  "scope": "Five development cases, not held-out or full-40 evaluation. Manual relations never enter model input.",
+  "cases": [
+    {
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "origin": "observed_failure_14",
+      "manual_relation": "Innviertel is southeast of the unknown river; preserve km length target."
+    },
+    {
+      "question_id": "synthetic_direction_1",
+      "question": "The district of Velora lies northeast of a lake that covers how many square kilometers?",
+      "origin": "synthetic_development",
+      "manual_relation": "Velora northeast of unknown lake; target lake area in square kilometers."
+    },
+    {
+      "question_id": "synthetic_direction_2",
+      "question": "A lake northeast of the district of Velora covers how many square kilometers?",
+      "origin": "synthetic_development",
+      "manual_relation": "Unknown lake northeast of Velora; target lake area in square kilometers."
+    },
+    {
+      "question_id": "synthetic_direction_3",
+      "question": "The town of Merovin is west of a mountain that is how many meters high?",
+      "origin": "synthetic_development",
+      "manual_relation": "Merovin west of unknown mountain; target mountain height in meters."
+    },
+    {
+      "question_id": "synthetic_direction_4",
+      "question": "A mountain west of the town of Merovin is how many meters high?",
+      "origin": "synthetic_development",
+      "manual_relation": "Unknown mountain west of Merovin; target mountain height in meters."
+    }
+  ],
+  "runtime_identity": {
+    "qwen_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "bitsandbytes": "0.50.2"
+    },
+    "backend": "LocalQwen"
+  }
+}
