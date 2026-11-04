@@ -1,0 +1,74 @@
+{
+  "release": "hotpotqa_max4_target_repair_v1",
+  "based_on": "original v3.2.4-max4",
+  "baseline_commit": "7e5077e9e3f34f4a15809216445e34f61dc3c211",
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "verified_at": "2026-11-04T12:43:25.885618+00:00",
+  "python_tested": "3.12.14",
+  "pilot_code_sha256": "02863f72f5d717e3f92df9aa84816567da23cae4744fd6a73f2b4c412d4e5346",
+  "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "sample_file_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "same_sample_snapshot_sha256": "723a5d6e7e50f0e6b598aed4444d96127df9470b6853a6d5445a0d50b535db5c",
+  "max_plan_nodes": 4,
+  "max_generation_attempts": 2,
+  "attempt_budget": "Shared structure/clear-value-to-boolean target repair; no third generation attempt.",
+  "pilot_semantic_repair_attempts_after_review": 0,
+  "full_pipeline_semantic_repair_attempts_after_generation": 1,
+  "changes": [
+    "Narrow answer-target detector after structure validation; no new structural rejection heuristics.",
+    "Targeted feedback in the existing second generation attempt; unresolved target keeps plan/trace and skips judge.",
+    "Separate structure/generation/target/judge outcomes and per-attempt diagnostics; isolated outputs and checkpoint schema 5."
+  ],
+  "unchanged": [
+    "Original max4 PLAN_SYSTEM and REVIEW_SYSTEM, question-dependent plan_instructions and reviewer logic.",
+    "All core Python modules except decomposition.py; original 40-question snapshot.",
+    "Model/revision/quantization/token caps, structural graph rules and four-node maximum.",
+    "Retrieval/evidence/answering logic; no new live model calls."
+  ],
+  "detector_audit": {
+    "artifact": "evaluation/target_detector_saved_audit.json",
+    "sha256": "04fa755c9753a3040a564495bbea7ce8d730d113b71f02d6babeea942a42b1eb",
+    "saved_runs": [
+      "original max4",
+      "max4_relation_prompt_v1"
+    ],
+    "total_saved_rows": 80,
+    "structurally_invalid_skipped": 5,
+    "scored_structurally_valid": 75,
+    "true_positive": 5,
+    "true_negative": 70,
+    "false_positive": 0,
+    "false_negative": 0,
+    "positives_by_run": {
+      "max4": [
+        36
+      ],
+      "max4_relation_prompt_v1": [
+        2,
+        22,
+        30,
+        36
+      ]
+    },
+    "label_scope": "Explicit name/value-to-boolean final mismatch only. Assistant-audited, not independent blinded gold; no general semantic accuracy claim."
+  },
+  "software_tests": {
+    "command": "python -m unittest discover -s tests -q",
+    "passed": 139,
+    "failed": 0,
+    "seconds": 12.859,
+    "scope": "Synthetic positive/abstention cases, saved-plan detection, mixed structure/target budget, no extra calls on accepted outputs, no judge on unresolved target, resume/report-only and all token telemetry; existing regression tests.",
+    "historical_replay_caveat": "Two old generation replay tests explicitly freeze the new gate because their recordings cannot supply new target-repair responses; active new behavior tested separately."
+  },
+  "new_live_model_calls": 0,
+  "live_qwen_inference_executed": false,
+  "new_semantic_accuracy_measured": false,
+  "new_answer_accuracy_measured": false,
+  "net_token_savings_measured": false,
+  "native_windows_execution_tested": false,
+  "windows_launcher_crlf_and_target_checked": true,
+  "run_on_existing_gpu_environment": "run_decomposition_test.bat",
+  "results_to_return": "results/decomposition_max4_target_repair_v1_results.zip",
+  "next_validation": "Run the same 40 questions; compare every first/final tree against original max4 including regressions, target repairs, all calls/tokens. Judge valid is not ground truth."
+}

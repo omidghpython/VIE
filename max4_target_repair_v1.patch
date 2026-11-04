@@ -1,0 +1,568 @@
+--- a/decomposition_pilot.py
++++ b/decomposition_pilot.py
+@@ -21,7 +21,7 @@
+     MAX_PLAN_NODES, PLAN_ATTEMPTS,
+ )
+ from hotpotqa_operadic_rag.decomposition import (
+-    PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, generate_plan, review_plan, semantic_precheck,
++    PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, TargetPlanError, generate_plan, review_plan, semantic_precheck,
+ )
+ from hotpotqa_operadic_rag.contracts import expand_typed_plan
+ from hotpotqa_operadic_rag.cost_comparison import pilot_token_report
+@@ -117,6 +117,8 @@
+         with activate_tracker(tracker):
+             outcome['result'] = function()
+             outcome['status'] = 'valid' if name == 'structure' else 'observed'
++    except TargetPlanError as exc:
++        outcome.update(status='target_mismatch', error=str(exc), result=exc.details)
+     except DecompositionError as exc:
+         outcome.update(status='invalid', error=str(exc), result=exc.details)
+     except KeyboardInterrupt:
+@@ -165,7 +167,7 @@
+ 
+ 
+ def structure_trace_markdown(trace):
+-    lines = ['### Structure attempts', '']
++    lines = ['### Generation attempts (shared structure/target budget)', '']
+     if not trace:
+         return lines + ['No generation attempt was recorded.', '']
+     for event in trace:
+@@ -174,6 +176,10 @@
+                   markdown_code_block(event.get('error') or '(none)'), '',
+                   'Raw model output (unmodified):',
+                   markdown_code_block(event['raw_output']), '']
++        target = event.get('target_check', {})
++        lines += ['Answer-target check: ' + target.get('status', 'not_checked'),
++                  'Answer-target errors (separate from structure):',
++                  markdown_code_block('\n'.join(target.get('errors', [])) or '(none)'), '']
+     return lines
+ 
+ 
+@@ -191,7 +197,8 @@
+     for order, sample in enumerate(store.samples, 1):
+         record = store.read(sample['question_id'])
+         structure, review = (record['phases'].get(name, {}) for name in ('structure', 'review'))
+-        status = structure.get('status', 'pending')
++        generation_status = structure.get('status', 'pending')
++        status = 'valid' if generation_status == 'target_mismatch' else generation_status
+         plan = structure.get('result', {}).get('plan')
+         trace = structure.get('result', {}).get('decomposition_trace', [])
+         verdict = review.get('result', {}).get('verdict', {})
+@@ -202,17 +209,26 @@
+         check = precheck.get('root_contract', {})
+         source = details.get('source', 'not_reviewed')
+         response_status = details.get('response_status', 'not_reviewed')
++        if generation_status == 'target_mismatch':
++            source, response_status = 'target_gate', 'not_called'
+         model_status = details.get('model_status') or ('format_error' if response_status == 'format_error' else 'not_called')
+         statuses[status] += 1
+         verdicts[verdict_status] += 1
+         model_verdicts[model_status] += 1
+         sources[source] += 1
+         response_statuses[response_status] += 1
+-        incomplete += int(status not in ('valid', 'invalid') or
+-                          (status == 'valid' and review.get('status') != 'observed'))
++        incomplete += int(generation_status not in ('valid', 'invalid', 'target_mismatch') or
++                          (generation_status == 'valid' and review.get('status') != 'observed'))
+         backend_errors += sum(p.get('status') == 'error' for p in (structure, review))
+         row = {'question_id': sample['question_id'], 'question': sample['question'], 'type': sample['type'],
+-            'structure_status': status, 'structure_attempts': len(trace), 'structure_error': structure.get('error', ''),
++            'structure_status': status, 'structure_attempts': len(trace),
++            'structure_error': structure.get('error', '') if generation_status != 'target_mismatch' else '',
++            'generation_status': generation_status, 'generation_error': structure.get('error', ''),
++            'value_target_status': trace[-1].get('target_check', {}).get('status', 'not_checked') if trace else 'not_checked',
++            'value_target_errors': json.dumps(trace[-1].get('target_check', {}).get('errors', []) if trace else []),
++            'target_mismatch_detected': any(e.get('target_check', {}).get('status') == 'mismatch' for e in trace),
++            'target_repair_attempted': any(e.get('target_check', {}).get('status') == 'mismatch' for e in trace[:-1]),
++            'structure_valid_first_attempt': bool(trace and trace[0].get('status') == 'valid'),
+             'node_count': len(plan['nodes']) if plan else '', 'single_node_flag': bool(plan and len(plan['nodes']) == 1),
+             'root_contract_status': check.get('status', 'not_checked'),
+             'root_expected_mode': check.get('expected_mode'),
+@@ -246,6 +262,9 @@
+             f'Structure: {status}; root check: {check.get("status", "not_checked")}; '
+             f'review: {verdict_status} ({source}); model judgment: {model_status}.',
+             f'Response handling: {response_status}; semantic correctness: not evaluated.', '',
++            'Generation outcome: ' + generation_status + '; value-target check: ' + row['value_target_status'],
++            'Generation error: ' + row['generation_error'],
++            'Value-target errors: ' + row['value_target_errors'], '',
+             '```json', json.dumps(plan, ensure_ascii=False, indent=2), '```', '',
+             'Expanded typed tree (same representation sent to the judge if called):', '',
+             row['expanded_typed_tree'], '',
+@@ -260,7 +279,16 @@
+     summary = {'requested': len(rows), 'structure_status': dict(statuses),
+         'single_node': sum(r['node_count'] == 1 for r in rows),
+         'multiple_nodes': sum(isinstance(r['node_count'], int) and r['node_count'] > 1 for r in rows),
+-        'valid_on_first_attempt': sum(r['structure_status'] == 'valid' and r['structure_attempts'] == 1 for r in rows),
++        'valid_on_first_attempt': sum(r['structure_valid_first_attempt'] for r in rows),
++        'generation_status': dict(Counter(r['generation_status'] for r in rows)),
++        'generation_accepted_on_first_attempt': sum(r['generation_status'] == 'valid' and r['structure_attempts'] == 1 for r in rows),
++        'value_target_status': dict(Counter(r['value_target_status'] for r in rows)),
++        'target_mismatch_detected_questions': sum(r['target_mismatch_detected'] for r in rows),
++        'target_repair_attempted_questions': sum(r['target_repair_attempted'] for r in rows),
++        'target_repair_resolved_questions': sum(r['target_repair_attempted'] and r['generation_status'] == 'valid'
++                                               and r['value_target_status'] == 'compatible' for r in rows),
++        'target_mismatch_unresolved_questions': sum(r['generation_status'] == 'target_mismatch' for r in rows),
++        'judge_calls_avoided_by_target_gate': sources['target_gate'],
+         'review_status': dict(verdicts), 'review_source': dict(sources),
+         'judge_status': dict(model_verdicts), 'review_response_status': dict(response_statuses),
+         'invalid_review_responses': verdicts['invalid_response'],
+@@ -270,19 +298,22 @@
+         'vague_reason_responses': response_statuses['vague_reason'],
+         'root_contract_status': dict(Counter(r['root_contract_status'] for r in rows)),
+         'judge_calls_avoided_by_root_rule': sources['root_rule'],
+-        'judge_calls_avoided_by_all_rules': sum(sources[k] for k in ('root_rule', 'binding_rule', 'geography_rule')),
++        'judge_calls_avoided_by_all_rules': sum(sources[k] for k in ('target_gate', 'root_rule', 'binding_rule', 'geography_rule')),
+         'closing_fence_responses_recovered': sum(r['judge_format_cleanup'] == 'closing_fence_removed'
+                                                 and r['review_response_status'] != 'format_error' for r in rows),
+         'single_node_accepted_by_judge': sum(r['single_node_flag'] and r['judge_status'] == 'valid' for r in rows),
+         'semantic_correctness_measured': False, 'answer_accuracy_measured': False,
+         'inference_backend': store.manifest['settings']['backend'],
+-        'judge_role': 'observation_only; same Qwen; at most one call per structurally valid tree; '
++        'judge_role': 'observation_only; same Qwen; unresolved generation target mismatches skip the judge; '
++                      'at most one call per generation-accepted tree; '
+                       'clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair',
+         'incomplete_questions': incomplete, 'backend_errors': backend_errors,
+         'cost_including_previous_attempts': costs,
+         'total_cost': {key: sum(p[key] for p in costs.values()) for key in COST_KEYS},
+         'baselines_before_semantic_review': summarize_baselines(baselines),
+-        'note': 'All requested questions are counted. Structural validity, node count and root-rule compatibility '
++        'note': 'All requested questions are counted. Structurally valid includes target-blocked trees. '
++                'Generation acceptance and target compatibility do not establish semantic correctness. '
++                'Structural validity, node count and root-rule compatibility '
+                 'are not semantic accuracy. Code-rule decisions are separate from actual model judgments. '
+                 'Invalid reviewer responses are not counted as semantic uncertainty. '
+                 'A pilot below the historical Standard total does not establish full-method savings.'}
+@@ -314,7 +345,9 @@
+               plan_tokens=DEFAULT_PLAN_TOKENS, retry_errors=False, report_only=False, model_factory=None):
+     if any(type(n) is not int or n < 1 for n in (max_input_tokens, intermediate_tokens, plan_tokens)):
+         raise ValueError('Token budgets must be positive integers.')
+-    settings = {'schema_version': 4, 'n_samples': len(samples), 'code_sha256': code_digest(),
++    settings = {'schema_version': 5, 'n_samples': len(samples), 'code_sha256': code_digest(),
++        'generation_target_gate': 'clear_value_request_to_boolean_root_only_v1',
++        'generation_attempt_budget': 'shared_structure_and_target; max_two_total',
+         'sample_snapshot_sha256': digest(samples), 'baselines_sha256': digest(baselines),
+         'direct_reference_sha256': digest(direct_reference()),
+         'plan_prompt_sha256': hashlib.sha256(PLAN_SYSTEM.encode()).hexdigest(),
+@@ -354,14 +387,14 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_max4_target_repair_v1'))
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+     parser.add_argument('--use-4bit', dest='use_4bit', action='store_true', default=True)
+     parser.add_argument('--no-4bit', dest='use_4bit', action='store_false')
+     parser.add_argument('--allow-cpu', action='store_true')
+-    parser.add_argument('--retry-errors', action='store_true', help='Retry saved backend errors; never repeat terminal structural-invalid results.')
++    parser.add_argument('--retry-errors', action='store_true', help='Retry backend errors; never repeat terminal structure/target failures.')
+     parser.add_argument('--report-only', action='store_true', help='Rebuild reports/ZIP from saved outputs; no model load.')
+     args = parser.parse_args()
+     configure_logging()
+--- a/hotpotqa_operadic_rag/decomposition.py
++++ b/hotpotqa_operadic_rag/decomposition.py
+@@ -112,6 +112,42 @@
+             'errors': errors}
+ 
+ 
++def value_target_check(question, plan):
++    """Only detect a clear name/value request answered with a boolean root.
++
++    No work/person/date compatibility, relation, keyword coverage or punctuation
++    checks. Abstention is intentional. Compatible means no detected polarity
++    conflict, not a semantically correct tree. This does not change prompt hints
++    or the pre-existing, broader reviewer prechecks.
++    """
++    root = next(n for n in plan['nodes'] if n['id'] == plan['final'])
++    text = ' '.join(question.casefold().split())
++    mode = question_answer_mode(question)
++    target = answer_target(question)
++    ambiguous = bool(re.search(
++        r'\b(?:truth[ -]value|boolean|yes\s*/\s*no|true\s*/\s*false|'
++        r'yes or no|true or false|whether)\b', text))
++    # Bare "what/how" may ask for an explanation, a logical value, etc.
++    # Embedded explicit targets (e.g. "in what manga") are supported by the
++    # existing conservative extractor; unsupported forms abstain.
++    direct_wh = bool(re.match(r'^(?:who|whom|whose|which|where|when)\b', text))
++    clear_value = not ambiguous and (
++        (mode == 'value' and (direct_wh or target is not None)) or
++        (mode is None and target is not None))
++    root_mode = question_answer_mode(root['question'])
++    mismatch = clear_value and (root['answer_type'] == 'boolean' or root_mode == 'boolean')
++    errors = []
++    if mismatch:
++        errors.append(root['id'] + ': original question requests a name/value, but the final node '
++                      'has a boolean type or asks yes/no. Rewrite its question and type to return the '
++                      'requested name/value, preserving each entity with its property and all constraints.')
++    return {'status': 'mismatch' if mismatch else ('compatible' if clear_value else 'not_checked'),
++            'scope': 'clear_value_request_to_boolean_root_only',
++            'expected_mode': 'value' if clear_value else None,
++            'root_id': root['id'], 'root_answer_type': root['answer_type'],
++            'root_question_mode': root_mode, 'errors': errors}
++
++
+ def semantic_precheck(question, plan):
+     root = root_answer_check(question, plan)
+     bindings = binding_errors(plan)
+@@ -149,6 +185,13 @@
+ 
+ class SemanticPlanError(DecompositionError):
+     pass
++
++
++class TargetPlanError(DecompositionError):
++    """Valid tree structure, unresolved value-to-boolean target conflict."""
++    def __init__(self, message, trace, plan, check):
++        super().__init__(message, trace, 'valid', 'target_mismatch')
++        self.details.update(plan=plan, target_check=check)
+ 
+ 
+ def validate_review_verdict(verdict):
+@@ -208,9 +251,9 @@
+ 
+ 
+ def generate_plan(llm, question):
+-    """Generate/structurally repair a tree; do not infer semantic correctness.
+-
+-    Exposed separately so a pilot can measure generation before the self-judge.
++    """Share the existing attempt budget between structure and target repair.
++
++    A compatible target does not establish full semantic correctness.
+     The full pipeline still uses decompose_question and its semantic gate.
+     """
+     system = plan_instructions(question)
+@@ -232,7 +275,20 @@
+                             {'role': 'user', 'content': question + '\nInvalid tree:\n' + raw +
+                              '\nRepair structure, preserving meaning: ' + str(exc)}]
+             continue
+-        event.update(status='valid', root_contract=root_answer_check(question, plan)); trace.append(event)
++        check = value_target_check(question, plan)
++        event.update(status='valid', root_contract=root_answer_check(question, plan),
++                     target_check=check,
++                     generation_status='target_mismatch' if check['errors'] else 'accepted')
++        trace.append(event)
++        if check['errors']:
++            if attempt < PLAN_ATTEMPTS:
++                messages = [{'role': 'system', 'content': system},
++                            {'role': 'user', 'content': question + '\nTree with target mismatch:\n' + raw +
++                             '\nRepair only this answer-target mismatch, preserving meaning and all constraints: ' +
++                             ' '.join(check['errors'])}]
++                continue
++            raise TargetPlanError('Generation budget exhausted with an unresolved answer-target mismatch.',
++                                  trace, plan, check)
+         break
+     else:
+         raise DecompositionError('Decomposition remained structurally invalid after two attempts.', trace)
+--- a/run_decomposition_test.bat
++++ b/run_decomposition_test.bat
+@@ -18,7 +18,7 @@
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send results\decomposition_max4_target_repair_v1_results.zip for review.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
+--- a/tests/test_decomposition_pilot.py
++++ b/tests/test_decomposition_pilot.py
+@@ -208,15 +208,15 @@
+     def test_rule_source_is_not_reported_as_a_model_judgment(self):
+         bad = copy.deepcopy(CHAIN)
+         bad['nodes'][-1].update(question='Is {{q1}} from Paris?', answer_type='boolean')
+-        self.model = ScriptedModel([bad])
++        self.model = ScriptedModel([bad, bad])
+         summary = self.run_pilot()
+         self.assertEqual(summary['structure_status'], {'valid': 1})
+-        self.assertEqual(summary['review_source'], {'root_rule': 1})
++        self.assertEqual(summary['review_source'], {'target_gate': 1})
+         self.assertEqual(summary['judge_status'], {'not_called': 1})
+-        self.assertEqual(summary['review_status'], {'revise': 1})
+-        self.assertEqual(summary['judge_calls_avoided_by_root_rule'], 1)
+-        self.assertEqual(summary['total_cost']['llm_calls'], 1)
+-        self.assertIsNone(self.record()['phases']['review']['result']['raw_output'])
++        self.assertEqual(summary['generation_status'], {'target_mismatch': 1})
++        self.assertEqual(summary['judge_calls_avoided_by_target_gate'], 1)
++        self.assertEqual(summary['total_cost']['llm_calls'], 2)
++        self.assertNotIn('review', self.record()['phases'])
+         self.assertEqual(self.model.prompts, [])
+         self.run_pilot()
+         self.assertEqual(self.loaded, 1)
+@@ -239,8 +239,11 @@
+                    if row['status'] == 'valid' and order not in mismatches]
+         self.model = ScriptedModel(plans, replies)
+         # Recorded responses assume the former 12-node cap and cannot supply
+-        # new repairs. Current four-node behavior is exercised in test_max4.py.
++        # new repairs. Freeze the new target gate only for this historical replay;
++        # active shared-budget behavior is exercised in test_target_repair.py.
+         with patch('hotpotqa_operadic_rag.decomposition.MAX_PLAN_NODES', 12), \
++                patch('hotpotqa_operadic_rag.decomposition.value_target_check',
++                      return_value={'status': 'not_checked', 'errors': []}), \
+                 patch.object(pilot, 'MAX_PLAN_NODES', 12), redirect_stdout(io.StringIO()):
+             summary = pilot.run_pilot(samples, baselines, self.output, model_factory=self.factory)
+         self.assertEqual(summary['structure_status'], {'invalid': 12, 'valid': 28})
+--- a/tests/test_grounded_revision.py
++++ b/tests/test_grounded_revision.py
+@@ -154,7 +154,8 @@
+         self.assertEqual(plan, right)
+         self.assertEqual(len(model.messages), 2)
+         self.assertEqual(len(model.prompts), 1)
+-        self.assertEqual(trace[1]['details']['source'], 'root_rule')
++        self.assertEqual(trace[0]['target_check']['status'], 'mismatch')
++        self.assertEqual(trace[1]['generation_status'], 'accepted')
+         self.assertEqual(trace[-1]['details']['source'], 'model')
+         self.assertIn('Rewrite its question and type', model.messages[1][-1]['content'])
+ 
+--- a/tests/test_max4.py
++++ b/tests/test_max4.py
+@@ -5,6 +5,7 @@
+ from pathlib import Path
+ import tempfile
+ import unittest
++from unittest.mock import patch
+ 
+ import decomposition_pilot as pilot
+ from hotpotqa_operadic_rag.decomposition import (
+@@ -59,7 +60,12 @@
+         model = ScriptedModel(
+             [event['raw_output'] for row in rows for event in row['trace']],
+             [row['judge']['raw_output'] for row in rows if row['judge'].get('details', {}).get('source') == 'model'])
+-        with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()):
++        # Old recordings contain no response to the new target repair. Freeze
++        # that gate to retain this cap-only historical replay; test_target_repair
++        # separately covers the active gate and shared budget.
++        with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()), \
++                patch('hotpotqa_operadic_rag.decomposition.value_target_check',
++                      return_value={'status': 'not_checked', 'errors': []}):
+             output = Path(tmp) / 'pilot'
+             summary = pilot.run_pilot(samples, baselines, output,
+                                       model_factory=lambda settings: (model, {'backend': 'scripted'}))
+--- a/tests/test_review_contract_reporting.py
++++ b/tests/test_review_contract_reporting.py
+@@ -165,7 +165,7 @@
+                 raw = row['judge'].get('raw_output')
+                 if raw is not None:
+                     self.assertIn(raw, report)
+-            self.assertIn('### Structure attempts', report)
++            self.assertIn('### Generation attempts (shared structure/target budget)', report)
+         self.assertFalse(model.plans)
+         self.assertFalse(model.verdicts)
+ 
+--- a/tests/test_target_repair.py
++++ b/tests/test_target_repair.py
+@@ -0,0 +1,214 @@
++"""Target-detector and shared-budget tests; no claim about live model accuracy."""
++import copy
++import csv
++import io
++import json
++from pathlib import Path
++import tempfile
++import unittest
++from contextlib import redirect_stdout
++
++import decomposition_pilot as pilot
++from hotpotqa_operadic_rag.decomposition import (
++    PLAN_SYSTEM, TargetPlanError, DecompositionError, generate_plan,
++    decompose_question, value_target_check, plan_instructions,
++)
++from test_decomposition_pilot import ScriptedModel
++
++
++def single(question, kind):
++    return {'nodes': [{'id': 'q1', 'question': question,
++                      'dependencies': {}, 'answer_type': kind}], 'final': 'q1'}
++
++
++QUESTION = 'Which botanist discovered the fern, Talia or Ivo?'
++BAD = single('Did Talia discover the fern?', 'boolean')
++GOOD = {'nodes': [
++    {'id': 'q1', 'question': 'Did Talia discover the fern?', 'dependencies': {}, 'answer_type': 'boolean'},
++    {'id': 'q2', 'question': 'Did Ivo discover the fern?', 'dependencies': {}, 'answer_type': 'boolean'},
++    {'id': 'q3', 'question': 'Which botanist discovered the fern: Talia ({{q1}}) or Ivo ({{q2}})?',
++     'dependencies': {'q1': 'boolean', 'q2': 'boolean'}, 'answer_type': 'person'}], 'final': 'q3'}
++
++
++class Model:
++    plan_tokens = 3072
++    def __init__(self, *outputs):
++        self.outputs = list(outputs)
++        self.messages = []
++    def generate(self, messages, max_new_tokens=None):
++        self.messages.append(copy.deepcopy(messages))
++        reply = self.outputs.pop(0)
++        return reply if isinstance(reply, str) else json.dumps(reply)
++    def ask_json(self, prompt):
++        raise AssertionError('Unresolved target must not reach the judge.')
++
++
++class TargetDetectorTests(unittest.TestCase):
++    def test_synthetic_positive_cases_outside_evaluation_set(self):
++        questions = [QUESTION, 'Who designed the Zephyr monument?',
++                     'Where was the inventor of the Vela engine born?',
++                     'When was the Cobalt bridge opened?', 'What year did Selene graduate?',
++                     'How many towers does the Arin fortress have?',
++                     'The narrator of Vela appeared in what novel?',
++                     'Which statement is true about the new bridge?']
++        for question in questions:
++            with self.subTest(question=question):
++                self.assertEqual(value_target_check(question, BAD)['status'], 'mismatch')
++
++    def test_legitimate_boolean_and_uncertain_requests_are_not_rejected(self):
++        questions = ['Did Talia discover the fern?', 'Are the two rivers equally long?',
++                     'What is the truth value of the statement?',
++                     'What is the truth-value of the statement?',
++                     'What is the Boolean result of this expression?',
++                     'Which answer applies: yes/no?', 'What is the answer: true/false?',
++                     'What is the result of the test?',
++                     'Could you tell me which botanist discovered the fern?',
++                     'How can we tell whether the botanist discovered the fern?',
++                     'Explain the finding.', 'Choose the best option.']
++        for question in questions:
++            with self.subTest(question=question):
++                self.assertEqual(value_target_check(question, BAD)['status'], 'not_checked')
++
++    def test_boolean_intermediates_are_allowed_and_tree_not_mutated(self):
++        before = copy.deepcopy(GOOD)
++        self.assertEqual(value_target_check(QUESTION, GOOD)['status'], 'compatible')
++        self.assertEqual(GOOD, before)
++
++    def test_root_wording_and_type_are_checked_independently(self):
++        for plan in [single('Did Talia discover the fern?', 'person'),
++                     single('Which botanist discovered the fern?', 'boolean')]:
++            self.assertEqual(value_target_check(QUESTION, plan)['status'], 'mismatch')
++
++    def test_wrong_nonboolean_types_and_missing_question_mark_are_out_of_scope(self):
++        plan = single('Name the botanist who discovered the fern', 'work')
++        self.assertEqual(value_target_check(QUESTION, plan)['status'], 'compatible')
++        self.assertEqual(value_target_check('Did Talia discover it?', plan)['status'], 'not_checked')
++
++    def test_saved_outputs_match_narrow_assistant_labels_not_general_accuracy(self):
++        path = Path(__file__).resolve().parents[1] / 'evaluation/target_detector_saved_audit.json'
++        data = json.loads(path.read_text(encoding='utf-8'))
++        checked = positive = 0
++        for row in data['rows']:
++            if 'plan' not in row:
++                continue
++            actual = value_target_check(row['question'], row['plan'])['status'] == 'mismatch'
++            self.assertEqual(actual, row['expected_value_to_boolean_mismatch'], (row['run'], row['index']))
++            checked += 1
++            positive += actual
++        self.assertEqual((checked, positive), (75, 5))
++
++
++class SharedBudgetTests(unittest.TestCase):
++    def test_valid_first_output_has_no_extra_generation(self):
++        model = Model(GOOD)
++        plan, trace = generate_plan(model, QUESTION)
++        self.assertEqual(plan, GOOD)
++        self.assertEqual(len(model.messages), 1)
++        self.assertEqual(trace[0]['target_check']['status'], 'compatible')
++
++    def test_target_repair_keeps_exact_question_system_and_raw_plan(self):
++        raw = json.dumps(BAD, indent=2)
++        model = Model(raw, GOOD)
++        plan, trace = generate_plan(model, QUESTION)
++        self.assertEqual(plan, GOOD)
++        self.assertEqual([e['status'] for e in trace], ['valid', 'valid'])
++        self.assertEqual(trace[0]['generation_status'], 'target_mismatch')
++        self.assertEqual(trace[0]['raw_output'], raw)
++        for messages in model.messages:
++            self.assertEqual(messages[0]['content'], plan_instructions(QUESTION))
++            self.assertTrue(messages[1]['content'].startswith(QUESTION))
++        self.assertIn(raw, model.messages[1][1]['content'])
++        self.assertIn('preserving meaning and all constraints', model.messages[1][1]['content'])
++        self.assertIn('Rewrite its question and type', model.messages[1][1]['content'])
++
++    def test_repeated_target_failure_retains_plan_and_never_calls_judge(self):
++        model = Model(BAD, BAD)
++        with self.assertRaises(TargetPlanError) as cm:
++            decompose_question(model, QUESTION)
++        self.assertEqual(len(model.messages), 2)
++        self.assertEqual(cm.exception.details['structural_status'], 'valid')
++        self.assertEqual(cm.exception.details['semantic_status'], 'target_mismatch')
++        self.assertEqual(cm.exception.details['plan'], BAD)
++
++    def test_structure_then_target_failure_has_no_third_attempt(self):
++        model = Model('not json', BAD)
++        with self.assertRaises(TargetPlanError) as cm:
++            generate_plan(model, QUESTION)
++        self.assertEqual(len(model.messages), 2)
++        self.assertEqual([e['status'] for e in cm.exception.details['decomposition_trace']], ['invalid', 'valid'])
++
++    def test_target_then_structure_failure_is_reported_as_final_structure_failure(self):
++        model = Model(BAD, 'not json')
++        with self.assertRaises(DecompositionError) as cm:
++            generate_plan(model, QUESTION)
++        self.assertNotIsInstance(cm.exception, TargetPlanError)
++        self.assertEqual(cm.exception.details['structural_status'], 'invalid')
++        self.assertEqual(cm.exception.details['decomposition_trace'][0]['target_check']['status'], 'mismatch')
++        self.assertEqual(len(model.messages), 2)
++
++    def test_unknown_request_does_not_trigger_repair(self):
++        model = Model(BAD)
++        _, trace = generate_plan(model, 'What is the truth value of the finding?')
++        self.assertEqual(trace[0]['target_check']['status'], 'not_checked')
++        self.assertEqual(len(model.messages), 1)
++
++
++class TargetPilotTests(unittest.TestCase):
++    def run_case(self, plans, verdicts=()):
++        temp = tempfile.TemporaryDirectory()
++        self.addCleanup(temp.cleanup)
++        path = Path(temp.name) / 'pilot'
++        model = ScriptedModel(plans, verdicts)
++        samples = [{'question_id': 'new_synthetic_case', 'question': QUESTION, 'type': 'comparison',
++                    'answer': 'DO_NOT_SEND_GOLD', 'context': 'DO_NOT_SEND_CONTEXT'}]
++        loads = []
++        def factory(settings):
++            loads.append(True)
++            return model, {'backend': 'scripted-test'}
++        def run(**kwargs):
++            with redirect_stdout(io.StringIO()):
++                return pilot.run_pilot(samples, {}, path, model_factory=factory, **kwargs)
++        summary = run()
++        self.assertNotIn('DO_NOT_SEND', json.dumps([model.messages, model.prompts]))
++        return path, model, summary, run, loads
++
++    def test_unresolved_target_counts_structure_valid_generation_blocked_and_resumes_without_calls(self):
++        path, model, summary, run, loads = self.run_case([BAD, BAD])
++        self.assertEqual(summary['structure_status'], {'valid': 1})
++        self.assertEqual(summary['generation_status'], {'target_mismatch': 1})
++        self.assertEqual(summary['valid_on_first_attempt'], 1)
++        self.assertEqual(summary['generation_accepted_on_first_attempt'], 0)
++        self.assertEqual(summary['target_mismatch_unresolved_questions'], 1)
++        self.assertEqual(summary['review_source'], {'target_gate': 1})
++        self.assertEqual(summary['total_cost']['llm_calls'], 2)
++        self.assertEqual(summary['incomplete_questions'], 0)
++        self.assertEqual(model.prompts, [])
++        for options in ({}, {'retry_errors': True}, {'report_only': True}):
++            self.assertEqual(run(**options), summary)
++        self.assertEqual(len(loads), 1)
++        report = (path / 'review.md').read_text(encoding='utf-8')
++        self.assertIn('Answer-target check: mismatch', report)
++        with (path / 'trees.csv').open(encoding='utf-8-sig') as stream:
++            row = next(csv.DictReader(stream))
++        self.assertEqual(row['structure_error'], '')
++        self.assertTrue(row['generation_error'])
++
++    def test_resolved_target_runs_existing_judge_once_and_counts_all_costs(self):
++        _, model, summary, _, _ = self.run_case([BAD, GOOD], [{'status': 'valid', 'errors': []}])
++        self.assertEqual(summary['generation_status'], {'valid': 1})
++        self.assertEqual(summary['target_repair_resolved_questions'], 1)
++        self.assertEqual(summary['total_cost']['llm_calls'], 3)
++        self.assertEqual(summary['total_cost']['total_tokens'], 45)
++        self.assertEqual(len(model.prompts), 1)
++
++    def test_second_attempt_structure_failure_keeps_target_diagnosis_in_trace(self):
++        _, _, summary, _, _ = self.run_case([BAD, 'not json'])
++        self.assertEqual(summary['structure_status'], {'invalid': 1})
++        self.assertEqual(summary['target_mismatch_detected_questions'], 1)
++        self.assertEqual(summary['target_repair_attempted_questions'], 1)
++        self.assertEqual(summary['target_repair_resolved_questions'], 0)
++        self.assertEqual(summary['total_cost']['llm_calls'], 2)
++
++
++if __name__ == '__main__':
++    unittest.main()
