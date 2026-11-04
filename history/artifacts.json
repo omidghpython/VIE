@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-03",
+  "snapshot_date_tehran": "2026-11-04",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -114,6 +114,14 @@
         {
           "path": "history/reports/simple-vs-operadic-v1-verification.json",
           "sha256": "a32bade5a90f0184c365bb44a8a78a458a0b6d73126c69c749c738456d6fdbd4"
+        },
+        {
+          "path": "history/reports/simple-vs-operadic-v1-comprehensive.md",
+          "sha256": "ce7607e936316c688f1119fd39fe24680d8eba6e8e285513df6b780eaa820f93"
+        },
+        {
+          "path": "history/reports/simple-vs-operadic-v1-comprehensive-metrics.json",
+          "sha256": "d913ca171765e2451c8912ff9ab70750d6b974517065779cdb0801bd168b0b3b"
         }
       ]
     }
@@ -224,6 +232,8 @@
     "semantic_accuracy_measured_independently": false,
     "answer_accuracy_measured": false,
     "overall_winner": null,
-    "next_implementation_authorized": false
+    "next_implementation_authorized": false,
+    "comprehensive_report": "history/reports/simple-vs-operadic-v1-comprehensive.md",
+    "hybrid_routing_status": "proposal_only; not implemented, replayed or evaluated"
   }
 }

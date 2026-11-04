@@ -1,0 +1,82 @@
+{
+  "source_result_sha256": "6e9fe49b1e8314347c1ce7693758352e143d5494f66c23efb03190f486ff1f77",
+  "scope": "Reanalysis of the saved run; no model calls or new experiment. Semantic assessments remain qualitative, not independent accuracy labels.",
+  "sample_count": 40,
+  "first_call_cost": {
+    "simple": {
+      "llm_calls": 40,
+      "prompt_tokens": 2575,
+      "completion_tokens": 1558,
+      "total_tokens": 4133
+    },
+    "operadic": {
+      "llm_calls": 40,
+      "prompt_tokens": 24462,
+      "completion_tokens": 3926,
+      "total_tokens": 28388
+    }
+  },
+  "total_cost": {
+    "simple": {
+      "llm_calls": 40,
+      "prompt_tokens": 2575,
+      "completion_tokens": 1558,
+      "total_tokens": 4133,
+      "execution_time_sec": 188.91061049999996,
+      "retrieval_steps": 0
+    },
+    "operadic": {
+      "llm_calls": 47,
+      "prompt_tokens": 29691,
+      "completion_tokens": 4611,
+      "total_tokens": 34302,
+      "execution_time_sec": 520.1316877000004,
+      "retrieval_steps": 0
+    }
+  },
+  "by_dataset_question_type": {
+    "bridge": {
+      "n": 20,
+      "simple_total_tokens": 2068,
+      "operadic_first_tokens": 13767,
+      "operadic_total_tokens": 16968,
+      "operadic_calls": 24,
+      "operadic_first_structurally_valid": 16,
+      "operadic_final_structurally_valid": 18
+    },
+    "comparison": {
+      "n": 20,
+      "simple_total_tokens": 2065,
+      "operadic_first_tokens": 14621,
+      "operadic_total_tokens": 17334,
+      "operadic_calls": 23,
+      "operadic_first_structurally_valid": 17,
+      "operadic_final_structurally_valid": 19
+    }
+  },
+  "operadic_raw_json_parse_successes": 47,
+  "operadic_valid_plan_node_distribution": {
+    "3": 20,
+    "1": 3,
+    "2": 14
+  },
+  "simple_subquestion_distribution_manual_numbering_correction": {
+    "1": 4,
+    "2": 10,
+    "3": 16,
+    "4": 10
+  },
+  "simple_manual_numbering_correction_scope": "Existing audit corrected the format-only regex for questions 19,25,26,33,40; no semantic correctness inferred.",
+  "simple_average_seconds_per_question": 4.722765262499999,
+  "operadic_average_seconds_per_question": 13.003292192500009,
+  "operadic_to_simple_time_ratio": 2.753321723556658,
+  "simple_time_reduction_percent": 63.68023426233567,
+  "simple_first_call_token_reduction_percent": 85.44103142172749,
+  "simple_with_repair_token_reduction_percent": 87.95113987522593,
+  "first_call_gap_due_to_prompt_tokens_percent": 90.23706452277881,
+  "semantic_accuracy": null,
+  "rag_answer_accuracy": null,
+  "peak_vram": null,
+  "hybrid_routing_evaluated": false,
+  "analysis_completed_date_tehran": "2026-11-04"
+}
