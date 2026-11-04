@@ -172,6 +172,24 @@
           "sha256": "6fad31f0bc8cab029f43b99cebba135df7e770469963f45f81b084d4036bd80a"
         }
       ]
+    },
+    {
+      "version": "target_repair_probe_v2",
+      "path": "history/results/target_repair_probe_v2.zip",
+      "original_filename": "results_target_repair_probe_v2.zip",
+      "sha256": "da4ebba26d6a659ace0aad4f5babfac8721b836f88ff5e91be1740eb0d38ab6d",
+      "bytes": 13013,
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/target-repair-probe-v2-analysis.md",
+          "sha256": "f1b60bae8fce22f2cb63c77f3cd01722d1afa3e77d5c0ec9dc89587d2458f848"
+        },
+        {
+          "path": "history/reports/target-repair-probe-v2-analysis.json",
+          "sha256": "b9e9716e7020452ab908fc4e2bce536df6bc7ebfbf68a9972fa2dc4f7234c1b3"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -295,7 +313,7 @@
   },
   "current_experiment": {
     "id": "target_repair_probe_v2",
-    "status": "prepared_pending_actual_run",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "code_commit": "510f5ac1d659d16a397f621d2314ab7e4957649f",
     "scope": "One repair of saved question36 first output; user feedback only changed; core/system unchanged.",
@@ -304,9 +322,13 @@
     "protocol": "history/reports/target-repair-probe-v2-protocol.txt",
     "offline_tests_passed": 148,
     "targeted_tests_repassed_after_report_change": 9,
-    "live_model_calls": 0,
+    "live_model_calls": 1,
     "direct_download_verified": true,
-    "semantic_accuracy_measured_independently": false
+    "semantic_accuracy_measured_independently": false,
+    "result_artifact": "history/results/target_repair_probe_v2.zip",
+    "report": "history/reports/target-repair-probe-v2-analysis.md",
+    "analysis_live_model_calls": 0,
+    "recommendation": "Do not promote: v2 repair invalid, missing final placeholders and shared q1; 993 vs 810 tokens per repair. Single-case result only."
   },
   "experiment_history": [
     {

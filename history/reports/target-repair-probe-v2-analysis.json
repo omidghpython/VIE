@@ -1,0 +1,81 @@
+{
+  "experiment": "target_repair_probe_v2",
+  "code_fixture_messages_runtime_verified": true,
+  "saved_validation_replayed": true,
+  "telemetry_verified": true,
+  "internal_zip_matching_files": 7,
+  "live_calls_in_analysis": 0,
+  "new_summary": {
+    "experiment": "target_repair_probe_v2",
+    "question_id": "5ac0b1835542992a796ded65",
+    "phase_status": "observed",
+    "runtime_error": "",
+    "structure_status": "invalid",
+    "target_status": "not_checked",
+    "semantic_correctness": "not_established",
+    "qualifier_preservation": "manual_review_required",
+    "inference_backend": "LocalQwen",
+    "current_cost": {
+      "llm_calls": 1,
+      "prompt_tokens": 879,
+      "completion_tokens": 114,
+      "total_tokens": 993,
+      "execution_time_sec": 18.9106357,
+      "retrieval_steps": 0
+    },
+    "current_cost_complete": true,
+    "historical_repair_cost_excluded_from_current": {
+      "prompt_tokens": 741,
+      "completion_tokens": 69,
+      "total_tokens": 810
+    },
+    "scope": "One saved question; one new repair only. No generation of first tree, judge, retrieval or answer. Structure/target compatibility do not establish meaning or general improvement."
+  },
+  "new_plan_raw_parsed": {
+    "nodes": [
+      {
+        "id": "q1",
+        "question": "What company was Bordan Tkachuk the former CEO of?",
+        "dependencies": {},
+        "answer_type": "organization"
+      },
+      {
+        "id": "q2",
+        "question": "Does {{q1}} provide IT products?",
+        "dependencies": {
+          "q1": "organization"
+        },
+        "answer_type": "boolean"
+      },
+      {
+        "id": "q3",
+        "question": "Which company was Bordan Tkachuk the former CEO of, and does it provide IT products?",
+        "dependencies": {
+          "q1": "organization",
+          "q2": "boolean"
+        },
+        "answer_type": "organization"
+      }
+    ],
+    "final": "q3"
+  },
+  "placeholder_dependency_mismatches": [
+    {
+      "node": "q3",
+      "placeholders": [],
+      "dependencies": {
+        "q1": "organization",
+        "q2": "boolean"
+      }
+    }
+  ],
+  "declared_consumers": {
+    "q1": 2,
+    "q2": 1
+  },
+  "extra_contract_issue": "q1 has two declared consumers (q2 and q3); missing placeholders is the first error raised. No tree was modified to infer this.",
+  "semantic_observation": "q3 repeats the company-identification request and appends a yes/no request without explicit answer slots; organization label alone does not establish the intended composed answer. IT wording remains, but constraint application is not established.",
+  "token_delta_vs_previous_repair": 183,
+  "token_percent_change_vs_previous_repair": 22.592592592592588,
+  "outcome": "Unsuccessful repair; no general model-capacity claim and no new pipeline change."
+}
