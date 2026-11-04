@@ -1,0 +1,368 @@
+{
+  "experiment": "max4_target_repair_v1",
+  "source_code_verified": true,
+  "same_samples": true,
+  "same_runtime_identity": true,
+  "settings_differences": {
+    "schema_version": [
+      4,
+      5
+    ],
+    "code_sha256": [
+      "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+      "02863f72f5d717e3f92df9aa84816567da23cae4744fd6a73f2b4c412d4e5346"
+    ],
+    "generation_target_gate": [
+      null,
+      "clear_value_request_to_boolean_root_only_v1"
+    ],
+    "generation_attempt_budget": [
+      null,
+      "shared_structure_and_target; max_two_total"
+    ]
+  },
+  "all_40_first_outputs_identical": true,
+  "unchanged_generation_sequences": 39,
+  "changed_questions": [
+    36
+  ],
+  "model_reviews_identical": 33,
+  "recorded_replay_verified_questions": 40,
+  "recorded_replay_calls": 81,
+  "new_live_calls_in_analysis": 0,
+  "embedded_zip_files_match": 45,
+  "telemetry_totals_verified": true,
+  "baseline_summary": {
+    "requested": 40,
+    "structure_status": {
+      "valid": 37,
+      "invalid": 3
+    },
+    "single_node": 3,
+    "multiple_nodes": 34,
+    "valid_on_first_attempt": 33,
+    "review_status": {
+      "revise": 24,
+      "not_reviewed": 3,
+      "valid": 13
+    },
+    "review_source": {
+      "model": 33,
+      "not_reviewed": 3,
+      "root_rule": 3,
+      "geography_rule": 1
+    },
+    "judge_status": {
+      "revise": 20,
+      "not_called": 7,
+      "valid": 13
+    },
+    "review_response_status": {
+      "parsed": 33,
+      "not_reviewed": 3,
+      "not_called": 4
+    },
+    "invalid_review_responses": 0,
+    "review_format_error_kind": {},
+    "semantic_uncertainty_responses": 0,
+    "vague_reason_responses": 0,
+    "root_contract_status": {
+      "compatible": 32,
+      "not_checked": 5,
+      "mismatch": 3
+    },
+    "judge_calls_avoided_by_root_rule": 3,
+    "judge_calls_avoided_by_all_rules": 4,
+    "closing_fence_responses_recovered": 1,
+    "single_node_accepted_by_judge": 3,
+    "semantic_correctness_measured": false,
+    "answer_accuracy_measured": false,
+    "inference_backend": "LocalQwen",
+    "judge_role": "observation_only; same Qwen; at most one call per structurally valid tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+    "incomplete_questions": 0,
+    "backend_errors": 0,
+    "cost_including_previous_attempts": {
+      "structure": {
+        "llm_calls": 47,
+        "prompt_tokens": 29691,
+        "completion_tokens": 4611,
+        "total_tokens": 34302,
+        "execution_time_sec": 522.3771753000003,
+        "retrieval_steps": 0
+      },
+      "review": {
+        "llm_calls": 33,
+        "prompt_tokens": 13068,
+        "completion_tokens": 574,
+        "total_tokens": 13642,
+        "execution_time_sec": 67.89183680000042,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 80,
+      "prompt_tokens": 42759,
+      "completion_tokens": 5185,
+      "total_tokens": 47944,
+      "execution_time_sec": 590.2690121000007,
+      "retrieval_steps": 0
+    },
+    "baselines_before_semantic_review": {
+      "v3.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 7,
+          "valid": 32,
+          "unknown": 1
+        },
+        "single_node": 4,
+        "multiple_nodes": 28,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 20,
+          "valid": 20
+        },
+        "single_node": 20,
+        "multiple_nodes": 0,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 12,
+          "valid": 28
+        },
+        "single_node": 2,
+        "multiple_nodes": 26,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.2": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.3": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.4": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      }
+    },
+    "note": "All requested questions are counted. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+    "whole_method_token_condition": {
+      "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+      "pilot_tokens": 47944,
+      "full_decomposed_tokens": null,
+      "full_token_condition_met": null,
+      "status": "pilot_below_reference_full_savings_not_established",
+      "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+      "standard_reference_tokens": 54222,
+      "standard_reference_status": {
+        "completed": 39,
+        "failed": 1
+      },
+      "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+      "remaining_tokens_below_historical_standard": 6277
+    }
+  },
+  "new_summary": {
+    "requested": 40,
+    "structure_status": {
+      "valid": 36,
+      "invalid": 4
+    },
+    "single_node": 3,
+    "multiple_nodes": 33,
+    "valid_on_first_attempt": 33,
+    "generation_status": {
+      "valid": 36,
+      "invalid": 4
+    },
+    "generation_accepted_on_first_attempt": 32,
+    "value_target_status": {
+      "not_checked": 11,
+      "compatible": 29
+    },
+    "target_mismatch_detected_questions": 1,
+    "target_repair_attempted_questions": 1,
+    "target_repair_resolved_questions": 0,
+    "target_mismatch_unresolved_questions": 0,
+    "judge_calls_avoided_by_target_gate": 0,
+    "review_status": {
+      "revise": 23,
+      "not_reviewed": 4,
+      "valid": 13
+    },
+    "review_source": {
+      "model": 33,
+      "not_reviewed": 4,
+      "root_rule": 2,
+      "geography_rule": 1
+    },
+    "judge_status": {
+      "revise": 20,
+      "not_called": 7,
+      "valid": 13
+    },
+    "review_response_status": {
+      "parsed": 33,
+      "not_reviewed": 4,
+      "not_called": 3
+    },
+    "invalid_review_responses": 0,
+    "review_format_error_kind": {},
+    "semantic_uncertainty_responses": 0,
+    "vague_reason_responses": 0,
+    "root_contract_status": {
+      "compatible": 32,
+      "not_checked": 6,
+      "mismatch": 2
+    },
+    "judge_calls_avoided_by_root_rule": 2,
+    "judge_calls_avoided_by_all_rules": 3,
+    "closing_fence_responses_recovered": 1,
+    "single_node_accepted_by_judge": 3,
+    "semantic_correctness_measured": false,
+    "answer_accuracy_measured": false,
+    "inference_backend": "LocalQwen",
+    "judge_role": "observation_only; same Qwen; unresolved generation target mismatches skip the judge; at most one call per generation-accepted tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+    "incomplete_questions": 0,
+    "backend_errors": 0,
+    "cost_including_previous_attempts": {
+      "structure": {
+        "llm_calls": 48,
+        "prompt_tokens": 30432,
+        "completion_tokens": 4680,
+        "total_tokens": 35112,
+        "execution_time_sec": 538.5222368999998,
+        "retrieval_steps": 0
+      },
+      "review": {
+        "llm_calls": 33,
+        "prompt_tokens": 13068,
+        "completion_tokens": 574,
+        "total_tokens": 13642,
+        "execution_time_sec": 72.28918959999993,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 81,
+      "prompt_tokens": 43500,
+      "completion_tokens": 5254,
+      "total_tokens": 48754,
+      "execution_time_sec": 610.8114264999997,
+      "retrieval_steps": 0
+    },
+    "baselines_before_semantic_review": {
+      "v3.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 7,
+          "valid": 32,
+          "unknown": 1
+        },
+        "single_node": 4,
+        "multiple_nodes": 28,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 20,
+          "valid": 20
+        },
+        "single_node": 20,
+        "multiple_nodes": 0,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 12,
+          "valid": 28
+        },
+        "single_node": 2,
+        "multiple_nodes": 26,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.2": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.3": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.4": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      }
+    },
+    "note": "All requested questions are counted. Structurally valid includes target-blocked trees. Generation acceptance and target compatibility do not establish semantic correctness. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+    "whole_method_token_condition": {
+      "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+      "pilot_tokens": 48754,
+      "full_decomposed_tokens": null,
+      "full_token_condition_met": null,
+      "status": "pilot_below_reference_full_savings_not_established",
+      "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+      "standard_reference_tokens": 54222,
+      "standard_reference_status": {
+        "completed": 39,
+        "failed": 1
+      },
+      "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+      "remaining_tokens_below_historical_standard": 5467
+    }
+  },
+  "token_delta": 810,
+  "token_percent_change": 1.6894710495578114,
+  "limitations": [
+    "Only one target repair activated; no estimate of general repair success.",
+    "Baseline #36 was already wrong and blocked: lower structural validity is not demonstrated loss of a correct answer.",
+    "target_mismatch_unresolved_questions=0 only counts terminal target exceptions; #36 failed structurally on repair and was not resolved.",
+    "Generic error remained structurally invalid is imprecise for #36: attempt1 had valid structure. Its raw output remains in trace although final plan is null.",
+    "No independent semantic accuracy or full RAG answer accuracy measured."
+  ]
+}

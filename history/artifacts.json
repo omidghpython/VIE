@@ -150,6 +150,28 @@
           "sha256": "484536cd4e9053e0e56b2c1b766cd4aa51fb1997ba018f762226f7673d39bd47"
         }
       ]
+    },
+    {
+      "version": "max4_target_repair_v1",
+      "path": "history/results/max4_target_repair_v1.zip",
+      "original_filename": "results_max4_target_repair_v1.zip",
+      "sha256": "b607dfc06d55bedcd4fcaefa42c76c89aaf8b16325ac00770d1e6e0d83772be3",
+      "bytes": 307741,
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/max4-target-repair-v1-analysis.md",
+          "sha256": "0ece428d51ff09231ec558315418b022185516829cede0797dc8ac1af0b5174d"
+        },
+        {
+          "path": "history/reports/max4-target-repair-v1-comparison.json",
+          "sha256": "3ef2836565a8e6c42cf2358f723cbad240aa03e7b8269c71e6d0b5341a3735f6"
+        },
+        {
+          "path": "history/reports/max4-target-repair-v1-result-audit.json",
+          "sha256": "6fad31f0bc8cab029f43b99cebba135df7e770469963f45f81b084d4036bd80a"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -265,7 +287,7 @@
   },
   "current_experiment": {
     "id": "max4_target_repair_v1",
-    "status": "prepared_pending_actual_run",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "runtime_change": "Narrow value-to-boolean final check in shared two-attempt generation; separate pilot reporting. Original prompts unchanged.",
     "code_commit": "74b771586d4776fcfe4458e662daa724d3a01be8",
@@ -274,10 +296,14 @@
     "protocol": "history/reports/max4-target-repair-v1-protocol.txt",
     "detector_audit": "history/reports/max4-target-repair-v1-detector-audit.json",
     "offline_tests_passed": 139,
-    "live_model_calls": 0,
+    "live_model_calls": 81,
     "semantic_accuracy_measured_independently": false,
     "answer_accuracy_measured": false,
-    "direct_download_verified": true
+    "direct_download_verified": true,
+    "result_artifact": "history/results/max4_target_repair_v1.zip",
+    "report": "history/reports/max4-target-repair-v1-analysis.md",
+    "recommendation": "Do not promote: sole triggered target repair (#36) failed root validation; no observed semantic improvement. 39 other outputs unchanged.",
+    "analysis_live_model_calls": 0
   },
   "experiment_history": [
     {
