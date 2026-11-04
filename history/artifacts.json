@@ -124,6 +124,32 @@
           "sha256": "d913ca171765e2451c8912ff9ab70750d6b974517065779cdb0801bd168b0b3b"
         }
       ]
+    },
+    {
+      "version": "max4_relation_prompt_v1",
+      "path": "history/results/max4_relation_prompt_v1.zip",
+      "original_filename": "results_max4_relation_prompt_v1.zip",
+      "sha256": "9247d21b85f71c1255ca7522303b7030c574b4bc55093a1b7d7a579afa63fff0",
+      "bytes": 305300,
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/max4-relation-prompt-v1-analysis.md",
+          "sha256": "9b8d4d7ac73cc6ad2c876bd4c60d5b995a10a74374b33e0be44ab05abe643178"
+        },
+        {
+          "path": "history/reports/max4-relation-prompt-v1-comparison.json",
+          "sha256": "b2b2030e3edcbeb9985c808459bee63415433dcfb88f94c8057f3e5a4bf04b3a"
+        },
+        {
+          "path": "history/reports/max4-relation-prompt-v1-audit.json",
+          "sha256": "47e929271d687afd93752afd241f209944bc7a3a315d44f0d5da1c079afc10b4"
+        },
+        {
+          "path": "history/reports/max4-relation-prompt-v1-audit.md",
+          "sha256": "484536cd4e9053e0e56b2c1b766cd4aa51fb1997ba018f762226f7673d39bd47"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -231,12 +257,17 @@
   },
   "current_experiment": {
     "id": "max4_relation_prompt_v1",
-    "status": "prepared_pending_actual_user_run",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "runtime_change": "PLAN_SYSTEM only",
     "code_commit": "480a23a03ce0be1fec8c5068ab721a1cb678274f",
     "expected_results_file": "results/decomposition_max4_relation_prompt_v1_results.zip",
-    "verification": "history/max4_relation_prompt_v1_verification.json"
+    "verification": "history/max4_relation_prompt_v1_verification.json",
+    "result_artifact": "history/results/max4_relation_prompt_v1.zip",
+    "report": "history/reports/max4-relation-prompt-v1-analysis.md",
+    "recommendation": "Do not promote to baseline: predicate fix in 25, direction error remains in 14, regressions in 18/22/30; baseline unchanged.",
+    "semantic_accuracy_measured_independently": false,
+    "answer_accuracy_measured": false
   },
   "experiment_history": [
     {
