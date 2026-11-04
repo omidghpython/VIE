@@ -1,0 +1,37 @@
+--- baseline/hotpotqa_operadic_rag/decomposition.py
++++ experiment/hotpotqa_operadic_rag/decomposition.py
+@@ -20,8 +20,18 @@
+ At most 4 nodes. One node only for an atomic question; split required hops.
+ Bridge: identify the unknown entity, then use its answer slot directly. A person
+ is not their nationality/date/description; a band is not its singer.
+-Preserve subject/object order and each relation: 'is' is not 'produces'. Once
+-an entity is identified, do not add another relation hop to a different entity.
++Decompose by minimal substitution, not free paraphrasing. For each dependency,
++identify the entity-denoting phrase resolved by the preceding subquestion and
++replace that phrase with its answer slot. Preserve the original predicate,
++subject/object roles, qualifiers, negation, units and requested answer target.
++Change wording only as needed for grammatical substitution; do not substitute
++an entity's property for the entity itself. Identity/classification ("is", "what
++kind of") must not become production, ownership, employment or another relation.
++For direction, preserve who is located relative to whom: "A is east of B" must
++not become "B is east of A". Check that replacing each slot with its defining
++phrase preserves the original relation and target; word overlap is insufficient.
++Keep the existing JSON schema; do not add explanation fields. Once an entity is
++identified, do not add another relation hop to a different entity.
+ Comparison: obtain the requested property for each entity; place is not date.
+ For compound conditions, check ALL conditions for each entity, then combine.
+ Keep each original name beside its property slot in the final comparison.
+@@ -34,8 +44,11 @@
+ without repeating questions or rediscovering a supplied title/name.
+ Geographic comparisons use locations/cities/states; require numeric coordinates
+ only if requested. Check composed meaning, not just matching type labels.
+-Format example only; do not copy these names into Question's tree:
+-{"nodes":[{"id":"q1","question":"Who wrote The Lantern?","dependencies":{},"answer_type":"person"},{"id":"q2","question":"Where was {{q1}} born?","dependencies":{"q1":"person"},"answer_type":"place"}],"final":"q2"}
++Synthetic examples of substitution and format; do not copy their names into Question:
++Question: The fictional village of Luma lies east of a river. How long is that river?
++{"nodes":[{"id":"q1","question":"Which river is the village of Luma east of?","dependencies":{},"answer_type":"place"},{"id":"q2","question":"How long is {{q1}}?","dependencies":{"q1":"place"},"answer_type":"number"}],"final":"q2"}
++Question: What kind of structure is the landmark featured on the fictional Neral stamp?
++{"nodes":[{"id":"q1","question":"What landmark is featured on the fictional Neral stamp?","dependencies":{},"answer_type":"place"},{"id":"q2","question":"What kind of structure is {{q1}}?","dependencies":{"q1":"place"},"answer_type":"other"}],"final":"q2"}
+ Comparison example: Who was born first, Lena or Omar?
+ {"nodes":[{"id":"q1","question":"When was Lena born?","dependencies":{},"answer_type":"date"},{"id":"q2","question":"When was Omar born?","dependencies":{},"answer_type":"date"},{"id":"q3","question":"Who was born first: Lena (born {{q1}}) or Omar (born {{q2}})?","dependencies":{"q1":"date","q2":"date"},"answer_type":"person"}],"final":"q3"}
+ '''
