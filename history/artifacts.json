@@ -279,6 +279,14 @@
       "filename": "hotpotqa_max4_target_repair_v1.zip",
       "sha256": "0e52afd2f904f0629e824dfa41ad7cd5ab8d98ef76173ff4c5aec221828fa7c0",
       "url": "https://raw.githubusercontent.com/omidghpython/VIE/74b771586d4776fcfe4458e662daa724d3a01be8/hotpotqa_max4_target_repair_v1.zip"
+    },
+    {
+      "version": "target_repair_probe_v2",
+      "branch": "downloads/hotpotqa-target-repair-probe-v2",
+      "commit": "510f5ac1d659d16a397f621d2314ab7e4957649f",
+      "filename": "hotpotqa_target_repair_probe_v2.zip",
+      "sha256": "c99e53fd9092549dba9e87b394619b99a528549ef00b7febc1b9fc8511db2121",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/510f5ac1d659d16a397f621d2314ab7e4957649f/hotpotqa_target_repair_probe_v2.zip"
     }
   ],
   "original_v31_source": {
@@ -286,24 +294,19 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "max4_target_repair_v1",
-    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
+    "id": "target_repair_probe_v2",
+    "status": "prepared_pending_actual_run",
     "accepted_operadic_baseline": "v3.2.4-max4",
-    "runtime_change": "Narrow value-to-boolean final check in shared two-attempt generation; separate pilot reporting. Original prompts unchanged.",
-    "code_commit": "74b771586d4776fcfe4458e662daa724d3a01be8",
-    "expected_results_file": "results/decomposition_max4_target_repair_v1_results.zip",
-    "verification": "history/max4_target_repair_v1_verification.json",
-    "protocol": "history/reports/max4-target-repair-v1-protocol.txt",
-    "detector_audit": "history/reports/max4-target-repair-v1-detector-audit.json",
-    "offline_tests_passed": 139,
-    "live_model_calls": 81,
-    "semantic_accuracy_measured_independently": false,
-    "answer_accuracy_measured": false,
+    "code_commit": "510f5ac1d659d16a397f621d2314ab7e4957649f",
+    "scope": "One repair of saved question36 first output; user feedback only changed; core/system unchanged.",
+    "expected_results_file": "results/target_repair_probe_v2_results.zip",
+    "verification": "history/target_repair_probe_v2_verification.json",
+    "protocol": "history/reports/target-repair-probe-v2-protocol.txt",
+    "offline_tests_passed": 148,
+    "targeted_tests_repassed_after_report_change": 9,
+    "live_model_calls": 0,
     "direct_download_verified": true,
-    "result_artifact": "history/results/max4_target_repair_v1.zip",
-    "report": "history/reports/max4-target-repair-v1-analysis.md",
-    "recommendation": "Do not promote: sole triggered target repair (#36) failed root validation; no observed semantic improvement. 39 other outputs unchanged.",
-    "analysis_live_model_calls": 0
+    "semantic_accuracy_measured_independently": false
   },
   "experiment_history": [
     {
@@ -334,6 +337,26 @@
       "recommendation": "Do not promote to baseline: predicate fix in 25, direction error remains in 14, regressions in 18/22/30; baseline unchanged.",
       "semantic_accuracy_measured_independently": false,
       "answer_accuracy_measured": false
+    },
+    {
+      "id": "max4_target_repair_v1",
+      "status": "actual_results_received_and_analyzed_pending_user_next_decision",
+      "accepted_operadic_baseline": "v3.2.4-max4",
+      "runtime_change": "Narrow value-to-boolean final check in shared two-attempt generation; separate pilot reporting. Original prompts unchanged.",
+      "code_commit": "74b771586d4776fcfe4458e662daa724d3a01be8",
+      "expected_results_file": "results/decomposition_max4_target_repair_v1_results.zip",
+      "verification": "history/max4_target_repair_v1_verification.json",
+      "protocol": "history/reports/max4-target-repair-v1-protocol.txt",
+      "detector_audit": "history/reports/max4-target-repair-v1-detector-audit.json",
+      "offline_tests_passed": 139,
+      "live_model_calls": 81,
+      "semantic_accuracy_measured_independently": false,
+      "answer_accuracy_measured": false,
+      "direct_download_verified": true,
+      "result_artifact": "history/results/max4_target_repair_v1.zip",
+      "report": "history/reports/max4-target-repair-v1-analysis.md",
+      "recommendation": "Do not promote: sole triggered target repair (#36) failed root validation; no observed semantic improvement. 39 other outputs unchanged.",
+      "analysis_live_model_calls": 0
     }
   ]
 }
