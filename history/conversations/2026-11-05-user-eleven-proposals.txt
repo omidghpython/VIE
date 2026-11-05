@@ -1,0 +1,176 @@
+مقایسهٔ مستقیم کد و پرامپتِ ارسال‌شده (`decomposition.py` و `semantic_checks.py`) با ۱۱ مشکل مشاهده‌شده، چند **تداخل پنهان میان کد پایتون و پرامپت** را آشکار می‌کند که مستقیماً عامل بروز یا عدم تشخیص این خطاها هستند.
+
+در ادامه، برای هر یک از ۱۱ مشکل، **علت دقیق در کد/پرامپت فعلی** و **راه‌حل مشخص** به صورت تیتروار آورده شده است:
+
+---
+
+### ۱. وارونگی جهت رابطه (نمونهٔ ۱۴: جابه‌جایی منطقه و رودخانه)
+
+* **علت در پرامپت و کد:** در `PLAN_SYSTEM` تنها دستور کلی `"Preserve subject/object order"` آمده است. وقتی مدل عبارتِ `"The Innviertel is a region southeast of a river"` را به سؤالِ برگ تبدیل می‌کند، کلمهٔ پرسشی (`Which river`) را به ابتدای جمله می‌آورد اما حرف اضافه (`of`) را در انتها جا می‌گذارد و رابطه معکوس می‌شود. همچنین تابع `binding_errors` هیچ کنترلی روی عبارات جهتی ندارد.
+
+
+* **راه‌حل:**
+* در `PLAN_SYSTEM` به جای دستور کلی، قاعدهٔ نحویِ حفظ جایگاه را بنویسید: `"For directional clauses ('X is [direction] of a Y'), keep X as the subject: 'X is [direction] of which Y?' — never 'Which Y is [direction] of X?'."`
+* در `semantic_checks.py`، بررسی کنید که اگر در سؤال اصلی الگوی `<Entity> is ... <direction> of a <target>` وجود دارد، در برگِ مربوطه `<Entity>` بعد از `of` قرار نگرفته باشد.
+
+
+
+### ۲. تغییر هدف پاسخ به بله/خیر (نمونه‌های ۲۲ و ۳۰ — پس‌رفت)
+
+* **علت در پرامپت و کد:**
+1. در `PLAN_SYSTEM`، جملهٔ **`"A candidate may be identified first and checked against remaining qualifiers; retain needed conditions, including If"`** مستقیماً مدل را تشویق می‌کند که در `q1` موجودیت را پیدا کند و در گره آخر (`final`) آن را با یک سؤال بله/خیر راستی‌آزمایی کند!
+
+
+2. در تابع `generate_plan`، خروجی `root_answer_check` فقط در `event` ثبت می‌شود و دستور `break` بلافاصله حلقه را متوقف می‌کند (`attempt 2` برای خطای هدف فعال نمی‌شود).
+
+
+
+
+* **راه‌حل:**
+* جملهٔ `"A candidate may be identified first and checked against remaining qualifiers..."` را از `PLAN_SYSTEM` حذف یا مقید کنید به اینکه گره `final` هرگز نباید یک چک بولی باشد وقتی سؤال اصلی نام موجودیت را می‌خواهد.
+* همان‌طور که در بستهٔ `max4_target_repair_v1` انجام دادید، خطای بولی شدنِ هدفِ غیربولی را در داخل حلقهٔ `generate_plan` به شرطِ ادامهٔ تلاش دوم متصل نگه دارید.
+
+
+
+
+
+### ۳. رعایت‌نشدن سقف ۴ گره (نمونه‌های ۱۸ و ۳۲ — تولید ۵ گره)
+
+* **علت در پرامپت و کد:** در `PLAN_SYSTEM` نوشته شده: `"For compound conditions, check ALL conditions for each entity, then combine"`. مدل برای بررسی دو شرط روی دو موجودیت (مثل کارگردان و تدوین‌گر بودن در نمونهٔ ۱۸ یا مستند بودن و ربط داشتن به عراق در نمونهٔ ۳۲)، به ازای هر شرط یک گره می‌سازد ($2 \times 2 + 1 = 5$ گره). وقتی در تلاش اول خطای سقف گره می‌خورد، در تلاش دوم نمی‌داند کدام گره‌ها را ادغام کند.
+
+
+* **راه‌حل:**
+* جملهٔ پرامپت را به این صورت اصلاح کنید: `"For compound conditions in comparisons, use exactly 3 nodes: check all conditions for entity A together in q1, all conditions for entity B together in q2, and combine in q3."`
+
+
+
+### ۴. تجزیهٔ ظاهری و گره‌های تکراری (نمونه‌های ۳، ۹ و ۲۶)
+
+* **علت در پرامپت و کد:** در `validate_plan` و `semantic_checks.py` هیچ کنترلی وجود ندارد که بررسی کند آیا زیرسؤالِ برگ واقعاً یک گام از سؤال اصلی کوتاه‌تر شده است یا خیر؛ در نتیجه مدل برای پر کردن قالب چندگرهی، همان سؤال اصلی را با تغییر کلمات در گره‌ها تکرار می‌کند.
+
+
+* **راه‌حل:**
+* در `semantic_checks.py` یک بررسی اضافه کنید که اگر یک گره برگ هم نام موجودیتِ مبدأ و هم ویژگیِ هدفِ نهاییِ سؤال اصلی را هم‌زمان در خود داشت (یا دو گره پس از حذف اسلات `{{q1}}` بیش از ۸۰٪ کلمات مشترک داشتند)، خطای `"Redundant/unsplit node"` برگرداند.
+
+
+
+### ۵. جداکردن یک شخص به دو شخص (نمونهٔ ۳۹: `which actor and photographer`)
+
+* **علت دقیق در کد (`answer_target` و `plan_instructions`):**
+* در `semantic_checks.py`، داخل تابع `answer_target`، وقتی سؤال `"Bangalore Naatkal starred which actor and photographer?"` پردازش می‌شود، آرایهٔ `phrase` برابر با `['actor', 'and', 'photographer']` است. اما حلقهٔ زیر به محض دیدن اولین کلمه (`actor`) از تابع خارج می‌شود:
+
+
+```python
+for word in phrase:
+    if word in WORD_TYPE:
+        return {'type': WORD_TYPE[word], 'head': word}
+
+```
+
+
+* سپس تابع `plan_instructions` این راهنما را به انتهای پرامپت سیستم می‌چسباند: **`Final target: actor (person).`**! یعنی خودِ کد پایتون به مدل دستور می‌دهد که هدف نهایی فقط `actor` است و کلمهٔ `photographer` را از هدف حذف می‌کند؛ در نتیجه مدل فکر می‌کند `photographer` یک موجودیت دوم است!
+
+
+
+
+* **راه‌حل:**
+* در `answer_target`، اگر در `phrase` الگوی `<role1> and <role2>` (هر دو از یک نوع، مثلاً `person`) وجود داشت، مقدار `'head'` را به صورت ترکیبی `'actor and photographer'` برگردانید تا راهنمای انتهای پرامپت بشود: `Final target: actor and photographer (person).`
+
+
+
+
+
+### ۶. جابه‌جایی موجودیت با ویژگی در مقایسه (نمونهٔ ۱۷: تاریخ تأسیس جای شرکت)
+
+* **علت در کد (`binding_errors`):** در پرامپت دستور `"Keep each original name beside its property slot"` وجود دارد، اما تابع `binding_errors` در `semantic_checks.py` فقط ۳ رابطهٔ خاص (`lover of`, `appear/star`, `lead singer`) را چک می‌کند و استفاده از اسلاتِ تاریخ (`{{q1}}` با نوع `date`) به عنوان فاعلِ `founded` (`"Were both {{q1}} and {{q2}} founded..."`) را تشخیص نمی‌دهد.
+
+
+* **راه‌حل:**
+* در `binding_errors` یک شرط اضافه کنید: اگر گره‌ای به دو اسلات (`q1`, `q2`) از نوع `date`، `number` یا `place` وابسته است، رشته‌های `{{q1}}` و `{{q2}}` نباید به صورت عریان با `and/or` (`{{q1}} and {{q2}}`) بدون حضور نام موجودیت‌های اصلیِ سؤال به کار بروند.
+
+
+
+
+
+### ۷. حفظ ناقص قیود (نمونه‌های ۱۹ و ۲۰)
+
+* **علت در پرامپت و کد:** در نمونهٔ ۱۹، دو سرنخ هم‌مرجع وجود دارد (`Hoy Es Manana` و `First Lady of Chiapas`). دستور پرامپت `"Once an entity is identified, do not add another relation hop"` با دستورِ چند خط پایین‌تر `"A candidate may be identified first and checked against remaining qualifiers"` در تضاد است؛ گاهی مدل سرنخ دوم را به کل حذف می‌کند.
+
+
+* **راه‌حل:**
+* در `PLAN_SYSTEM` تصریح کنید: `"Every named work, place, title, and qualifier in Question must appear in at least one node of the tree; never drop a clue."`
+* در `semantic_checks.py`، بررسی کنید که عبارات داخل گیومه یا اسامی خاصِ سؤال اصلی حتماً در مجموعِ متن گره‌های درخت حضور داشته باشند.
+
+
+
+### ۸. اعمال دوبارهٔ استثنا (نمونهٔ ۳۷: `Who else beside...`)
+
+* **علت در پرامپت و کد:** در `PLAN_SYSTEM` و `semantic_checks.py` هیچ قاعده‌ای برای کلمات استثنا (`else`, `beside`, `besides`, `other than`) وجود ندارد؛ بنابراین مدل عبارتِ `Who else` را هم در `q1` و هم در `q2` کپی می‌کند.
+
+
+* **راه‌حل:**
+* در `PLAN_SYSTEM` یک جمله اضافه کنید: `"For 'who/what else beside [description]', q1 identifies the described entity itself (without 'else/beside'), and q2 asks who/what else beside {{q1}}."`
+* در `binding_errors`، اگر هم گره والد و هم گره فرزند دارای کلمات `else / beside / besides / other than` بودند، خطا برگردانید.
+
+
+
+
+
+### ۹. نوع‌گذاری نامناسب پاسخ (مانند ثبت نوع محصول با برچسب `work`)
+
+* **علت دقیق در کد (`incompatible_types` و `answer_target`):**
+1. در `semantic_checks.py`، کلمات `'product'` و `'type'` از نوع `'other'` تعریف شده‌اند.
+
+
+2. اما در تابع `incompatible_types(expected, actual)` نوشته شده است:
+
+
+```python
+return (expected != actual and 'other' not in (expected, actual) and {expected, actual} != {'date', 'number'})
+
+```
+
+
+**این خط کد یک باگ منطقی ایجاد کرده است:** چون `'other' not in (expected, actual)` شرطِ ناسازگاری است، هر زمان که هدفِ واقعیِ سؤال از نوع `'other'` باشد (یعنی `nationality`, `profession`, `currency`, `product`, `type`)، تابع `incompatible_types` همیشه `False` برمی‌گرداند! در نتیجه، اگر مدل برای «نوع محصول» یا «ملیت»، نوعِ غلطِ `work`، `person` یا `organization` را انتخاب کند، `root_answer_check` آن را کاملاً سازگار (`compatible`) تشخیص می‌دهد!
+
+
+3. همچنین در `plan_instructions`، شرط `elif target and target['type'] != 'other':` باعث می‌شود برای تمام اهدافِ دستهٔ `'other'`، نام هدف (`product`, `nationality`, `currency`) در راهنمای انتهای پرامپت نوشته نشود!
+
+
+
+
+* **راه‌حل:**
+* در `plan_instructions`، حتی وقتی `target['type'] == 'other'` است، راهنمای `f"Final target: {target['head']} (other)."` را به پرامپت بدهید.
+
+
+* در `incompatible_types`، زمانی که `expected == 'other'` است و `target['head']` یکی از کلماتِ صریحِ غیرموجودیت (`nationality`, `currency`, `product`, `type`, `focus`) است، اجازه ندهید `actual` از نوع `work`, `person`, `place` یا `date` باشد.
+
+
+
+
+
+### ۱۰. داوری اشتباه (تأیید درخت غلط مثل ۳۹ و رد رابطه‌های درست)
+
+* **علت در کد (`root_answer_check` و `expand_typed_plan`):**
+* در نمونهٔ ۳۹، گره نهایی (`q3`) جملهٔ خبری است (`"Bangalore Naatkal starred {{q1}} and {{q2}}."`) و نوع آن `'other'` است. اما به دلیل همان باگِ `'other' not in (expected, actual)` در `incompatible_types`، تابع `root_answer_check` متوجه تعارض میان `expected='person'` و `actual='other'` نمی‌شود!
+
+
+* سپس در `review_plan`، تابع `expand_typed_plan(plan)` اسلات‌ها را با `[answer q1:person | ...]` جایگزین می‌کند که ظاهرِ جملهٔ خبریِ نمونهٔ ۳۹ را برای مدلِ داور معنادار جلوه می‌دهد.
+
+
+
+
+* **راه‌حل:**
+* در `root_answer_check`، اولاً باگِ `incompatible_types` را برای وقتی که `expected != 'other'` ولی `root['answer_type'] == 'other'` است اصلاح کنید (وقتی سؤال صراحتاً `actor/person` یا `manga/work` می‌خواهد، گره نهایی حق ندارد نوعِ مبهم `'other'` برگرداند)؛ ثانیاً شرطِ داشتن علامت سؤال (`?`) در `root['question']` را به `root_answer_check` اضافه کنید تا جملات خبری در گره ریشه فوراً رد شوند.
+
+
+
+
+
+### ۱۱. افزایش ۲۱٪ مصرف توکن بدون بهبود عمومی
+
+* **علت در پرامپت و کد:** بخش قابل‌توجهی از متن اضافه‌شده به `PLAN_SYSTEM` (مانند ۵ خط توضیح دربارهٔ `botanist and illustrator` و `which lake / which mountain`) در تمام فراخوانی‌ها تکرار می‌شود، در حالی که همان‌طور که در مورد ۵ و ۹ دیدیم، راهنمای انتهای پرامپت در `plan_instructions` و تابع `incompatible_types` اثر آن را خنثی می‌کردند.
+
+
+* **راه‌حل:**
+* با اصلاحِ ۳ خط کد در `answer_target`، `plan_instructions` و `incompatible_types` (طبق موارد ۵، ۹ و ۱۰ بالا)، می‌توانید آن ۵ خط توضیحِ اضافیِ `botanist/lake/mountain` و جملهٔ متناقضِ `"A candidate may be identified first..."` را از `PLAN_SYSTEM` حذف کنید تا طول پرامپت به سطحِ مبنای سقف ۴ برگردد و مصرف توکن کاهش یابد.

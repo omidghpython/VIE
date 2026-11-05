@@ -510,5 +510,21 @@
       "analysis_live_model_calls": 0,
       "recommendation": "Do not promote: numeric shape improved but direction regressed in14; two prior successful chains lose entity kinds. Five-case assistant audit only."
     }
+  ],
+  "conversation_snapshots": [
+    {
+      "id": "2026-11-05-before-target-phrase-v1",
+      "phase": "saved_before_implementation",
+      "files": [
+        {
+          "path": "history/conversations/2026-11-05-before-target-phrase-v1.md",
+          "sha256": "ff776efa4f51397cfa08a19ea669d0fbe3c4c0d4711f7cd2120aed870a63f3d0"
+        },
+        {
+          "path": "history/conversations/2026-11-05-user-eleven-proposals.txt",
+          "sha256": "b9541fa5e81cc1470e373d894937519f966bcc625f360ac93a84c7901171cab8"
+        }
+      ]
+    }
   ]
 }
