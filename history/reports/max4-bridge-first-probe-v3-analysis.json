@@ -1,0 +1,4604 @@
+{
+  "experiment_label": "max4_bridge_first_probe_v3",
+  "actual_scope": "Original v3.2.4-max4 40-question pilot with only proposed roles-and-qualifiers PLAN_SYSTEM sentence replacement; not five-case bridge-first v2 runner.",
+  "baseline": "v3.2.4-max4",
+  "source_reconstruction": {
+    "core_and_pilot_digest_matches": true,
+    "code_sha256": "4709250c81469ae2ab31e4c9e38d584f50cad079691cc1658ff3c59aa591caba",
+    "prompt_sha256": "6ae2972317e668920f2c031116fce343834322c35f10c0a4b109754c545ff33c",
+    "only_recorded_setting_changes": {
+      "code_sha256": {
+        "baseline": "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+        "new": "4709250c81469ae2ab31e4c9e38d584f50cad079691cc1658ff3c59aa591caba"
+      },
+      "plan_prompt_sha256": {
+        "baseline": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+        "new": "6ae2972317e668920f2c031116fce343834322c35f10c0a4b109754c545ff33c"
+      }
+    },
+    "scope": "Digest covers decomposition_pilot.py and hotpotqa_operadic_rag/*.py recursively; launchers/package files not supplied. Recorded prompts are hashes, not full messages; exact source reconstruction matches both hashes."
+  },
+  "verification": {
+    "sample_identity_and_order": true,
+    "runtime_identity_equal": true,
+    "structure_attempts_replayed": 48,
+    "review_decisions_replayed_from_saved_outputs": 36,
+    "csv_plans_match": true,
+    "telemetry_matches": true,
+    "internal_zip_matching_files": 45,
+    "live_model_calls_during_analysis": 0
+  },
+  "baseline_summary": {
+    "requested": 40,
+    "structure_status": {
+      "valid": 37,
+      "invalid": 3
+    },
+    "single_node": 3,
+    "multiple_nodes": 34,
+    "valid_on_first_attempt": 33,
+    "review_status": {
+      "revise": 24,
+      "not_reviewed": 3,
+      "valid": 13
+    },
+    "review_source": {
+      "model": 33,
+      "not_reviewed": 3,
+      "root_rule": 3,
+      "geography_rule": 1
+    },
+    "judge_status": {
+      "revise": 20,
+      "not_called": 7,
+      "valid": 13
+    },
+    "review_response_status": {
+      "parsed": 33,
+      "not_reviewed": 3,
+      "not_called": 4
+    },
+    "invalid_review_responses": 0,
+    "review_format_error_kind": {},
+    "semantic_uncertainty_responses": 0,
+    "vague_reason_responses": 0,
+    "root_contract_status": {
+      "compatible": 32,
+      "not_checked": 5,
+      "mismatch": 3
+    },
+    "judge_calls_avoided_by_root_rule": 3,
+    "judge_calls_avoided_by_all_rules": 4,
+    "closing_fence_responses_recovered": 1,
+    "single_node_accepted_by_judge": 3,
+    "semantic_correctness_measured": false,
+    "answer_accuracy_measured": false,
+    "inference_backend": "LocalQwen",
+    "judge_role": "observation_only; same Qwen; at most one call per structurally valid tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+    "incomplete_questions": 0,
+    "backend_errors": 0,
+    "cost_including_previous_attempts": {
+      "structure": {
+        "llm_calls": 47,
+        "prompt_tokens": 29691,
+        "completion_tokens": 4611,
+        "total_tokens": 34302,
+        "execution_time_sec": 522.3771753000003,
+        "retrieval_steps": 0
+      },
+      "review": {
+        "llm_calls": 33,
+        "prompt_tokens": 13068,
+        "completion_tokens": 574,
+        "total_tokens": 13642,
+        "execution_time_sec": 67.89183680000042,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 80,
+      "prompt_tokens": 42759,
+      "completion_tokens": 5185,
+      "total_tokens": 47944,
+      "execution_time_sec": 590.2690121000007,
+      "retrieval_steps": 0
+    },
+    "baselines_before_semantic_review": {
+      "v3.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 7,
+          "valid": 32,
+          "unknown": 1
+        },
+        "single_node": 4,
+        "multiple_nodes": 28,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 20,
+          "valid": 20
+        },
+        "single_node": 20,
+        "multiple_nodes": 0,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 12,
+          "valid": 28
+        },
+        "single_node": 2,
+        "multiple_nodes": 26,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.2": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.3": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.4": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      }
+    },
+    "note": "All requested questions are counted. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+    "whole_method_token_condition": {
+      "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+      "pilot_tokens": 47944,
+      "full_decomposed_tokens": null,
+      "full_token_condition_met": null,
+      "status": "pilot_below_reference_full_savings_not_established",
+      "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+      "standard_reference_tokens": 54222,
+      "standard_reference_status": {
+        "completed": 39,
+        "failed": 1
+      },
+      "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+      "remaining_tokens_below_historical_standard": 6277
+    }
+  },
+  "new_summary": {
+    "requested": 40,
+    "structure_status": {
+      "valid": 36,
+      "invalid": 4
+    },
+    "single_node": 3,
+    "multiple_nodes": 33,
+    "valid_on_first_attempt": 32,
+    "review_status": {
+      "revise": 24,
+      "not_reviewed": 4,
+      "valid": 12
+    },
+    "review_source": {
+      "model": 32,
+      "not_reviewed": 4,
+      "root_rule": 3,
+      "geography_rule": 1
+    },
+    "judge_status": {
+      "revise": 20,
+      "not_called": 8,
+      "valid": 12
+    },
+    "review_response_status": {
+      "parsed": 32,
+      "not_reviewed": 4,
+      "not_called": 4
+    },
+    "invalid_review_responses": 0,
+    "review_format_error_kind": {},
+    "semantic_uncertainty_responses": 0,
+    "vague_reason_responses": 0,
+    "root_contract_status": {
+      "compatible": 31,
+      "not_checked": 6,
+      "mismatch": 3
+    },
+    "judge_calls_avoided_by_root_rule": 3,
+    "judge_calls_avoided_by_all_rules": 4,
+    "closing_fence_responses_recovered": 1,
+    "single_node_accepted_by_judge": 2,
+    "semantic_correctness_measured": false,
+    "answer_accuracy_measured": false,
+    "inference_backend": "LocalQwen",
+    "judge_role": "observation_only; same Qwen; at most one call per structurally valid tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+    "incomplete_questions": 0,
+    "backend_errors": 0,
+    "cost_including_previous_attempts": {
+      "structure": {
+        "llm_calls": 48,
+        "prompt_tokens": 35133,
+        "completion_tokens": 4634,
+        "total_tokens": 39767,
+        "execution_time_sec": 567.4851506000014,
+        "retrieval_steps": 0
+      },
+      "review": {
+        "llm_calls": 32,
+        "prompt_tokens": 12606,
+        "completion_tokens": 576,
+        "total_tokens": 13182,
+        "execution_time_sec": 73.47251840000058,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 80,
+      "prompt_tokens": 47739,
+      "completion_tokens": 5210,
+      "total_tokens": 52949,
+      "execution_time_sec": 640.9576690000019,
+      "retrieval_steps": 0
+    },
+    "baselines_before_semantic_review": {
+      "v3.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 7,
+          "valid": 32,
+          "unknown": 1
+        },
+        "single_node": 4,
+        "multiple_nodes": 28,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 20,
+          "valid": 20
+        },
+        "single_node": 20,
+        "multiple_nodes": 0,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 12,
+          "valid": 28
+        },
+        "single_node": 2,
+        "multiple_nodes": 26,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.2": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.3": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.4": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      }
+    },
+    "note": "All requested questions are counted. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+    "whole_method_token_condition": {
+      "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+      "pilot_tokens": 52949,
+      "full_decomposed_tokens": null,
+      "full_token_condition_met": null,
+      "status": "pilot_below_reference_full_savings_not_established",
+      "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+      "standard_reference_tokens": 54222,
+      "standard_reference_status": {
+        "completed": 39,
+        "failed": 1
+      },
+      "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+      "remaining_tokens_below_historical_standard": 1272
+    }
+  },
+  "comparison": {
+    "identical_first_raw_outputs": [
+      4,
+      8,
+      12,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      27,
+      30,
+      32,
+      38
+    ],
+    "identical_final_plan_objects_including_null": [
+      2,
+      4,
+      8,
+      12,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      27,
+      30,
+      32,
+      38,
+      39
+    ],
+    "identical_nonnull_plan_objects": [
+      4,
+      8,
+      12,
+      15,
+      16,
+      17,
+      20,
+      21,
+      22,
+      27,
+      30,
+      38
+    ],
+    "invalid_samples": [
+      2,
+      32,
+      33,
+      39
+    ],
+    "single_node_samples": [
+      3,
+      26,
+      36
+    ],
+    "second_attempt_samples": [
+      2,
+      10,
+      15,
+      20,
+      32,
+      33,
+      35,
+      39
+    ],
+    "structurally_repaired_samples": [
+      10,
+      15,
+      20,
+      35
+    ],
+    "total_token_delta": 5005,
+    "total_token_percent_change": 10.439262472885032,
+    "generation_token_percent_change": 15.932015625911022
+  },
+  "paired_manual_audit": [
+    {
+      "sample_number": 1,
+      "question_id": "5ab3cecd5542992ade7c6eae",
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the focus of Forbidden Creatures on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the focus of No Animals Were Harmed on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "How do the Peter Laufer books Forbidden Creatures (focus on animals: {{q1}}) and No Animals Were Harmed (focus on animals: {{q2}}) differ in their focus on animals?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the focus of Forbidden Creatures on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the focus of No Animals Were Harmed on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "How do the Peter Laufer books Forbidden Creatures (focus on {{q1}}) and No Animals Were Harmed (focus on {{q2}}) differ in their focus on animals?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q3: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the focus of Forbidden Creatures on animals?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"What is the focus of No Animals Were Harmed on animals?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q3\",\"question\":\"How do the Peter Laufer books Forbidden Creatures (focus on animals: {{q1}}) and No Animals Were Harmed (focus on animals: {{q2}}) differ in their focus on animals?\",\"dependencies\":{\"q1\":\"other\",\"q2\":\"other\"},\"answer_type\":\"other\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "other",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the focus of Forbidden Creatures on animals?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"What is the focus of No Animals Were Harmed on animals?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q3\",\"question\":\"How do the Peter Laufer books Forbidden Creatures (focus on {{q1}}) and No Animals Were Harmed (focus on {{q2}}) differ in their focus on animals?\",\"dependencies\":{\"q1\":\"other\",\"q2\":\"other\"},\"answer_type\":\"other\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "other",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر جزئی",
+        "note_fa": "معنای مقایسهٔ تمرکز دو کتاب تقریباً ثابت است؛ دلیل داور دربارهٔ رابطهٔ اضافه در برگ‌ها با سؤال سازگار نیست."
+      }
+    },
+    {
+      "sample_number": 2,
+      "question_id": "5ab42a2b5542996a3a969f5a",
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "baseline_structure_status": "invalid",
+      "new_structure_status": "invalid",
+      "baseline_plan": null,
+      "new_plan": null,
+      "baseline_review": null,
+      "new_review": null,
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who participated in surveying the borders of the District of Columbia?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Is {{q1}} associated with a premier African American recreation center named after them?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"What is the name of this historic figure?\",\"dependencies\":{\"q1\":\"person\",\"q2\":\"boolean\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: placeholders and declared dependencies must match exactly."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who participated in surveying the borders of the District of Columbia?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Is there a premier African American recreation center named after {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"What is the name of this historic figure?\",\"dependencies\":{\"q1\":\"person\",\"q2\":\"boolean\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: placeholders and declared dependencies must match exactly."
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who participated in surveying the borders of the District of Columbia?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Is {{q1}} associated with a premier African American recreation center named after them?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"What is the name of this historic figure?\",\"dependencies\":{\"q2\":\"boolean\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: placeholders and declared dependencies must match exactly."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who participated in surveying the borders of the District of Columbia?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Is there a premier African American recreation center named after {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"What is the name of this historic figure?\",\"dependencies\":{\"q2\":\"boolean\",\"q1\":\"person\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: placeholders and declared dependencies must match exactly."
+        }
+      ],
+      "manual_assessment": {
+        "change": "شکست باقی است",
+        "note_fa": "هر دو تلاش وابستگی‌های q3 را بدون اسلات متناظر اعلام می‌کنند؛ خروجی همچنان null است."
+      }
+    },
+    {
+      "sample_number": 3,
+      "question_id": "5a7d3f895542995f4f402248",
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What animal does the ride in Pandora- The World of Avatar allow guests to take flight on?",
+            "dependencies": {},
+            "answer_type": "work"
+          }
+        ],
+        "final": "q1"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What animal allows guests to take flight in Pandora- The World of Avatar?",
+            "dependencies": {},
+            "answer_type": "work"
+          }
+        ],
+        "final": "q1"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What animal does the ride in Pandora- The World of Avatar allow guests to take flight on?\",\"dependencies\":{},\"answer_type\":\"work\"}],\"final\":\"q1\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "not_checked",
+            "expected_mode": null,
+            "root_id": "q1",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What animal allows guests to take flight in Pandora- The World of Avatar?\",\"dependencies\":{},\"answer_type\":\"work\"}],\"final\":\"q1\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "not_checked",
+            "expected_mode": null,
+            "root_id": "q1",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "حل نشده",
+        "note_fa": "یک گره باقی مانده و نوع animal هنوز work است؛ متن تازه قید ride را نیز حذف کرده است."
+      }
+    },
+    {
+      "sample_number": 4,
+      "question_id": "5a778b345542992a6e59decf",
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Susan Oliver born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was W. S. Van Dyke born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Susan Oliver (born {{q1}}) or W. S. Van Dyke (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Susan Oliver born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was W. S. Van Dyke born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Susan Oliver (born {{q1}}) or W. S. Van Dyke (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Susan Oliver born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was W. S. Van Dyke born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Who was born first: Susan Oliver (born {{q1}}) or W. S. Van Dyke (born {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Susan Oliver born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was W. S. Van Dyke born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Who was born first: Susan Oliver (born {{q1}}) or W. S. Van Dyke (born {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "درخت و متن مبنا عیناً حفظ شده‌اند؛ دو تاریخ به نام اشخاص متصل‌اند."
+      }
+    },
+    {
+      "sample_number": 5,
+      "question_id": "5a8ceddb554299441c6b9f85",
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the profession of Nora Roberts?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What is the profession of Elizabeth Hardwick?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "What profession do Nora Roberts ({{q1}}) and Elizabeth Hardwick ({{q2}}) have in common?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the profession of Nora Roberts?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What is the profession of Elizabeth Hardwick?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "What profession do Nora Roberts (profession {{q1}}) and Elizabeth Hardwick (profession {{q2}}) have in common?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q3: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the profession of Nora Roberts?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What is the profession of Elizabeth Hardwick?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q3\",\"question\":\"What profession do Nora Roberts ({{q1}}) and Elizabeth Hardwick ({{q2}}) have in common?\",\"dependencies\":{\"q1\":\"work\",\"q2\":\"work\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "other",
+              "head": "profession"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "profession"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the profession of Nora Roberts?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What is the profession of Elizabeth Hardwick?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q3\",\"question\":\"What profession do Nora Roberts (profession {{q1}}) and Elizabeth Hardwick (profession {{q2}}) have in common?\",\"dependencies\":{\"q1\":\"work\",\"q2\":\"work\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "other",
+              "head": "profession"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "profession"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر جزئی",
+        "note_fa": "نام اشخاص و شغل در مقایسه متصل‌اند؛ برچسب work برای شغل همچنان نامناسب است."
+      }
+    },
+    {
+      "sample_number": 6,
+      "question_id": "5a7e05f75542995f4f402394",
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What was the release date of Hot Girls Wanted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "What was the release date of China Blue?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was released first: Hot Girls Wanted (released {{q1}}) or China Blue (released {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Hot Girls Wanted released?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was China Blue released?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was released first: Hot Girls Wanted (released {{q1}}) or China Blue (released {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What was the release date of Hot Girls Wanted?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"What was the release date of China Blue?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Which was released first: Hot Girls Wanted (released {{q1}}) or China Blue (released {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Hot Girls Wanted released?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was China Blue released?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Which was released first: Hot Girls Wanted (released {{q1}}) or China Blue (released {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر لفظی",
+        "note_fa": "زنجیرهٔ مقایسهٔ تاریخ انتشار با تغییر wording حفظ شده است."
+      }
+    },
+    {
+      "sample_number": 7,
+      "question_id": "5ab3306a55429969a97a80fd",
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What production company made The Boatniks?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What production company made The Great Locomotive Chase?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q3",
+            "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company: {{q1}} or {{q2}}?",
+            "dependencies": {
+              "q1": "organization",
+              "q2": "organization"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What production company made The Boatniks?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What production company made The Great Locomotive Chase?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q3",
+            "question": "Which production company made both The Boatniks ({{q1}}) and The Great Locomotive Chase ({{q2}})?",
+            "dependencies": {
+              "q1": "organization",
+              "q2": "organization"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What production company made The Boatniks?\",\"dependencies\":{},\"answer_type\":\"organization\"},{\"id\":\"q2\",\"question\":\"What production company made The Great Locomotive Chase?\",\"dependencies\":{},\"answer_type\":\"organization\"},{\"id\":\"q3\",\"question\":\"The movies The Boatniks and The Great Locomotive Chase were both made by which production company: {{q1}} or {{q2}}?\",\"dependencies\":{\"q1\":\"organization\",\"q2\":\"organization\"},\"answer_type\":\"organization\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What production company made The Boatniks?\",\"dependencies\":{},\"answer_type\":\"organization\"},{\"id\":\"q2\",\"question\":\"What production company made The Great Locomotive Chase?\",\"dependencies\":{},\"answer_type\":\"organization\"},{\"id\":\"q3\",\"question\":\"Which production company made both The Boatniks ({{q1}}) and The Great Locomotive Chase ({{q2}})?\",\"dependencies\":{\"q1\":\"organization\",\"q2\":\"organization\"},\"answer_type\":\"organization\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بهبود بیان بازترکیب",
+        "note_fa": "ریشه به‌روشنی شرکت مشترک دو فیلم را می‌پرسد؛ داور از revise به valid تغییر کرده، که به‌تنهایی معیار صحت نیست."
+      }
+    },
+    {
+      "sample_number": 8,
+      "question_id": "5a7cfb2755429907fabef084",
+      "question": "What year did the director of The Quiet American die?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who directed The Quiet American?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year did {{q1}} die?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who directed The Quiet American?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year did {{q1}} die?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who directed The Quiet American?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"In what year did {{q1}} die?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"date\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "date",
+            "expected_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "root_question_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who directed The Quiet American?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"In what year did {{q1}} die?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"date\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "date",
+            "expected_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "root_question_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "اتصال کارگردان فیلم به سال مرگ حفظ شده؛ داور همچنان با دلیل نادرست رابطهٔ اضافه رد می‌کند."
+      }
+    },
+    {
+      "sample_number": 9,
+      "question_id": "5ab201765542993be8fa98a4",
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the formation year of the band that released Hobart Paving?",
+            "dependencies": {},
+            "answer_type": "date"
+          }
+        ],
+        "final": "q1"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the name of the band that released the single 'Hobart Paving'?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "In which year was {{q1}} formed?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2:date produces a date instead of a year; q1:work should be a band formation year."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the formation year of the band that released Hobart Paving?\",\"dependencies\":{},\"answer_type\":\"date\"}],\"final\":\"q1\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q1",
+            "root_answer_type": "date",
+            "expected_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "root_question_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the name of the band that released the single 'Hobart Paving'?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"In which year was {{q1}} formed?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"date\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "date",
+            "expected_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "root_question_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بهبود ناقص",
+        "note_fa": "به‌جای یک گره، ابتدا نام گروه سپس سال تأسیس پرسیده می‌شود؛ نوع work برای گروه باقی است. ایراد داور دربارهٔ date در برابر year دلیل معتبری نیست."
+      }
+    },
+    {
+      "sample_number": 10,
+      "question_id": "5adbe27c55429947ff173854",
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "How many campuses does Dalhousie University have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "How many campuses does California State Polytechnic University, Pomona have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which university has more campuses, Dalhousie University (with {{q1}} campuses) or California State Polytechnic University, Pomona (with {{q2}} campuses)?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "How many campuses does Dalhousie University have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "How many campuses does California State Polytechnic University, Pomona have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Does Dalhousie University (with {{q1}} campuses) have more campuses than California State Polytechnic University, Pomona (with {{q2}} campuses)?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q3: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"How many campuses does Dalhousie University have?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"How many campuses does California State Polytechnic University, Pomona have?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Which university has more campuses, Dalhousie University (with {{q1}} campuses) or California State Polytechnic University, Pomona (with {{q2}} campuses)?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"organization\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "university"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "university"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"How many campuses does Dalhousie University have?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"How many campuses does California State Polytechnic University, Pomona have?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Which university has more campuses: Dalhousie University (with {{q1}} campuses) or California State Polytechnic University, Pomona (with {{q2}} campuses)?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"university\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: answer_type must be one of ['boolean', 'date', 'number', 'organization', 'other', 'person', 'place', 'work']."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"How many campuses does Dalhousie University have?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"How many campuses does California State Polytechnic University, Pomona have?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Does Dalhousie University (with {{q1}} campuses) have more campuses than California State Polytechnic University, Pomona (with {{q2}} campuses)?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "mismatch",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": {
+              "type": "organization",
+              "head": "university"
+            },
+            "root_question_target": null,
+            "errors": [
+              "q3: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+            ]
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "پس‌رفت روشن",
+        "note_fa": "پاسخ نام دانشگاه به boolean تغییر کرده؛ ریشه Does Dalhousie ... have more ...? است. کنترل هدف آن را رد می‌کند."
+      }
+    },
+    {
+      "sample_number": 11,
+      "question_id": "5a8fa4d95542995b4424207b",
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the passenger throughput of Palm Springs International Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the passenger throughput of Trenton–Mercer Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which airport is busier, Palm Springs International Airport (with throughput {{q1}}) or Trenton–Mercer Airport (with throughput {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the passenger throughput of Palm Springs International Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the passenger throughput of Trenton–Mercer Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which airport has higher passenger throughput, Palm Springs International Airport ({{q1}} passengers) or Trenton–Mercer Airport ({{q2}} passengers)?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the passenger throughput of Palm Springs International Airport?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"What is the passenger throughput of Trenton–Mercer Airport?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Which airport is busier, Palm Springs International Airport (with throughput {{q1}}) or Trenton–Mercer Airport (with throughput {{q2}})?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "place",
+              "head": "airport"
+            },
+            "root_question_target": {
+              "type": "place",
+              "head": "airport"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the passenger throughput of Palm Springs International Airport?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"What is the passenger throughput of Trenton–Mercer Airport?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Which airport has higher passenger throughput, Palm Springs International Airport ({{q1}} passengers) or Trenton–Mercer Airport ({{q2}} passengers)?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "place",
+              "head": "airport"
+            },
+            "root_question_target": {
+              "type": "place",
+              "head": "airport"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر لفظی",
+        "note_fa": "مقایسهٔ تعداد مسافران با اتصال هر مقدار به فرودگاه حفظ شده است."
+      }
+    },
+    {
+      "sample_number": 12,
+      "question_id": "5ac19ff35542991316484b61",
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was The Graveyard Book published?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Phineas and Ferb broadcasted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was published or broadcasted first, The Graveyard Book (published {{q1}}) or Phineas and Ferb (broadcasted {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was The Graveyard Book published?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Phineas and Ferb broadcasted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was published or broadcasted first, The Graveyard Book (published {{q1}}) or Phineas and Ferb (broadcasted {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was The Graveyard Book published?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was Phineas and Ferb broadcasted?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Which was published or broadcasted first, The Graveyard Book (published {{q1}}) or Phineas and Ferb (broadcasted {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was The Graveyard Book published?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was Phineas and Ferb broadcasted?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Which was published or broadcasted first, The Graveyard Book (published {{q1}}) or Phineas and Ferb (broadcasted {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "درخت عیناً مبناست؛ تاریخ انتشار/پخش با نام آثار حفظ شده است."
+      }
+    },
+    {
+      "sample_number": 13,
+      "question_id": "5ab484415542990594ba9c44",
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Discovery Zone founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Valentino's founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which facility was founded in Missouri: Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Discovery Zone founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Valentino's founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which facility (Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})) was founded in Missouri?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Discovery Zone founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was Valentino's founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Which facility was founded in Missouri: Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Discovery Zone founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was Valentino's founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Which facility (Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})) was founded in Missouri?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "خطای قبلی باقی است",
+        "note_fa": "به‌جای مکان تأسیس، تاریخ تأسیس پرسیده می‌شود؛ افزودن Missouri در ریشه این نقیصه را رفع نمی‌کند."
+      }
+    },
+    {
+      "sample_number": 14,
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which river is southeast of the Innviertel?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "How long is the river southeast of the Innviertel? ({{q1}}) in kilometers?",
+            "dependencies": {
+              "q1": "other"
+            },
+            "answer_type": "number"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the length of the river southeast of which the Innviertel is located?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "The Innviertel is a traditional Austrian region southeast of a river that is {{q1}} km long.",
+            "dependencies": {
+              "q1": "number"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: changes the measurement unit from unspecified to kilometers."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which river is southeast of the Innviertel?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"How long is the river southeast of the Innviertel? ({{q1}}) in kilometers?\",\"dependencies\":{\"q1\":\"other\"},\"answer_type\":\"number\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "number",
+            "expected_target": {
+              "type": "number",
+              "head": "how many"
+            },
+            "root_question_target": {
+              "type": "number",
+              "head": "how long"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the length of the river southeast of which the Innviertel is located?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"The Innviertel is a traditional Austrian region southeast of a river that is {{q1}} km long.\",\"dependencies\":{\"q1\":\"number\"},\"answer_type\":\"other\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "other",
+            "expected_target": {
+              "type": "number",
+              "head": "how many"
+            },
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر مختلط",
+        "note_fa": "جهت در q1 درست شده (رودخانه‌ای که Innviertel جنوب‌شرق آن است)، اما همان برگ طول را می‌خواهد و ریشه جملهٔ خبری با نوع other است؛ تجزیهٔ کامل درست نشده."
+      }
+    },
+    {
+      "sample_number": 15,
+      "question_id": "5abce1fa5542993a06baf993",
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the lover of Lord Alfred Douglas?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What nationality was {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the lover of Lord Alfred Douglas?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What nationality was {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What nationality was Lord Alfred Douglas?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"Who was the lover of Lord Alfred Douglas?\",\"dependencies\":{\"q1\":\"place\"},\"answer_type\":\"person\"},{\"id\":\"q3\",\"question\":\"What nationality was {{q2}}?\",\"dependencies\":{\"q2\":\"person\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q2: placeholders and declared dependencies must match exactly."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who was the lover of Lord Alfred Douglas?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What nationality was {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"place\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "other",
+              "head": "nationality"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "nationality"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What nationality was Lord Alfred Douglas?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"Who was the lover of Lord Alfred Douglas?\",\"dependencies\":{\"q1\":\"place\"},\"answer_type\":\"person\"},{\"id\":\"q3\",\"question\":\"What nationality was {{q2}}?\",\"dependencies\":{\"q2\":\"person\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q2: placeholders and declared dependencies must match exactly."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who was the lover of Lord Alfred Douglas?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What nationality was {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"place\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "other",
+              "head": "nationality"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "nationality"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "زنجیرهٔ معشوق به ملیت عین مبناست؛ برچسب place برای ملیت و رد نادقیق داور باقی‌اند."
+      }
+    },
+    {
+      "sample_number": 16,
+      "question_id": "5a77a7db5542995d8318124d",
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Josephine Tey born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Julia Peterkin born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Josephine Tey (born {{q1}}) or Julia Peterkin (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Josephine Tey born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Julia Peterkin born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Josephine Tey (born {{q1}}) or Julia Peterkin (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Josephine Tey born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was Julia Peterkin born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Who was born first: Josephine Tey (born {{q1}}) or Julia Peterkin (born {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "author"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Josephine Tey born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was Julia Peterkin born?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Who was born first: Josephine Tey (born {{q1}}) or Julia Peterkin (born {{q2}})?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "author"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "مقایسهٔ تاریخ تولد با اتصال اسامی عین مبناست."
+      }
+    },
+    {
+      "sample_number": 17,
+      "question_id": "5abe94fd55429965af743f37",
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Sinclair Research founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was the Wave Mate Bullet founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Were both Sinclair Research (founded {{q1}}) and the Wave Mate Bullet (founded {{q2}}) founded in the 1970s?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Sinclair Research founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was the Wave Mate Bullet founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Were both Sinclair Research (founded {{q1}}) and the Wave Mate Bullet (founded {{q2}}) founded in the 1970s?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Sinclair Research founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was the Wave Mate Bullet founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Were both Sinclair Research (founded {{q1}}) and the Wave Mate Bullet (founded {{q2}}) founded in the 1970s?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"When was Sinclair Research founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q2\",\"question\":\"When was the Wave Mate Bullet founded?\",\"dependencies\":{},\"answer_type\":\"date\"},{\"id\":\"q3\",\"question\":\"Were both Sinclair Research (founded {{q1}}) and the Wave Mate Bullet (founded {{q2}}) founded in the 1970s?\",\"dependencies\":{\"q1\":\"date\",\"q2\":\"date\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "نام هر دو موجودیت به سال تأسیسشان متصل است؛ سؤال اصلی همان پرسش دربارهٔ دههٔ ۱۹۷۰ است."
+      }
+    },
+    {
+      "sample_number": 18,
+      "question_id": "5a7d598d5542995f4f402262",
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Did Burton L. King edit films?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Did Maheen Zia edit films?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which director was also a film editor, Burton L. King ({{q1}}) or Maheen Zia ({{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is Burton L. King's profession?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What is Maheen Zia's profession?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "Which director ({{q1}} or {{q2}}) was also a film editor?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q1: asks about editing, while the question asks about both directing and editing.",
+          "q2: asks about editing, while the question asks about both directing and editing."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What works did Burton L. King direct?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What works did Maheen Zia direct?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q3\",\"question\":\"Was Burton L. King also a film editor?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"boolean\"},{\"id\":\"q4\",\"question\":\"Was Maheen Zia also a film editor?\",\"dependencies\":{\"q2\":\"work\"},\"answer_type\":\"boolean\"},{\"id\":\"q5\",\"question\":\"Which director was also a film editor, Burton L. King ({{q3}}) or Maheen Zia ({{q4}})?\",\"dependencies\":{\"q3\":\"boolean\",\"q4\":\"boolean\"},\"answer_type\":\"person\"}],\"final\":\"q5\"}",
+          "status": "invalid",
+          "error": "Plan must contain 1..4 nodes."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Did Burton L. King edit films?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Did Maheen Zia edit films?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Which director was also a film editor, Burton L. King ({{q1}}) or Maheen Zia ({{q2}})?\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "director"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "director"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is Burton L. King's profession?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What is Maheen Zia's profession?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q3\",\"question\":\"Which director ({{q1}} or {{q2}}) was also a film editor?\",\"dependencies\":{\"q1\":\"work\",\"q2\":\"work\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "director"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "director"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "پس‌رفت روشن",
+        "note_fa": "برگ‌ها از ویرایش فیلم به شغل کلی تغییر کرده‌اند؛ ریشه اسلات شغل را جای کارگردان می‌گذارد و نام دو شخص را حذف می‌کند."
+      }
+    },
+    {
+      "sample_number": 19,
+      "question_id": "5ae73ddb554299572ea5478d",
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the current First Lady of Chiapas State, Mexico?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What Mexican Actress and singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the current First Lady of Chiapas State, Mexico and a Mexican actress and singer?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What work is {{q1}} associated with?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the current First Lady of Chiapas State, Mexico?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What Mexican Actress and singer is {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "mismatch",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "person",
+              "head": "actress"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "actress"
+            },
+            "errors": [
+              "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+            ]
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the current First Lady of Chiapas State, Mexico and a Mexican actress and singer?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What work is {{q1}} associated with?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "mismatch",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "person",
+              "head": "actress"
+            },
+            "root_question_target": null,
+            "errors": [
+              "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+            ]
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بهبود محلی، هدف غلط",
+        "note_fa": "نقش‌های بازیگر/خواننده و First Lady در q1 کنار هم آمده‌اند، اما final نام اثر را می‌خواهد و Hoy Es Manana حذف است؛ مشکل کلی باقی است."
+      }
+    },
+    {
+      "sample_number": 20,
+      "question_id": "5ade5a645542997c77adee0d",
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is Wenling at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Ruili at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is Wenling at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Ruili at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Wenling at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Is Ruili at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"city\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: answer_type must be one of ['boolean', 'date', 'number', 'organization', 'other', 'person', 'place', 'work']."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Wenling at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Is Ruili at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "place",
+              "head": "city"
+            },
+            "root_question_target": {
+              "type": "place",
+              "head": "city"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Wenling at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Is Ruili at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"city\"}],\"final\":\"q3\"}",
+          "status": "invalid",
+          "error": "q3: answer_type must be one of ['boolean', 'date', 'number', 'organization', 'other', 'person', 'place', 'work']."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Wenling at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Is Ruili at coastal county-level?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "place",
+              "head": "city"
+            },
+            "root_question_target": {
+              "type": "place",
+              "head": "city"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "coastal county-level در هر دو برگ حفظ است؛ درخت عین مبناست."
+      }
+    },
+    {
+      "sample_number": 21,
+      "question_id": "5a87bc3f5542996432c57275",
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the longitude of Cascade Locks and Canal?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the longitude of Lake Worth Lagoon?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which location is farther West: Cascade Locks and Canal (longitude {{q1}}) or Lake Worth Lagoon (longitude {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the longitude of Cascade Locks and Canal?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the longitude of Lake Worth Lagoon?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which location is farther West: Cascade Locks and Canal (longitude {{q1}}) or Lake Worth Lagoon (longitude {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q1: requires a numerical longitude absent from the original request. Ask for the location/city/state and compare the named entities; retain any coordinates if present in evidence, but do not require them.",
+          "q2: requires a numerical longitude absent from the original request. Ask for the location/city/state and compare the named entities; retain any coordinates if present in evidence, but do not require them."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: requires a numerical longitude absent from the original request. Ask for the location/city/state and compare the named entities; retain any coordinates if present in evidence, but do not require them.",
+          "q2: requires a numerical longitude absent from the original request. Ask for the location/city/state and compare the named entities; retain any coordinates if present in evidence, but do not require them."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the longitude of Cascade Locks and Canal?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"What is the longitude of Lake Worth Lagoon?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Which location is farther West: Cascade Locks and Canal (longitude {{q1}}) or Lake Worth Lagoon (longitude {{q2}})?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": null,
+            "root_question_target": {
+              "type": "place",
+              "head": "location"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the longitude of Cascade Locks and Canal?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q2\",\"question\":\"What is the longitude of Lake Worth Lagoon?\",\"dependencies\":{},\"answer_type\":\"number\"},{\"id\":\"q3\",\"question\":\"Which location is farther West: Cascade Locks and Canal (longitude {{q1}}) or Lake Worth Lagoon (longitude {{q2}})?\",\"dependencies\":{\"q1\":\"number\",\"q2\":\"number\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": null,
+            "root_question_target": {
+              "type": "place",
+              "head": "location"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "هنوز طول جغرافیایی عددی درخواست می‌شود و geography_rule آن را رد می‌کند؛ این سیاست اجرایی است و به‌خودی‌خود اثبات وارونگی معنا نیست."
+      }
+    },
+    {
+      "sample_number": 22,
+      "question_id": "5ae38b115542990afbd1e183",
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What role did George Albert Smith play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What role did Wong Jing play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "Who played a more important role in the church: George Albert Smith (played {{q1}}) or Wong Jing (played {{q2}})?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What role did George Albert Smith play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What role did Wong Jing play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "Who played a more important role in the church: George Albert Smith (played {{q1}}) or Wong Jing (played {{q2}})?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What role did George Albert Smith play in the church?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What role did Wong Jing play in the church?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q3\",\"question\":\"Who played a more important role in the church: George Albert Smith (played {{q1}}) or Wong Jing (played {{q2}})?\",\"dependencies\":{\"q1\":\"work\",\"q2\":\"work\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What role did George Albert Smith play in the church?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What role did Wong Jing play in the church?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q3\",\"question\":\"Who played a more important role in the church: George Albert Smith (played {{q1}}) or Wong Jing (played {{q2}})?\",\"dependencies\":{\"q1\":\"work\",\"q2\":\"work\"},\"answer_type\":\"person\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "هدف نام شخص حفظ است؛ نوع work برای نقش و ردهای نادقیق داور باقی‌اند."
+      }
+    },
+    {
+      "sample_number": 23,
+      "question_id": "5a89bf18554299669944a591",
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the nationality of John O'Hara?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the nationality of Bobbie Ann Mason?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "Do writers John O'Hara (nationality {{q1}}) and Bobbie Ann Mason (nationality {{q2}}) share the same nationality?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the nationality of John O'Hara?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the nationality of Bobbie Ann Mason?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "Do John O'Hara (nationality {{q1}}) and Bobbie Ann Mason (nationality {{q2}}) share the same nationality?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: adds a relation absent from Question.",
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the nationality of John O'Hara?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"What is the nationality of Bobbie Ann Mason?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q3\",\"question\":\"Do writers John O'Hara (nationality {{q1}}) and Bobbie Ann Mason (nationality {{q2}}) share the same nationality?\",\"dependencies\":{\"q1\":\"other\",\"q2\":\"other\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the nationality of John O'Hara?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"What is the nationality of Bobbie Ann Mason?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q3\",\"question\":\"Do John O'Hara (nationality {{q1}}) and Bobbie Ann Mason (nationality {{q2}}) share the same nationality?\",\"dependencies\":{\"q1\":\"other\",\"q2\":\"other\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر جزئی",
+        "note_fa": "مقایسهٔ ملیت با اسامی حفظ است؛ واژهٔ writers از ریشه حذف شده، اما نام‌ها ثابت‌اند؛ بهبود مستقلی ادعا نمی‌شود."
+      }
+    },
+    {
+      "sample_number": 24,
+      "question_id": "5ae0a5825542993d6555ebdf",
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is George Stevens American?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Luc Besson American?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Are George Stevens and Luc Besson American cinematographers? ({{q1}} and {{q2}})",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is George Stevens an American cinematographer?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Luc Besson an American cinematographer?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Are George Stevens and Luc Besson American cinematographers: {{q1}} and {{q2}}?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is George Stevens American?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Is Luc Besson American?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Are George Stevens and Luc Besson American cinematographers? ({{q1}} and {{q2}})\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is George Stevens an American cinematographer?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Is Luc Besson an American cinematographer?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Are George Stevens and Luc Besson American cinematographers: {{q1}} and {{q2}}?\",\"dependencies\":{\"q1\":\"boolean\",\"q2\":\"boolean\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بهبود روشن قیود",
+        "note_fa": "هر برگ اکنون هم آمریکایی‌بودن و هم فیلم‌برداربودن همان فرد را می‌پرسد؛ قبلاً برگ‌ها فقط ملیت را بررسی می‌کردند. داور هنوز q2 را به‌نادرستی رابطهٔ اضافه می‌خواند."
+      }
+    },
+    {
+      "sample_number": 25,
+      "question_id": "5add9bfa5542990dbb2f7e85",
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the sponsor of the Premiership Rugby Sevens Series?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What type of product does {{q1}} produce?",
+            "dependencies": {
+              "q1": "organization"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the sponsor of the Premiership Rugby Sevens SeriesSeries?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What type of product is {{q1}}?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the sponsor of the Premiership Rugby Sevens Series?\",\"dependencies\":{},\"answer_type\":\"organization\"},{\"id\":\"q2\",\"question\":\"What type of product does {{q1}} produce?\",\"dependencies\":{\"q1\":\"organization\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "other",
+              "head": "type"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "type"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the sponsor of the Premiership Rugby Sevens SeriesSeries?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"What type of product is {{q1}}?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "other",
+              "head": "type"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "type"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بهبود رابطه، نوع باقی است",
+        "note_fa": "produces به is اصلاح شده؛ نوع work برای حامی و نوع محصول هنوز مناسب نیست. داور همچنان با دلیل کلی رابطهٔ اضافه رد می‌کند."
+      }
+    },
+    {
+      "sample_number": 26,
+      "question_id": "5a75a0725542992d0ec05fc9",
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What cast member of Disorganized Crime is best known for playing Al Bundy on the Fox Network sitcom 'Married... with Children'?",
+            "dependencies": {},
+            "answer_type": "person"
+          }
+        ],
+        "final": "q1"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What cast member of Disorganized Crime is best known for playing Al Bundy on Married... with Children?",
+            "dependencies": {},
+            "answer_type": "person"
+          }
+        ],
+        "final": "q1"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q1: changes the subject from Disorganized Crime to a cast member."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What cast member of Disorganized Crime is best known for playing Al Bundy on the Fox Network sitcom 'Married... with Children'?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "not_checked",
+            "expected_mode": null,
+            "root_id": "q1",
+            "root_answer_type": "person",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What cast member of Disorganized Crime is best known for playing Al Bundy on Married... with Children?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "not_checked",
+            "expected_mode": null,
+            "root_id": "q1",
+            "root_answer_type": "person",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "حل نشده",
+        "note_fa": "هنوز یک گره است و Fox Network از متن حذف شده؛ دلیل رد داور دربارهٔ تغییر موضوع نیز مشکل واقعی را بیان نمی‌کند."
+      }
+    },
+    {
+      "sample_number": 27,
+      "question_id": "5ac43e0f554299076e296d8e",
+      "question": "What country are both Dafeng District and Jixi in?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What country is Dafeng District in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What country is Jixi in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "What country are both Dafeng District (in {{q1}}) and Jixi (in {{q2}}) in?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What country is Dafeng District in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What country is Jixi in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "What country are both Dafeng District (in {{q1}}) and Jixi (in {{q2}}) in?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What country is Dafeng District in?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What country is Jixi in?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q3\",\"question\":\"What country are both Dafeng District (in {{q1}}) and Jixi (in {{q2}}) in?\",\"dependencies\":{\"q1\":\"place\",\"q2\":\"place\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "place",
+              "head": "country"
+            },
+            "root_question_target": {
+              "type": "place",
+              "head": "country"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What country is Dafeng District in?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What country is Jixi in?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q3\",\"question\":\"What country are both Dafeng District (in {{q1}}) and Jixi (in {{q2}}) in?\",\"dependencies\":{\"q1\":\"place\",\"q2\":\"place\"},\"answer_type\":\"place\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "place",
+            "expected_target": {
+              "type": "place",
+              "head": "country"
+            },
+            "root_question_target": {
+              "type": "place",
+              "head": "country"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "درخت عین مبنا و کشور مشترک هدف ریشه است."
+      }
+    },
+    {
+      "sample_number": 28,
+      "question_id": "5a8ea7f25542995085b37468",
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What state is The Limousines from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What state is Faith No More from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Are The Limousines and Faith No More from the same state: {{q1}} = {{q2}}?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What state is The Limousines from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What state is Faith No More from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Are The Limousines and Faith No More from the same state: {{q1}} or {{q2}}?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What state is The Limousines from?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What state is Faith No More from?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q3\",\"question\":\"Are The Limousines and Faith No More from the same state: {{q1}} = {{q2}}?\",\"dependencies\":{\"q1\":\"place\",\"q2\":\"place\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What state is The Limousines from?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What state is Faith No More from?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q3\",\"question\":\"Are The Limousines and Faith No More from the same state: {{q1}} or {{q2}}?\",\"dependencies\":{\"q1\":\"place\",\"q2\":\"place\"},\"answer_type\":\"boolean\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "boolean",
+            "root_id": "q3",
+            "root_answer_type": "boolean",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بیان مبهم‌تر",
+        "note_fa": "علامت برابری اسلات‌ها به or تبدیل شده؛ عبارت same state هنوز هست، پس از این تفاوت به‌تنهایی خطای قطعی نتیجه نمی‌گیریم."
+      }
+    },
+    {
+      "sample_number": 29,
+      "question_id": "5a8701b3554299211dda2b9a",
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the politician that Werner Christie served under?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What organization was the politician ({{q1}}) also the Director-General of?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is Werner Christie's superior politician?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What organization was the {{q1}} Director-General of?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who was the politician that Werner Christie served under?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What organization was the politician ({{q1}}) also the Director-General of?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"organization\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "organization"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "organization"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is Werner Christie's superior politician?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What organization was the {{q1}} Director-General of?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"organization\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "organization"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "organization"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تقریباً ثابت با بیان ضعیف‌تر",
+        "note_fa": "superior politician جانشین served under شده و قید also/other در ریشه صریح نیست؛ رابطهٔ اصلی دوگامی باقی است."
+      }
+    },
+    {
+      "sample_number": 30,
+      "question_id": "5ac3dfee554299204fd21eab",
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the voice actor of Elgar?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What manga is inspired by Keitaro Arima and features the English character voiced by {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the voice actor of Elgar?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What manga is inspired by Keitaro Arima and features the English character voiced by {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the voice actor of Elgar?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What manga is inspired by Keitaro Arima and features the English character voiced by {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "work",
+              "head": "manga"
+            },
+            "root_question_target": {
+              "type": "work",
+              "head": "manga"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the voice actor of Elgar?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What manga is inspired by Keitaro Arima and features the English character voiced by {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "work",
+              "head": "manga"
+            },
+            "root_question_target": {
+              "type": "work",
+              "head": "manga"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "درخت عین مبناست و هدف نهایی manga/work حفظ شده؛ تغییر به شخصیت یا boolean رخ نداده است."
+      }
+    },
+    {
+      "sample_number": 31,
+      "question_id": "5a7f7b3b5542992097ad2f81",
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the headquarters location of Pizza Inn?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the headquarters location of Papa Gino's?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Which restaurant chain's headquarters is further north, Pizza Inn (located at {{q1}}) or Papa Gino's (located at {{q2}})?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Where is Pizza Inn's headquarters located?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "Where is Papa Gino's headquarters located?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Which restaurant chain's headquarters is further north, Pizza Inn (headquartered at {{q1}}) or Papa Gino's (headquartered at {{q2}})?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q3: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q3: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the headquarters location of Pizza Inn?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What is the headquarters location of Papa Gino's?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q3\",\"question\":\"Which restaurant chain's headquarters is further north, Pizza Inn (located at {{q1}}) or Papa Gino's (located at {{q2}})?\",\"dependencies\":{\"q1\":\"place\",\"q2\":\"place\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Where is Pizza Inn's headquarters located?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"Where is Papa Gino's headquarters located?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q3\",\"question\":\"Which restaurant chain's headquarters is further north, Pizza Inn (headquartered at {{q1}}) or Papa Gino's (headquartered at {{q2}})?\",\"dependencies\":{\"q1\":\"place\",\"q2\":\"place\"},\"answer_type\":\"work\"}],\"final\":\"q3\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q3",
+            "root_answer_type": "work",
+            "expected_target": null,
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر لفظی",
+        "note_fa": "مکان دفتر مرکزی در برگ‌ها حفظ شده؛ نوع work برای زنجیرهٔ رستوران هنوز نامناسب است."
+      }
+    },
+    {
+      "sample_number": 32,
+      "question_id": "5ae3d2715542990afbd1e1e9",
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "baseline_structure_status": "invalid",
+      "new_structure_status": "invalid",
+      "baseline_plan": null,
+      "new_plan": null,
+      "baseline_review": null,
+      "new_review": null,
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Control Room a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Does Control Room involve Iraq?\",\"dependencies\":{\"q1\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Is Meeting Resistance a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q4\",\"question\":\"Does Meeting Resistance involve Iraq?\",\"dependencies\":{\"q3\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q5\",\"question\":\"Are Control Room and Meeting Resistance both documentary films that involve Iraq?\",\"dependencies\":{\"q2\":\"boolean\",\"q4\":\"boolean\"},\"answer_type\":\"boolean\"}],\"final\":\"q5\"}",
+          "status": "invalid",
+          "error": "Plan must contain 1..4 nodes."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Control Room a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Does Control Room involve Iraq?\",\"dependencies\":{\"q1\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Is Meeting Resistance a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q4\",\"question\":\"Does Meeting Resistance involve Iraq?\",\"dependencies\":{\"q3\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q5\",\"question\":\"Are Control Room and Meeting Resistance both documentary films that involve Iraq?\",\"dependencies\":{\"q2\":\"boolean\",\"q4\":\"boolean\"},\"answer_type\":\"boolean\"}],\"final\":\"q5\"}",
+          "status": "invalid",
+          "error": "Plan must contain 1..4 nodes."
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Control Room a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Does Control Room involve Iraq?\",\"dependencies\":{\"q1\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Is Meeting Resistance a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q4\",\"question\":\"Does Meeting Resistance involve Iraq?\",\"dependencies\":{\"q3\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q5\",\"question\":\"Are Control Room and Meeting Resistance both documentary films that involve Iraq?\",\"dependencies\":{\"q2\":\"boolean\",\"q4\":\"boolean\"},\"answer_type\":\"boolean\"}],\"final\":\"q5\"}",
+          "status": "invalid",
+          "error": "Plan must contain 1..4 nodes."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Is Control Room a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q2\",\"question\":\"Does Control Room involve Iraq?\",\"dependencies\":{\"q1\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q3\",\"question\":\"Is Meeting Resistance a documentary film?\",\"dependencies\":{},\"answer_type\":\"boolean\"},{\"id\":\"q4\",\"question\":\"Does Meeting Resistance involve Iraq?\",\"dependencies\":{\"q3\":\"boolean\"},\"answer_type\":\"boolean\"},{\"id\":\"q5\",\"question\":\"Are Control Room and Meeting Resistance both documentary films that involve Iraq?\",\"dependencies\":{\"q2\":\"boolean\",\"q4\":\"boolean\"},\"answer_type\":\"boolean\"}],\"final\":\"q5\"}",
+          "status": "invalid",
+          "error": "Plan must contain 1..4 nodes."
+        }
+      ],
+      "manual_assessment": {
+        "change": "شکست باقی است",
+        "note_fa": "هر دو تلاش همچنان پنج گره دارند؛ به دلیل سقف چهار رد می‌شوند و rawها همان مبنا هستند."
+      }
+    },
+    {
+      "sample_number": 33,
+      "question_id": "5ae077735542993d6555eb6d",
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "invalid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What type of sprite did Milada Šubrtová portray?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "In which opera did {{q1}} appear?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": null,
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": null,
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What type of sprite did Milada Šubrtová portray?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"In which opera did {{q1}} appear?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "other",
+              "head": "type"
+            },
+            "root_question_target": null,
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What type of sprite did Milada Šubrtová portray?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"In which opera did Milada Šubrtová portray a sprite?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"other\"}],\"final\":\"q2\"}",
+          "status": "invalid",
+          "error": "q2: placeholders and declared dependencies must match exactly."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"In which opera did Milada Šubrtová portray a sprite?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"other\"}],\"final\":\"q1\"}",
+          "status": "invalid",
+          "error": "q2: placeholders and declared dependencies must match exactly."
+        }
+      ],
+      "manual_assessment": {
+        "change": "پس‌رفت ساختاری",
+        "note_fa": "قبلاً ساختار معتبر ولی هدف نادرست بود؛ اکنون هر دو تلاش به دلیل وابستگی q2 بدون اسلات رد می‌شوند. این کاهش از ۳۷ به ۳۶ به‌تنهایی کاهش دقت معنایی نیست."
+      }
+    },
+    {
+      "sample_number": 34,
+      "question_id": "5adf4b335542993a75d264a5",
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the name of the Western action-adventure game Paul DeBoy appeared in?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "Which company developed {{q1}}?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is Paul DeBoy known for?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "Which company developed the {{q1}}?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the name of the Western action-adventure game Paul DeBoy appeared in?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"Which company developed {{q1}}?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"organization\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is Paul DeBoy known for?\",\"dependencies\":{},\"answer_type\":\"work\"},{\"id\":\"q2\",\"question\":\"Which company developed the {{q1}}?\",\"dependencies\":{\"q1\":\"work\"},\"answer_type\":\"organization\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "پس‌رفت روشن قیود",
+        "note_fa": "قید بازی Western action-adventure در برگ حذف شده و What is Paul DeBoy known for? جای شناسایی همان بازی را گرفته است."
+      }
+    },
+    {
+      "sample_number": 35,
+      "question_id": "5a776b82554299373536026f",
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the official currency in {{q1}}?",
+            "dependencies": {
+              "q1": "place"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the official currency of {{q1}}?",
+            "dependencies": {
+              "q1": "place"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"Which country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?\",\"dependencies\":{},\"answer_type\":\"place\"}],\"final\":\"q1\"}",
+          "status": "invalid",
+          "error": "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What is the official currency in {{q1}}?\",\"dependencies\":{\"q1\":\"place\"},\"answer_type\":\"other\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "other",
+            "expected_target": {
+              "type": "other",
+              "head": "currency"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "currency"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?\",\"dependencies\":{},\"answer_type\":\"other\"},{\"id\":\"q2\",\"question\":\"What is the official currency of {{q1}}?\",\"dependencies\":{\"q1\":\"place\"},\"answer_type\":\"other\"}],\"final\":\"q2\"}",
+          "status": "invalid",
+          "error": "q2: dependency q1 expects place, but returns other."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?\",\"dependencies\":{},\"answer_type\":\"place\"},{\"id\":\"q2\",\"question\":\"What is the official currency of {{q1}}?\",\"dependencies\":{\"q1\":\"place\"},\"answer_type\":\"other\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "other",
+            "expected_target": {
+              "type": "other",
+              "head": "currency"
+            },
+            "root_question_target": {
+              "type": "other",
+              "head": "currency"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تغییر لفظی",
+        "note_fa": "کشور میزبان و واحد پول رسمی آن همچنان زنجیرهٔ دوگامی مناسب می‌سازند؛ دلیل رد داور نادقیق است."
+      }
+    },
+    {
+      "sample_number": 36,
+      "question_id": "5ac0b1835542992a796ded65",
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What company was Bordan Tkachuk the former CEO of?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "Does {{q1}} provide IT products?",
+            "dependencies": {
+              "q1": "organization"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What company did Bordan Tkachuk formerly lead that provides IT products?",
+            "dependencies": {},
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q1"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+        ]
+      },
+      "new_review": {
+        "status": "valid",
+        "errors": []
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What company was Bordan Tkachuk the former CEO of?\",\"dependencies\":{},\"answer_type\":\"organization\"},{\"id\":\"q2\",\"question\":\"Does {{q1}} provide IT products?\",\"dependencies\":{\"q1\":\"organization\"},\"answer_type\":\"boolean\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "mismatch",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "boolean",
+            "expected_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "root_question_target": null,
+            "errors": [
+              "q2: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+            ]
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"What company did Bordan Tkachuk formerly lead that provides IT products?\",\"dependencies\":{},\"answer_type\":\"organization\"}],\"final\":\"q1\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q1",
+            "root_answer_type": "organization",
+            "expected_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "root_question_target": {
+              "type": "organization",
+              "head": "company"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "هدف اصلاح، تجزیه حذف",
+        "note_fa": "final دیگر boolean نیست و قید IT products در یک سؤال سازمانی حفظ است؛ خروجی تک‌گرهی است و formerly lead از former CEO کلی‌تر است. موفقیت تجزیهٔ چندگامی محسوب نمی‌شود."
+      }
+    },
+    {
+      "sample_number": 37,
+      "question_id": "5a80afcf554299485f5986b9",
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who were the American university administrators and politicians from Oklahoma involved in the Boren-Mcurdy proposals?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "Who else besides {{q1}} was part of the Boren-Mcurdy proposals?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who were the American university administrators and politicians from Oklahoma involved in the Boren-Mcurdy proposals?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "Who else beside {{q1}} was part of the Boren-Mcurdy proposals?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who were the American university administrators and politicians from Oklahoma involved in the Boren-Mcurdy proposals?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Who else besides {{q1}} was part of the Boren-Mcurdy proposals?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"person\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who were the American university administrators and politicians from Oklahoma involved in the Boren-Mcurdy proposals?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Who else beside {{q1}} was part of the Boren-Mcurdy proposals?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"person\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "person",
+            "expected_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "who"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "تقریباً ثابت",
+        "note_fa": "besides به beside تغییر کرده؛ q1 همچنان به صورت جمع آمده و شناسایی دقیق یک فردِ موضوع استثنا اثبات نشده است."
+      }
+    },
+    {
+      "sample_number": 38,
+      "question_id": "5ae254565542992decbdccbb",
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who wrote the drama \"Ingenious\"?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year was {{q1}} born?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who wrote the drama \"Ingenious\"?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year was {{q1}} born?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: adds a relation absent from Question."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who wrote the drama \\\"Ingenious\\\"?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"In what year was {{q1}} born?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"date\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "date",
+            "expected_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "root_question_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who wrote the drama \\\"Ingenious\\\"?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"In what year was {{q1}} born?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"date\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "compatible",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "date",
+            "expected_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "root_question_target": {
+              "type": "date",
+              "head": "year"
+            },
+            "errors": []
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "بدون تغییر",
+        "note_fa": "زنجیرهٔ نویسنده به سال تولد عین مبناست؛ داور با همان دلیل نادرست رابطهٔ اضافه رد می‌کند."
+      }
+    },
+    {
+      "sample_number": 39,
+      "question_id": "5ae14b0655429920d52343a6",
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "baseline_structure_status": "invalid",
+      "new_structure_status": "invalid",
+      "baseline_plan": null,
+      "new_plan": null,
+      "baseline_review": null,
+      "new_review": null,
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+          "status": "invalid",
+          "error": "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+          "status": "invalid",
+          "error": "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q2\"}",
+          "status": "invalid",
+          "error": "q1: each non-root node needs exactly one consumer; no shared or orphan nodes."
+        },
+        {
+          "stage": "structure",
+          "attempt": 2,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+          "status": "invalid",
+          "error": "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+        }
+      ],
+      "manual_assessment": {
+        "change": "هدف آزمایش حل نشده",
+        "note_fa": "در هر دو تلاش بازیگر و عکاس دو برگ جدا هستند و هیچ اتصال/اشتراک برای یک شخص وجود ندارد؛ یکی از برگ‌ها بدون مصرف‌کننده است. همان شکست اصلی باقی است."
+      }
+    },
+    {
+      "sample_number": 40,
+      "question_id": "5ae409d955429970de88d89d",
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "baseline_structure_status": "valid",
+      "new_structure_status": "valid",
+      "baseline_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the lead singer of the band that released 'Greetings! We're The Monitors'?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What soul and R&B singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "new_plan": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the lead singer of the band who had 'Greetings! We're The Monitors' as their debut album?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What soul and R&B singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "baseline_review": {
+        "status": "revise",
+        "errors": [
+          "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      },
+      "new_review": {
+        "status": "revise",
+        "errors": [
+          "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      },
+      "baseline_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the lead singer of the band that released 'Greetings! We're The Monitors'?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What soul and R&B singer is {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "mismatch",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "person",
+              "head": "singer"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "singer"
+            },
+            "errors": [
+              "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+            ]
+          }
+        }
+      ],
+      "new_trace": [
+        {
+          "stage": "structure",
+          "attempt": 1,
+          "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Who is the lead singer of the band who had 'Greetings! We're The Monitors' as their debut album?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"What soul and R&B singer is {{q1}}?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"work\"}],\"final\":\"q2\"}",
+          "status": "valid",
+          "root_contract": {
+            "status": "mismatch",
+            "expected_mode": "value",
+            "root_id": "q2",
+            "root_answer_type": "work",
+            "expected_target": {
+              "type": "person",
+              "head": "singer"
+            },
+            "root_question_target": {
+              "type": "person",
+              "head": "singer"
+            },
+            "errors": [
+              "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+            ]
+          }
+        }
+      ],
+      "manual_assessment": {
+        "change": "حل نشده",
+        "note_fa": "برگ همچنان خوانندهٔ نهایی را مستقیماً می‌خواهد و ریشه پرسش تکراری با نوع work دارد؛ حفظ debut album به‌تنهایی هدف غلط را رفع نمی‌کند."
+      }
+    }
+  ],
+  "semantic_accuracy_measured_independently": false,
+  "answer_accuracy_measured": false,
+  "analysis_model_calls": 0,
+  "conclusion": "Do not promote: target dual-role case39 still splits roles into separate orphan leaves; partial improvements in24/25/9 and regressions in10/18/34. Final structure37->36; pilot tokens47944->52949. No independent semantic accuracy or full RAG measurement.",
+  "decision_status": "Recommendation only; user has not selected the next experiment. Accepted baseline remains original v3.2.4-max4."
+}

@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-04",
+  "snapshot_date_tehran": "2026-11-05",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -226,6 +226,28 @@
           "sha256": "77a4fcdf5f97ec3503f57dbdbbcd3558c4e8f6db988d9b52a285337cf29d1989"
         }
       ]
+    },
+    {
+      "version": "max4_bridge_first_probe_v3",
+      "path": "history/results/max4_bridge_first_probe_v3.zip",
+      "original_filename": "results_max4_bridge_first_probe_v3.zip",
+      "sha256": "116f909f55a641b4556f8e7d964962a06b47ea6b0b51044bd4e307e6a3fe6936",
+      "bytes": 303052,
+      "kind": "user_supplied_actual_run",
+      "reports": [
+        {
+          "path": "history/reports/max4-bridge-first-probe-v3-analysis.md",
+          "sha256": "6c47a5f90f2b08406854b363a347b488b51157b6306e1cff00e4c396b5695cc2"
+        },
+        {
+          "path": "history/reports/max4-bridge-first-probe-v3-analysis.json",
+          "sha256": "c83e039ed6caca69635a5b314541891e33aa4fa8723cb9a49f31a8292fcc78f9"
+        },
+        {
+          "path": "history/reports/max4-bridge-first-probe-v3-prompt-diff.txt",
+          "sha256": "e71b029be9c15f99a0d54afcc53234659556a5c446944631c262b2a37018189a"
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -364,23 +386,21 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "max4_bridge_first_probe_v2",
+    "id": "max4_bridge_first_probe_v3",
     "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
-    "code_commit": "630bb5928e7530f1ee62788ab10cf84f053ebc57",
-    "scope": "Five paired cases: previous direction template vs plus bridge-first node-order instructions. Original core unchanged.",
-    "expected_results_file": "results/max4_bridge_first_probe_v2_results.zip",
-    "verification": "history/max4_bridge_first_probe_v2_verification.json",
-    "protocol": "history/reports/max4-bridge-first-probe-v2-protocol.txt",
-    "offline_tests_passed": 134,
-    "planned_live_calls": 10,
-    "live_model_calls": 10,
-    "direct_download_verified": true,
-    "semantic_accuracy_measured_independently": false,
-    "result_artifact": "history/results/max4_bridge_first_probe_v2.zip",
-    "report": "history/reports/max4-bridge-first-probe-v2-analysis.md",
+    "scope": "Original v3.2.4-max4 40-question pilot with only proposed roles-and-qualifiers PLAN_SYSTEM sentence replacement; not five-case bridge-first v2 runner.",
+    "source_provenance": "User applied proposed prompt replacement. Exact reconstruction from original max4 matches recorded core/pilot digest; no separate v3 source package supplied.",
+    "code_sha256": "4709250c81469ae2ab31e4c9e38d584f50cad079691cc1658ff3c59aa591caba",
+    "plan_prompt_sha256": "6ae2972317e668920f2c031116fce343834322c35f10c0a4b109754c545ff33c",
+    "live_model_calls": 80,
     "analysis_live_model_calls": 0,
-    "recommendation": "Do not promote: numeric shape improved but direction regressed in14; two prior successful chains lose entity kinds. Five-case assistant audit only."
+    "result_artifact": "history/results/max4_bridge_first_probe_v3.zip",
+    "report": "history/reports/max4-bridge-first-probe-v3-analysis.md",
+    "prompt_diff": "history/reports/max4-bridge-first-probe-v3-prompt-diff.txt",
+    "semantic_accuracy_measured_independently": false,
+    "answer_accuracy_measured": false,
+    "recommendation": "Do not promote: target dual-role case39 still splits roles into separate orphan leaves; partial improvements in24/25/9 and regressions in10/18/34. Final structure37->36; pilot tokens47944->52949. No independent semantic accuracy or full RAG measurement."
   },
   "experiment_history": [
     {
@@ -470,6 +490,25 @@
       "report": "history/reports/max4-direction-probe-v1-analysis.md",
       "analysis_live_model_calls": 0,
       "recommendation": "Partial improvement; do not promote. Two appropriate synthetic chains and original14 leaf direction fixed, but three final targets/bridge selection still wrong. Development set only."
+    },
+    {
+      "id": "max4_bridge_first_probe_v2",
+      "status": "actual_results_received_and_analyzed_pending_user_next_decision",
+      "accepted_operadic_baseline": "v3.2.4-max4",
+      "code_commit": "630bb5928e7530f1ee62788ab10cf84f053ebc57",
+      "scope": "Five paired cases: previous direction template vs plus bridge-first node-order instructions. Original core unchanged.",
+      "expected_results_file": "results/max4_bridge_first_probe_v2_results.zip",
+      "verification": "history/max4_bridge_first_probe_v2_verification.json",
+      "protocol": "history/reports/max4-bridge-first-probe-v2-protocol.txt",
+      "offline_tests_passed": 134,
+      "planned_live_calls": 10,
+      "live_model_calls": 10,
+      "direct_download_verified": true,
+      "semantic_accuracy_measured_independently": false,
+      "result_artifact": "history/results/max4_bridge_first_probe_v2.zip",
+      "report": "history/reports/max4-bridge-first-probe-v2-analysis.md",
+      "analysis_live_model_calls": 0,
+      "recommendation": "Do not promote: numeric shape improved but direction regressed in14; two prior successful chains lose entity kinds. Five-case assistant audit only."
     }
   ]
 }

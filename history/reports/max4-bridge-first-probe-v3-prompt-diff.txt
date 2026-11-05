@@ -1,0 +1,18 @@
+--- v3.2.4-max4/hotpotqa_operadic_rag/decomposition.py
++++ max4_bridge_first_probe_v3/hotpotqa_operadic_rag/decomposition.py
+@@ -27,7 +27,14 @@
+ Keep each original name beside its property slot in the final comparison.
+ Final QUESTION and TYPE must request the original target: entity, shared value
+ or yes/no. Return a work when asked for a work, not its character or another clue.
+-One entity with two roles must satisfy BOTH. A candidate may be identified first
++When several roles or qualifiers describe ONE entity, keep them together
++in the SAME entity-identifying subquestion.
++For example, "Which botanist and illustrator ...?" asks for one person
++with BOTH roles; do not create separate botanist and illustrator branches.
++Preserve specific entity classes and restrictions in that subquestion.
++answer_type labels do not replace them: place does not mean you may
++rewrite "which lake" or "which mountain" as "which place".
++Downstream slots must refer to that same qualified entity. A candidate may be identified first
+ and checked against remaining qualifiers; retain needed conditions, including If.
+ Preserve qualifiers, negation, dates, units and language. Unknown names use slots;
+ no invented facts/relations or guesses resolving ambiguity. Split required hops,
