@@ -388,7 +388,10 @@
       "bytes": 270107,
       "files": 60,
       "commit": "52a44265dc37f04ff28c1d608fee09367c592cd9",
-      "url": "https://raw.githubusercontent.com/omidghpython/VIE/52a44265dc37f04ff28c1d608fee09367c592cd9/hotpotqa_max4_target_phrase_v1.zip"
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/52a44265dc37f04ff28c1d608fee09367c592cd9/hotpotqa_max4_target_phrase_v1.zip",
+      "homepage_delivery_commit": "1e23ba43dcaf396e79670661b6edbc21b7fc8b7e",
+      "homepage_zip_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.zip",
+      "homepage_text_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt"
     }
   ],
   "original_v31_source": {
@@ -412,7 +415,11 @@
     "semantic_accuracy_measured_independently": false,
     "direct_download_verified": true,
     "code_commit": "52a44265dc37f04ff28c1d608fee09367c592cd9",
-    "download_url": "https://raw.githubusercontent.com/omidghpython/VIE/52a44265dc37f04ff28c1d608fee09367c592cd9/hotpotqa_max4_target_phrase_v1.zip"
+    "download_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.zip",
+    "delivery_commit": "1e23ba43dcaf396e79670661b6edbc21b7fc8b7e",
+    "delivery_branch": "downloads/operadic-decomposition-v0.2.0",
+    "text_guide_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt",
+    "homepage_delivery_verified": true
   },
   "experiment_history": [
     {
@@ -555,5 +562,12 @@
         }
       ]
     }
-  ]
+  ],
+  "delivery_policy": {
+    "location": "repository_default_branch_root",
+    "zip_and_text_separate": true,
+    "resolve_default_branch_each_delivery": true,
+    "current_default_branch": "downloads/operadic-decomposition-v0.2.0",
+    "user_requested_date_tehran": "2026-11-07"
+  }
 }

@@ -375,3 +375,11 @@ commit کد / لینک ZIP / SHA256:
 - **مستندات:** [پروتکل](history/reports/max4-target-phrase-v1-protocol.txt)، [verification](history/max4_target_phrase_v1_verification.json)، [diff دقیق کد/launcher/tests](history/max4_target_phrase_v1.patch)، [ممیزی ورودی‌ها](history/reports/max4-target-phrase-v1-input-audit.json).
 
 - **تأیید تحویل همین تغییر:** بسته و تاریخچه در commit `52a44265dc37f04ff28c1d608fee09367c592cd9` به شاخهٔ `docs/hotpotqa-progress` push شدند و HEAD مقصد تطبیق داده شد. ZIP از لینک مستقیم بالا دوباره دانلود شد؛ SHA256 و سلامت آرشیو برابر فایل محلی تأیید شدند. این تأیید تحویل بسته است؛ نتیجهٔ Qwen همچنان در انتظار است.
+
+## درخواست تحویل و ثبت: ۲۰۲۶-۱۱-۰۷ — فایل‌ها در صفحهٔ اصلی مخزن
+
+- **درخواست صریح کاربر:** از این پس فایل ZIP و فایل متنی جدا، در صفحهٔ اصلی مخزن قرار گیرند؛ تحویل بسته صرفاً روی docs/hotpotqa-progress انجام نشود.
+- **مسیر واقعی:** HEAD پیش‌فرض مخزن به downloads/operadic-decomposition-v0.2.0 اشاره می‌کند. دو فایل در ریشهٔ همین شاخه اضافه شدند؛ فایل‌های قبلی حفظ شدند. نام شاخهٔ پیش‌فرض برای تحویل بعدی دوباره بررسی شود.
+- **تحویل جاری:** commit `1e23ba43dcaf396e79670661b6edbc21b7fc8b7e`؛ [ZIP](https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.zip) و [راهنمای متنی مستقل](https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt).
+- **تأیید:** push و HEAD پیش‌فرض مقصد بررسی شد؛ هر دو فایل از لینک ثابت دانلود و بایت‌به‌بایت با فایل محلی تطبیق داده شدند. ZIP همان 270107 بایت و SHA256 `aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c` است؛ راهنمای UTF-8 مستقل 5731 بایت است. کد/مدل تغییر نکرد؛ آزمون‌های آفلاین قبلی ۱۳۵ موفق و نتیجهٔ Qwen همچنان در انتظارند.
+- **تداوم:** قاعدهٔ تحویل در AGENTS.md و artifacts.json ثبت شد؛ تاریخچهٔ قبلی حفظ است.
