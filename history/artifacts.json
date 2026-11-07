@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-05",
+  "snapshot_date_tehran": "2026-11-07",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -379,6 +379,14 @@
       "filename": "hotpotqa_max4_bridge_first_probe_v2.zip",
       "sha256": "9a3775099c66e4224054a4761cd6fc803214acdb6c707a5f7e6ea435345d8e62",
       "url": "https://raw.githubusercontent.com/omidghpython/VIE/630bb5928e7530f1ee62788ab10cf84f053ebc57/hotpotqa_max4_bridge_first_probe_v2.zip"
+    },
+    {
+      "version": "max4_target_phrase_v1",
+      "branch": "docs/hotpotqa-progress",
+      "filename": "hotpotqa_max4_target_phrase_v1.zip",
+      "sha256": "aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c",
+      "bytes": 270107,
+      "files": 60
     }
   ],
   "original_v31_source": {
@@ -386,21 +394,21 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "max4_bridge_first_probe_v3",
-    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
+    "id": "max4_target_phrase_v1",
+    "status": "prepared_pending_live_results",
     "accepted_operadic_baseline": "v3.2.4-max4",
-    "scope": "Original v3.2.4-max4 40-question pilot with only proposed roles-and-qualifiers PLAN_SYSTEM sentence replacement; not five-case bridge-first v2 runner.",
-    "source_provenance": "User applied proposed prompt replacement. Exact reconstruction from original max4 matches recorded core/pilot digest; no separate v3 source package supplied.",
-    "code_sha256": "4709250c81469ae2ab31e4c9e38d584f50cad079691cc1658ff3c59aa591caba",
-    "plan_prompt_sha256": "6ae2972317e668920f2c031116fce343834322c35f10c0a4b109754c545ff33c",
-    "live_model_calls": 80,
-    "analysis_live_model_calls": 0,
-    "result_artifact": "history/results/max4_bridge_first_probe_v3.zip",
-    "report": "history/reports/max4-bridge-first-probe-v3-analysis.md",
-    "prompt_diff": "history/reports/max4-bridge-first-probe-v3-prompt-diff.txt",
+    "scope": "Proposal5 only: display known coordinated person roles; preserve validator head/type, static prompts and budgets.",
+    "package_path": "hotpotqa_max4_target_phrase_v1.zip",
+    "package_sha256": "aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c",
+    "code_sha256": "1778d34806259264f87ff4e7c0a26ef7b4bc2b366425322c02a2a8558f329290",
+    "offline_tests_passed": 135,
+    "live_model_calls": 0,
+    "expected_results_file": "results/max4_target_phrase_v1_results.zip",
+    "verification": "history/max4_target_phrase_v1_verification.json",
+    "protocol": "history/reports/max4-target-phrase-v1-protocol.txt",
+    "input_audit": "history/reports/max4-target-phrase-v1-input-audit.json",
     "semantic_accuracy_measured_independently": false,
-    "answer_accuracy_measured": false,
-    "recommendation": "Do not promote: target dual-role case39 still splits roles into separate orphan leaves; partial improvements in24/25/9 and regressions in10/18/34. Final structure37->36; pilot tokens47944->52949. No independent semantic accuracy or full RAG measurement."
+    "direct_download_verified": false
   },
   "experiment_history": [
     {
@@ -509,6 +517,23 @@
       "report": "history/reports/max4-bridge-first-probe-v2-analysis.md",
       "analysis_live_model_calls": 0,
       "recommendation": "Do not promote: numeric shape improved but direction regressed in14; two prior successful chains lose entity kinds. Five-case assistant audit only."
+    },
+    {
+      "id": "max4_bridge_first_probe_v3",
+      "status": "actual_results_received_and_analyzed_pending_user_next_decision",
+      "accepted_operadic_baseline": "v3.2.4-max4",
+      "scope": "Original v3.2.4-max4 40-question pilot with only proposed roles-and-qualifiers PLAN_SYSTEM sentence replacement; not five-case bridge-first v2 runner.",
+      "source_provenance": "User applied proposed prompt replacement. Exact reconstruction from original max4 matches recorded core/pilot digest; no separate v3 source package supplied.",
+      "code_sha256": "4709250c81469ae2ab31e4c9e38d584f50cad079691cc1658ff3c59aa591caba",
+      "plan_prompt_sha256": "6ae2972317e668920f2c031116fce343834322c35f10c0a4b109754c545ff33c",
+      "live_model_calls": 80,
+      "analysis_live_model_calls": 0,
+      "result_artifact": "history/results/max4_bridge_first_probe_v3.zip",
+      "report": "history/reports/max4-bridge-first-probe-v3-analysis.md",
+      "prompt_diff": "history/reports/max4-bridge-first-probe-v3-prompt-diff.txt",
+      "semantic_accuracy_measured_independently": false,
+      "answer_accuracy_measured": false,
+      "recommendation": "Do not promote: target dual-role case39 still splits roles into separate orphan leaves; partial improvements in24/25/9 and regressions in10/18/34. Final structure37->36; pilot tokens47944->52949. No independent semantic accuracy or full RAG measurement."
     }
   ],
   "conversation_snapshots": [

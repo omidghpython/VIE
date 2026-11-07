@@ -1,0 +1,67 @@
+{
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "changed_core_files": [
+    "hotpotqa_operadic_rag/decomposition.py"
+  ],
+  "existing_functions_changed": [
+    "plan_instructions"
+  ],
+  "new_functions": [
+    "target_display_phrase"
+  ],
+  "static_prompts_identical": true,
+  "other_core_files_identical": true,
+  "existing_tests_identical": true,
+  "evaluation_files_identical": true,
+  "pilot_only_output_directory_changed": true,
+  "old_code_checkpoint_rejected_before_model": true,
+  "question_hints_compared": 40,
+  "changed_hints": [
+    {
+      "sample_order": 39,
+      "question_id": "5ae14b0655429920d52343a6",
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "old_hint": "Final target: actor (person).",
+      "new_hint": "Final target: actor and photographer (person).",
+      "validator_target": {
+        "type": "person",
+        "head": "actor"
+      }
+    }
+  ],
+  "pilot_code_sha256": "1778d34806259264f87ff4e7c0a26ef7b4bc2b366425322c02a2a8558f329290",
+  "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "sample_file_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "live_model_calls": 0,
+  "release": "hotpotqa_max4_target_phrase_v1",
+  "based_on": "v3.2.4-max4",
+  "verified_date_tehran": "2026-11-07",
+  "python_tested": "3.12.14",
+  "software_tests": {
+    "command": "python -m unittest discover -s tests -q",
+    "passed": 135,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 16.068,
+    "baseline_tests_unchanged": 124,
+    "new_tests": 11
+  },
+  "live_qwen_inference_executed": false,
+  "native_windows_execution_tested": false,
+  "new_semantic_accuracy_measured": false,
+  "new_answer_accuracy_measured": false,
+  "runtime_probe": {
+    "nvidia_smi": false,
+    "torch": false,
+    "transformers": false
+  },
+  "results_to_return": "results/max4_target_phrase_v1_results.zip",
+  "max_plan_nodes": 4,
+  "structural_attempts": 2,
+  "pilot_semantic_repair_attempts": 0,
+  "input_tokens": 8500,
+  "plan_tokens": 3072,
+  "judge_tokens": 512,
+  "limitation": "Conservative display-only coordination of known person roles; no general coreference or semantic guarantee; ambiguous/unsupported syntax retains original head."
+}
