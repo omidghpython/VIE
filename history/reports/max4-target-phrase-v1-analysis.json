@@ -1,0 +1,1176 @@
+{
+  "experiment": "max4_target_phrase_v1",
+  "baseline": "v3.2.4-max4",
+  "analysis_date_tehran": "2026-11-07",
+  "result_sha256": "5f3785518479b71144e5599dc541a036d3a5909b9f66a258e13e4ae5e80bf8f7",
+  "result_bytes": 301798,
+  "baseline_result_sha256": "9d96e341c291b334d5daab03fe732c722e1dcfc96837f909d6b9c256ad662e9e",
+  "settings_differences": {
+    "code_sha256": {
+      "baseline": "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+      "new": "1778d34806259264f87ff4e7c0a26ef7b4bc2b366425322c02a2a8558f329290"
+    }
+  },
+  "runtime_identity": {
+    "qwen_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "bitsandbytes": "0.50.2"
+    },
+    "backend": "LocalQwen"
+  },
+  "sample_identity_verified": true,
+  "static_prompts_and_other_settings_unchanged": true,
+  "hint_changes": [
+    {
+      "order": 39,
+      "old": "Final target: actor (person).",
+      "new": "Final target: actor and photographer (person)."
+    }
+  ],
+  "verification": {
+    "baseline": {
+      "questions": 40,
+      "structure_attempts_replayed": 47,
+      "review_decisions_replayed": 37,
+      "model_review_outputs_replayed": 33,
+      "code_only_review_decisions": 4,
+      "first_attempt_valid": 33,
+      "phase_histories_checked": 77,
+      "inner_zip_files_match": 45,
+      "summary_csv_review_regenerated_match": true
+    },
+    "new": {
+      "questions": 40,
+      "structure_attempts_replayed": 47,
+      "review_decisions_replayed": 37,
+      "model_review_outputs_replayed": 33,
+      "code_only_review_decisions": 4,
+      "first_attempt_valid": 33,
+      "phase_histories_checked": 77,
+      "inner_zip_files_match": 45,
+      "summary_csv_review_regenerated_match": true
+    }
+  },
+  "summary": {
+    "baseline": {
+      "requested": 40,
+      "structure_status": {
+        "valid": 37,
+        "invalid": 3
+      },
+      "single_node": 3,
+      "multiple_nodes": 34,
+      "valid_on_first_attempt": 33,
+      "review_status": {
+        "revise": 24,
+        "not_reviewed": 3,
+        "valid": 13
+      },
+      "review_source": {
+        "model": 33,
+        "not_reviewed": 3,
+        "root_rule": 3,
+        "geography_rule": 1
+      },
+      "judge_status": {
+        "revise": 20,
+        "not_called": 7,
+        "valid": 13
+      },
+      "review_response_status": {
+        "parsed": 33,
+        "not_reviewed": 3,
+        "not_called": 4
+      },
+      "invalid_review_responses": 0,
+      "review_format_error_kind": {},
+      "semantic_uncertainty_responses": 0,
+      "vague_reason_responses": 0,
+      "root_contract_status": {
+        "compatible": 32,
+        "not_checked": 5,
+        "mismatch": 3
+      },
+      "judge_calls_avoided_by_root_rule": 3,
+      "judge_calls_avoided_by_all_rules": 4,
+      "closing_fence_responses_recovered": 1,
+      "single_node_accepted_by_judge": 3,
+      "semantic_correctness_measured": false,
+      "answer_accuracy_measured": false,
+      "inference_backend": "LocalQwen",
+      "judge_role": "observation_only; same Qwen; at most one call per structurally valid tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+      "incomplete_questions": 0,
+      "backend_errors": 0,
+      "cost_including_previous_attempts": {
+        "structure": {
+          "llm_calls": 47,
+          "prompt_tokens": 29691,
+          "completion_tokens": 4611,
+          "total_tokens": 34302,
+          "execution_time_sec": 522.3771753000003,
+          "retrieval_steps": 0
+        },
+        "review": {
+          "llm_calls": 33,
+          "prompt_tokens": 13068,
+          "completion_tokens": 574,
+          "total_tokens": 13642,
+          "execution_time_sec": 67.89183680000042,
+          "retrieval_steps": 0
+        }
+      },
+      "total_cost": {
+        "llm_calls": 80,
+        "prompt_tokens": 42759,
+        "completion_tokens": 5185,
+        "total_tokens": 47944,
+        "execution_time_sec": 590.2690121000007,
+        "retrieval_steps": 0
+      },
+      "baselines_before_semantic_review": {
+        "v3.1": {
+          "requested": 40,
+          "structure_status": {
+            "invalid": 7,
+            "valid": 32,
+            "unknown": 1
+          },
+          "single_node": 4,
+          "multiple_nodes": 28,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2": {
+          "requested": 40,
+          "structure_status": {
+            "invalid": 20,
+            "valid": 20
+          },
+          "single_node": 20,
+          "multiple_nodes": 0,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.1": {
+          "requested": 40,
+          "structure_status": {
+            "invalid": 12,
+            "valid": 28
+          },
+          "single_node": 2,
+          "multiple_nodes": 26,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.2": {
+          "requested": 40,
+          "structure_status": {
+            "valid": 35,
+            "invalid": 5
+          },
+          "single_node": 2,
+          "multiple_nodes": 33,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.3": {
+          "requested": 40,
+          "structure_status": {
+            "valid": 35,
+            "invalid": 5
+          },
+          "single_node": 2,
+          "multiple_nodes": 33,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.4": {
+          "requested": 40,
+          "structure_status": {
+            "valid": 35,
+            "invalid": 5
+          },
+          "single_node": 2,
+          "multiple_nodes": 33,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        }
+      },
+      "note": "All requested questions are counted. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+      "whole_method_token_condition": {
+        "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+        "pilot_tokens": 47944,
+        "full_decomposed_tokens": null,
+        "full_token_condition_met": null,
+        "status": "pilot_below_reference_full_savings_not_established",
+        "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+        "standard_reference_tokens": 54222,
+        "standard_reference_status": {
+          "completed": 39,
+          "failed": 1
+        },
+        "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+        "remaining_tokens_below_historical_standard": 6277
+      }
+    },
+    "new": {
+      "requested": 40,
+      "structure_status": {
+        "valid": 37,
+        "invalid": 3
+      },
+      "single_node": 3,
+      "multiple_nodes": 34,
+      "valid_on_first_attempt": 33,
+      "review_status": {
+        "revise": 24,
+        "not_reviewed": 3,
+        "valid": 13
+      },
+      "review_source": {
+        "model": 33,
+        "not_reviewed": 3,
+        "root_rule": 3,
+        "geography_rule": 1
+      },
+      "judge_status": {
+        "revise": 20,
+        "not_called": 7,
+        "valid": 13
+      },
+      "review_response_status": {
+        "parsed": 33,
+        "not_reviewed": 3,
+        "not_called": 4
+      },
+      "invalid_review_responses": 0,
+      "review_format_error_kind": {},
+      "semantic_uncertainty_responses": 0,
+      "vague_reason_responses": 0,
+      "root_contract_status": {
+        "compatible": 32,
+        "not_checked": 5,
+        "mismatch": 3
+      },
+      "judge_calls_avoided_by_root_rule": 3,
+      "judge_calls_avoided_by_all_rules": 4,
+      "closing_fence_responses_recovered": 1,
+      "single_node_accepted_by_judge": 3,
+      "semantic_correctness_measured": false,
+      "answer_accuracy_measured": false,
+      "inference_backend": "LocalQwen",
+      "judge_role": "observation_only; same Qwen; at most one call per structurally valid tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+      "incomplete_questions": 0,
+      "backend_errors": 0,
+      "cost_including_previous_attempts": {
+        "structure": {
+          "llm_calls": 47,
+          "prompt_tokens": 29695,
+          "completion_tokens": 4614,
+          "total_tokens": 34309,
+          "execution_time_sec": 559.5813514000009,
+          "retrieval_steps": 0
+        },
+        "review": {
+          "llm_calls": 33,
+          "prompt_tokens": 13068,
+          "completion_tokens": 574,
+          "total_tokens": 13642,
+          "execution_time_sec": 73.26459569999997,
+          "retrieval_steps": 0
+        }
+      },
+      "total_cost": {
+        "llm_calls": 80,
+        "prompt_tokens": 42763,
+        "completion_tokens": 5188,
+        "total_tokens": 47951,
+        "execution_time_sec": 632.8459471000009,
+        "retrieval_steps": 0
+      },
+      "baselines_before_semantic_review": {
+        "v3.1": {
+          "requested": 40,
+          "structure_status": {
+            "invalid": 7,
+            "valid": 32,
+            "unknown": 1
+          },
+          "single_node": 4,
+          "multiple_nodes": 28,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2": {
+          "requested": 40,
+          "structure_status": {
+            "invalid": 20,
+            "valid": 20
+          },
+          "single_node": 20,
+          "multiple_nodes": 0,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.1": {
+          "requested": 40,
+          "structure_status": {
+            "invalid": 12,
+            "valid": 28
+          },
+          "single_node": 2,
+          "multiple_nodes": 26,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.2": {
+          "requested": 40,
+          "structure_status": {
+            "valid": 35,
+            "invalid": 5
+          },
+          "single_node": 2,
+          "multiple_nodes": 33,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.3": {
+          "requested": 40,
+          "structure_status": {
+            "valid": 35,
+            "invalid": 5
+          },
+          "single_node": 2,
+          "multiple_nodes": 33,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        },
+        "v3.2.4": {
+          "requested": 40,
+          "structure_status": {
+            "valid": 35,
+            "invalid": 5
+          },
+          "single_node": 2,
+          "multiple_nodes": 33,
+          "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+        }
+      },
+      "note": "All requested questions are counted. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+      "whole_method_token_condition": {
+        "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+        "pilot_tokens": 47951,
+        "full_decomposed_tokens": null,
+        "full_token_condition_met": null,
+        "status": "pilot_below_reference_full_savings_not_established",
+        "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+        "standard_reference_tokens": 54222,
+        "standard_reference_status": {
+          "completed": 39,
+          "failed": 1
+        },
+        "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+        "remaining_tokens_below_historical_standard": 6270
+      }
+    }
+  },
+  "per_question_comparison": [
+    {
+      "order": 1,
+      "question_id": "5ab3cecd5542992ade7c6eae",
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 753,
+          "review": 449
+        },
+        "new": {
+          "structure": 753,
+          "review": 449
+        }
+      }
+    },
+    {
+      "order": 2,
+      "question_id": "5ab42a2b5542996a3a969f5a",
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 1598,
+          "review": 0
+        },
+        "new": {
+          "structure": 1598,
+          "review": 0
+        }
+      }
+    },
+    {
+      "order": 3,
+      "question_id": "5a7d3f895542995f4f402248",
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 652,
+          "review": 385
+        },
+        "new": {
+          "structure": 652,
+          "review": 385
+        }
+      }
+    },
+    {
+      "order": 4,
+      "question_id": "5a778b345542992a6e59decf",
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 723,
+          "review": 412
+        },
+        "new": {
+          "structure": 723,
+          "review": 412
+        }
+      }
+    },
+    {
+      "order": 5,
+      "question_id": "5a8ceddb554299441c6b9f85",
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 721,
+          "review": 415
+        },
+        "new": {
+          "structure": 721,
+          "review": 415
+        }
+      }
+    },
+    {
+      "order": 6,
+      "question_id": "5a7e05f75542995f4f402394",
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 722,
+          "review": 406
+        },
+        "new": {
+          "structure": 722,
+          "review": 406
+        }
+      }
+    },
+    {
+      "order": 7,
+      "question_id": "5ab3306a55429969a97a80fd",
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 733,
+          "review": 435
+        },
+        "new": {
+          "structure": 733,
+          "review": 435
+        }
+      }
+    },
+    {
+      "order": 8,
+      "question_id": "5a7cfb2755429907fabef084",
+      "question": "What year did the director of The Quiet American die?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 666,
+          "review": 385
+        },
+        "new": {
+          "structure": 666,
+          "review": 385
+        }
+      }
+    },
+    {
+      "order": 9,
+      "question_id": "5ab201765542993be8fa98a4",
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 650,
+          "review": 375
+        },
+        "new": {
+          "structure": 650,
+          "review": 375
+        }
+      }
+    },
+    {
+      "order": 10,
+      "question_id": "5adbe27c55429947ff173854",
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 746,
+          "review": 435
+        },
+        "new": {
+          "structure": 746,
+          "review": 435
+        }
+      }
+    },
+    {
+      "order": 11,
+      "question_id": "5a8fa4d95542995b4424207b",
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 736,
+          "review": 425
+        },
+        "new": {
+          "structure": 736,
+          "review": 425
+        }
+      }
+    },
+    {
+      "order": 12,
+      "question_id": "5ac19ff35542991316484b61",
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 738,
+          "review": 422
+        },
+        "new": {
+          "structure": 738,
+          "review": 422
+        }
+      }
+    },
+    {
+      "order": 13,
+      "question_id": "5ab484415542990594ba9c44",
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 722,
+          "review": 427
+        },
+        "new": {
+          "structure": 722,
+          "review": 427
+        }
+      }
+    },
+    {
+      "order": 14,
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 694,
+          "review": 413
+        },
+        "new": {
+          "structure": 694,
+          "review": 413
+        }
+      }
+    },
+    {
+      "order": 15,
+      "question_id": "5abce1fa5542993a06baf993",
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 1481,
+          "review": 388
+        },
+        "new": {
+          "structure": 1481,
+          "review": 388
+        }
+      }
+    },
+    {
+      "order": 16,
+      "question_id": "5a77a7db5542995d8318124d",
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 718,
+          "review": 407
+        },
+        "new": {
+          "structure": 718,
+          "review": 407
+        }
+      }
+    },
+    {
+      "order": 17,
+      "question_id": "5abe94fd55429965af743f37",
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 730,
+          "review": 416
+        },
+        "new": {
+          "structure": 730,
+          "review": 416
+        }
+      }
+    },
+    {
+      "order": 18,
+      "question_id": "5a7d598d5542995f4f402262",
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 1713,
+          "review": 450
+        },
+        "new": {
+          "structure": 1713,
+          "review": 450
+        }
+      }
+    },
+    {
+      "order": 19,
+      "question_id": "5ae73ddb554299572ea5478d",
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 689,
+          "review": 0
+        },
+        "new": {
+          "structure": 689,
+          "review": 0
+        }
+      }
+    },
+    {
+      "order": 20,
+      "question_id": "5ade5a645542997c77adee0d",
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 1589,
+          "review": 407
+        },
+        "new": {
+          "structure": 1589,
+          "review": 407
+        }
+      }
+    },
+    {
+      "order": 21,
+      "question_id": "5a87bc3f5542996432c57275",
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 735,
+          "review": 0
+        },
+        "new": {
+          "structure": 735,
+          "review": 0
+        }
+      }
+    },
+    {
+      "order": 22,
+      "question_id": "5ae38b115542990afbd1e183",
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 728,
+          "review": 440
+        },
+        "new": {
+          "structure": 728,
+          "review": 440
+        }
+      }
+    },
+    {
+      "order": 23,
+      "question_id": "5a89bf18554299669944a591",
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 730,
+          "review": 439
+        },
+        "new": {
+          "structure": 730,
+          "review": 439
+        }
+      }
+    },
+    {
+      "order": 24,
+      "question_id": "5ae0a5825542993d6555ebdf",
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 705,
+          "review": 402
+        },
+        "new": {
+          "structure": 705,
+          "review": 402
+        }
+      }
+    },
+    {
+      "order": 25,
+      "question_id": "5add9bfa5542990dbb2f7e85",
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 684,
+          "review": 399
+        },
+        "new": {
+          "structure": 684,
+          "review": 399
+        }
+      }
+    },
+    {
+      "order": 26,
+      "question_id": "5a75a0725542992d0ec05fc9",
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 663,
+          "review": 398
+        },
+        "new": {
+          "structure": 663,
+          "review": 398
+        }
+      }
+    },
+    {
+      "order": 27,
+      "question_id": "5ac43e0f554299076e296d8e",
+      "question": "What country are both Dafeng District and Jixi in?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 720,
+          "review": 410
+        },
+        "new": {
+          "structure": 720,
+          "review": 410
+        }
+      }
+    },
+    {
+      "order": 28,
+      "question_id": "5a8ea7f25542995085b37468",
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 717,
+          "review": 406
+        },
+        "new": {
+          "structure": 717,
+          "review": 406
+        }
+      }
+    },
+    {
+      "order": 29,
+      "question_id": "5a8701b3554299211dda2b9a",
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 683,
+          "review": 402
+        },
+        "new": {
+          "structure": 683,
+          "review": 402
+        }
+      }
+    },
+    {
+      "order": 30,
+      "question_id": "5ac3dfee554299204fd21eab",
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 696,
+          "review": 417
+        },
+        "new": {
+          "structure": 696,
+          "review": 417
+        }
+      }
+    },
+    {
+      "order": 31,
+      "question_id": "5a7f7b3b5542992097ad2f81",
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 735,
+          "review": 432
+        },
+        "new": {
+          "structure": 735,
+          "review": 432
+        }
+      }
+    },
+    {
+      "order": 32,
+      "question_id": "5ae3d2715542990afbd1e1e9",
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 1673,
+          "review": 0
+        },
+        "new": {
+          "structure": 1673,
+          "review": 0
+        }
+      }
+    },
+    {
+      "order": 33,
+      "question_id": "5ae077735542993d6555eb6d",
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 696,
+          "review": 411
+        },
+        "new": {
+          "structure": 696,
+          "review": 411
+        }
+      }
+    },
+    {
+      "order": 34,
+      "question_id": "5adf4b335542993a75d264a5",
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 684,
+          "review": 405
+        },
+        "new": {
+          "structure": 684,
+          "review": 405
+        }
+      }
+    },
+    {
+      "order": 35,
+      "question_id": "5a776b82554299373536026f",
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 1506,
+          "review": 410
+        },
+        "new": {
+          "structure": 1506,
+          "review": 410
+        }
+      }
+    },
+    {
+      "order": 36,
+      "question_id": "5ac0b1835542992a796ded65",
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 679,
+          "review": 0
+        },
+        "new": {
+          "structure": 679,
+          "review": 0
+        }
+      }
+    },
+    {
+      "order": 37,
+      "question_id": "5a80afcf554299485f5986b9",
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 705,
+          "review": 425
+        },
+        "new": {
+          "structure": 705,
+          "review": 425
+        }
+      }
+    },
+    {
+      "order": 38,
+      "question_id": "5ae254565542992decbdccbb",
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 675,
+          "review": 394
+        },
+        "new": {
+          "structure": 675,
+          "review": 394
+        }
+      }
+    },
+    {
+      "order": 39,
+      "question_id": "5ae14b0655429920d52343a6",
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "changed_result_fields": [
+        "structure.result"
+      ],
+      "generation_and_review_results_identical": false,
+      "token_totals": {
+        "baseline": {
+          "structure": 1418,
+          "review": 0
+        },
+        "new": {
+          "structure": 1425,
+          "review": 0
+        }
+      }
+    },
+    {
+      "order": 40,
+      "question_id": "5ae409d955429970de88d89d",
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "changed_result_fields": [],
+      "generation_and_review_results_identical": true,
+      "token_totals": {
+        "baseline": {
+          "structure": 696,
+          "review": 0
+        },
+        "new": {
+          "structure": 696,
+          "review": 0
+        }
+      }
+    }
+  ],
+  "invalid_question_orders": [
+    2,
+    32,
+    39
+  ],
+  "changed_output_orders": [
+    39
+  ],
+  "q39": {
+    "question": "Bangalore Naatkal starred which actor and photographer?",
+    "baseline": {
+      "question_id": "5ae14b0655429920d52343a6",
+      "phases": {
+        "structure": {
+          "status": "invalid",
+          "error": "Decomposition remained structurally invalid after two attempts.",
+          "result": {
+            "decomposition_trace": [
+              {
+                "stage": "structure",
+                "attempt": 1,
+                "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+                "status": "invalid",
+                "error": "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+              },
+              {
+                "stage": "structure",
+                "attempt": 2,
+                "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q1\"}",
+                "status": "invalid",
+                "error": "q2: each non-root node needs exactly one consumer; no shared or orphan nodes."
+              }
+            ],
+            "structural_status": "invalid",
+            "semantic_status": "unreviewed"
+          },
+          "telemetry": {
+            "retrieval_steps": 0,
+            "llm_calls": 2,
+            "prompt_tokens": 1294,
+            "completion_tokens": 124,
+            "total_tokens": 1418,
+            "execution_time_sec": 13.486782800000128
+          },
+          "history": [
+            {
+              "status": "invalid",
+              "error": "Decomposition remained structurally invalid after two attempts.",
+              "telemetry": {
+                "retrieval_steps": 0,
+                "llm_calls": 2,
+                "prompt_tokens": 1294,
+                "completion_tokens": 124,
+                "total_tokens": 1418,
+                "execution_time_sec": 13.486782800000128
+              }
+            }
+          ]
+        }
+      }
+    },
+    "new": {
+      "question_id": "5ae14b0655429920d52343a6",
+      "phases": {
+        "structure": {
+          "status": "invalid",
+          "error": "Decomposition remained structurally invalid after two attempts.",
+          "result": {
+            "decomposition_trace": [
+              {
+                "stage": "structure",
+                "attempt": 1,
+                "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"}],\"final\":\"q2\"}",
+                "status": "invalid",
+                "error": "q1: each non-root node needs exactly one consumer; no shared or orphan nodes."
+              },
+              {
+                "stage": "structure",
+                "attempt": 2,
+                "raw_output": "{\"nodes\":[{\"id\":\"q1\",\"question\":\"Which actor starred in Bangalore Naatkal?\",\"dependencies\":{},\"answer_type\":\"person\"},{\"id\":\"q2\",\"question\":\"Which photographer starred in Bangalore Naatkal?\",\"dependencies\":{\"q1\":\"person\"},\"answer_type\":\"person\"}],\"final\":\"q2\"}",
+                "status": "invalid",
+                "error": "q2: placeholders and declared dependencies must match exactly."
+              }
+            ],
+            "structural_status": "invalid",
+            "semantic_status": "unreviewed"
+          },
+          "telemetry": {
+            "retrieval_steps": 0,
+            "llm_calls": 2,
+            "prompt_tokens": 1298,
+            "completion_tokens": 127,
+            "total_tokens": 1425,
+            "execution_time_sec": 14.406522200000154
+          },
+          "history": [
+            {
+              "status": "invalid",
+              "error": "Decomposition remained structurally invalid after two attempts.",
+              "telemetry": {
+                "retrieval_steps": 0,
+                "llm_calls": 2,
+                "prompt_tokens": 1298,
+                "completion_tokens": 127,
+                "total_tokens": 1425,
+                "execution_time_sec": 14.406522200000154
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "new_live_model_calls_during_analysis": 0,
+  "semantic_accuracy_measured_independently": false,
+  "conclusion": "No improvement in targeted case39; still splits roles into separate nodes. New attempt1 changes final to q2 leaving q1 orphan; attempt2 declares q1 dependency but lacks corresponding slot in q2 text. All other39 generation/review results identical. Preserve original accepted max4; no promotion recommendation.",
+  "limits": [
+    "Stored identity and raw-output replay, not independent observation of GPU execution.",
+    "No raw full chat/token IDs in supplied artifact; hints reconstructed from matching source hash, token totals checked from telemetry, not independently retokenized.",
+    "No new model inference or full RAG execution.",
+    "One known development failure, not an independent generalization benchmark.",
+    "Timing differences between runs are descriptive and do not isolate the effect of a few extra tokens."
+  ]
+}

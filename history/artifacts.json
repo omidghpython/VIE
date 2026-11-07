@@ -248,6 +248,14 @@
           "sha256": "e71b029be9c15f99a0d54afcc53234659556a5c446944631c262b2a37018189a"
         }
       ]
+    },
+    {
+      "version": "max4_target_phrase_v1",
+      "path": "history/results/max4_target_phrase_v1.zip",
+      "original_filename": "results_max4_target_phrase_v1.zip",
+      "bytes": 301798,
+      "sha256": "5f3785518479b71144e5599dc541a036d3a5909b9f66a258e13e4ae5e80bf8f7",
+      "kind": "user_supplied_actual_run"
     }
   ],
   "source_packages": [
@@ -400,14 +408,14 @@
   },
   "current_experiment": {
     "id": "max4_target_phrase_v1",
-    "status": "prepared_pending_live_results",
+    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
     "accepted_operadic_baseline": "v3.2.4-max4",
     "scope": "Proposal5 only: display known coordinated person roles; preserve validator head/type, static prompts and budgets.",
     "package_path": "hotpotqa_max4_target_phrase_v1.zip",
     "package_sha256": "aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c",
     "code_sha256": "1778d34806259264f87ff4e7c0a26ef7b4bc2b366425322c02a2a8558f329290",
     "offline_tests_passed": 135,
-    "live_model_calls": 0,
+    "live_model_calls": 80,
     "expected_results_file": "results/max4_target_phrase_v1_results.zip",
     "verification": "history/max4_target_phrase_v1_verification.json",
     "protocol": "history/reports/max4-target-phrase-v1-protocol.txt",
@@ -419,7 +427,17 @@
     "delivery_commit": "1e23ba43dcaf396e79670661b6edbc21b7fc8b7e",
     "delivery_branch": "downloads/operadic-decomposition-v0.2.0",
     "text_guide_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt",
-    "homepage_delivery_verified": true
+    "homepage_delivery_verified": true,
+    "analysis_live_model_calls": 0,
+    "result_artifact": "history/results/max4_target_phrase_v1.zip",
+    "report": "history/reports/max4-target-phrase-v1-analysis.md",
+    "analysis_data": "history/reports/max4-target-phrase-v1-analysis.json",
+    "recommendation": "Do not promote: target case39 still splits roles and is structurally invalid; all39 other generation/review outputs identical. Structure37/40 unchanged; tokens47944->47951(+7). Original max4 remains accepted.",
+    "result_delivery_commit": "b7030bf4ba9a9ae5904c169e5d61131256a280c6",
+    "result_download_url": "https://raw.githubusercontent.com/omidghpython/VIE/b7030bf4ba9a9ae5904c169e5d61131256a280c6/results_max4_target_phrase_v1.zip",
+    "analysis_download_url": "https://raw.githubusercontent.com/omidghpython/VIE/b7030bf4ba9a9ae5904c169e5d61131256a280c6/analysis_max4_target_phrase_v1_FA.txt",
+    "result_remote_download_verified": true,
+    "next_user_decision": "pending"
   },
   "experiment_history": [
     {
