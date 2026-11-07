@@ -579,6 +579,24 @@
           "sha256": "b9541fa5e81cc1470e373d894937519f966bcc625f360ac93a84c7901171cab8"
         }
       ]
+    },
+    {
+      "id": "2026-11-07-two-phase-authorization",
+      "before_implementation_commit": "099b548",
+      "files": [
+        {
+          "path": "history/conversations/2026-11-07-before-explicit-target-v1.md",
+          "sha256": "0156512c8fdf37bf5c06613eccbf145911ab9c65199a46feea4cbcf3b74d2848"
+        },
+        {
+          "path": "history/conversations/2026-11-07-two-phase-proposal.txt",
+          "sha256": "0d924b88d9d8fefff2ef68258b5483dfc9c6a080e4a67b5ec6c4a3c149363961"
+        },
+        {
+          "path": "history/conversations/2026-11-07-user-copy-of-33-point-response.txt",
+          "sha256": "2bb4a3a88f09b269fd24d59ead281da1a3c4466e81e115a88a5de43324751e3a"
+        }
+      ]
     }
   ],
   "delivery_policy": {
@@ -587,5 +605,33 @@
     "resolve_default_branch_each_delivery": true,
     "current_default_branch": "downloads/operadic-decomposition-v0.2.0",
     "user_requested_date_tehran": "2026-11-07"
+  },
+  "phase_one_delivery": {
+    "id": "max4_explicit_target_v1",
+    "status": "built_offline_verified_live_results_pending",
+    "accepted_baseline": "v3.2.4-max4",
+    "commit": "0a09562862b10e30342634a648e5366bd5cd2249",
+    "artifacts": [
+      {
+        "path": "hotpotqa_max4_explicit_target_v1.zip",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/0a09562862b10e30342634a648e5366bd5cd2249/hotpotqa_max4_explicit_target_v1.zip",
+        "sha256": "3f0daf3338e6c65dc7e0c20ed844b3694c12841e5dbaa6b0064b21de9f15f915",
+        "bytes": 275220,
+        "download_verified": true
+      },
+      {
+        "path": "hotpotqa_max4_explicit_target_v1.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/0a09562862b10e30342634a648e5366bd5cd2249/hotpotqa_max4_explicit_target_v1.txt",
+        "sha256": "6419b84cfad88c1edf393ade48d0ac1b70f5b0ed5a21cf55541186b59ef1c61f",
+        "bytes": 4266,
+        "download_verified": true
+      }
+    ],
+    "offline_tests_passed": 147,
+    "live_model_calls": 0,
+    "report": "history/reports/max4-explicit-target-v1.md",
+    "preflight": "history/reports/max4-explicit-target-v1-preflight.json",
+    "source_diff": "history/reports/max4-explicit-target-v1-source.diff",
+    "tests": "history/reports/max4-explicit-target-v1-tests.txt"
   }
 }

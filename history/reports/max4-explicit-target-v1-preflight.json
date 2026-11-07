@@ -1,0 +1,1470 @@
+{
+  "release": "max4_explicit_target_v1",
+  "baseline": "v3.2.4-max4",
+  "live_model_calls": 0,
+  "live_results": "pending",
+  "code_sha256": "a0aa625146090ac31f0e8f0415a9c2a491adc462d80f60138fff7e62c352190b",
+  "changed_existing_files": [
+    "decomposition_pilot.py",
+    "hotpotqa_operadic_rag/decomposition.py",
+    "hotpotqa_operadic_rag/semantic_checks.py",
+    "run_decomposition_test.bat",
+    "tests/test_decomposition_pilot.py",
+    "tests/test_grounded_revision.py",
+    "tests/test_max4.py",
+    "tests/test_review_contract_reporting.py",
+    "tests/test_semantic_budget.py"
+  ],
+  "hint_changed_indices": [
+    5,
+    15,
+    25,
+    33,
+    35,
+    39
+  ],
+  "new_root_rejections_on_saved_baseline": [
+    5,
+    15,
+    25,
+    33
+  ],
+  "rows": [
+    {
+      "index": 1,
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "other",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "other",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 2,
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "old_target": {
+        "type": "person",
+        "head": "figure"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "figure"
+      },
+      "hint_changed": false
+    },
+    {
+      "index": 3,
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "not_checked",
+        "expected_mode": null,
+        "root_id": "q1",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "not_checked",
+        "expected_mode": null,
+        "root_id": "q1",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 4,
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "old_target": {
+        "type": "person",
+        "head": "who"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "who"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 5,
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "old_target": {
+        "type": "other",
+        "head": "profession"
+      },
+      "new_target": {
+        "type": "other",
+        "head": "profession",
+        "explicit_other": true
+      },
+      "hint_changed": true,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "other",
+          "head": "profession"
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "profession"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "other",
+          "head": "profession",
+          "explicit_other": true
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "profession",
+          "explicit_other": true
+        },
+        "errors": [
+          "q3: original target 'profession' requires other, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 7,
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "old_target": {
+        "type": "organization",
+        "head": "company"
+      },
+      "new_target": {
+        "type": "organization",
+        "head": "company"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 8,
+      "question": "What year did the director of The Quiet American die?",
+      "old_target": {
+        "type": "date",
+        "head": "year"
+      },
+      "new_target": {
+        "type": "date",
+        "head": "year"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "date",
+        "expected_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "root_question_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "date",
+        "expected_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "root_question_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 9,
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "old_target": {
+        "type": "date",
+        "head": "year"
+      },
+      "new_target": {
+        "type": "date",
+        "head": "year"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q1",
+        "root_answer_type": "date",
+        "expected_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "root_question_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q1",
+        "root_answer_type": "date",
+        "expected_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "root_question_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 10,
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "old_target": {
+        "type": "organization",
+        "head": "university"
+      },
+      "new_target": {
+        "type": "organization",
+        "head": "university"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "university"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "university"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "university"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "university"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 11,
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "old_target": {
+        "type": "place",
+        "head": "airport"
+      },
+      "new_target": {
+        "type": "place",
+        "head": "airport"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "place",
+          "head": "airport"
+        },
+        "root_question_target": {
+          "type": "place",
+          "head": "airport"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "place",
+          "head": "airport"
+        },
+        "root_question_target": {
+          "type": "place",
+          "head": "airport"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 12,
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 13,
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 14,
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "old_target": {
+        "type": "number",
+        "head": "how many"
+      },
+      "new_target": {
+        "type": "number",
+        "head": "how many"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "number",
+        "expected_target": {
+          "type": "number",
+          "head": "how many"
+        },
+        "root_question_target": {
+          "type": "number",
+          "head": "how long"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "number",
+        "expected_target": {
+          "type": "number",
+          "head": "how many"
+        },
+        "root_question_target": {
+          "type": "number",
+          "head": "how long"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 15,
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "old_target": {
+        "type": "other",
+        "head": "nationality"
+      },
+      "new_target": {
+        "type": "other",
+        "head": "nationality",
+        "explicit_other": true
+      },
+      "hint_changed": true,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "other",
+          "head": "nationality"
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "nationality"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "other",
+          "head": "nationality",
+          "explicit_other": true
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "nationality",
+          "explicit_other": true
+        },
+        "errors": [
+          "q2: original target 'nationality' requires other, but final answer_type=place. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "old_target": {
+        "type": "person",
+        "head": "author"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "author"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "author"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "author"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 17,
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 18,
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "old_target": {
+        "type": "person",
+        "head": "director"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "director"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "director"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "director"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "director"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "director"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 19,
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "old_target": {
+        "type": "person",
+        "head": "actress"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "actress"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "person",
+          "head": "actress"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "actress"
+        },
+        "errors": [
+          "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "person",
+          "head": "actress"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "actress"
+        },
+        "errors": [
+          "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    },
+    {
+      "index": 20,
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "old_target": {
+        "type": "place",
+        "head": "city"
+      },
+      "new_target": {
+        "type": "place",
+        "head": "city"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "place",
+          "head": "city"
+        },
+        "root_question_target": {
+          "type": "place",
+          "head": "city"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "place",
+          "head": "city"
+        },
+        "root_question_target": {
+          "type": "place",
+          "head": "city"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 21,
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": null,
+        "root_question_target": {
+          "type": "place",
+          "head": "location"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": null,
+        "root_question_target": {
+          "type": "place",
+          "head": "location"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 22,
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "old_target": {
+        "type": "person",
+        "head": "who"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "who"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 23,
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 24,
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 25,
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "old_target": {
+        "type": "other",
+        "head": "type"
+      },
+      "new_target": {
+        "type": "other",
+        "head": "type of product",
+        "explicit_other": true
+      },
+      "hint_changed": true,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "other",
+          "head": "type"
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "type"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "other",
+          "head": "type of product",
+          "explicit_other": true
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "type of product",
+          "explicit_other": true
+        },
+        "errors": [
+          "q2: original target 'type of product' requires other, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "not_checked",
+        "expected_mode": null,
+        "root_id": "q1",
+        "root_answer_type": "person",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "not_checked",
+        "expected_mode": null,
+        "root_id": "q1",
+        "root_answer_type": "person",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 27,
+      "question": "What country are both Dafeng District and Jixi in?",
+      "old_target": {
+        "type": "place",
+        "head": "country"
+      },
+      "new_target": {
+        "type": "place",
+        "head": "country"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "place",
+          "head": "country"
+        },
+        "root_question_target": {
+          "type": "place",
+          "head": "country"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "place",
+        "expected_target": {
+          "type": "place",
+          "head": "country"
+        },
+        "root_question_target": {
+          "type": "place",
+          "head": "country"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 28,
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "boolean",
+        "root_id": "q3",
+        "root_answer_type": "boolean",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 29,
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "old_target": {
+        "type": "organization",
+        "head": "organization"
+      },
+      "new_target": {
+        "type": "organization",
+        "head": "organization"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "organization"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "organization"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "organization"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "organization"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 30,
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "old_target": {
+        "type": "work",
+        "head": "manga"
+      },
+      "new_target": {
+        "type": "work",
+        "head": "manga"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "work",
+          "head": "manga"
+        },
+        "root_question_target": {
+          "type": "work",
+          "head": "manga"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "work",
+          "head": "manga"
+        },
+        "root_question_target": {
+          "type": "work",
+          "head": "manga"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 31,
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q3",
+        "root_answer_type": "work",
+        "expected_target": null,
+        "root_question_target": null,
+        "errors": []
+      }
+    },
+    {
+      "index": 32,
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "old_target": null,
+      "new_target": null,
+      "hint_changed": false
+    },
+    {
+      "index": 33,
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "old_target": {
+        "type": "other",
+        "head": "type"
+      },
+      "new_target": {
+        "type": "other",
+        "head": "type of sprite",
+        "explicit_other": true
+      },
+      "hint_changed": true,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "other",
+          "head": "type"
+        },
+        "root_question_target": null,
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "other",
+          "head": "type of sprite",
+          "explicit_other": true
+        },
+        "root_question_target": null,
+        "errors": [
+          "q2: original target 'type of sprite' requires other, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    },
+    {
+      "index": 34,
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "old_target": {
+        "type": "organization",
+        "head": "company"
+      },
+      "new_target": {
+        "type": "organization",
+        "head": "company"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "organization",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 35,
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "old_target": {
+        "type": "other",
+        "head": "currency"
+      },
+      "new_target": {
+        "type": "other",
+        "head": "currency",
+        "explicit_other": true
+      },
+      "hint_changed": true,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "other",
+        "expected_target": {
+          "type": "other",
+          "head": "currency"
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "currency"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "other",
+        "expected_target": {
+          "type": "other",
+          "head": "currency",
+          "explicit_other": true
+        },
+        "root_question_target": {
+          "type": "other",
+          "head": "currency",
+          "explicit_other": true
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 36,
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "old_target": {
+        "type": "organization",
+        "head": "company"
+      },
+      "new_target": {
+        "type": "organization",
+        "head": "company"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "boolean",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": null,
+        "errors": [
+          "q2: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+        ]
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "boolean",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": null,
+        "errors": [
+          "q2: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+        ]
+      }
+    },
+    {
+      "index": 37,
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "old_target": {
+        "type": "person",
+        "head": "who"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "who"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "person",
+        "expected_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "who"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 38,
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "old_target": {
+        "type": "date",
+        "head": "year"
+      },
+      "new_target": {
+        "type": "date",
+        "head": "year"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "date",
+        "expected_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "root_question_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "errors": []
+      },
+      "new_root_check": {
+        "status": "compatible",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "date",
+        "expected_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "root_question_target": {
+          "type": "date",
+          "head": "year"
+        },
+        "errors": []
+      }
+    },
+    {
+      "index": 39,
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "old_target": {
+        "type": "person",
+        "head": "actor"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "actor and photographer"
+      },
+      "hint_changed": true
+    },
+    {
+      "index": 40,
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "old_target": {
+        "type": "person",
+        "head": "singer"
+      },
+      "new_target": {
+        "type": "person",
+        "head": "singer"
+      },
+      "hint_changed": false,
+      "old_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "person",
+          "head": "singer"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "singer"
+        },
+        "errors": [
+          "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      },
+      "new_root_check": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "person",
+          "head": "singer"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "singer"
+        },
+        "errors": [
+          "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    }
+  ]
+}
