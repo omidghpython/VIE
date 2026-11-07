@@ -386,7 +386,9 @@
       "filename": "hotpotqa_max4_target_phrase_v1.zip",
       "sha256": "aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c",
       "bytes": 270107,
-      "files": 60
+      "files": 60,
+      "commit": "52a44265dc37f04ff28c1d608fee09367c592cd9",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/52a44265dc37f04ff28c1d608fee09367c592cd9/hotpotqa_max4_target_phrase_v1.zip"
     }
   ],
   "original_v31_source": {
@@ -408,7 +410,9 @@
     "protocol": "history/reports/max4-target-phrase-v1-protocol.txt",
     "input_audit": "history/reports/max4-target-phrase-v1-input-audit.json",
     "semantic_accuracy_measured_independently": false,
-    "direct_download_verified": false
+    "direct_download_verified": true,
+    "code_commit": "52a44265dc37f04ff28c1d608fee09367c592cd9",
+    "download_url": "https://raw.githubusercontent.com/omidghpython/VIE/52a44265dc37f04ff28c1d608fee09367c592cd9/hotpotqa_max4_target_phrase_v1.zip"
   },
   "experiment_history": [
     {
