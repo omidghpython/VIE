@@ -809,7 +809,7 @@
     {
       "id": "max4_01_structure_messages_v1",
       "baseline": "v3.2.4-max4",
-      "status": "tested_packaged_live_results_pending",
+      "status": "received_and_analyzed",
       "tests_passed": 131,
       "source_code_sha256": "b24a445cbe3c4bfd473e5c3a55021a1913f91d1dd4113e0cfe11ba2c87f18e67",
       "preflight": "history/reports/max4_01_structure_messages_v1-preflight.json",
@@ -830,12 +830,43 @@
           "download_verified": true
         }
       ],
-      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+      "latest_result": {
+        "id": "max4_01_structure_messages_v1",
+        "result_status": "received_and_analyzed",
+        "source_identity_verified": true,
+        "recorded_code_sha256": "b24a445cbe3c4bfd473e5c3a55021a1913f91d1dd4113e0cfe11ba2c87f18e67",
+        "delivered_code_sha256": "b24a445cbe3c4bfd473e5c3a55021a1913f91d1dd4113e0cfe11ba2c87f18e67",
+        "result": {
+          "path": "history/results/max4_01_structure_messages_v1_results.zip",
+          "sha256": "b3bfc3887550107c644be186f0e11a40ad491d4ee2f7a38910e7e0027afe6918",
+          "bytes": 154651
+        },
+        "analysis": "history/reports/max4_01_structure_messages_v1-results-analysis.md",
+        "analysis_json": "history/reports/max4_01_structure_messages_v1-results-analysis.json",
+        "delivery": [
+          {
+            "path": "max4_01_structure_messages_v1_results.zip",
+            "sha256": "b3bfc3887550107c644be186f0e11a40ad491d4ee2f7a38910e7e0027afe6918",
+            "bytes": 154651,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_01_structure_messages_v1_results.zip",
+            "download_verified": true
+          },
+          {
+            "path": "max4_01_structure_messages_v1_results_analysis_FA.txt",
+            "sha256": "ad73c7337685f41489271c9ceef30927d04d2f8962e8ecabda8139bda520abc3",
+            "bytes": 3425,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_01_structure_messages_v1_results_analysis_FA.txt",
+            "download_verified": true
+          }
+        ],
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+      }
     },
     {
       "id": "max4_02_relation_diagnostics_v1",
       "baseline": "v3.2.4-max4",
-      "status": "tested_packaged_live_results_pending",
+      "status": "received_analyzed_source_identity_unresolved",
       "tests_passed": 138,
       "source_code_sha256": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d",
       "preflight": "history/reports/max4_02_relation_diagnostics_v1-preflight.json",
@@ -856,12 +887,43 @@
           "download_verified": true
         }
       ],
-      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+      "latest_result": {
+        "id": "max4_02_relation_diagnostics_v1",
+        "result_status": "received_analyzed_source_identity_unresolved",
+        "source_identity_verified": false,
+        "recorded_code_sha256": "ab0a6bd8f80f320019f936df57d12b2f82cf1d3c0e45ff3e0210390d7aff7690",
+        "delivered_code_sha256": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d",
+        "result": {
+          "path": "history/results/max4_02_relation_diagnostics_v1_results.zip",
+          "sha256": "19244ddababaa9c2159e2c81b7afaf34952b171be0057ae966ba435e3f723901",
+          "bytes": 161680
+        },
+        "analysis": "history/reports/max4_02_relation_diagnostics_v1-results-analysis.md",
+        "analysis_json": "history/reports/max4_02_relation_diagnostics_v1-results-analysis.json",
+        "delivery": [
+          {
+            "path": "max4_02_relation_diagnostics_v1_results.zip",
+            "sha256": "19244ddababaa9c2159e2c81b7afaf34952b171be0057ae966ba435e3f723901",
+            "bytes": 161680,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_02_relation_diagnostics_v1_results.zip",
+            "download_verified": true
+          },
+          {
+            "path": "max4_02_relation_diagnostics_v1_results_analysis_FA.txt",
+            "sha256": "f40f4b4ef774bbe1db6d373e424b7524723b0c795f4ed636df8d47f469d078fb",
+            "bytes": 2966,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_02_relation_diagnostics_v1_results_analysis_FA.txt",
+            "download_verified": true
+          }
+        ],
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+      }
     },
     {
       "id": "max4_03_target_patch_v1",
       "baseline": "v3.2.4-max4",
-      "status": "tested_packaged_live_results_pending",
+      "status": "received_analyzed_source_identity_unresolved",
       "tests_passed": 138,
       "source_code_sha256": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
       "preflight": "history/reports/max4_03_target_patch_v1-preflight.json",
@@ -882,12 +944,44 @@
           "download_verified": true
         }
       ],
-      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+      "latest_result": {
+        "id": "max4_03_target_patch_v1",
+        "result_status": "received_analyzed_source_identity_unresolved",
+        "source_identity_verified": false,
+        "recorded_code_sha256": "fd39c584a909a00a985397475f0e7765d5cadb0d6b2b0b28b3ece7ed3a1875f1",
+        "delivered_code_sha256": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
+        "result": {
+          "path": "history/results/max4_03_target_patch_v1_repair_results.zip",
+          "sha256": "981e67468cabdfaa56187d931c91b4e4e4c49120350eec05bd1276989a1892a7",
+          "bytes": 162423
+        },
+        "analysis": "history/reports/max4_03_target_patch_v1-results-analysis.md",
+        "analysis_json": "history/reports/max4_03_target_patch_v1-results-analysis.json",
+        "delivery": [
+          {
+            "path": "max4_03_target_patch_v1_repair_results.zip",
+            "sha256": "981e67468cabdfaa56187d931c91b4e4e4c49120350eec05bd1276989a1892a7",
+            "bytes": 162423,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_03_target_patch_v1_repair_results.zip",
+            "download_verified": true
+          },
+          {
+            "path": "max4_03_target_patch_v1_repair_results_analysis_FA.txt",
+            "sha256": "a8bf3daab6f6f40969bf2f56e081084cc0b3e317f38ce2289885f5e987e29fa5",
+            "bytes": 4854,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_03_target_patch_v1_repair_results_analysis_FA.txt",
+            "download_verified": true
+          }
+        ],
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+      },
+      "extract_result_status": "not_received"
     },
     {
       "id": "max4_04_constraint_diagnostics_v1",
       "baseline": "v3.2.4-max4",
-      "status": "tested_packaged_live_results_pending",
+      "status": "received_and_analyzed",
       "tests_passed": 138,
       "source_code_sha256": "547f1ad893498b9aba558bead0301e72e2b1fb44140cc44c44b98753a7f91ad6",
       "preflight": "history/reports/max4_04_constraint_diagnostics_v1-preflight.json",
@@ -908,12 +1002,43 @@
           "download_verified": true
         }
       ],
-      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+      "latest_result": {
+        "id": "max4_04_constraint_diagnostics_v1",
+        "result_status": "received_and_analyzed",
+        "source_identity_verified": true,
+        "recorded_code_sha256": "547f1ad893498b9aba558bead0301e72e2b1fb44140cc44c44b98753a7f91ad6",
+        "delivered_code_sha256": "547f1ad893498b9aba558bead0301e72e2b1fb44140cc44c44b98753a7f91ad6",
+        "result": {
+          "path": "history/results/max4_04_constraint_diagnostics_v1_results.zip",
+          "sha256": "7e15f0aeff73b609fca35bf3b3b5040c9777f7276dd309a859e2fd4ec3a2572b",
+          "bytes": 161999
+        },
+        "analysis": "history/reports/max4_04_constraint_diagnostics_v1-results-analysis.md",
+        "analysis_json": "history/reports/max4_04_constraint_diagnostics_v1-results-analysis.json",
+        "delivery": [
+          {
+            "path": "max4_04_constraint_diagnostics_v1_results.zip",
+            "sha256": "7e15f0aeff73b609fca35bf3b3b5040c9777f7276dd309a859e2fd4ec3a2572b",
+            "bytes": 161999,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_04_constraint_diagnostics_v1_results.zip",
+            "download_verified": true
+          },
+          {
+            "path": "max4_04_constraint_diagnostics_v1_results_analysis_FA.txt",
+            "sha256": "4ae5594355644867e183ab7bdc352a33e068ddae2283013ff95184c9c7ec5ab1",
+            "bytes": 2736,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_04_constraint_diagnostics_v1_results_analysis_FA.txt",
+            "download_verified": true
+          }
+        ],
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+      }
     },
     {
       "id": "max4_05_decomposition_diagnostics_v1",
       "baseline": "v3.2.4-max4",
-      "status": "tested_packaged_live_results_pending",
+      "status": "received_and_analyzed",
       "tests_passed": 134,
       "source_code_sha256": "4c2f9f9933c39b4740e087e6f9676cfa37bcfde6b450fa8b8ca2e483dc65f9de",
       "preflight": "history/reports/max4_05_decomposition_diagnostics_v1-preflight.json",
@@ -934,7 +1059,59 @@
           "download_verified": true
         }
       ],
-      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+      "latest_result": {
+        "id": "max4_05_decomposition_diagnostics_v1",
+        "result_status": "received_and_analyzed",
+        "source_identity_verified": true,
+        "recorded_code_sha256": "4c2f9f9933c39b4740e087e6f9676cfa37bcfde6b450fa8b8ca2e483dc65f9de",
+        "delivered_code_sha256": "4c2f9f9933c39b4740e087e6f9676cfa37bcfde6b450fa8b8ca2e483dc65f9de",
+        "result": {
+          "path": "history/results/max4_05_decomposition_diagnostics_v1_results.zip",
+          "sha256": "77d8f3b86fea0aa29787a7a2ecd44fa1b9d68e41ca4587dc0ec65c3e43cd77a5",
+          "bytes": 161882
+        },
+        "analysis": "history/reports/max4_05_decomposition_diagnostics_v1-results-analysis.md",
+        "analysis_json": "history/reports/max4_05_decomposition_diagnostics_v1-results-analysis.json",
+        "delivery": [
+          {
+            "path": "max4_05_decomposition_diagnostics_v1_results.zip",
+            "sha256": "77d8f3b86fea0aa29787a7a2ecd44fa1b9d68e41ca4587dc0ec65c3e43cd77a5",
+            "bytes": 161882,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_05_decomposition_diagnostics_v1_results.zip",
+            "download_verified": true
+          },
+          {
+            "path": "max4_05_decomposition_diagnostics_v1_results_analysis_FA.txt",
+            "sha256": "d4287bc207529f8bbae03ad030ca62b0ae486457b44b821dc8b64287665a6db4",
+            "bytes": 3244,
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_05_decomposition_diagnostics_v1_results_analysis_FA.txt",
+            "download_verified": true
+          }
+        ],
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+      }
     }
-  ]
+  ],
+  "independent_max4_results_analysis": {
+    "date": "2026-11-08",
+    "report": "history/reports/five-independent-max4-results-analysis.md",
+    "comparison_csv": "history/reports/five-independent-max4-results-comparison.csv",
+    "paired_trees": "history/reports/five-independent-max4-results-paired-trees.md",
+    "source_identity_unresolved": [
+      "max4_02_relation_diagnostics_v1",
+      "max4_03_target_patch_v1"
+    ],
+    "model_calls_during_analysis": 0,
+    "pipeline_changed": false,
+    "baseline_promoted": false,
+    "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7",
+    "combined_delivery": {
+      "path": "max4_five_independent_results_analysis_FA.txt",
+      "sha256": "23eb206b86dfed1932993feddac09dcf82cc9e06ac6f34eedbed4e083c5d1359",
+      "bytes": 20344,
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_five_independent_results_analysis_FA.txt",
+      "download_verified": true
+    }
+  }
 }

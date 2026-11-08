@@ -1,0 +1,3523 @@
+{
+  "experiment": "max4_02_relation_diagnostics_v1",
+  "received_settings": {
+    "schema_version": 4,
+    "n_samples": 40,
+    "code_sha256": "ab0a6bd8f80f320019f936df57d12b2f82cf1d3c0e45ff3e0210390d7aff7690",
+    "sample_snapshot_sha256": "723a5d6e7e50f0e6b598aed4444d96127df9470b6853a6d5445a0d50b535db5c",
+    "baselines_sha256": "84dab713f4415b02f9bd41c1c41c5704bc1eca0b6758a3d954ff7f69d90fb500",
+    "direct_reference_sha256": "b6d29203e00fb180f56b160ddc0ecb68b1fcdba309a8219c910ba2c8e1b5be9d",
+    "max4_reference_sha256": "ea343d2dea9cfe78e88b02cb5c0adbcbac53c65e25eaced3a32e10fe48d1ca74",
+    "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+    "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+    "backend": "LocalQwen",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "seed": 42,
+    "use_4bit": true,
+    "require_cuda": true,
+    "max_input_tokens": 8500,
+    "intermediate_tokens": 512,
+    "plan_tokens": 3072,
+    "max_nodes": 4,
+    "plan_attempts": 2,
+    "semantic_repair_attempts": 0
+  },
+  "runtime_identity": {
+    "qwen_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "bitsandbytes": "0.50.2"
+    },
+    "backend": "LocalQwen"
+  },
+  "settings_differences_vs_original": {
+    "code_sha256": {
+      "baseline": "0894f9803c4e8b0419d23952b248b228ae8b49673a17396afb7d44e17e11deaa",
+      "current": "ab0a6bd8f80f320019f936df57d12b2f82cf1d3c0e45ff3e0210390d7aff7690"
+    },
+    "max4_reference_sha256": {
+      "baseline": null,
+      "current": "ea343d2dea9cfe78e88b02cb5c0adbcbac53c65e25eaced3a32e10fe48d1ca74"
+    }
+  },
+  "source_identity_verified": false,
+  "delivered_code_sha256": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d",
+  "recorded_code_sha256": "ab0a6bd8f80f320019f936df57d12b2f82cf1d3c0e45ff3e0210390d7aff7690",
+  "same_samples": true,
+  "runtime_identity_same_as_baseline": true,
+  "verification_counts": {
+    "generation_calls": 47,
+    "original_structure_calls": 47,
+    "target_patch_calls": 0,
+    "raw_first_attempt_structurally_valid": 33,
+    "final_structure_valid": 37,
+    "review_decisions": 37,
+    "judge_calls": 33,
+    "histories_checked": 77
+  },
+  "all_raw_outputs_replayed_exactly": true,
+  "reports_regenerated": [
+    "summary.json",
+    "trees.csv",
+    "review.md",
+    "max4_comparison.json",
+    "max4_comparison.md",
+    "diagnostics.json",
+    "diagnostics.md"
+  ],
+  "report_archive_members": 49,
+  "complete_resume_without_model_verified": false,
+  "mismatched_source_resume_correctly_blocked": true,
+  "invalid_orders": [
+    2,
+    32,
+    39
+  ],
+  "final_plan_changed_orders": [],
+  "raw_structure_changed_orders": [],
+  "first_raw_changed_orders": [],
+  "review_changed_orders": [],
+  "raw_judge_changed_orders": [],
+  "summary": {
+    "requested": 40,
+    "structure_status": {
+      "valid": 37,
+      "invalid": 3
+    },
+    "single_node": 3,
+    "multiple_nodes": 34,
+    "valid_on_first_attempt": 33,
+    "review_status": {
+      "revise": 24,
+      "not_reviewed": 3,
+      "valid": 13
+    },
+    "review_source": {
+      "model": 33,
+      "not_reviewed": 3,
+      "root_rule": 3,
+      "geography_rule": 1
+    },
+    "judge_status": {
+      "revise": 20,
+      "not_called": 7,
+      "valid": 13
+    },
+    "review_response_status": {
+      "parsed": 33,
+      "not_reviewed": 3,
+      "not_called": 4
+    },
+    "invalid_review_responses": 0,
+    "review_format_error_kind": {},
+    "semantic_uncertainty_responses": 0,
+    "vague_reason_responses": 0,
+    "root_contract_status": {
+      "compatible": 32,
+      "not_checked": 5,
+      "mismatch": 3
+    },
+    "judge_calls_avoided_by_root_rule": 3,
+    "judge_calls_avoided_by_all_rules": 4,
+    "closing_fence_responses_recovered": 1,
+    "single_node_accepted_by_judge": 3,
+    "semantic_correctness_measured": false,
+    "answer_accuracy_measured": false,
+    "inference_backend": "LocalQwen",
+    "judge_role": "observation_only; same Qwen; at most one call per structurally valid tree; clear root target/binding/geographic precision issues use code rules and zero judge calls; no semantic repair",
+    "incomplete_questions": 0,
+    "backend_errors": 0,
+    "cost_including_previous_attempts": {
+      "structure": {
+        "llm_calls": 47,
+        "prompt_tokens": 29691,
+        "completion_tokens": 4611,
+        "total_tokens": 34302,
+        "execution_time_sec": 546.8277033999957,
+        "retrieval_steps": 0
+      },
+      "review": {
+        "llm_calls": 33,
+        "prompt_tokens": 13068,
+        "completion_tokens": 574,
+        "total_tokens": 13642,
+        "execution_time_sec": 71.70792600000004,
+        "retrieval_steps": 0
+      }
+    },
+    "total_cost": {
+      "llm_calls": 80,
+      "prompt_tokens": 42759,
+      "completion_tokens": 5185,
+      "total_tokens": 47944,
+      "execution_time_sec": 618.5356293999957,
+      "retrieval_steps": 0
+    },
+    "baselines_before_semantic_review": {
+      "v3.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 7,
+          "valid": 32,
+          "unknown": 1
+        },
+        "single_node": 4,
+        "multiple_nodes": 28,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 20,
+          "valid": 20
+        },
+        "single_node": 20,
+        "multiple_nodes": 0,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.1": {
+        "requested": 40,
+        "structure_status": {
+          "invalid": 12,
+          "valid": 28
+        },
+        "single_node": 2,
+        "multiple_nodes": 26,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.2": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.3": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      },
+      "v3.2.4": {
+        "requested": 40,
+        "structure_status": {
+          "valid": 35,
+          "invalid": 5
+        },
+        "single_node": 2,
+        "multiple_nodes": 33,
+        "scope": "Recorded structure before semantic review; multiple nodes do not prove correct meaning."
+      }
+    },
+    "note": "All requested questions are counted. Structural validity, node count and root-rule compatibility are not semantic accuracy. Code-rule decisions are separate from actual model judgments. Invalid reviewer responses are not counted as semantic uncertainty. A pilot below the historical Standard total does not establish full-method savings.",
+    "whole_method_token_condition": {
+      "criterion": "Whole decomposed RAG must use strictly fewer input + output tokens than Standard RAG",
+      "pilot_tokens": 47944,
+      "full_decomposed_tokens": null,
+      "full_token_condition_met": null,
+      "status": "pilot_below_reference_full_savings_not_established",
+      "note": "Historical A reference only. Pilot omits retrieval/answering and semantic repair. Being below A here is necessary, not sufficient; use a full paired run to decide. No questions, evidence or failed attempts are removed to reduce reported cost.",
+      "standard_reference_tokens": 54222,
+      "standard_reference_status": {
+        "completed": 39,
+        "failed": 1
+      },
+      "reference_source": "Observed Standard RAG v3.2; historical reference, not a new paired run.",
+      "remaining_tokens_below_historical_standard": 6277
+    }
+  },
+  "per_question": [
+    {
+      "order": 1,
+      "question_id": "5ab3cecd5542992ade7c6eae",
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1048,
+        "completion_tokens": 154,
+        "total_tokens": 1202,
+        "execution_time_sec": 20.423262000000022
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1048,
+        "completion_tokens": 154,
+        "total_tokens": 1202,
+        "execution_time_sec": 23.481502599999658
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the focus of Forbidden Creatures on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the focus of No Animals Were Harmed on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "How do the Peter Laufer books Forbidden Creatures (focus on animals: {{q1}}) and No Animals Were Harmed (focus on animals: {{q2}}) differ in their focus on animals?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the focus of Forbidden Creatures on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the focus of No Animals Were Harmed on animals?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "How do the Peter Laufer books Forbidden Creatures (focus on animals: {{q1}}) and No Animals Were Harmed (focus on animals: {{q2}}) differ in their focus on animals?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 2,
+      "question_id": "5ab42a2b5542996a3a969f5a",
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "status_before": "invalid",
+      "status_after": "invalid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1378,
+        "completion_tokens": 220,
+        "total_tokens": 1598,
+        "execution_time_sec": 25.31008110000016
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1378,
+        "completion_tokens": 220,
+        "total_tokens": 1598,
+        "execution_time_sec": 24.355180499999733
+      },
+      "target_patch": null,
+      "plan_before": null,
+      "plan_after": null
+    },
+    {
+      "order": 3,
+      "question_id": "5a7d3f895542995f4f402248",
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 982,
+        "completion_tokens": 55,
+        "total_tokens": 1037,
+        "execution_time_sec": 6.087976299999809
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 982,
+        "completion_tokens": 55,
+        "total_tokens": 1037,
+        "execution_time_sec": 7.4117771000001085
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What animal does the ride in Pandora- The World of Avatar allow guests to take flight on?",
+            "dependencies": {},
+            "answer_type": "work"
+          }
+        ],
+        "final": "q1"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What animal does the ride in Pandora- The World of Avatar allow guests to take flight on?",
+            "dependencies": {},
+            "answer_type": "work"
+          }
+        ],
+        "final": "q1"
+      }
+    },
+    {
+      "order": 4,
+      "question_id": "5a778b345542992a6e59decf",
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1011,
+        "completion_tokens": 124,
+        "total_tokens": 1135,
+        "execution_time_sec": 14.04703779999977
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1011,
+        "completion_tokens": 124,
+        "total_tokens": 1135,
+        "execution_time_sec": 16.687954099998933
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Susan Oliver born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was W. S. Van Dyke born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Susan Oliver (born {{q1}}) or W. S. Van Dyke (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Susan Oliver born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was W. S. Van Dyke born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Susan Oliver (born {{q1}}) or W. S. Van Dyke (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 5,
+      "question_id": "5a8ceddb554299441c6b9f85",
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1005,
+        "completion_tokens": 131,
+        "total_tokens": 1136,
+        "execution_time_sec": 16.13163990000021
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1005,
+        "completion_tokens": 131,
+        "total_tokens": 1136,
+        "execution_time_sec": 16.728130200000123
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the profession of Nora Roberts?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What is the profession of Elizabeth Hardwick?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "What profession do Nora Roberts ({{q1}}) and Elizabeth Hardwick ({{q2}}) have in common?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the profession of Nora Roberts?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What is the profession of Elizabeth Hardwick?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "What profession do Nora Roberts ({{q1}}) and Elizabeth Hardwick ({{q2}}) have in common?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 6,
+      "question_id": "5a7e05f75542995f4f402394",
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1006,
+        "completion_tokens": 122,
+        "total_tokens": 1128,
+        "execution_time_sec": 14.592808300000115
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1006,
+        "completion_tokens": 122,
+        "total_tokens": 1128,
+        "execution_time_sec": 14.44981800000005
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What was the release date of Hot Girls Wanted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "What was the release date of China Blue?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was released first: Hot Girls Wanted (released {{q1}}) or China Blue (released {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What was the release date of Hot Girls Wanted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "What was the release date of China Blue?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was released first: Hot Girls Wanted (released {{q1}}) or China Blue (released {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 7,
+      "question_id": "5ab3306a55429969a97a80fd",
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1028,
+        "completion_tokens": 140,
+        "total_tokens": 1168,
+        "execution_time_sec": 16.463404899999887
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1028,
+        "completion_tokens": 140,
+        "total_tokens": 1168,
+        "execution_time_sec": 17.83496489999925
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What production company made The Boatniks?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What production company made The Great Locomotive Chase?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q3",
+            "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company: {{q1}} or {{q2}}?",
+            "dependencies": {
+              "q1": "organization",
+              "q2": "organization"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What production company made The Boatniks?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What production company made The Great Locomotive Chase?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q3",
+            "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company: {{q1}} or {{q2}}?",
+            "dependencies": {
+              "q1": "organization",
+              "q2": "organization"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 8,
+      "question_id": "5a7cfb2755429907fabef084",
+      "question": "What year did the director of The Quiet American die?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 968,
+        "completion_tokens": 83,
+        "total_tokens": 1051,
+        "execution_time_sec": 9.955413600000156
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 968,
+        "completion_tokens": 83,
+        "total_tokens": 1051,
+        "execution_time_sec": 9.848299600000246
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who directed The Quiet American?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year did {{q1}} die?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who directed The Quiet American?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year did {{q1}} die?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 9,
+      "question_id": "5ab201765542993be8fa98a4",
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 974,
+        "completion_tokens": 51,
+        "total_tokens": 1025,
+        "execution_time_sec": 6.228528099999949
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 974,
+        "completion_tokens": 51,
+        "total_tokens": 1025,
+        "execution_time_sec": 5.859615299999859
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the formation year of the band that released Hobart Paving?",
+            "dependencies": {},
+            "answer_type": "date"
+          }
+        ],
+        "final": "q1"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the formation year of the band that released Hobart Paving?",
+            "dependencies": {},
+            "answer_type": "date"
+          }
+        ],
+        "final": "q1"
+      }
+    },
+    {
+      "order": 10,
+      "question_id": "5adbe27c55429947ff173854",
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1040,
+        "completion_tokens": 141,
+        "total_tokens": 1181,
+        "execution_time_sec": 14.255214000000024
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1040,
+        "completion_tokens": 141,
+        "total_tokens": 1181,
+        "execution_time_sec": 14.964452600001096
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "How many campuses does Dalhousie University have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "How many campuses does California State Polytechnic University, Pomona have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which university has more campuses, Dalhousie University (with {{q1}} campuses) or California State Polytechnic University, Pomona (with {{q2}} campuses)?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "How many campuses does Dalhousie University have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "How many campuses does California State Polytechnic University, Pomona have?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which university has more campuses, Dalhousie University (with {{q1}} campuses) or California State Polytechnic University, Pomona (with {{q2}} campuses)?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 11,
+      "question_id": "5a8fa4d95542995b4424207b",
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1026,
+        "completion_tokens": 135,
+        "total_tokens": 1161,
+        "execution_time_sec": 14.559614699999884
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1026,
+        "completion_tokens": 135,
+        "total_tokens": 1161,
+        "execution_time_sec": 15.841343400000369
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the passenger throughput of Palm Springs International Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the passenger throughput of Trenton–Mercer Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which airport is busier, Palm Springs International Airport (with throughput {{q1}}) or Trenton–Mercer Airport (with throughput {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the passenger throughput of Palm Springs International Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the passenger throughput of Trenton–Mercer Airport?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which airport is busier, Palm Springs International Airport (with throughput {{q1}}) or Trenton–Mercer Airport (with throughput {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 12,
+      "question_id": "5ac19ff35542991316484b61",
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1029,
+        "completion_tokens": 131,
+        "total_tokens": 1160,
+        "execution_time_sec": 13.677460399999973
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1029,
+        "completion_tokens": 131,
+        "total_tokens": 1160,
+        "execution_time_sec": 16.164555300000757
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was The Graveyard Book published?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Phineas and Ferb broadcasted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was published or broadcasted first, The Graveyard Book (published {{q1}}) or Phineas and Ferb (broadcasted {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was The Graveyard Book published?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Phineas and Ferb broadcasted?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which was published or broadcasted first, The Graveyard Book (published {{q1}}) or Phineas and Ferb (broadcasted {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 13,
+      "question_id": "5ab484415542990594ba9c44",
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1008,
+        "completion_tokens": 141,
+        "total_tokens": 1149,
+        "execution_time_sec": 16.478251499999942
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1008,
+        "completion_tokens": 141,
+        "total_tokens": 1149,
+        "execution_time_sec": 16.178970900000422
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Discovery Zone founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Valentino's founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which facility was founded in Missouri: Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Discovery Zone founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Valentino's founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Which facility was founded in Missouri: Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 14,
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1005,
+        "completion_tokens": 102,
+        "total_tokens": 1107,
+        "execution_time_sec": 11.356002500000159
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1005,
+        "completion_tokens": 102,
+        "total_tokens": 1107,
+        "execution_time_sec": 12.117533800000274
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which river is southeast of the Innviertel?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "How long is the river southeast of the Innviertel? ({{q1}}) in kilometers?",
+            "dependencies": {
+              "q1": "other"
+            },
+            "answer_type": "number"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which river is southeast of the Innviertel?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "How long is the river southeast of the Innviertel? ({{q1}}) in kilometers?",
+            "dependencies": {
+              "q1": "other"
+            },
+            "answer_type": "number"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 15,
+      "question_id": "5abce1fa5542993a06baf993",
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 3,
+        "prompt_tokens": 1694,
+        "completion_tokens": 175,
+        "total_tokens": 1869,
+        "execution_time_sec": 19.375227400000085
+      },
+      "cost_after": {
+        "llm_calls": 3,
+        "prompt_tokens": 1694,
+        "completion_tokens": 175,
+        "total_tokens": 1869,
+        "execution_time_sec": 20.488696600000367
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the lover of Lord Alfred Douglas?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What nationality was {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the lover of Lord Alfred Douglas?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What nationality was {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 16,
+      "question_id": "5a77a7db5542995d8318124d",
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1005,
+        "completion_tokens": 120,
+        "total_tokens": 1125,
+        "execution_time_sec": 13.667619000000059
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1005,
+        "completion_tokens": 120,
+        "total_tokens": 1125,
+        "execution_time_sec": 12.57758979999926
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Josephine Tey born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Julia Peterkin born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Josephine Tey (born {{q1}}) or Julia Peterkin (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Josephine Tey born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was Julia Peterkin born?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Who was born first: Josephine Tey (born {{q1}}) or Julia Peterkin (born {{q2}})?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 17,
+      "question_id": "5abe94fd55429965af743f37",
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1019,
+        "completion_tokens": 127,
+        "total_tokens": 1146,
+        "execution_time_sec": 13.877041700000063
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1019,
+        "completion_tokens": 127,
+        "total_tokens": 1146,
+        "execution_time_sec": 15.073946999999862
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Sinclair Research founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was the Wave Mate Bullet founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Were both Sinclair Research (founded {{q1}}) and the Wave Mate Bullet (founded {{q2}}) founded in the 1970s?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "When was Sinclair Research founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q2",
+            "question": "When was the Wave Mate Bullet founded?",
+            "dependencies": {},
+            "answer_type": "date"
+          },
+          {
+            "id": "q3",
+            "question": "Were both Sinclair Research (founded {{q1}}) and the Wave Mate Bullet (founded {{q2}}) founded in the 1970s?",
+            "dependencies": {
+              "q1": "date",
+              "q2": "date"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 18,
+      "question_id": "5a7d598d5542995f4f402262",
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 3,
+        "prompt_tokens": 1823,
+        "completion_tokens": 340,
+        "total_tokens": 2163,
+        "execution_time_sec": 34.792400300000054
+      },
+      "cost_after": {
+        "llm_calls": 3,
+        "prompt_tokens": 1823,
+        "completion_tokens": 340,
+        "total_tokens": 2163,
+        "execution_time_sec": 38.95323699999972
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Did Burton L. King edit films?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Did Maheen Zia edit films?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which director was also a film editor, Burton L. King ({{q1}}) or Maheen Zia ({{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Did Burton L. King edit films?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Did Maheen Zia edit films?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which director was also a film editor, Burton L. King ({{q1}}) or Maheen Zia ({{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 19,
+      "question_id": "5ae73ddb554299572ea5478d",
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 1,
+        "prompt_tokens": 618,
+        "completion_tokens": 71,
+        "total_tokens": 689,
+        "execution_time_sec": 8.18639589999998
+      },
+      "cost_after": {
+        "llm_calls": 1,
+        "prompt_tokens": 618,
+        "completion_tokens": 71,
+        "total_tokens": 689,
+        "execution_time_sec": 9.591850200000408
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the current First Lady of Chiapas State, Mexico?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What Mexican Actress and singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the current First Lady of Chiapas State, Mexico?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What Mexican Actress and singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 20,
+      "question_id": "5ade5a645542997c77adee0d",
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 3,
+        "prompt_tokens": 1763,
+        "completion_tokens": 233,
+        "total_tokens": 1996,
+        "execution_time_sec": 26.88603820000003
+      },
+      "cost_after": {
+        "llm_calls": 3,
+        "prompt_tokens": 1763,
+        "completion_tokens": 233,
+        "total_tokens": 1996,
+        "execution_time_sec": 28.09180870000091
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is Wenling at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Ruili at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is Wenling at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Ruili at coastal county-level?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Which city is at coastal county-level, Wenling (at {{q1}}) or Ruili (at {{q2}})?",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 21,
+      "question_id": "5a87bc3f5542996432c57275",
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 1,
+        "prompt_tokens": 615,
+        "completion_tokens": 120,
+        "total_tokens": 735,
+        "execution_time_sec": 12.868643599999814
+      },
+      "cost_after": {
+        "llm_calls": 1,
+        "prompt_tokens": 615,
+        "completion_tokens": 120,
+        "total_tokens": 735,
+        "execution_time_sec": 14.417558800000734
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the longitude of Cascade Locks and Canal?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the longitude of Lake Worth Lagoon?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which location is farther West: Cascade Locks and Canal (longitude {{q1}}) or Lake Worth Lagoon (longitude {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the longitude of Cascade Locks and Canal?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q2",
+            "question": "What is the longitude of Lake Worth Lagoon?",
+            "dependencies": {},
+            "answer_type": "number"
+          },
+          {
+            "id": "q3",
+            "question": "Which location is farther West: Cascade Locks and Canal (longitude {{q1}}) or Lake Worth Lagoon (longitude {{q2}})?",
+            "dependencies": {
+              "q1": "number",
+              "q2": "number"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 22,
+      "question_id": "5ae38b115542990afbd1e183",
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1018,
+        "completion_tokens": 150,
+        "total_tokens": 1168,
+        "execution_time_sec": 16.542235499999833
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1018,
+        "completion_tokens": 150,
+        "total_tokens": 1168,
+        "execution_time_sec": 20.3033618999998
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What role did George Albert Smith play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What role did Wong Jing play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "Who played a more important role in the church: George Albert Smith (played {{q1}}) or Wong Jing (played {{q2}})?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What role did George Albert Smith play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "What role did Wong Jing play in the church?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q3",
+            "question": "Who played a more important role in the church: George Albert Smith (played {{q1}}) or Wong Jing (played {{q2}})?",
+            "dependencies": {
+              "q1": "work",
+              "q2": "work"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 23,
+      "question_id": "5a89bf18554299669944a591",
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1018,
+        "completion_tokens": 151,
+        "total_tokens": 1169,
+        "execution_time_sec": 17.4510937
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1018,
+        "completion_tokens": 151,
+        "total_tokens": 1169,
+        "execution_time_sec": 16.882513699999436
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the nationality of John O'Hara?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the nationality of Bobbie Ann Mason?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "Do writers John O'Hara (nationality {{q1}}) and Bobbie Ann Mason (nationality {{q2}}) share the same nationality?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the nationality of John O'Hara?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q2",
+            "question": "What is the nationality of Bobbie Ann Mason?",
+            "dependencies": {},
+            "answer_type": "other"
+          },
+          {
+            "id": "q3",
+            "question": "Do writers John O'Hara (nationality {{q1}}) and Bobbie Ann Mason (nationality {{q2}}) share the same nationality?",
+            "dependencies": {
+              "q1": "other",
+              "q2": "other"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 24,
+      "question_id": "5ae0a5825542993d6555ebdf",
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 986,
+        "completion_tokens": 121,
+        "total_tokens": 1107,
+        "execution_time_sec": 14.710500300000149
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 986,
+        "completion_tokens": 121,
+        "total_tokens": 1107,
+        "execution_time_sec": 13.923425999999381
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is George Stevens American?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Luc Besson American?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Are George Stevens and Luc Besson American cinematographers? ({{q1}} and {{q2}})",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Is George Stevens American?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q2",
+            "question": "Is Luc Besson American?",
+            "dependencies": {},
+            "answer_type": "boolean"
+          },
+          {
+            "id": "q3",
+            "question": "Are George Stevens and Luc Besson American cinematographers? ({{q1}} and {{q2}})",
+            "dependencies": {
+              "q1": "boolean",
+              "q2": "boolean"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 25,
+      "question_id": "5add9bfa5542990dbb2f7e85",
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 993,
+        "completion_tokens": 90,
+        "total_tokens": 1083,
+        "execution_time_sec": 9.550496600000088
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 993,
+        "completion_tokens": 90,
+        "total_tokens": 1083,
+        "execution_time_sec": 9.961415699999634
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the sponsor of the Premiership Rugby Sevens Series?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What type of product does {{q1}} produce?",
+            "dependencies": {
+              "q1": "organization"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the sponsor of the Premiership Rugby Sevens Series?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "What type of product does {{q1}} produce?",
+            "dependencies": {
+              "q1": "organization"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 26,
+      "question_id": "5a75a0725542992d0ec05fc9",
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 999,
+        "completion_tokens": 62,
+        "total_tokens": 1061,
+        "execution_time_sec": 6.773343100000147
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 999,
+        "completion_tokens": 62,
+        "total_tokens": 1061,
+        "execution_time_sec": 7.570091799999318
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What cast member of Disorganized Crime is best known for playing Al Bundy on the Fox Network sitcom 'Married... with Children'?",
+            "dependencies": {},
+            "answer_type": "person"
+          }
+        ],
+        "final": "q1"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What cast member of Disorganized Crime is best known for playing Al Bundy on the Fox Network sitcom 'Married... with Children'?",
+            "dependencies": {},
+            "answer_type": "person"
+          }
+        ],
+        "final": "q1"
+      }
+    },
+    {
+      "order": 27,
+      "question_id": "5ac43e0f554299076e296d8e",
+      "question": "What country are both Dafeng District and Jixi in?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1007,
+        "completion_tokens": 123,
+        "total_tokens": 1130,
+        "execution_time_sec": 13.12027009999997
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1007,
+        "completion_tokens": 123,
+        "total_tokens": 1130,
+        "execution_time_sec": 15.208070899999257
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What country is Dafeng District in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What country is Jixi in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "What country are both Dafeng District (in {{q1}}) and Jixi (in {{q2}}) in?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What country is Dafeng District in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What country is Jixi in?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "What country are both Dafeng District (in {{q1}}) and Jixi (in {{q2}}) in?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "place"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 28,
+      "question_id": "5a8ea7f25542995085b37468",
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1004,
+        "completion_tokens": 119,
+        "total_tokens": 1123,
+        "execution_time_sec": 13.954774799999996
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1004,
+        "completion_tokens": 119,
+        "total_tokens": 1123,
+        "execution_time_sec": 13.96231699999953
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What state is The Limousines from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What state is Faith No More from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Are The Limousines and Faith No More from the same state: {{q1}} = {{q2}}?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What state is The Limousines from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What state is Faith No More from?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Are The Limousines and Faith No More from the same state: {{q1}} = {{q2}}?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 29,
+      "question_id": "5a8701b3554299211dda2b9a",
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 991,
+        "completion_tokens": 94,
+        "total_tokens": 1085,
+        "execution_time_sec": 10.582313000000113
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 991,
+        "completion_tokens": 94,
+        "total_tokens": 1085,
+        "execution_time_sec": 11.083415399999467
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the politician that Werner Christie served under?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What organization was the politician ({{q1}}) also the Director-General of?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who was the politician that Werner Christie served under?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What organization was the politician ({{q1}}) also the Director-General of?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 30,
+      "question_id": "5ac3dfee554299204fd21eab",
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1015,
+        "completion_tokens": 98,
+        "total_tokens": 1113,
+        "execution_time_sec": 11.605645500000037
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1015,
+        "completion_tokens": 98,
+        "total_tokens": 1113,
+        "execution_time_sec": 10.630573399999776
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the voice actor of Elgar?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What manga is inspired by Keitaro Arima and features the English character voiced by {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the voice actor of Elgar?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What manga is inspired by Keitaro Arima and features the English character voiced by {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 31,
+      "question_id": "5a7f7b3b5542992097ad2f81",
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1026,
+        "completion_tokens": 141,
+        "total_tokens": 1167,
+        "execution_time_sec": 16.090196399999968
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1026,
+        "completion_tokens": 141,
+        "total_tokens": 1167,
+        "execution_time_sec": 16.52033930000016
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the headquarters location of Pizza Inn?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the headquarters location of Papa Gino's?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Which restaurant chain's headquarters is further north, Pizza Inn (located at {{q1}}) or Papa Gino's (located at {{q2}})?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the headquarters location of Pizza Inn?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the headquarters location of Papa Gino's?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Which restaurant chain's headquarters is further north, Pizza Inn (located at {{q1}}) or Papa Gino's (located at {{q2}})?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q3"
+      }
+    },
+    {
+      "order": 32,
+      "question_id": "5ae3d2715542990afbd1e1e9",
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "status_before": "invalid",
+      "status_after": "invalid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1377,
+        "completion_tokens": 296,
+        "total_tokens": 1673,
+        "execution_time_sec": 33.91035120000015
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1377,
+        "completion_tokens": 296,
+        "total_tokens": 1673,
+        "execution_time_sec": 34.03452130000005
+      },
+      "target_patch": null,
+      "plan_before": null,
+      "plan_after": null
+    },
+    {
+      "order": 33,
+      "question_id": "5ae077735542993d6555eb6d",
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1015,
+        "completion_tokens": 92,
+        "total_tokens": 1107,
+        "execution_time_sec": 11.175128699999732
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1015,
+        "completion_tokens": 92,
+        "total_tokens": 1107,
+        "execution_time_sec": 11.44267839999975
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What type of sprite did Milada Šubrtová portray?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "In which opera did {{q1}} appear?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What type of sprite did Milada Šubrtová portray?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "In which opera did {{q1}} appear?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 34,
+      "question_id": "5adf4b335542993a75d264a5",
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 997,
+        "completion_tokens": 92,
+        "total_tokens": 1089,
+        "execution_time_sec": 10.511343599999918
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 997,
+        "completion_tokens": 92,
+        "total_tokens": 1089,
+        "execution_time_sec": 11.58498580000014
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the name of the Western action-adventure game Paul DeBoy appeared in?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "Which company developed {{q1}}?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What is the name of the Western action-adventure game Paul DeBoy appeared in?",
+            "dependencies": {},
+            "answer_type": "work"
+          },
+          {
+            "id": "q2",
+            "question": "Which company developed {{q1}}?",
+            "dependencies": {
+              "q1": "work"
+            },
+            "answer_type": "organization"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 35,
+      "question_id": "5a776b82554299373536026f",
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 3,
+        "prompt_tokens": 1739,
+        "completion_tokens": 177,
+        "total_tokens": 1916,
+        "execution_time_sec": 22.059600400000136
+      },
+      "cost_after": {
+        "llm_calls": 3,
+        "prompt_tokens": 1739,
+        "completion_tokens": 177,
+        "total_tokens": 1916,
+        "execution_time_sec": 19.88894110000001
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the official currency in {{q1}}?",
+            "dependencies": {
+              "q1": "place"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which country hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "What is the official currency in {{q1}}?",
+            "dependencies": {
+              "q1": "place"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 36,
+      "question_id": "5ac0b1835542992a796ded65",
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 1,
+        "prompt_tokens": 610,
+        "completion_tokens": 69,
+        "total_tokens": 679,
+        "execution_time_sec": 7.74372470000003
+      },
+      "cost_after": {
+        "llm_calls": 1,
+        "prompt_tokens": 610,
+        "completion_tokens": 69,
+        "total_tokens": 679,
+        "execution_time_sec": 7.720860899999934
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What company was Bordan Tkachuk the former CEO of?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "Does {{q1}} provide IT products?",
+            "dependencies": {
+              "q1": "organization"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "What company was Bordan Tkachuk the former CEO of?",
+            "dependencies": {},
+            "answer_type": "organization"
+          },
+          {
+            "id": "q2",
+            "question": "Does {{q1}} provide IT products?",
+            "dependencies": {
+              "q1": "organization"
+            },
+            "answer_type": "boolean"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 37,
+      "question_id": "5a80afcf554299485f5986b9",
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1025,
+        "completion_tokens": 105,
+        "total_tokens": 1130,
+        "execution_time_sec": 12.440004400000134
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1025,
+        "completion_tokens": 105,
+        "total_tokens": 1130,
+        "execution_time_sec": 12.694864699999926
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who were the American university administrators and politicians from Oklahoma involved in the Boren-Mcurdy proposals?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "Who else besides {{q1}} was part of the Boren-Mcurdy proposals?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who were the American university administrators and politicians from Oklahoma involved in the Boren-Mcurdy proposals?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "Who else besides {{q1}} was part of the Boren-Mcurdy proposals?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "person"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 38,
+      "question_id": "5ae254565542992decbdccbb",
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 982,
+        "completion_tokens": 87,
+        "total_tokens": 1069,
+        "execution_time_sec": 9.52642290000017
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 982,
+        "completion_tokens": 87,
+        "total_tokens": 1069,
+        "execution_time_sec": 9.801486599999407
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who wrote the drama \"Ingenious\"?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year was {{q1}} born?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who wrote the drama \"Ingenious\"?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "In what year was {{q1}} born?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "date"
+          }
+        ],
+        "final": "q2"
+      }
+    },
+    {
+      "order": 39,
+      "question_id": "5ae14b0655429920d52343a6",
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "status_before": "invalid",
+      "status_after": "invalid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 2,
+        "prompt_tokens": 1294,
+        "completion_tokens": 124,
+        "total_tokens": 1418,
+        "execution_time_sec": 13.486782800000128
+      },
+      "cost_after": {
+        "llm_calls": 2,
+        "prompt_tokens": 1294,
+        "completion_tokens": 124,
+        "total_tokens": 1418,
+        "execution_time_sec": 15.01486609999938
+      },
+      "target_patch": null,
+      "plan_before": null,
+      "plan_after": null
+    },
+    {
+      "order": 40,
+      "question_id": "5ae409d955429970de88d89d",
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "status_before": "valid",
+      "status_after": "valid",
+      "plan_equal": true,
+      "structure_raw_equal": true,
+      "first_raw_equal": true,
+      "full_structure_result_equal": true,
+      "review_equal": true,
+      "judge_raw_equal": true,
+      "cost_before": {
+        "llm_calls": 1,
+        "prompt_tokens": 618,
+        "completion_tokens": 78,
+        "total_tokens": 696,
+        "execution_time_sec": 9.81472319999989
+      },
+      "cost_after": {
+        "llm_calls": 1,
+        "prompt_tokens": 618,
+        "completion_tokens": 78,
+        "total_tokens": 696,
+        "execution_time_sec": 9.188112999999248
+      },
+      "target_patch": null,
+      "plan_before": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the lead singer of the band that released 'Greetings! We're The Monitors'?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What soul and R&B singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      },
+      "plan_after": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Who is the lead singer of the band that released 'Greetings! We're The Monitors'?",
+            "dependencies": {},
+            "answer_type": "person"
+          },
+          {
+            "id": "q2",
+            "question": "What soul and R&B singer is {{q1}}?",
+            "dependencies": {
+              "q1": "person"
+            },
+            "answer_type": "work"
+          }
+        ],
+        "final": "q2"
+      }
+    }
+  ],
+  "diagnostics": {
+    "experiment": "max4_02_relation_diagnostics_v1",
+    "role": "advisory_only",
+    "calls": 0,
+    "status_counts": {
+      "unknown": 37,
+      "suspicious": 3
+    },
+    "questions": [
+      {
+        "order": 1,
+        "question_id": "5ab3cecd5542992ade7c6eae",
+        "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 2,
+        "question_id": "5ab42a2b5542996a3a969f5a",
+        "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "No structurally valid plan: Plan must contain exactly nodes and final."
+        }
+      },
+      {
+        "order": 3,
+        "question_id": "5a7d3f895542995f4f402248",
+        "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 4,
+        "question_id": "5a778b345542992a6e59decf",
+        "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 5,
+        "question_id": "5a8ceddb554299441c6b9f85",
+        "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 6,
+        "question_id": "5a7e05f75542995f4f402394",
+        "question": "Which was released first, Hot Girls Wanted or China Blue?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 7,
+        "question_id": "5ab3306a55429969a97a80fd",
+        "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 8,
+        "question_id": "5a7cfb2755429907fabef084",
+        "question": "What year did the director of The Quiet American die?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 9,
+        "question_id": "5ab201765542993be8fa98a4",
+        "question": "Hobart Paving is a single by a band formed in which year ?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 10,
+        "question_id": "5adbe27c55429947ff173854",
+        "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 11,
+        "question_id": "5a8fa4d95542995b4424207b",
+        "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 12,
+        "question_id": "5ac19ff35542991316484b61",
+        "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 13,
+        "question_id": "5ab484415542990594ba9c44",
+        "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+        "diagnostic": {
+          "status": "suspicious",
+          "supported_checks": [
+            "founding_dimension:q1",
+            "founding_dimension:q2"
+          ],
+          "findings": [
+            {
+              "code": "location_replaced_by_time",
+              "nodes": [
+                "q1"
+              ],
+              "reason": "A founding date alone does not supply the requested founding location.",
+              "evidence": {
+                "place": "Missouri"
+              }
+            },
+            {
+              "code": "location_replaced_by_time",
+              "nodes": [
+                "q2"
+              ],
+              "reason": "A founding date alone does not supply the requested founding location.",
+              "evidence": {
+                "place": "Missouri"
+              }
+            }
+          ],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 14,
+        "question_id": "5abbd34d5542993f40c73bc6",
+        "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+        "diagnostic": {
+          "status": "suspicious",
+          "supported_checks": [
+            "direction:q1"
+          ],
+          "findings": [
+            {
+              "code": "direction_role_mismatch",
+              "nodes": [
+                "q1"
+              ],
+              "reason": "Compass direction does not match the ordered entity pair.",
+              "evidence": {
+                "known_entity": "innviertel",
+                "original_direction": "southeast",
+                "observed_direction": "southeast",
+                "expected_direction": "northwest",
+                "endpoints_reversed": true
+              }
+            }
+          ],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 15,
+        "question_id": "5abce1fa5542993a06baf993",
+        "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 16,
+        "question_id": "5a77a7db5542995d8318124d",
+        "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 17,
+        "question_id": "5abe94fd55429965af743f37",
+        "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 18,
+        "question_id": "5a7d598d5542995f4f402262",
+        "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 19,
+        "question_id": "5ae73ddb554299572ea5478d",
+        "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 20,
+        "question_id": "5ade5a645542997c77adee0d",
+        "question": "Which city is at coastal county-level, Wenling or Ruili?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 21,
+        "question_id": "5a87bc3f5542996432c57275",
+        "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 22,
+        "question_id": "5ae38b115542990afbd1e183",
+        "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 23,
+        "question_id": "5a89bf18554299669944a591",
+        "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 24,
+        "question_id": "5ae0a5825542993d6555ebdf",
+        "question": "Are George Stevens and Luc Besson American cinematographers?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 25,
+        "question_id": "5add9bfa5542990dbb2f7e85",
+        "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+        "diagnostic": {
+          "status": "suspicious",
+          "supported_checks": [
+            "identity_relation:q2"
+          ],
+          "findings": [
+            {
+              "code": "identity_replaced_by_production",
+              "nodes": [
+                "q2"
+              ],
+              "reason": "An organizational input is asked what it produces instead of what type of product it is.",
+              "evidence": {
+                "original_relation": "is",
+                "observed": "What type of product does {{q1}} produce?"
+              }
+            }
+          ],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 26,
+        "question_id": "5a75a0725542992d0ec05fc9",
+        "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 27,
+        "question_id": "5ac43e0f554299076e296d8e",
+        "question": "What country are both Dafeng District and Jixi in?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 28,
+        "question_id": "5a8ea7f25542995085b37468",
+        "question": "Are The Limousines and Faith No More from the same state?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 29,
+        "question_id": "5a8701b3554299211dda2b9a",
+        "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 30,
+        "question_id": "5ac3dfee554299204fd21eab",
+        "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 31,
+        "question_id": "5a7f7b3b5542992097ad2f81",
+        "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 32,
+        "question_id": "5ae3d2715542990afbd1e1e9",
+        "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "No structurally valid plan: Plan must contain exactly nodes and final."
+        }
+      },
+      {
+        "order": 33,
+        "question_id": "5ae077735542993d6555eb6d",
+        "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 34,
+        "question_id": "5adf4b335542993a75d264a5",
+        "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 35,
+        "question_id": "5a776b82554299373536026f",
+        "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 36,
+        "question_id": "5ac0b1835542992a796ded65",
+        "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 37,
+        "question_id": "5a80afcf554299485f5986b9",
+        "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 38,
+        "question_id": "5ae254565542992decbdccbb",
+        "question": "In what year was the writer of the drama \"Ingenious\" born?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      },
+      {
+        "order": 39,
+        "question_id": "5ae14b0655429920d52343a6",
+        "question": "Bangalore Naatkal starred which actor and photographer?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "No structurally valid plan: Plan must contain exactly nodes and final."
+        }
+      },
+      {
+        "order": 40,
+        "question_id": "5ae409d955429970de88d89d",
+        "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+        "diagnostic": {
+          "status": "unknown",
+          "supported_checks": [],
+          "findings": [],
+          "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+        }
+      }
+    ],
+    "limitation": "No automatic rejection, repair, gold answers, or model calls. Unknown patterns abstain."
+  },
+  "live_model_calls_during_analysis": 0,
+  "limits": [
+    "Identity is checked against recorded manifests and delivered source, not independent observation of GPU execution.",
+    "Token totals checked against telemetry; original tokenizer token IDs are not in these artifacts.",
+    "No answer accuracy or independent semantic benchmark measured."
+  ],
+  "received_archive": {
+    "path": "history/results/max4_02_relation_diagnostics_v1_results.zip",
+    "sha256": "19244ddababaa9c2159e2c81b7afaf34952b171be0057ae966ba435e3f723901",
+    "bytes": 161680
+  }
+}
