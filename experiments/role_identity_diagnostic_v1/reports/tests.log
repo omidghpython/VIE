@@ -1,0 +1,22 @@
+test_bad_graph_field_types_abstain_without_crashing (test_diagnostic.DiagnosticTests.test_bad_graph_field_types_abstain_without_crashing) ... ok
+test_case_and_whitespace_do_not_change_findings (test_diagnostic.DiagnosticTests.test_case_and_whitespace_do_not_change_findings) ... ok
+test_different_person_leaves_are_not_enough_to_flag (test_diagnostic.DiagnosticTests.test_different_person_leaves_are_not_enough_to_flag) ... ok
+test_duplicate_ids_and_wrong_dependency_types_abstain (test_diagnostic.DiagnosticTests.test_duplicate_ids_and_wrong_dependency_types_abstain) ... ok
+test_entity_renaming_does_not_change_findings (test_diagnostic.DiagnosticTests.test_entity_renaming_does_not_change_findings) ... ok
+test_inputs_never_mutated (test_diagnostic.DiagnosticTests.test_inputs_never_mutated) ... ok
+test_labeled_synthetic_cases (test_diagnostic.DiagnosticTests.test_labeled_synthetic_cases) ... ok
+test_negated_filter_not_treated_as_both_roles (test_diagnostic.DiagnosticTests.test_negated_filter_not_treated_as_both_roles) ... ok
+test_node_storage_order_does_not_change_findings (test_diagnostic.DiagnosticTests.test_node_storage_order_does_not_change_findings) ... ok
+test_absent_saved_plan_is_unknown (test_runner.RunnerTests.test_absent_saved_plan_is_unknown) ... ok
+test_cli_refuses_to_overwrite_input (test_runner.RunnerTests.test_cli_refuses_to_overwrite_input) ... ok
+test_folder_and_zip_match (test_runner.RunnerTests.test_folder_and_zip_match) ... ok
+test_json_pairs_report_does_not_mutate (test_runner.RunnerTests.test_json_pairs_report_does_not_mutate) ... ok
+test_mismatched_identity_rejected (test_runner.RunnerTests.test_mismatched_identity_rejected) ... ok
+test_missing_record_rejected (test_runner.RunnerTests.test_missing_record_rejected) ... ok
+test_unsafe_archive_path_rejected (test_runner.RunnerTests.test_unsafe_archive_path_rejected) ... ok
+test_zip_reads_saved_data_only (test_runner.RunnerTests.test_zip_reads_saved_data_only) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.020s
+
+OK

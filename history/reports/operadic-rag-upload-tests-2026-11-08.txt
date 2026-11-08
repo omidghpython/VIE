@@ -1,0 +1,41 @@
+test_cost_is_split_and_complete (test_decomposition.PipelineTests.test_cost_is_split_and_complete) ... ok
+test_prepare_script_keeps_only_gold_paragraphs (test_decomposition.PipelineTests.test_prepare_script_keeps_only_gold_paragraphs) ... ok
+test_summary_and_review_files (test_decomposition.PipelineTests.test_summary_and_review_files) ... ok
+test_verdicts_and_repair_policy (test_decomposition.PipelineTests.test_verdicts_and_repair_policy) ... ok
+test_answer_matching_and_wilson (test_decomposition.TreeRules.test_answer_matching_and_wilson) ... ok
+test_gold_checks (test_decomposition.TreeRules.test_gold_checks) ... ok
+test_placeholders_normalised (test_decomposition.TreeRules.test_placeholders_normalised) ... ok
+test_structural_errors (test_decomposition.TreeRules.test_structural_errors) ... ok
+test_valid_bridge_and_comparison (test_decomposition.TreeRules.test_valid_bridge_and_comparison) ... ok
+test_warnings_do_not_reject (test_decomposition.TreeRules.test_warnings_do_not_reject) ... ok
+test_decomposition_failure_falls_back_to_single_unit (test_oprag.PipelineTests.test_decomposition_failure_falls_back_to_single_unit) ... ok
+test_direct_source_std_rag_costs_one_call_less (test_oprag.PipelineTests.test_direct_source_std_rag_costs_one_call_less) ... ok
+test_end_to_end_and_accounting (test_oprag.PipelineTests.test_end_to_end_and_accounting) ... ok
+test_estimated_tokens_when_server_gives_no_usage (test_oprag.PipelineTests.test_estimated_tokens_when_server_gives_no_usage) ... ok
+test_max_retrievals_one_and_no_fallback (test_oprag.PipelineTests.test_max_retrievals_one_and_no_fallback) ... ok
+test_outputs_written (test_oprag.PipelineTests.test_outputs_written) ... ok
+test_retrieval_cap_is_never_exceeded (test_oprag.PipelineTests.test_retrieval_cap_is_never_exceeded) ... ok
+test_evidence_union_and_bm25_exclude (test_oprag.UnitTests.test_evidence_union_and_bm25_exclude) ... ok
+test_json_and_answer_cleaning (test_oprag.UnitTests.test_json_and_answer_cleaning) ... ok
+test_operad_substitution_and_validation (test_oprag.UnitTests.test_operad_substitution_and_validation) ... ok
+test_scoring (test_oprag.UnitTests.test_scoring) ... ok
+test_bootstrap (test_study.AnalysisUnit.test_bootstrap) ... ok
+test_confusion_math (test_study.AnalysisUnit.test_confusion_math) ... ok
+test_oracle_label (test_study.AnalysisUnit.test_oracle_label) ... ok
+test_detection_with_calibrated_model (test_study.StudyEndToEnd.test_detection_with_calibrated_model) ... /workspace/operadic-upload-review/operadic_rag/tests/test_study.py:59: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp1i2d0b00/study.md' mode='r' encoding='utf-8'>
+  md = open(os.path.join(d, "study.md"), encoding="utf-8").read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_overconfident_model_shows_missed_gaps (test_study.StudyEndToEnd.test_overconfident_model_shows_missed_gaps) ... /workspace/operadic-upload-review/operadic_rag/tests/test_study.py:59: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpkvoj9wu8/study.md' mode='r' encoding='utf-8'>
+  md = open(os.path.join(d, "study.md"), encoding="utf-8").read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_policies_control_followups_and_cost_ordering (test_study.StudyEndToEnd.test_policies_control_followups_and_cost_ordering) ... /workspace/operadic-upload-review/operadic_rag/tests/test_study.py:59: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpuzbvnbav/study.md' mode='r' encoding='utf-8'>
+  md = open(os.path.join(d, "study.md"), encoding="utf-8").read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 5.203s
+
+OK

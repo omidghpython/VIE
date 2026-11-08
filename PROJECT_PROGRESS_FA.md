@@ -1,6 +1,10 @@
 # سابقه و نقطهٔ ادامهٔ پروژهٔ HotpotQA / VIE
 
-## وضعیت جاری: نتیجه role_identity_v1 دریافت و تحلیل شد
+## وضعیت جاری: تشخیص مستقل گام۲ تکمیل شد
+
+بسته role_identity_diagnostic_v1 با۱۷تست و۳۳حالت مصنوعی آماده و منتشر است؛ روی نتایج ذخیره‌شده فقط۳۹مشکوک و۳۹مورد نامشخص گزارش شد. این ابزار مستقل و advisory است؛ پایلوت و نتیجه قبلی را تغییر نمی‌دهد. کد ارسالی operadic_rag.zip نیز بررسی و به‌عنوان پیاده‌سازی متفاوت با منشأ تأییدنشده ثبت شد. لینک‌ها و شرح در آخر فایل.
+
+## آخرین نتیجه پایلوت: role_identity_v1
 
 سؤال۳۹ در تلاش دوم معتبر ساختاری شد؛۳۸/۴۰ در برابر۳۷/۴۰ مبنا. دو نقش هنوز دو برگ مستقل‌اند و ریشه سؤال اصلی را همراه دو پاسخ تکرار می‌کند؛ داورvalid داده، اما حل معنایی هویت مشترک تأیید نمی‌شود. سایر۳۹ خروجی تولید/داوری و هزینه‌شان عین مبنا هستند. خطاهای ساختاری۲/۳۲ باقی‌اند. توکن۴۷٬۹۴۴→۴۸٬۵۳۵؛ فراخوانی۸۰→۸۱. مبنا max4 اصلی باقی است؛ تصمیم بعدی کاربر در انتظار.
 [تحلیل نتیجه و فهرست مشکلات باقی‌مانده](history/reports/max4-role-identity-v1-analysis.md).
@@ -512,3 +516,16 @@ answer_target و head/type و تمام semantic_checks، داور، PLAN_SYSTEM 
 ## آغاز گام۲ — تشخیص مستقل هویت چندنقشی — ۲۰۲۶-۱۱-۰۸
 
 کاربر اجرای تشخیص مستقل را انتخاب کرد. [دامنه و طرح](history/conversations/2026-11-08-before-role-identity-diagnostic-v1.md). سه خروجی مشکوک/نقضی پیدا نشد/نامشخص؛ ابتدا تست و گزارش روی داده ذخیره‌شده، بدون اتصال به رد/تعمیر پایلوت.
+
+## تکمیل گام۲ و بررسی کد ارسالی — ۲۰۲۶-۱۱-۰۸
+
+تشخیص‌دهنده مستقل role_identity_diagnostic_v1 پیاده،آزموده و تحویل شد. سورس قابل‌بررسی در experiments/role_identity_diagnostic_v1 و [گزارش](history/reports/role-identity-diagnostic-v1.md) موجود است. سه خروجی advisory شامل suspicious/no_violation_found/unknown دارد؛ به پایلوت متصل نیست، سؤال/درخت/حکم/بودجه را تغییر نمی‌دهد و مدل فراخوانی نمی‌کند. انگلیسی با الگوهای محدود و واژگان نقش عمومی؛ هیچ نام/شناسه ارزیابی در منطق نیست. شکل ناشناخته به unknown و شکل ترکیب هویتِ نشناخته برای دو نقش جدا به suspicious می‌رود؛ این رد قطعی نیست و بازنویسی صحیح ناشناخته می‌تواند هشدار کاذب بدهد.
+
+۱۷تست موفق، شامل۳۳ حالت مصنوعی(۸ no_violation_found،۶ suspicious،۱۹ unknown) و بررسی عدم تغییر ورودی، نام‌ها/حروف/ترتیب گره‌ها،خواندنZIP/پوشه/JSON و حفاظت از ورودی. این fixtureها طراحی توسعه‌اند؛۳۳/۳۳ تطبیق با انتظار، دقت مستقل نیست. روی آخرین۴۰نتیجه:فقط۳۹ مشکوک(دو نامزد نقش با ریشه فاقد ترکیب هویت شناخته‌شده)؛۳۹نامشخص شامل۳۷خارج از الگوی هدف و۲ساختارنامعتبر(۲/۳۲). فایل گزارش در reports/latest_results_report.json داخل بسته و سورس ثبت است. نتیجه پایلوت همچنان۳۸معتبر ساختاری است؛ این ابزار آن را تعمیر نکرد. گام بعد بررسی هشدارهای کاذب و پوشش روی داده مستقل پیش از تصمیم درباره اتصال به رد/تعمیر است.
+
+کاربر هنگام کار ZIP operadic_rag.zip را نیز برای بررسی عملکرد و نسبت با کار ما ارسال کرد. اصل۶۰۸۲۶بایت باSHA256 699a3e1bf25c68771b168efa603850a1cf5cb80e98b643e13b53b2755ed3f9b9 در history/external حفظ شد. ابزار مقایسه Standard/Operadic RAG با APIمدل،BM25،زنجیره۲مرحله‌ای و کنترل‌های بازیابی است؛ مسیر جدا ارزیابی درخت bridge/comparison با پاراگراف‌های طلایی دارد.۲۷تست با مدل ساختگی موفق؛Qwen/GPU/HFواقعی اجرا نشد. در۳۵ZIPموجودمخزن/۱۳۴۶عضومتنی هیچ فایل متنی یکسان پیدا نشد؛ schema وbackend متفاوت‌اند. ادامه مستقیم max4 تأیید نمی‌شود، ولی از نبود تطابق کامل نمی‌توان عدم اقتباس/بازنویسی را اثبات کرد. کد ادغام نشد. [بررسی تفصیلی](history/reports/operadic-rag-upload-review-2026-11-08.md)،[تست‌ها](history/reports/operadic-rag-upload-tests-2026-11-08.txt)،[ممیزی منشأ](history/reports/operadic-rag-upload-provenance-2026-11-08.json).
+
+تحویلZIP وراهنمای جدا و گزارش بررسی کد در ریشه شاخه پیش‌فرض commit 0e3eb04df60c1898792e606d8ae35580ad1e5e7b؛ هر۳ لینک دانلود و بایت‌به‌بایت تأیید شدند:
+- [hotpotqa_role_identity_diagnostic_v1.zip](https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/hotpotqa_role_identity_diagnostic_v1.zip)؛ SHA256 `197e6c5d37207bcd6d363d49228e0c969f972e31430568c67a3c7d8e033ac08e`.
+- [hotpotqa_role_identity_diagnostic_v1.txt](https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/hotpotqa_role_identity_diagnostic_v1.txt)؛ SHA256 `4f927cad76c3bd570d72b52cbc5dad502fc040e974b681014ee531619806e895`.
+- [operadic_rag_code_review_FA.txt](https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/operadic_rag_code_review_FA.txt)؛ SHA256 `22d85e115762db7d7d3066c1c2b3c3a867803504ab71507e988225a66c5cd397`.

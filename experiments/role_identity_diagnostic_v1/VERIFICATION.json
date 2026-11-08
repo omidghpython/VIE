@@ -1,0 +1,23 @@
+{
+  "id": "role_identity_diagnostic_v1",
+  "date_tehran": "2026-11-08",
+  "advisory_only": true,
+  "pipeline_changes": false,
+  "model_calls": 0,
+  "tests_passed": 17,
+  "synthetic_cases": 33,
+  "synthetic_expected_counts": {
+    "no_violation_found": 8,
+    "suspicious": 6,
+    "unknown": 19
+  },
+  "saved_result_counts": {
+    "unknown": 39,
+    "suspicious": 1
+  },
+  "input_result_sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+  "source_files": {
+    "role_identity_diagnostic.py": "4879bca1ec78288e1dcc146147613c689d9b66052438e0a1d45f6c556e2c1e0c",
+    "run_diagnostic.py": "525d218f64da9c2770cb47af8846f71507f9be3b9b71d9febd09c8fa918680cf"
+  }
+}

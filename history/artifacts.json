@@ -749,5 +749,60 @@
     "preflight": "history/reports/max4-explicit-target-v1-preflight.json",
     "source_diff": "history/reports/max4-explicit-target-v1-source.diff",
     "tests": "history/reports/max4-explicit-target-v1-tests.txt"
-  }
+  },
+  "diagnostics": [
+    {
+      "id": "role_identity_diagnostic_v1",
+      "status": "standalone_advisory_tested_delivered",
+      "source_path": "experiments/role_identity_diagnostic_v1",
+      "report": "history/reports/role-identity-diagnostic-v1.md",
+      "tests_passed": 17,
+      "synthetic_cases": 33,
+      "saved_results": {
+        "questions": 40,
+        "suspicious": 1,
+        "unknown": 39,
+        "suspicious_indices": [
+          39
+        ]
+      },
+      "pipeline_changes": false,
+      "model_calls": 0,
+      "commit": "0e3eb04df60c1898792e606d8ae35580ad1e5e7b",
+      "delivery": [
+        {
+          "path": "hotpotqa_role_identity_diagnostic_v1.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/hotpotqa_role_identity_diagnostic_v1.zip",
+          "sha256": "197e6c5d37207bcd6d363d49228e0c969f972e31430568c67a3c7d8e033ac08e",
+          "bytes": 17109,
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_role_identity_diagnostic_v1.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/hotpotqa_role_identity_diagnostic_v1.txt",
+          "sha256": "4f927cad76c3bd570d72b52cbc5dad502fc040e974b681014ee531619806e895",
+          "bytes": 4889,
+          "download_verified": true
+        }
+      ]
+    }
+  ],
+  "external_code_reviews": [
+    {
+      "id": "operadic_rag_user_2026-11-08",
+      "archive": "history/external/operadic_rag_user_2026-11-08.zip",
+      "sha256": "699a3e1bf25c68771b168efa603850a1cf5cb80e98b643e13b53b2755ed3f9b9",
+      "tests_passed": 27,
+      "real_model_calls": 0,
+      "report": "history/reports/operadic-rag-upload-review-2026-11-08.md",
+      "provenance": "Not established; no byte-identical text files among1346 text members in35 current repository archives. Different architecture from max4; inspiration cannot be excluded.",
+      "delivery": {
+        "path": "operadic_rag_code_review_FA.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/operadic_rag_code_review_FA.txt",
+        "sha256": "22d85e115762db7d7d3066c1c2b3c3a867803504ab71507e988225a66c5cd397",
+        "bytes": 7302,
+        "download_verified": true
+      }
+    }
+  ]
 }

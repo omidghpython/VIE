@@ -1,0 +1,705 @@
+[
+  {
+    "id": "joint_person",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author and composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "roles_kept_in_one_person_question"
+  },
+  {
+    "id": "parallel_concatenation",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q3",
+          "question": "Which author and composer was credited for The Lantern? ({{q1}} and {{q2}})",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person",
+            "q2": "person"
+          }
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "suspicious",
+    "expected_reason": "parallel_role_candidates_need_identity_review"
+  },
+  {
+    "id": "explicit_identity_composition",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q3",
+          "question": "Which person is common to {{q1}} and {{q2}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person",
+            "q2": "person"
+          }
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "explicit_shared_person_composition"
+  },
+  {
+    "id": "negative_is_not_intersection",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q3",
+          "question": "Which person is not common to {{q1}} and {{q2}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person",
+            "q2": "person"
+          }
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "suspicious",
+    "expected_reason": "parallel_role_candidates_need_identity_review"
+  },
+  {
+    "id": "candidate_filter",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which person among {{q1}} is also a composer?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person"
+          }
+        }
+      ],
+      "final": "q2"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "same_candidate_person_filter"
+  },
+  {
+    "id": "reverse_role_filter",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which person from {{q1}} is an author?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person"
+          }
+        }
+      ],
+      "final": "q2"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "same_candidate_person_filter"
+  },
+  {
+    "id": "boolean_final",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Is {{q1}} a composer?",
+          "answer_type": "boolean",
+          "dependencies": {
+            "q1": "person"
+          }
+        }
+      ],
+      "final": "q2"
+    },
+    "expected_status": "suspicious",
+    "expected_reason": "person_target_replaced_by_boolean"
+  },
+  {
+    "id": "boolean_wording_person_label",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Is {{q1}} a composer?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person"
+          }
+        }
+      ],
+      "final": "q2"
+    },
+    "expected_status": "suspicious",
+    "expected_reason": "person_target_replaced_by_boolean"
+  },
+  {
+    "id": "work_final",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which work was credited?",
+          "answer_type": "work",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "suspicious",
+    "expected_reason": "person_target_has_nonperson_label"
+  },
+  {
+    "id": "two_explicit_people",
+    "question": "Which author and which composer worked together?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q3",
+          "question": "Who worked together, {{q1}} and {{q2}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person",
+            "q2": "person"
+          }
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "distinct_people_not_forced_into_one"
+  },
+  {
+    "id": "separate_people_collapsed",
+    "question": "Which author and which composer worked together?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author and composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "suspicious",
+    "expected_reason": "distinct_people_collapsed_to_joint_target"
+  },
+  {
+    "id": "plural_people",
+    "question": "Which author and composer are siblings?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q3",
+          "question": "Who worked together, {{q1}} and {{q2}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person",
+            "q2": "person"
+          }
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "distinct_people_not_forced_into_one"
+  },
+  {
+    "id": "another_person",
+    "question": "Which author and another composer worked together?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q3",
+          "question": "Who worked together, {{q1}} and {{q2}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person",
+            "q2": "person"
+          }
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "distinct_people_not_forced_into_one"
+  },
+  {
+    "id": "unknown_role",
+    "question": "Which author and engraver was credited?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "modifier",
+    "question": "Which acclaimed author and composer was credited?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "quoted_title",
+    "question": "Which book titled \"Which author and composer?\" was published?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which book was published?",
+          "answer_type": "work",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "non_target_pair",
+    "question": "Which film featured the author and composer?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which film?",
+          "answer_type": "work",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "unknown_verb",
+    "question": "Which author and composer collaborated?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who collaborated?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "mixed_types",
+    "question": "Which author and company received the award?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who received it?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "same_role",
+    "question": "Which author and author was credited?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "three_roles",
+    "question": "Which author and composer and director was credited?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "possessive",
+    "question": "Which author and composer's birthplace was recorded?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Where?",
+          "answer_type": "place",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "polite_indirect",
+    "question": "Could you tell me which author and composer was credited?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "who_form_abstains",
+    "question": "Who was both an author and a composer?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "single_role",
+    "question": "Which author was credited?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unsupported_or_non_role_target"
+  },
+  {
+    "id": "unknown_composition",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Who was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "unrecognized_role_composition"
+  },
+  {
+    "id": "missing_slot",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which person is also a composer?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person"
+          }
+        }
+      ],
+      "final": "q2"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "invalid_or_unsupported_tree"
+  },
+  {
+    "id": "orphan",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        },
+        {
+          "id": "q2",
+          "question": "Which composer was credited?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q2"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "invalid_or_unsupported_tree"
+  },
+  {
+    "id": "disconnected_cycle",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author is {{q2}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q2": "person"
+          }
+        },
+        {
+          "id": "q2",
+          "question": "Which composer is {{q1}}?",
+          "answer_type": "person",
+          "dependencies": {
+            "q1": "person"
+          }
+        },
+        {
+          "id": "q3",
+          "question": "Which author and composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q3"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "invalid_or_unsupported_tree"
+  },
+  {
+    "id": "missing_plan",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": null,
+    "expected_status": "unknown",
+    "expected_reason": "invalid_or_unsupported_tree"
+  },
+  {
+    "id": "empty_question",
+    "question": "",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author and composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "invalid_question"
+  },
+  {
+    "id": "question_is_not_text",
+    "question": null,
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author and composer was credited for The Lantern?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "unknown",
+    "expected_reason": "invalid_question"
+  },
+  {
+    "id": "role_check_is_not_whole_plan_validation",
+    "question": "Which author and composer was credited for The Lantern?",
+    "plan": {
+      "nodes": [
+        {
+          "id": "q1",
+          "question": "Which author and composer was born in Pinevale?",
+          "answer_type": "person",
+          "dependencies": {}
+        }
+      ],
+      "final": "q1"
+    },
+    "expected_status": "no_violation_found",
+    "expected_reason": "roles_kept_in_one_person_question"
+  }
+]

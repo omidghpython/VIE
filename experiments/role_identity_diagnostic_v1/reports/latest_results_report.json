@@ -1,0 +1,583 @@
+{
+  "diagnostic_version": "1.0.0",
+  "advisory_only": true,
+  "model_calls": 0,
+  "meaning": "No automatic acceptance, rejection or repair; no_violation_found is scoped to recognized role patterns.",
+  "counts": {
+    "unknown": 39,
+    "suspicious": 1
+  },
+  "rows": [
+    {
+      "index": 1,
+      "question_id": "5ab3cecd5542992ade7c6eae",
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 2,
+      "question_id": "5ab42a2b5542996a3a969f5a",
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "saved_structure_status": "invalid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "invalid_or_unsupported_tree",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 3,
+      "question_id": "5a7d3f895542995f4f402248",
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 4,
+      "question_id": "5a778b345542992a6e59decf",
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 5,
+      "question_id": "5a8ceddb554299441c6b9f85",
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 6,
+      "question_id": "5a7e05f75542995f4f402394",
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 7,
+      "question_id": "5ab3306a55429969a97a80fd",
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 8,
+      "question_id": "5a7cfb2755429907fabef084",
+      "question": "What year did the director of The Quiet American die?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 9,
+      "question_id": "5ab201765542993be8fa98a4",
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 10,
+      "question_id": "5adbe27c55429947ff173854",
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 11,
+      "question_id": "5a8fa4d95542995b4424207b",
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 12,
+      "question_id": "5ac19ff35542991316484b61",
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 13,
+      "question_id": "5ab484415542990594ba9c44",
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 14,
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 15,
+      "question_id": "5abce1fa5542993a06baf993",
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 16,
+      "question_id": "5a77a7db5542995d8318124d",
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 17,
+      "question_id": "5abe94fd55429965af743f37",
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 18,
+      "question_id": "5a7d598d5542995f4f402262",
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 19,
+      "question_id": "5ae73ddb554299572ea5478d",
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 20,
+      "question_id": "5ade5a645542997c77adee0d",
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 21,
+      "question_id": "5a87bc3f5542996432c57275",
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 22,
+      "question_id": "5ae38b115542990afbd1e183",
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 23,
+      "question_id": "5a89bf18554299669944a591",
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 24,
+      "question_id": "5ae0a5825542993d6555ebdf",
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 25,
+      "question_id": "5add9bfa5542990dbb2f7e85",
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 26,
+      "question_id": "5a75a0725542992d0ec05fc9",
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 27,
+      "question_id": "5ac43e0f554299076e296d8e",
+      "question": "What country are both Dafeng District and Jixi in?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 28,
+      "question_id": "5a8ea7f25542995085b37468",
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 29,
+      "question_id": "5a8701b3554299211dda2b9a",
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 30,
+      "question_id": "5ac3dfee554299204fd21eab",
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 31,
+      "question_id": "5a7f7b3b5542992097ad2f81",
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 32,
+      "question_id": "5ae3d2715542990afbd1e1e9",
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "saved_structure_status": "invalid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "invalid_or_unsupported_tree",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 33,
+      "question_id": "5ae077735542993d6555eb6d",
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 34,
+      "question_id": "5adf4b335542993a75d264a5",
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 35,
+      "question_id": "5a776b82554299373536026f",
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 36,
+      "question_id": "5ac0b1835542992a796ded65",
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 37,
+      "question_id": "5a80afcf554299485f5986b9",
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 38,
+      "question_id": "5ae254565542992decbdccbb",
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 39,
+      "question_id": "5ae14b0655429920d52343a6",
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "suspicious",
+        "reason": "parallel_role_candidates_need_identity_review",
+        "node_ids": [
+          "q1",
+          "q2",
+          "q3"
+        ],
+        "target": {
+          "roles": [
+            "actor",
+            "photographer"
+          ],
+          "form": "singular_coordination_candidate"
+        },
+        "advisory_only": true
+      }
+    },
+    {
+      "index": 40,
+      "question_id": "5ae409d955429970de88d89d",
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "saved_structure_status": "valid",
+      "diagnostic": {
+        "version": "1.0.0",
+        "status": "unknown",
+        "reason": "unsupported_or_non_role_target",
+        "node_ids": [],
+        "target": null,
+        "advisory_only": true
+      }
+    }
+  ],
+  "input_sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684"
+}
