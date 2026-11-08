@@ -529,3 +529,7 @@ answer_target و head/type و تمام semantic_checks، داور، PLAN_SYSTEM 
 - [hotpotqa_role_identity_diagnostic_v1.zip](https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/hotpotqa_role_identity_diagnostic_v1.zip)؛ SHA256 `197e6c5d37207bcd6d363d49228e0c969f972e31430568c67a3c7d8e033ac08e`.
 - [hotpotqa_role_identity_diagnostic_v1.txt](https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/hotpotqa_role_identity_diagnostic_v1.txt)؛ SHA256 `4f927cad76c3bd570d72b52cbc5dad502fc040e974b681014ee531619806e895`.
 - [operadic_rag_code_review_FA.txt](https://raw.githubusercontent.com/omidghpython/VIE/0e3eb04df60c1898792e606d8ae35580ad1e5e7b/operadic_rag_code_review_FA.txt)؛ SHA256 `22d85e115762db7d7d3066c1c2b3c3a867803504ab71507e988225a66c5cd397`.
+
+## مجوز پنج نسخه مستقل — ۲۰۲۶-۱۱-۰۸
+
+کاربر پنج آزمایش مستقل از max4 اصلی خواست؛ همه ازZIPاصلی باhashتأییدشده استخراج شدند. [دامنه و پروتکل](history/conversations/2026-11-08-five-independent-max4-experiments.md). بسته‌ها زنجیره‌ای نیستند؛ نسخه‌های۲/۴/۵ تشخیصی و بدون تغییر تصمیم پایلوت‌اند. نسخه۳ تعمیر ریشه محدود و اختیاری با حالت استخراج تنها برای مقایسه دارد.
