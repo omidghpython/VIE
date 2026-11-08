@@ -608,7 +608,7 @@
   },
   "phase_one_delivery": {
     "id": "max4_explicit_target_v1",
-    "status": "built_offline_verified_live_results_pending",
+    "status": "superseded_by_user_scope_correction_do_not_run_as_current",
     "accepted_baseline": "v3.2.4-max4",
     "commit": "0a09562862b10e30342634a648e5366bd5cd2249",
     "artifacts": [
