@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-08",
+  "snapshot_date_tehran": "2026-11-09",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -917,7 +917,10 @@
             "download_verified": true
           }
         ],
-        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7",
+        "uploaded_package_identity_verified": true,
+        "source_confirmation_report": "history/reports/max4-02-03-source-confirmation-2026-11-09.md",
+        "identity_limitation": "User-supplied downloaded ZIP equals release byte-for-byte; old result runtime code_sha256 still differs for unknown reason. No user edits presumed."
       }
     },
     {
@@ -974,7 +977,10 @@
             "download_verified": true
           }
         ],
-        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7"
+        "delivery_commit": "df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7",
+        "uploaded_package_identity_verified": true,
+        "source_confirmation_report": "history/reports/max4-02-03-source-confirmation-2026-11-09.md",
+        "identity_limitation": "User-supplied downloaded ZIP equals release byte-for-byte; old result runtime code_sha256 still differs for unknown reason. No user edits presumed."
       },
       "extract_result_status": "not_received"
     },
@@ -1112,7 +1118,12 @@
       "bytes": 20344,
       "url": "https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_five_independent_results_analysis_FA.txt",
       "download_verified": true
-    }
+    },
+    "source_package_confirmation": "history/reports/max4-02-03-source-confirmation-2026-11-09.md",
+    "downloaded_packages_verified": [
+      "max4_02_relation_diagnostics_v1",
+      "max4_03_target_patch_v1"
+    ]
   },
   "bounded_relation_repair_experiments": [
     {
@@ -1146,6 +1157,181 @@
       "tests": "history/reports/max4-direction-location-repair-v1-tests.txt",
       "per_file_runtime_identity": true,
       "model_calls_during_build": 0
+    }
+  ],
+  "source_package_confirmations": [
+    {
+      "id": "max4_02_03_uploaded_source_zips_2026-11-09",
+      "date": "2026-11-09",
+      "status": "downloaded_packages_verified_old_runtime_hashes_unresolved",
+      "report": "history/reports/max4-02-03-source-confirmation-2026-11-09.md",
+      "audit_json": "history/reports/max4-02-03-source-zips-audit.json",
+      "audit_script": "history/reports/max4-02-03-source-zips-audit.py",
+      "packages": [
+        {
+          "filename": "hotpotqa_max4_02_relation_diagnostics_v1.zip",
+          "bytes": 295749,
+          "sha256": "5bce0463891a5a137dff2a7b4f81d5a37bcf67b0e58e9950baa5d2b6d39d5c5c",
+          "equals_published_zip_byte_for_byte": true,
+          "immutable_release_commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+          "manifest_entries_checked": 65,
+          "manifest_mismatches": [],
+          "code_files_hashed": 23,
+          "code_hashes": {
+            "posix": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d",
+            "windows_path_sort": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d"
+          },
+          "internal_verification_code_sha256": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d",
+          "verification_matches_computed_code": true,
+          "old_result_manifest_code_sha256": "ab0a6bd8f80f320019f936df57d12b2f82cf1d3c0e45ff3e0210390d7aff7690",
+          "runtime_hash_equals_uploaded_code": false
+        },
+        {
+          "filename": "hotpotqa_max4_03_target_patch_v1.zip",
+          "bytes": 287762,
+          "sha256": "19235fcfe9616fc5606d9d58a57f589224776d2a36f47293e4b0343b2e574437",
+          "equals_published_zip_byte_for_byte": true,
+          "immutable_release_commit": "eb304676fb44c17ddcb64be217b652a1540f7276",
+          "manifest_entries_checked": 64,
+          "manifest_mismatches": [],
+          "code_files_hashed": 23,
+          "code_hashes": {
+            "posix": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
+            "windows_path_sort": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e"
+          },
+          "internal_verification_code_sha256": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
+          "verification_matches_computed_code": true,
+          "old_result_manifest_code_sha256": "fd39c584a909a00a985397475f0e7765d5cadb0d6b2b0b28b3ece7ed3a1875f1",
+          "runtime_hash_equals_uploaded_code": false
+        }
+      ],
+      "user_modification_assumed": false,
+      "model_calls_during_analysis": 0,
+      "delivery_commit": "009892b7516dac03552c9075f05248fc2c0ed7f1",
+      "delivery": [
+        {
+          "path": "max4_02_03_source_confirmation_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/009892b7516dac03552c9075f05248fc2c0ed7f1/max4_02_03_source_confirmation_FA.txt",
+          "sha256": "3fc3e8c378f8175026fb8335e3989d4428bf47138c75a78b6239b09a68bc26a5",
+          "bytes": 4506,
+          "download_verified": true
+        }
+      ]
+    }
+  ],
+  "external_result_analyses": [
+    {
+      "id": "decomp50_user_2026-11-09",
+      "date": "2026-11-09",
+      "status": "received_and_analyzed",
+      "archive": "history/results/decomp50_user_2026-11-09.zip",
+      "bytes": 276644,
+      "sha256": "0018b749fc48f123f8d7eccff2dbab8834a190f262436955f69241e6238c9245",
+      "report": "history/reports/decomp50-results-analysis-2026-11-09.md",
+      "audit_json": "history/reports/decomp50-audit.json",
+      "audit_script": "history/reports/decomp50-audit.py",
+      "question_notes_csv": "history/reports/decomp50-question-audit.csv",
+      "settings": {
+        "schema": 1,
+        "backend": "hf",
+        "max_attempts": 3,
+        "do_exec": true,
+        "plan_tokens": 512,
+        "prompts_sha256": "c4819a72d9d7ec83d3e74dd41988a41c2530f473a5054b46d5aced060136e0e6",
+        "questions_sha256": "bc1a7059c64a8699f2b0ca10cae071b9215cbec194d870ed2b2988226e78657e",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+        "use_4bit": true,
+        "max_input_tokens": 8500
+      },
+      "cohort": {
+        "n": 50,
+        "gold_types": {
+          "bridge": 42,
+          "comparison": 8
+        },
+        "max4_common_questions": [
+          {
+            "id": "5a776b82554299373536026f",
+            "external_index": 15,
+            "baseline_index": 35,
+            "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?"
+          }
+        ]
+      },
+      "metrics": {
+        "tree_built": 46,
+        "first_attempt_valid": 22,
+        "tree_valid": 41,
+        "no_valid_tree": 4,
+        "exec_run": 46,
+        "exec_correct": 25,
+        "direct_oracle_correct": 30,
+        "decomp_ok_auto": 22,
+        "leaf_grounded": 40,
+        "leaf_total": 56
+      },
+      "paired_outcomes": {
+        "decomp_False_direct_False": 13,
+        "decomp_False_direct_True": 8,
+        "decomp_True_direct_False": 3,
+        "decomp_True_direct_True": 22
+      },
+      "totals": {
+        "decomposition": {
+          "calls": 88,
+          "prompt_tokens": 62705,
+          "completion_tokens": 5811,
+          "total_tokens": 68516,
+          "summed_call_seconds": 731.7867269999952
+        },
+        "evaluation": {
+          "calls": 148,
+          "prompt_tokens": 44672,
+          "completion_tokens": 733,
+          "total_tokens": 45405,
+          "summed_call_seconds": 108.9698635000068
+        },
+        "all": {
+          "calls": 236,
+          "prompt_tokens": 107377,
+          "completion_tokens": 6544,
+          "total_tokens": 113921,
+          "summed_call_seconds": 840.756590500002
+        }
+      },
+      "offline_verification": {
+        "checkpoints_replayed": 50,
+        "generation_attempts_replayed": 88,
+        "evaluation_calls_replayed": 148,
+        "inner_files_verified": 6
+      },
+      "all_audit_checks_passed": true,
+      "inference_protocol": "oracle gold paragraphs; no retrieval; direct control omitted for 4 no-tree questions",
+      "relation_to_earlier_external_code": "All observed prompts/control/scoring/reports replay with reviewed operadic_rag; exact runtime source absent; HF backend/512-token cap differ from earlier API code/default300. Direct provenance from max4 not established.",
+      "human_review_columns_filled": 0,
+      "semantic_accuracy_claim": false,
+      "pipeline_changed": false,
+      "baseline_promoted": false,
+      "model_calls_during_analysis": 0,
+      "direction_location_repair_result_received": false,
+      "delivery_commit": "009892b7516dac03552c9075f05248fc2c0ed7f1",
+      "delivery": [
+        {
+          "path": "decomp50.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/009892b7516dac03552c9075f05248fc2c0ed7f1/decomp50.zip",
+          "sha256": "0018b749fc48f123f8d7eccff2dbab8834a190f262436955f69241e6238c9245",
+          "bytes": 276644,
+          "download_verified": true
+        },
+        {
+          "path": "decomp50_results_analysis_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/009892b7516dac03552c9075f05248fc2c0ed7f1/decomp50_results_analysis_FA.txt",
+          "sha256": "6f2800bcba029d287e873b109d7e9a46f43441c840d3cbef530f9551e2326e73",
+          "bytes": 14782,
+          "download_verified": true
+        }
+      ]
     }
   ]
 }

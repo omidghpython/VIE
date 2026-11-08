@@ -1,0 +1,566 @@
+{
+  "all_checks_passed": true,
+  "mismatches": [],
+  "verified": {
+    "checkpoints_replayed": 50,
+    "generation_attempts_replayed": 88,
+    "evaluation_calls_replayed": 148,
+    "inner_files_verified": 6
+  },
+  "source_identity_claim": "Behavior/prompt compatibility with earlier reviewed code only; runtime source not supplied.",
+  "reference_files_sha256": {
+    "oprag/__init__.py": "5a0d9fab3173cb8e5c97bd3c0f7f64a630dad49c9b070fd98dac10bcb81d8561",
+    "oprag/analysis.py": "a71ba180a1c290773709465128d6ab4788370ba4878afa2c5f81c4f9de6d9dd6",
+    "oprag/config.py": "ab497faecea52dc8326a86c592338ec337528e093caf261568d3681f233d3c91",
+    "oprag/decomp_eval.py": "8b4e1a73a6a084bc892a731c3dd2c8dbb201268124193f3057b5360e83963cdd",
+    "oprag/experiment.py": "ccebdbcaecd698aaa3bb89214fcbbf372c75d3c052cb4b84d9b997eec655f6ab",
+    "oprag/llm.py": "f7194dfd1485c565e69ecc92713e6437fa101674fb93c4e209bad40524c05091",
+    "oprag/operad.py": "51c14a83ac70fc9ebac7b2799256dbfaa040fde66f948e04676e417b3aa37562",
+    "oprag/operadic_rag.py": "1c3326ff5f4c97970552e148c88ac8ab1a1c1f7663e9f98b1c1026632d4941e1",
+    "oprag/prompts.py": "d246540617a0c793717b0ffe579c1be10c99bfd715b94afed91677cb664d4e05",
+    "oprag/prompts_tree.py": "94923c4be7ba8b4c39b42db039091707c719681a94244ec984dd8a0660fc1c86",
+    "oprag/retriever.py": "c986bc9a58fa54826fff1a83acf3800c5c65806ec5f6ceba9256791bab2926ab",
+    "oprag/scoring.py": "c3e915320e07c6264074cae8faf1c4719ab0c8373b2c7e0b4b768e9e02b79bb7",
+    "oprag/standard_rag.py": "f4bec6c6d9ecc0ac5a82316b90542b62408764531ca95a16f7e2f5caf9a6bc4f",
+    "oprag/study.py": "3a7e8efeb0f895d7a4c596300911d94895c8928e29ee35c22844de4996aee838",
+    "oprag/tracking.py": "08c4f71a0e8181e3c86192e440da602f7a666b6249cf2bcdcfbba4bd219f520d",
+    "oprag/tree.py": "a80cece0f947837934d3a3707c819a6b5c5078a24a927cc2b2caf888180cb0d1",
+    "oprag/util.py": "5e1e4760670e390eb4c6e9eceb80bc60bc977326ec2982521eeaeb778e0685b2"
+  },
+  "input_files_sha256": {
+    "decomposition.jsonl": "0861067a7d20c1a7e439a63f149d70b5da601764f1c6c6c61404e32d608fa2e2",
+    "decomposition_results.zip": "ba7141c1f50b9ccd0922ef66883d71a72ca4639a9290d80dbfcb77af5be7b2e2",
+    "llm_calls.jsonl": "23ed8f23c6cbdc43f773fa122aba1808e4900ca355b95537743404abcbda221f",
+    "review.csv": "039adfa8dc24e9e12c4b8d4da233ca35dc13fe50e5d657d46a45ce600f94ba21",
+    "review.md": "6b939d83f3612c23a0c521dfbc6328b5f5c26e8fe99c911b7bddd8460588675d",
+    "summary.json": "2a8397abd6dbc36e91dca45c40fd9858204052c721956a3cd4ecda22f236c83b",
+    "summary.md": "6c32530b1e4abc3a19ae89c5cdc77695aed6c0097d9f837a4410e44befc49b19"
+  },
+  "settings": {
+    "schema": 1,
+    "backend": "hf",
+    "max_attempts": 3,
+    "do_exec": true,
+    "plan_tokens": 512,
+    "prompts_sha256": "c4819a72d9d7ec83d3e74dd41988a41c2530f473a5054b46d5aced060136e0e6",
+    "questions_sha256": "bc1a7059c64a8699f2b0ca10cae071b9215cbec194d870ed2b2988226e78657e",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "use_4bit": true,
+    "max_input_tokens": 8500
+  },
+  "baseline_n": 40,
+  "baseline_types": {
+    "bridge": 20,
+    "comparison": 20
+  },
+  "external_n": 50,
+  "overlap": [
+    {
+      "id": "5a776b82554299373536026f",
+      "external_index": 15,
+      "baseline_index": 35,
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?"
+    }
+  ],
+  "question_text_overlap": 1,
+  "summary_reproduced": {
+    "n": 50,
+    "gold_types": {
+      "bridge": 42,
+      "comparison": 8
+    },
+    "tree_built": 46,
+    "first_attempt_valid": 22,
+    "no_valid_tree": 4,
+    "type_ok": 42,
+    "tree_valid": 41,
+    "with_warnings": 6,
+    "by_type": {
+      "bridge": {
+        "n": 42,
+        "tree_valid": 35,
+        "decomp_ok_auto": 17,
+        "type_ok": 35
+      },
+      "comparison": {
+        "n": 8,
+        "tree_valid": 6,
+        "decomp_ok_auto": 5,
+        "type_ok": 7
+      }
+    },
+    "exec_run": 46,
+    "exec_correct": 25,
+    "direct_oracle_correct": 30,
+    "decomp_ok_auto": 22,
+    "exec_fail_control_ok": 8,
+    "exec_fail_control_fail": 13,
+    "leaf_grounded": 40,
+    "leaf_total": 56,
+    "cost_decomposition": {
+      "llm_calls": 1.76,
+      "prompt_tokens": 1254.1,
+      "completion_tokens": 116.22,
+      "total_tokens": 1370.32,
+      "time_s": 14.635734539999904,
+      "total_tokens_all": 68516,
+      "time_s_all": 731.7867269999952
+    },
+    "cost_evaluation": {
+      "llm_calls": 2.96,
+      "prompt_tokens": 893.44,
+      "completion_tokens": 14.66,
+      "total_tokens": 908.1,
+      "time_s": 2.179397270000136,
+      "total_tokens_all": 45405,
+      "time_s_all": 108.9698635000068
+    },
+    "errors": 0
+  },
+  "attempts": {
+    "1": 22,
+    "2": 18,
+    "3": 10
+  },
+  "stages": {
+    "decompose": 50,
+    "eval_leaf1": 46,
+    "eval_leaf2": 10,
+    "eval_root": 46,
+    "eval_direct": 46,
+    "decompose_retry": 38
+  },
+  "totals": {
+    "decomposition": {
+      "calls": 88,
+      "prompt_tokens": 62705,
+      "completion_tokens": 5811,
+      "total_tokens": 68516,
+      "summed_call_seconds": 731.7867269999952
+    },
+    "evaluation": {
+      "calls": 148,
+      "prompt_tokens": 44672,
+      "completion_tokens": 733,
+      "total_tokens": 45405,
+      "summed_call_seconds": 108.9698635000068
+    },
+    "all": {
+      "calls": 236,
+      "prompt_tokens": 107377,
+      "completion_tokens": 6544,
+      "total_tokens": 113921,
+      "summed_call_seconds": 840.756590500002
+    }
+  },
+  "estimated_token_calls": 0,
+  "human_review_rows_marked": 0,
+  "paired_outcomes": {
+    "decomp_False_direct_False": 13,
+    "decomp_False_direct_True": 8,
+    "decomp_True_direct_False": 3,
+    "decomp_True_direct_True": 22
+  },
+  "normalized_answer_metrics_46_executed": {
+    "decomposition_em": 0.4782608695652174,
+    "direct_em": 0.5652173913043478,
+    "decomposition_f1": 0.5592132505175984,
+    "direct_f1": 0.6737060041407867
+  },
+  "per_question_answer_metrics": [
+    {
+      "index": 1,
+      "id": "5ac2cdaa554299657fa29070",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.33333333333333337,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 2,
+      "id": "5a793bc95542994bb9456fc3",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.4
+    },
+    {
+      "index": 3,
+      "id": "5a72d7b35542991f9a20c5be",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 4,
+      "id": "5adf62d05542992d7e9f932d",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 5,
+      "id": "5a85a3005542991dd0999e72",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 6,
+      "id": "5a831fc955429954d2e2ec28",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 7,
+      "id": "5a812d0555429938b61422e1",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 8,
+      "id": "5a7b443c5542992d025e67ce",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 9,
+      "id": "5adf34d35542993a75d26425",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.8,
+      "direct_f1": 0.8
+    },
+    {
+      "index": 10,
+      "id": "5a78bd515542990784727749",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 12,
+      "id": "5adf53dc5542995534e8c791",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 13,
+      "id": "5ae788fa55429952e35ea964",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.4
+    },
+    {
+      "index": 14,
+      "id": "5abb342055429966062416e8",
+      "decomposition_em": 1.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 15,
+      "id": "5a776b82554299373536026f",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.6666666666666666,
+      "direct_f1": 0.6666666666666666
+    },
+    {
+      "index": 16,
+      "id": "5abe87cb5542993f32c2a156",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 17,
+      "id": "5ab236645542993be8fa98c9",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 18,
+      "id": "5a733b835542991f9a20c6b2",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.4,
+      "direct_f1": 0.4
+    },
+    {
+      "index": 19,
+      "id": "5a7326cd5542991f29ee2d11",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 20,
+      "id": "5a77a65b5542992a6e59df57",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 21,
+      "id": "5a80c79155429938b61421da",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 22,
+      "id": "5a81e8ea5542995ce29dcc73",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.8
+    },
+    {
+      "index": 23,
+      "id": "5ab84f2c55429934fafe6d54",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 24,
+      "id": "5abfd5c45542994516f4550e",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 25,
+      "id": "5a7300b85542994cef4bc41a",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.8571428571428571,
+      "direct_f1": 0.8571428571428571
+    },
+    {
+      "index": 27,
+      "id": "5a7f79155542995d8a8dde86",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 28,
+      "id": "5ade0bc55542997545bbbe30",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 29,
+      "id": "5ac3a76e554299741d48a2be",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 30,
+      "id": "5add3fe05542992c1e3a2580",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 31,
+      "id": "5abb2f2f554299232ef4a3d7",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 32,
+      "id": "5ab1e984554299340b525428",
+      "decomposition_em": 1.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 33,
+      "id": "5a80e5f5554299260e20a1ae",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 34,
+      "id": "5ab4304a55429942dd415ec5",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 35,
+      "id": "5abe79c755429976d4830b2a",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 37,
+      "id": "5ae2d59755429928c42394ec",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 38,
+      "id": "5ae628fd5542995703ce8b33",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 39,
+      "id": "5a713ea95542994082a3e6e4",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 40,
+      "id": "5ae022ab554299025d62a428",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 41,
+      "id": "5ae28b76554299495565daa8",
+      "decomposition_em": 0.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 0.6666666666666666,
+      "direct_f1": 0.6666666666666666
+    },
+    {
+      "index": 42,
+      "id": "5a7c9ead5542990527d554e4",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 43,
+      "id": "5add21555542992ae4cec496",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 45,
+      "id": "5a8aed1555429970aeb70334",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 46,
+      "id": "5a85e24a5542994775f6067f",
+      "decomposition_em": 1.0,
+      "direct_em": 0.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 0.0
+    },
+    {
+      "index": 47,
+      "id": "5a7c68575542996dd594b91c",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 48,
+      "id": "5a80a25d5542995d8a8ddfb7",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 49,
+      "id": "5ae07e5b55429945ae959381",
+      "decomposition_em": 0.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 0.0,
+      "direct_f1": 1.0
+    },
+    {
+      "index": 50,
+      "id": "5a8aa1685542992d82986f32",
+      "decomposition_em": 1.0,
+      "direct_em": 1.0,
+      "decomposition_f1": 1.0,
+      "direct_f1": 1.0
+    }
+  ],
+  "no_tree_indices": [
+    11,
+    26,
+    36,
+    44
+  ],
+  "unknown_leaf_indices": [
+    4,
+    7,
+    12,
+    14,
+    17,
+    29,
+    32,
+    33,
+    42
+  ],
+  "correct_with_unknown_leaf_indices": [
+    7,
+    14,
+    29,
+    32,
+    42
+  ],
+  "model_calls_during_audit": 0
+}
