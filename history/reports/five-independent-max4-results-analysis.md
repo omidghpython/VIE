@@ -115,3 +115,10 @@ commit صفحه اصلی: `df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7`. هر۱۱ف
 - max4_05_decomposition_diagnostics_v1: [max4_05_decomposition_diagnostics_v1_results.zip](https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_05_decomposition_diagnostics_v1_results.zip) — SHA256 `77d8f3b86fea0aa29787a7a2ecd44fa1b9d68e41ca4587dc0ec65c3e43cd77a5`؛ [max4_05_decomposition_diagnostics_v1_results_analysis_FA.txt](https://raw.githubusercontent.com/omidghpython/VIE/df4ed71aeb8c1f7b473ace891d36f28c14e7dcf7/max4_05_decomposition_diagnostics_v1_results_analysis_FA.txt) — SHA256 `d4287bc207529f8bbae03ad030ca62b0ae486457b44b821dc8b64287665a6db4`
 
 [جدول۲۰۰ردیفی مقایسه](five-independent-max4-results-comparison.csv) و [نمایش درخت‌های۴۰سؤال و تفاوت‌ها](five-independent-max4-results-paired-trees.md). ابزار بازپخش در `history/tools/verify-five-independent-max4-results.py` ثبت است؛ چهار مسیر SOURCE/RUN_ROOT/BASELINE_ROOT/OUTPUT_JSON می‌گیرد و مدل بارگیری نمی‌کند.
+
+
+## ۲۰۲۶-۱۱-۰۸ — توضیح کاربر درباره منشأ دانلود و بررسی مجدد تحویل
+
+کاربر صریحاً تأیید کرد نسخه‌های۲و۳را دقیقاً از GitHub دانلود و اجرا کرده است؛ تغییر محلی توسط کاربر فرض نمی‌شود. کاربر احتمال داد بسته‌سازی/ثبت دستیار به‌علت تمام‌شدن توکن ناقص مانده باشد. این احتمال علت اثبات‌شده نیست.
+
+ZIPهای۲و۳از URL ثابت commit eb304676fb44c17ddcb64be217b652a1540f7276 دوباره از شبکه دریافت شدند و بایت‌به‌بایت با git show همان commit برابر بودند. hash محاسبه‌شده از کد داخل ZIP با VERIFICATION داخلی و همه hashهای SOURCE_MANIFEST برابر است؛ hash نتیجه دریافتی همچنان متفاوت است. بنابراین در این بررسی نشانه‌ای از ناهماهنگی داخلی بسته یا خرابی انتقال به GitHub پیدا نشد؛ این بررسی به‌تنهایی درستی تمام پیاده‌سازی یا منشأ اختلاف نتیجه را ثابت نمی‌کند. مسئولیت بررسی بسته‌سازی/ثبت و روش محاسبه هش سمت دستیار نیز باز می‌ماند. برای مقایسه فایل‌به‌فایل هنوز ZIP واقعاً دانلودشده/پوشه اجراشده لازم است؛ نیاز به اجرای دوباره مدل نیست.
