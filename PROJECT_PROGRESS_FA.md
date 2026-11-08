@@ -504,3 +504,7 @@ answer_target و head/type و تمام semantic_checks، داور، PLAN_SYSTEM 
 تحویل در صفحه اصلی مخزن، commit 9688de654ced10ac5db107a8eb776fb71aa9361e؛ اصل نتیجه و گزارش متنی جدا پس ازpush از لینک ثابت دانلود و بایت‌به‌بایت تأیید شدند:
 - [results_max4_role_identity_v1.zip](https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/results_max4_role_identity_v1.zip)
 - [analysis_max4_role_identity_v1_FA.txt](https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/analysis_max4_role_identity_v1_FA.txt)
+
+## ارزیابی پیشنهادهای یازده‌گانه جدید — ۲۰۲۶-۱۱-۰۸
+
+کاربر۱۱راه‌حل عملیاتی ارائه کرد؛ [ارزیابی موردبه‌مورد](history/reports/2026-11-08-eleven-operational-proposals-review.md) با خلاصه صریح پیشنهادها و شواهد کد ثبت شد. نکات کلیدی: استخراج هدف۱۹و۴۰ از قبل درست است؛ برگ۳۷ واژه استثنا ندارد؛ رد درsemantic_precheck در پایلوت تعمیر ایجاد نمی‌کند؛ بازسازی خاموشdependencies،حداقل۲گره،حذف واژه‌محور خطای داور و سقف۵کلمه برای مقادیر میانی تأیید نشدند. نقل‌قول شاهد و آزمون مستقل با محدودیت‌ها قابل‌دفاع‌اند. هیچ کد/پرامپت/بودجه تغییر نکرد و مدل اجرا نشد. مبنا و آخرین نتیجه ثابت‌اند.
