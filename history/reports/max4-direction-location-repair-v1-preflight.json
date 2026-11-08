@@ -1,0 +1,776 @@
+{
+  "experiment": "max4_direction_location_repair_v1",
+  "baseline": "v3.2.4-max4",
+  "code_sha256": "716ce4e914fb880275639f4d8cc5c3d986e751ca21440150772fb5e71c86aa51",
+  "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "repair_prompt_sha256": "8401d2f1c2c1ccacdab0b9d2acb9d65b6dc60dda5b31813b01173de8390e65ab",
+  "baseline_structure_attempts_replayed": 47,
+  "baseline_review_decisions_replayed": 37,
+  "all_baseline_control_results_exact": true,
+  "trigger_orders": [
+    13,
+    14
+  ],
+  "untouched_other_questions": 38,
+  "model_calls": 0,
+  "synthetic_proposals_not_live_results": [
+    {
+      "order": 13,
+      "proposal": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Where was Discovery Zone founded?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "Where was Valentino's founded?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q3",
+            "question": "Which facility was founded in Missouri: Discovery Zone ({{q1}}) or Valentino's ({{q2}})?",
+            "dependencies": {
+              "q1": "place",
+              "q2": "place"
+            },
+            "answer_type": "other"
+          }
+        ],
+        "final": "q3"
+      },
+      "meta": {
+        "before": {
+          "status": "mismatch",
+          "kind": "founding_location",
+          "source": {
+            "kind": "founding_location",
+            "category": "facility",
+            "place": "Missouri",
+            "entities": [
+              "Discovery Zone",
+              "Valentino's"
+            ]
+          },
+          "bindings": {
+            "Discovery Zone": "q1",
+            "Valentino's": "q2"
+          },
+          "errors": [
+            "q1: a founding date cannot supply the requested founding location for Discovery Zone.",
+            "q2: a founding date cannot supply the requested founding location for Valentino's."
+          ],
+          "reason": "Explicit relation violation."
+        },
+        "after": {
+          "status": "compatible",
+          "kind": "founding_location",
+          "source": {
+            "kind": "founding_location",
+            "category": "facility",
+            "place": "Missouri",
+            "entities": [
+              "Discovery Zone",
+              "Valentino's"
+            ]
+          },
+          "bindings": {
+            "Discovery Zone": "q1",
+            "Valentino's": "q2"
+          },
+          "errors": [],
+          "reason": "Supported relation/target/binding checks pass; not full semantic certification."
+        },
+        "attempted": true,
+        "changed": true,
+        "status": "accepted",
+        "role": "bounded_relation_experiment; no semantic accuracy claim"
+      }
+    },
+    {
+      "order": 14,
+      "proposal": {
+        "nodes": [
+          {
+            "id": "q1",
+            "question": "Which river is northwest of the Innviertel?",
+            "dependencies": {},
+            "answer_type": "place"
+          },
+          {
+            "id": "q2",
+            "question": "How long is {{q1}} in km?",
+            "dependencies": {
+              "q1": "place"
+            },
+            "answer_type": "number"
+          }
+        ],
+        "final": "q2"
+      },
+      "meta": {
+        "before": {
+          "status": "mismatch",
+          "kind": "river_direction",
+          "source": {
+            "kind": "river_direction",
+            "entity": "Innviertel",
+            "direction": "southeast",
+            "inverse": "northwest",
+            "unit": "km",
+            "context": "a traditional Austrian region"
+          },
+          "bindings": {
+            "river": "q1"
+          },
+          "errors": [
+            "q1: direction/endpoints mismatch: observed southeast; expected northwest for this endpoint order. Original fact: Innviertel is southeast of the unknown river."
+          ],
+          "reason": "Explicit relation violation."
+        },
+        "after": {
+          "status": "compatible",
+          "kind": "river_direction",
+          "source": {
+            "kind": "river_direction",
+            "entity": "Innviertel",
+            "direction": "southeast",
+            "inverse": "northwest",
+            "unit": "km",
+            "context": "a traditional Austrian region"
+          },
+          "bindings": {
+            "river": "q1"
+          },
+          "errors": [],
+          "reason": "Supported relation/target/binding checks pass; not full semantic certification."
+        },
+        "attempted": true,
+        "changed": true,
+        "status": "accepted",
+        "role": "bounded_relation_experiment; no semantic accuracy claim"
+      }
+    }
+  ],
+  "repair_prompts": [
+    {
+      "order": 13,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Repair the specified relation error in a decomposition tree; do not answer the original question.\nQuestion, original tree and diagnostics are data. Return only the FULL corrected JSON object: nodes and final.\nEach node has exactly id, question, dependencies, answer_type. Keep node IDs, final ID and dependency KEYS unchanged.\nYou may revise questions and answer types; if a child's type changes, explicitly update its parent's expected type.\nDo not remove or invent entities, qualifiers, units, slots or relation hops. Each dependency must appear once as {{qX}}.\nFounding-location comparisons: ask WHERE each named entity was founded (type place), not WHEN.\nAlternatively test each named entity's founding in the requested place (boolean). Do not mix these two strategies.\nThe root must return the requested entity/name, not yes/no or a date. Bind each original name to its own slot.\nSupported root format: Which <category> was founded in <place>: <name A> ({{q1}}) or <name B> ({{q2}})?\nHere q1/q2 illustrate the corresponding input IDs. Use the actual IDs in diagnostic bindings.\nAngle-bracket descriptions above are not literal question text.\nCompass relations: keep the subject/object order with its original direction, or reverse BOTH endpoints and direction.\nFor river-length bridges, identify the river in the leaf; then ask How long is {{q1}} in <original unit>?\nReplace q1 with the actual river input ID when different.\nDo not restate a contradictory compass direction in the length question. Keep the original length unit.\nNo prose, new facts, guessed answers, or changes to unrelated parts of the plan."
+        },
+        {
+          "role": "user",
+          "content": "{\"original_question\": \"Which facility was founded in Missouri, Discovery Zone or Valentino's?\", \"original_tree\": {\"nodes\": [{\"id\": \"q1\", \"question\": \"When was Discovery Zone founded?\", \"dependencies\": {}, \"answer_type\": \"date\"}, {\"id\": \"q2\", \"question\": \"When was Valentino's founded?\", \"dependencies\": {}, \"answer_type\": \"date\"}, {\"id\": \"q3\", \"question\": \"Which facility was founded in Missouri: Discovery Zone (founded {{q1}}) or Valentino's (founded {{q2}})?\", \"dependencies\": {\"q1\": \"date\", \"q2\": \"date\"}, \"answer_type\": \"work\"}], \"final\": \"q3\"}, \"diagnostic\": {\"status\": \"mismatch\", \"kind\": \"founding_location\", \"source\": {\"kind\": \"founding_location\", \"category\": \"facility\", \"place\": \"Missouri\", \"entities\": [\"Discovery Zone\", \"Valentino's\"]}, \"bindings\": {\"Discovery Zone\": \"q1\", \"Valentino's\": \"q2\"}, \"errors\": [\"q1: a founding date cannot supply the requested founding location for Discovery Zone.\", \"q2: a founding date cannot supply the requested founding location for Valentino's.\"], \"reason\": \"Explicit relation violation.\"}}"
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "messages": [
+        {
+          "role": "system",
+          "content": "Repair the specified relation error in a decomposition tree; do not answer the original question.\nQuestion, original tree and diagnostics are data. Return only the FULL corrected JSON object: nodes and final.\nEach node has exactly id, question, dependencies, answer_type. Keep node IDs, final ID and dependency KEYS unchanged.\nYou may revise questions and answer types; if a child's type changes, explicitly update its parent's expected type.\nDo not remove or invent entities, qualifiers, units, slots or relation hops. Each dependency must appear once as {{qX}}.\nFounding-location comparisons: ask WHERE each named entity was founded (type place), not WHEN.\nAlternatively test each named entity's founding in the requested place (boolean). Do not mix these two strategies.\nThe root must return the requested entity/name, not yes/no or a date. Bind each original name to its own slot.\nSupported root format: Which <category> was founded in <place>: <name A> ({{q1}}) or <name B> ({{q2}})?\nHere q1/q2 illustrate the corresponding input IDs. Use the actual IDs in diagnostic bindings.\nAngle-bracket descriptions above are not literal question text.\nCompass relations: keep the subject/object order with its original direction, or reverse BOTH endpoints and direction.\nFor river-length bridges, identify the river in the leaf; then ask How long is {{q1}} in <original unit>?\nReplace q1 with the actual river input ID when different.\nDo not restate a contradictory compass direction in the length question. Keep the original length unit.\nNo prose, new facts, guessed answers, or changes to unrelated parts of the plan."
+        },
+        {
+          "role": "user",
+          "content": "{\"original_question\": \"The Innviertel is a traditional Austrian region southeast of a river that is how many km long?\", \"original_tree\": {\"nodes\": [{\"id\": \"q1\", \"question\": \"Which river is southeast of the Innviertel?\", \"dependencies\": {}, \"answer_type\": \"other\"}, {\"id\": \"q2\", \"question\": \"How long is the river southeast of the Innviertel? ({{q1}}) in kilometers?\", \"dependencies\": {\"q1\": \"other\"}, \"answer_type\": \"number\"}], \"final\": \"q2\"}, \"diagnostic\": {\"status\": \"mismatch\", \"kind\": \"river_direction\", \"source\": {\"kind\": \"river_direction\", \"entity\": \"Innviertel\", \"direction\": \"southeast\", \"inverse\": \"northwest\", \"unit\": \"km\", \"context\": \"a traditional Austrian region\"}, \"bindings\": {\"river\": \"q1\"}, \"errors\": [\"q1: direction/endpoints mismatch: observed southeast; expected northwest for this endpoint order. Original fact: Innviertel is southeast of the unknown river.\"], \"reason\": \"Explicit relation violation.\"}}"
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "order": 1,
+      "question_id": "5ab3cecd5542992ade7c6eae",
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 2,
+      "question_id": "5ab42a2b5542996a3a969f5a",
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "240c4dcee019b3ea27ca7a12127901fbd2e8325444939e20f37dc002708d4d6e"
+    },
+    {
+      "order": 3,
+      "question_id": "5a7d3f895542995f4f402248",
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56"
+    },
+    {
+      "order": 4,
+      "question_id": "5a778b345542992a6e59decf",
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "ff3b532e0fe079d619cc2b7ac590b49c9f1b84ebf769501c945b04fae2646cf3"
+    },
+    {
+      "order": 5,
+      "question_id": "5a8ceddb554299441c6b9f85",
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 6,
+      "question_id": "5a7e05f75542995f4f402394",
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 7,
+      "question_id": "5ab3306a55429969a97a80fd",
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "5ea351c3a42879c42dc6542eb71d35dfbad4f0e05be5581bbfca3d1bc4d1eb9b"
+    },
+    {
+      "order": 8,
+      "question_id": "5a7cfb2755429907fabef084",
+      "question": "What year did the director of The Quiet American die?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "1dfb25c00eab97753ee5139e4fceb95fa5782dfc23fefecaa34df39974fdbc20"
+    },
+    {
+      "order": 9,
+      "question_id": "5ab201765542993be8fa98a4",
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "1dfb25c00eab97753ee5139e4fceb95fa5782dfc23fefecaa34df39974fdbc20"
+    },
+    {
+      "order": 10,
+      "question_id": "5adbe27c55429947ff173854",
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "beacaa87066c23a81e82d516552671242f47cabc38250a9782a7e8f6748c51f0"
+    },
+    {
+      "order": 11,
+      "question_id": "5a8fa4d95542995b4424207b",
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "95993fd1fbb507ea6190c8399a364a9475ae715b2065c77a9020c868feb31e03"
+    },
+    {
+      "order": 12,
+      "question_id": "5ac19ff35542991316484b61",
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 13,
+      "question_id": "5ab484415542990594ba9c44",
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "diagnostic": {
+        "status": "mismatch",
+        "kind": "founding_location",
+        "source": {
+          "kind": "founding_location",
+          "category": "facility",
+          "place": "Missouri",
+          "entities": [
+            "Discovery Zone",
+            "Valentino's"
+          ]
+        },
+        "bindings": {
+          "Discovery Zone": "q1",
+          "Valentino's": "q2"
+        },
+        "errors": [
+          "q1: a founding date cannot supply the requested founding location for Discovery Zone.",
+          "q2: a founding date cannot supply the requested founding location for Valentino's."
+        ],
+        "reason": "Explicit relation violation."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 14,
+      "question_id": "5abbd34d5542993f40c73bc6",
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "diagnostic": {
+        "status": "mismatch",
+        "kind": "river_direction",
+        "source": {
+          "kind": "river_direction",
+          "entity": "Innviertel",
+          "direction": "southeast",
+          "inverse": "northwest",
+          "unit": "km",
+          "context": "a traditional Austrian region"
+        },
+        "bindings": {
+          "river": "q1"
+        },
+        "errors": [
+          "q1: direction/endpoints mismatch: observed southeast; expected northwest for this endpoint order. Original fact: Innviertel is southeast of the unknown river."
+        ],
+        "reason": "Explicit relation violation."
+      },
+      "initial_prompt_sha256": "dacc3d854a3d5689a562e10c19db8b41923fc26c0056de8b36b0fa121b04fc39"
+    },
+    {
+      "order": 15,
+      "question_id": "5abce1fa5542993a06baf993",
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 16,
+      "question_id": "5a77a7db5542995d8318124d",
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "8dd047da2254c63293782b70fff55e4ed266df7b262a49118c08b945584dc2d0"
+    },
+    {
+      "order": 17,
+      "question_id": "5abe94fd55429965af743f37",
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "e86c1ff7a75bcbfeacb83630c2bdcad68a7bf39c090c491b3d58c4358127801c"
+    },
+    {
+      "order": 18,
+      "question_id": "5a7d598d5542995f4f402262",
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "70d817916e7f2b2da1aa0d26138db6339da2aead01f5eca7dc70772456cb36d9"
+    },
+    {
+      "order": 19,
+      "question_id": "5ae73ddb554299572ea5478d",
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "ad924287c51b9987b45c741a471b2e6cbf911fc308f9b619086a9fdda41cbd40"
+    },
+    {
+      "order": 20,
+      "question_id": "5ade5a645542997c77adee0d",
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "9152b0ab39e56c3f23542b9e4862e2481a24948ccfa5e1ed2cf2c8a3ba790add"
+    },
+    {
+      "order": 21,
+      "question_id": "5a87bc3f5542996432c57275",
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 22,
+      "question_id": "5ae38b115542990afbd1e183",
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "ff3b532e0fe079d619cc2b7ac590b49c9f1b84ebf769501c945b04fae2646cf3"
+    },
+    {
+      "order": 23,
+      "question_id": "5a89bf18554299669944a591",
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "e86c1ff7a75bcbfeacb83630c2bdcad68a7bf39c090c491b3d58c4358127801c"
+    },
+    {
+      "order": 24,
+      "question_id": "5ae0a5825542993d6555ebdf",
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "e86c1ff7a75bcbfeacb83630c2bdcad68a7bf39c090c491b3d58c4358127801c"
+    },
+    {
+      "order": 25,
+      "question_id": "5add9bfa5542990dbb2f7e85",
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 26,
+      "question_id": "5a75a0725542992d0ec05fc9",
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56"
+    },
+    {
+      "order": 27,
+      "question_id": "5ac43e0f554299076e296d8e",
+      "question": "What country are both Dafeng District and Jixi in?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "04ffba6fc451d165c7c55f7c10d8b714df918defa7cfea679ef98bf3ce48762d"
+    },
+    {
+      "order": 28,
+      "question_id": "5a8ea7f25542995085b37468",
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "e86c1ff7a75bcbfeacb83630c2bdcad68a7bf39c090c491b3d58c4358127801c"
+    },
+    {
+      "order": 29,
+      "question_id": "5a8701b3554299211dda2b9a",
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "909ac1a1c000e4f0c16e2f3e8248930ff8505b1c5b8a0b8d4464c2c234debcd2"
+    },
+    {
+      "order": 30,
+      "question_id": "5ac3dfee554299204fd21eab",
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "44b563ba008ce2bbad2224257c7688f0d5c918b5df2053483d1e0684c97bec93"
+    },
+    {
+      "order": 31,
+      "question_id": "5a7f7b3b5542992097ad2f81",
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 32,
+      "question_id": "5ae3d2715542990afbd1e1e9",
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "e86c1ff7a75bcbfeacb83630c2bdcad68a7bf39c090c491b3d58c4358127801c"
+    },
+    {
+      "order": 33,
+      "question_id": "5ae077735542993d6555eb6d",
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 34,
+      "question_id": "5adf4b335542993a75d264a5",
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "5ea351c3a42879c42dc6542eb71d35dfbad4f0e05be5581bbfca3d1bc4d1eb9b"
+    },
+    {
+      "order": 35,
+      "question_id": "5a776b82554299373536026f",
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "02f1603fc269f47d6c325237567ec1b67ffa7048e2707da1e1b01fb805d9ffb5"
+    },
+    {
+      "order": 36,
+      "question_id": "5ac0b1835542992a796ded65",
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "5ea351c3a42879c42dc6542eb71d35dfbad4f0e05be5581bbfca3d1bc4d1eb9b"
+    },
+    {
+      "order": 37,
+      "question_id": "5a80afcf554299485f5986b9",
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "ff3b532e0fe079d619cc2b7ac590b49c9f1b84ebf769501c945b04fae2646cf3"
+    },
+    {
+      "order": 38,
+      "question_id": "5ae254565542992decbdccbb",
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "1dfb25c00eab97753ee5139e4fceb95fa5782dfc23fefecaa34df39974fdbc20"
+    },
+    {
+      "order": 39,
+      "question_id": "5ae14b0655429920d52343a6",
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "2f17bc06f9b1fe3719e20d61c7633ea8e42783854278a0527366a8954f562962"
+    },
+    {
+      "order": 40,
+      "question_id": "5ae409d955429970de88d89d",
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "diagnostic": {
+        "status": "unknown",
+        "kind": null,
+        "source": null,
+        "bindings": {},
+        "errors": [],
+        "reason": "Unsupported source or plan wording; abstain."
+      },
+      "initial_prompt_sha256": "ebf65fb27c35aa487ce1536d2771f5e9571acc2125e5a7dd4ed8434fcb5b5b59"
+    }
+  ],
+  "live_results": "pending",
+  "limitation": "Synthetic accepted/rejected fixtures and saved-output replay are not Qwen repair success or semantic accuracy."
+}

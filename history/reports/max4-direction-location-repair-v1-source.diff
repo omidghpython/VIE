@@ -1,0 +1,752 @@
+--- max4/decomposition_pilot.py
++++ max4_direction_location_repair_v1/decomposition_pilot.py
+@@ -1,6 +1,6 @@
+ """Observe tree generation, limited semantic checks and self-judgment on 40 saved questions.
+ 
+-No retriever, answering, semantic repair, or answer-accuracy claim is involved.
++Optional bounded direction/location repair; no retriever, answering or answer-accuracy claim.
+ The full pipeline's semantic gate is not changed by this diagnostic entry point.
+ """
+ import argparse
+@@ -24,6 +24,9 @@
+     PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, generate_plan, review_plan, semantic_precheck,
+ )
+ from hotpotqa_operadic_rag.contracts import expand_typed_plan
++from hotpotqa_operadic_rag.relation_repair import repair_if_needed, RepairBackendError
++from hotpotqa_operadic_rag.experiment_report import export_experiment, source_report, code_files
++from hotpotqa_operadic_rag.max4_comparison import compare, reference_digest
+ from hotpotqa_operadic_rag.cost_comparison import pilot_token_report
+ from hotpotqa_operadic_rag.telemetry import TelemetryTracker, activate_tracker
+ from hotpotqa_operadic_rag.utils import configure_logging, set_seed, check_runtime
+@@ -119,6 +122,9 @@
+             outcome['status'] = 'valid' if name == 'structure' else 'observed'
+     except DecompositionError as exc:
+         outcome.update(status='invalid', error=str(exc), result=exc.details)
++    except RepairBackendError as exc:
++        outcome.update(status='error', error=str(exc), result=exc.details)
++        raise
+     except KeyboardInterrupt:
+         outcome.update(status='interrupted', error='Interrupted; this phase can resume.')
+         raise
+@@ -133,9 +139,12 @@
+         store.write(record)
+ 
+ 
+-def generate_result(llm, question):
++def generate_result(llm, question, relation_repair=False):
+     plan, trace = generate_plan(llm, question)
+-    return {'plan': plan, 'decomposition_trace': trace}
++    if not relation_repair:
++        return {'plan': plan, 'decomposition_trace': trace}
++    plan, trace, repair = repair_if_needed(llm, question, plan, trace)
++    return {'plan': plan, 'decomposition_trace': trace, 'relation_repair': repair}
+ 
+ 
+ def review_result(llm, question, plan):
+@@ -169,7 +178,7 @@
+     if not trace:
+         return lines + ['No generation attempt was recorded.', '']
+     for event in trace:
+-        lines += [f"#### Attempt {event['attempt']} ({event.get('status', 'unknown')})", '',
++        lines += [f"#### Attempt {event['attempt']} ({event.get('status', 'unknown')}) / {event.get('stage', 'structure')}", '',
+                   'Exact validation error:',
+                   markdown_code_block(event.get('error') or '(none)'), '',
+                   'Raw model output (unmodified):',
+@@ -241,6 +250,10 @@
+             old = lookup[sample['question_id']]
+             row[label + '_structure_status'] = old['status']
+             row[label + '_node_count'] = len(old['plan']['nodes']) if old['plan'] else ''
++        repair = structure.get('result', {}).get('relation_repair', {})
++        row['relation_repair_status'] = repair.get('status', 'not_enabled_or_no_valid_plan')
++        row['relation_repair_changed'] = repair.get('changed', False)
++        row['initial_structure_valid'] = bool(trace and trace[0]['status'] == 'valid')
+         rows.append(row)
+         review_text += [f'## {order}. {sample["question_id"]} ({sample["type"]})', '', sample['question'], '',
+             f'Structure: {status}; root check: {check.get("status", "not_checked")}; '
+@@ -256,11 +269,13 @@
+             'Raw model review (unmodified; no code-rule response is substituted):',
+             markdown_code_block(raw_review if raw_review is not None else '(not recorded / model not called)'), '']
+         review_text += structure_trace_markdown(trace)
++        if repair:
++            review_text += ['Relation repair audit:', markdown_code_block(json.dumps(repair, ensure_ascii=False, indent=2), 'json'), '']
+         review_text += ['Manual review: pending.', '']
+     summary = {'requested': len(rows), 'structure_status': dict(statuses),
+         'single_node': sum(r['node_count'] == 1 for r in rows),
+         'multiple_nodes': sum(isinstance(r['node_count'], int) and r['node_count'] > 1 for r in rows),
+-        'valid_on_first_attempt': sum(r['structure_status'] == 'valid' and r['structure_attempts'] == 1 for r in rows),
++        'valid_on_first_attempt': sum(r['structure_status'] == 'valid' and r['initial_structure_valid'] for r in rows),
+         'review_status': dict(verdicts), 'review_source': dict(sources),
+         'judge_status': dict(model_verdicts), 'review_response_status': dict(response_statuses),
+         'invalid_review_responses': verdicts['invalid_response'],
+@@ -288,6 +303,13 @@
+                 'A pilot below the historical Standard total does not establish full-method savings.'}
+     summary['whole_method_token_condition'] = pilot_token_report(
+         store.samples, store.manifest['settings'], summary['total_cost']['total_tokens'], direct_reference(), incomplete)
++    summary['whole_method_token_condition']['note'] = (
++        'Historical token reference, not the current quality acceptance criterion. '
++        'All bounded relation-repair costs are included. Retrieval, answering and full RAG are not run.')
++    summary['relation_repair_mode'] = store.manifest['settings'].get('relation_repair_mode', 'control')
++    summary['relation_repair_status'] = dict(Counter(r['relation_repair_status'] for r in rows))
++    summary['generation_attempts_note'] = 'structure_attempts includes relation repair; valid_on_first_attempt counts initial structural validity, even if later repaired.'
++    summary['judge_role'] = summary['judge_role'].replace('no semantic repair', 'no judge-driven repair; optional bounded pre-judge relation repair')
+     temporary = store.output.with_suffix('.csv.tmp')
+     with temporary.open('w', encoding='utf-8-sig', newline='') as handle:
+         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+@@ -296,10 +318,18 @@
+     os.replace(temporary, store.output)
+     atomic_json(store.output.parent / 'summary.json', summary)
+     (store.output.parent / 'review.md').write_text('\n'.join(review_text), encoding='utf-8')
++    experiment, experiment_md = export_experiment(store)
++    atomic_json(store.output.parent / 'relation_repair.json', experiment)
++    (store.output.parent / 'relation_repair.md').write_text(experiment_md, encoding='utf-8')
++    atomic_json(store.output.parent / 'source_identity.json', source_report(store))
++    comparison, comparison_md = compare(store, summary)
++    atomic_json(store.output.parent / 'max4_comparison.json', comparison)
++    (store.output.parent / 'max4_comparison.md').write_text(comparison_md, encoding='utf-8')
+     archive = store.output.parent.with_name(store.output.parent.name + '_results.zip')
+     temporary_zip = archive.with_suffix('.zip.tmp')
+     report_files = [store.output, store.output.parent / 'summary.json', store.output.parent / 'review.md',
+                     store.manifest_path, store.directory / 'samples.json']
++    report_files += [store.output.parent / name for name in ('relation_repair.json','relation_repair.md','source_identity.json','max4_comparison.json','max4_comparison.md')]
+     report_files += [store.records_dir / (qid + '.json') for qid in store.manifest['question_ids']]
+     with zipfile.ZipFile(temporary_zip, 'w', zipfile.ZIP_DEFLATED) as z:
+         for path in report_files:
+@@ -311,12 +341,14 @@
+ 
+ def run_pilot(samples, baselines, output_dir, *, use_4bit=True, require_cuda=True,
+               max_input_tokens=DEFAULT_MAX_INPUT_TOKENS, intermediate_tokens=DEFAULT_INTERMEDIATE_TOKENS,
+-              plan_tokens=DEFAULT_PLAN_TOKENS, retry_errors=False, report_only=False, model_factory=None):
++              plan_tokens=DEFAULT_PLAN_TOKENS, retry_errors=False, report_only=False, model_factory=None, relation_repair=False):
+     if any(type(n) is not int or n < 1 for n in (max_input_tokens, intermediate_tokens, plan_tokens)):
+         raise ValueError('Token budgets must be positive integers.')
+     settings = {'schema_version': 4, 'n_samples': len(samples), 'code_sha256': code_digest(),
+         'sample_snapshot_sha256': digest(samples), 'baselines_sha256': digest(baselines),
+-        'direct_reference_sha256': digest(direct_reference()),
++        'direct_reference_sha256': digest(direct_reference()), 'max4_reference_sha256': reference_digest(),
++        'source_files_sha256': code_files(), 'relation_repair_mode': 'bounded' if relation_repair else 'control',
++        'relation_repair_max_calls': 1 if relation_repair else 0, 'shared_generation_call_limit': PLAN_ATTEMPTS,
+         'plan_prompt_sha256': hashlib.sha256(PLAN_SYSTEM.encode()).hexdigest(),
+         'review_prompt_sha256': hashlib.sha256(REVIEW_SYSTEM.encode()).hexdigest(),
+         'backend': 'injected_test' if model_factory else 'LocalQwen',
+@@ -340,7 +372,7 @@
+                 continue
+             print(f'[{order}/{len(samples)}] {sample["question_id"]}', flush=True)
+             if should_run(record['phases'].get('structure', {}), retry_errors):
+-                run_phase(store, record, 'structure', lambda: generate_result(llm, sample['question']))
++                run_phase(store, record, 'structure', lambda: generate_result(llm, sample['question'], relation_repair=relation_repair))
+             if record['phases']['structure']['status'] == 'valid' and should_run(
+                     record['phases'].get('review', {}), retry_errors):
+                 plan = record['phases']['structure']['result']['plan']
+@@ -354,7 +386,9 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=None)
++    parser.add_argument('--relation-repair', dest='relation_repair', action='store_true', default=True)
++    parser.add_argument('--no-relation-repair', dest='relation_repair', action='store_false')
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+@@ -364,13 +398,16 @@
+     parser.add_argument('--retry-errors', action='store_true', help='Retry saved backend errors; never repeat terminal structural-invalid results.')
+     parser.add_argument('--report-only', action='store_true', help='Rebuild reports/ZIP from saved outputs; no model load.')
+     args = parser.parse_args()
++    if args.output_dir is None:
++        suffix = '' if args.relation_repair else '_control'
++        args.output_dir = str(ROOT / 'results' / ('max4_direction_location_repair_v1' + suffix))
+     configure_logging()
+     try:
+         samples, baselines = load_cohort(args.samples_json)
+         summary = run_pilot(samples, baselines, args.output_dir, use_4bit=args.use_4bit,
+             require_cuda=not args.allow_cpu, max_input_tokens=args.max_input_tokens,
+             intermediate_tokens=args.intermediate_tokens, plan_tokens=args.plan_tokens,
+-            retry_errors=args.retry_errors, report_only=args.report_only)
++            retry_errors=args.retry_errors, report_only=args.report_only, relation_repair=args.relation_repair)
+     except KeyboardInterrupt:
+         print('Interrupted. Saved phases and a results ZIP are preserved. Rerun the same command to resume.')
+         return 130
+--- max4/run_decomposition_test.bat
++++ max4_direction_location_repair_v1/run_decomposition_test.bat
+@@ -18,7 +18,7 @@
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send the Results ZIP path printed above.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
+--- max4/hotpotqa_operadic_rag/experiment_report.py
++++ max4_direction_location_repair_v1/hotpotqa_operadic_rag/experiment_report.py
+@@ -0,0 +1,49 @@
++"""Offline reporting and per-file provenance; never included in model prompts."""
++from pathlib import Path
++import hashlib
++import json
++from collections import Counter
++from .relation_repair import diagnose
++
++ROOT=Path(__file__).resolve().parent.parent
++
++
++def code_files():
++    paths=[ROOT/'decomposition_pilot.py',*sorted((ROOT/'hotpotqa_operadic_rag').rglob('*.py'))]
++    return {p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
++
++
++def export_experiment(store):
++    rows=[]
++    for order,sample in enumerate(store.samples,1):
++        st=store.read(sample['question_id'])['phases'].get('structure',{})
++        result=st.get('result',{})
++        plan=result.get('plan')
++        meta=result.get('relation_repair',{})
++        rows.append(dict(order=order,question_id=sample['question_id'],question=sample['question'],
++                         structure_status=st.get('status','pending'),
++                         repair_status=meta.get('status','not_enabled_or_no_valid_plan'),
++                         attempted=meta.get('attempted',False),changed=meta.get('changed',False),
++                         before=meta.get('before'),after=diagnose(sample['question'],plan) if plan else None,
++                         reason=meta.get('reason','')))
++    report=dict(role='limited_relation_checks_not_semantic_accuracy',questions=rows,
++                repair_status_counts=dict(Counter(r['repair_status'] for r in rows)),
++                note='A compatible result covers supported direction/location/binding/target patterns only. Unknown is not success. Rejected proposals leave the original plan and error visible.')
++    lines=['# Direction/location repair audit','',report['note'],'']
++    for row in rows:
++        lines += [f"## {row['order']}. {row['question_id']} — {row['repair_status']}",'',row['question'],'',
++                  '```json',json.dumps(row,ensure_ascii=False,indent=2),'```','']
++    return report,'\n'.join(lines)
++
++
++def source_report(store):
++    expected_path=ROOT/'RELEASE_IDENTITY.json'
++    expected=json.loads(expected_path.read_text(encoding='utf-8')) if expected_path.exists() else {}
++    recorded=store.manifest['settings'].get('source_files_sha256',{})
++    expected_files=expected.get('files_sha256',{})
++    mismatches=[name for name in sorted(set(recorded)|set(expected_files)) if recorded.get(name)!=expected_files.get(name)]
++    return dict(experiment='max4_direction_location_repair_v1',
++                recorded_code_sha256=store.manifest['settings']['code_sha256'],recorded_files_sha256=recorded,
++                expected_release=expected,release_file_differences=mismatches if expected else None,
++                release_matches_recorded=bool(expected) and not mismatches and expected.get('code_sha256')==store.manifest['settings']['code_sha256'],
++                note='File-byte hashes at run initialization; not a claim of independent GPU observation. No local absolute paths or secrets are stored.')
+--- max4/hotpotqa_operadic_rag/max4_comparison.py
++++ max4_direction_location_repair_v1/hotpotqa_operadic_rag/max4_comparison.py
+@@ -0,0 +1,46 @@
++"""Report comparison with the recorded original max4; never used in prompts."""
++import hashlib
++import json
++from pathlib import Path
++
++REFERENCE = Path(__file__).resolve().parent.parent / 'evaluation/max4_reference.json'
++
++
++def reference_digest():
++    return hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
++
++
++def compare(store, summary):
++    baseline = json.loads(REFERENCE.read_text(encoding='utf-8'))
++    lookup = {row['question_id']: row for row in baseline['questions']}
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        old = lookup.get(sample['question_id'])
++        phases = store.read(sample['question_id'])['phases']
++        structure = phases.get('structure', {})
++        plan = structure.get('result', {}).get('plan')
++        matched = bool(old and old['question'] == sample['question'])
++        cost = {key: sum(h['telemetry'].get(key, 0) for p in phases.values() for h in p.get('history', []))
++                for key in ('llm_calls', 'total_tokens')}
++        rows.append(dict(order=order, question_id=sample['question_id'], baseline_matched=matched,
++                         baseline_status=old['status'] if matched else None,
++                         current_status=structure.get('status', 'pending'),
++                         plan_identical_to_max4=(plan == old['plan']) if matched and structure.get('status') in ('valid','invalid') else None,
++                         baseline_cost=old['cost'] if matched else None, current_cost=cost))
++    same_cohort = len(rows) == len(baseline['questions']) and all(r['baseline_matched'] for r in rows)
++    complete = not summary['incomplete_questions']
++    report = dict(baseline='v3.2.4-max4', source_result_sha256=baseline['source_result_sha256'],
++                  reference_sha256=reference_digest(), same_cohort=same_cohort, current_run_complete=complete,
++                  metrics_comparable=same_cohort and complete,
++                  baseline_metrics=baseline['metrics'],
++                  current_metrics={k:summary[k] for k in ('structure_status','total_cost','valid_on_first_attempt','root_contract_status')},
++                  questions=rows,
++                  note='Saved original max4 output comparison only. Structural counts and model verdicts are not semantic accuracy. No gold data enters generation.')
++    lines=['# Comparison with original max4', '', report['note'], '',
++           f'Same complete cohort: {report["metrics_comparable"]}', '',
++           '| Case | Baseline structure | Current structure | Identical plan | Baseline tokens | Current tokens |',
++           '|---|---|---|---|---|---|']
++    for row in rows:
++        lines.append(f"| {row['order']} | {row['baseline_status']} | {row['current_status']} | {row['plan_identical_to_max4']} | "
++                     f"{(row['baseline_cost'] or {}).get('total_tokens')} | {row['current_cost']['total_tokens']} |")
++    return report, '\n'.join(lines)
+--- max4/hotpotqa_operadic_rag/relation_repair.py
++++ max4_direction_location_repair_v1/hotpotqa_operadic_rag/relation_repair.py
+@@ -0,0 +1,213 @@
++"""Narrow English relation repair for a pilot; no sample IDs or answers.
++
++Only supported founding-location comparisons and compass/river-length bridges
++are eligible. A candidate must be positively recognized; removing a diagnostic
++by rephrasing it into unknown syntax is NOT success. No graph repair is hidden.
++"""
++import json
++import re
++from .contracts import validate_plan, parse_json_object
++from .config import PLAN_ATTEMPTS, MAX_PLAN_NODES, DEFAULT_PLAN_TOKENS
++from .decomposition import semantic_precheck
++
++OPPOSITE = dict(north='south', south='north', east='west', west='east',
++                northeast='southwest', southwest='northeast', southeast='northwest', northwest='southeast')
++COMPASS = '|'.join(sorted(OPPOSITE, key=len, reverse=True))
++UNITS = {'km':'km', 'kilometers':'km', 'kilometres':'km', 'miles':'miles'}
++
++
++def clean(text):
++    return ' '.join(text.casefold().replace('’', "'").split()).rstrip('?. ')
++
++
++def source_contract(question):
++    text = ' '.join(question.split())
++    # Additional time/negation/exception qualifications are outside this experiment.
++    if re.search(r'\b(?:not|never|except|besides?|before|after|earlier|later|between|either|neither|if|unless|possibly|perhaps|reportedly|according)\b|\d', text, re.I):
++        return None
++    location = re.fullmatch(r'Which (facility|company|organization|institution) was founded in '
++                           r'([^,?]+), (.+?) or (.+?)\s*\?', text, re.I)
++    if location:
++        kind, place, left, right = [s.strip() for s in location.groups()]
++        if all(0 < len(s) < 100 for s in (place,left,right)) and clean(left)!=clean(right):
++            return dict(kind='founding_location', category=kind, place=place, entities=[left,right])
++    direction = re.fullmatch(r'(?:The )?(.+?) is (.*?)\b(' + COMPASS + r') of a river that is how many '
++                             r'(km|kilometers|kilometres|miles) long\s*\?', text, re.I)
++    if direction:
++        entity, context, orientation, unit = direction.groups()
++        # Do not erase an extra relation/clause hidden in the descriptive prefix.
++        if re.search(r'\b(?:'+COMPASS+r'|of|near|in|on|from|by|that|which|who|where|and|or)\b', context, re.I):
++            return None
++        if len(entity) < 100 and not re.search(r'\b(?:and|or|which|who)\b', entity, re.I):
++            return dict(kind='river_direction', entity=entity, direction=orientation.lower(),
++                        inverse=OPPOSITE[orientation.lower()], unit=UNITS[unit.lower()], context=context.strip())
++    return None
++
++
++def founding_leaf(text, entity, place):
++    text, entity, place = clean(text), re.escape(clean(entity)), re.escape(clean(place))
++    if re.fullmatch(r'(?:when|in (?:what|which) year|on what date) was '+entity+r' founded', text):
++        return 'date'
++    if re.fullmatch(r'(?:where|in (?:what|which) (?:place|location)) was '+entity+r' founded', text):
++        return 'place'
++    if re.fullmatch(r'was '+entity+r' founded in '+place, text):
++        return 'boolean'
++    return None
++
++
++def river_direction(text, spec):
++    text = clean(text)
++    anchor = r'(?:the )?' + re.escape(clean(spec['entity']))
++    reversed_pair = re.fullmatch(r'(?:which|what) river is ('+COMPASS+r') of '+anchor, text)
++    same_pair = (re.fullmatch(r'(?:which|what) river is '+anchor+r' ('+COMPASS+r') of', text)
++                 or re.fullmatch(anchor+r' is ('+COMPASS+r') of (?:which|what) river', text))
++    if reversed_pair:
++        return dict(observed=reversed_pair[1], expected=spec['inverse'], reversed_pair=True)
++    if same_pair:
++        return dict(observed=same_pair[1], expected=spec['direction'], reversed_pair=False)
++    return None
++
++
++def root_location_supported(root, spec, bindings):
++    if root['answer_type'] not in {'organization','place','other'}:
++        return False
++    prefix = re.escape(clean('Which '+spec['category']+' was founded in '+spec['place']))
++    choices = []
++    for entity in spec['entities']:
++        nid = bindings[entity]
++        choices.append(re.escape(clean(entity)) + r'\s*\((?:founded(?: in)? )?' + re.escape('{{'+nid+'}}') + r'\)')
++    left, right = choices
++    return bool(re.fullmatch(prefix+r'[:,] (?:'+left+' or '+right+'|'+right+' or '+left+')', clean(root['question'])))
++
++
++def root_length_supported(root, leaf, spec):
++    if root['answer_type'] != 'number' or leaf['answer_type'] not in {'place','other'}:
++        return False
++    slot = r'(?:the river )?' + re.escape('{{'+leaf['id']+'}}')
++    unit = r'(?:km|kilometers|kilometres)' if spec['unit']=='km' else 'miles'
++    patterns = [r'how long is '+slot+' in '+unit,
++                r'what is (?:the )?length of '+slot+' in '+unit,
++                r'how many '+unit+' long is '+slot]
++    return any(re.fullmatch(pattern, clean(root['question'])) for pattern in patterns)
++
++
++def diagnose(question, plan):
++    spec = source_contract(question)
++    result = dict(status='unknown', kind=spec['kind'] if spec else None,
++                  source=spec, bindings={}, errors=[], reason='Unsupported source or plan wording; abstain.')
++    if not spec:
++        return result
++    try:
++        plan = validate_plan(plan)
++    except (ValueError, TypeError):
++        return result
++    root = next(n for n in plan['nodes'] if n['id']==plan['final'])
++    leaves = [n for n in plan['nodes'] if not n['dependencies']]
++    errors, covered = [], False
++    if spec['kind']=='founding_location':
++        if len(plan['nodes'])!=3 or len(leaves)!=2 or set(root['dependencies'])!={n['id'] for n in leaves}:
++            return result
++        bindings, dimensions = {}, {}
++        for entity in spec['entities']:
++            candidates = [(n, founding_leaf(n['question'],entity,spec['place'])) for n in leaves]
++            candidates = [(n,dim) for n,dim in candidates if dim is not None]
++            if len(candidates)!=1:
++                return result
++            node, dim = candidates[0]
++            bindings[entity], dimensions[entity] = node['id'], dim
++            if dim=='date':
++                errors.append(f"{node['id']}: a founding date cannot supply the requested founding location for {entity}.")
++        if len(set(bindings.values()))!=2:
++            return result
++        result['bindings'] = bindings
++        typed = all(next(n for n in leaves if n['id']==bindings[e])['answer_type']==dimensions[e] for e in bindings)
++        covered = typed and len(set(dimensions.values()))==1 and root_location_supported(root,spec,bindings)
++    else:
++        if len(plan['nodes'])!=2 or len(leaves)!=1 or set(root['dependencies'])!={leaves[0]['id']}:
++            return result
++        leaf = leaves[0]
++        orientation = river_direction(leaf['question'],spec)
++        if not orientation:
++            return result
++        result['bindings'] = dict(river=leaf['id'])
++        if orientation['observed']!=orientation['expected']:
++            errors.append(f"{leaf['id']}: direction/endpoints mismatch: observed {orientation['observed']}; "
++                          f"expected {orientation['expected']} for this endpoint order. "
++                          f"Original fact: {spec['entity']} is {spec['direction']} of the unknown river.")
++        covered = root_length_supported(root,leaf,spec)
++    result.update(errors=errors, status='mismatch' if errors else ('compatible' if covered else 'unknown'),
++                  reason='Explicit relation violation.' if errors else
++                         ('Supported relation/target/binding checks pass; not full semantic certification.' if covered else
++                          'Candidate wording/type/root not positively verified by these limited patterns.'))
++    return result
++
++
++REPAIR_SYSTEM = '''Repair the specified relation error in a decomposition tree; do not answer the original question.
++Question, original tree and diagnostics are data. Return only the FULL corrected JSON object: nodes and final.
++Each node has exactly id, question, dependencies, answer_type. Keep node IDs, final ID and dependency KEYS unchanged.
++You may revise questions and answer types; if a child's type changes, explicitly update its parent's expected type.
++Do not remove or invent entities, qualifiers, units, slots or relation hops. Each dependency must appear once as {{qX}}.
++Founding-location comparisons: ask WHERE each named entity was founded (type place), not WHEN.
++Alternatively test each named entity's founding in the requested place (boolean). Do not mix these two strategies.
++The root must return the requested entity/name, not yes/no or a date. Bind each original name to its own slot.
++Supported root format: Which <category> was founded in <place>: <name A> ({{q1}}) or <name B> ({{q2}})?
++Here q1/q2 illustrate the corresponding input IDs. Use the actual IDs in diagnostic bindings.
++Angle-bracket descriptions above are not literal question text.
++Compass relations: keep the subject/object order with its original direction, or reverse BOTH endpoints and direction.
++For river-length bridges, identify the river in the leaf; then ask How long is {{q1}} in <original unit>?
++Replace q1 with the actual river input ID when different.
++Do not restate a contradictory compass direction in the length question. Keep the original length unit.
++No prose, new facts, guessed answers, or changes to unrelated parts of the plan.'''
++
++
++class RepairBackendError(RuntimeError):
++    def __init__(self, cause, details):
++        super().__init__(f'Relation repair backend failed: {type(cause).__name__}: {cause}')
++        self.details = details
++
++
++def repair_if_needed(llm, question, plan, trace):
++    before = diagnose(question,plan)
++    meta = dict(before=before, after=before, attempted=False, changed=False,
++                status='not_needed' if before['status']=='compatible' else 'out_of_scope',
++                role='bounded_relation_experiment; no semantic accuracy claim')
++    if before['status']!='mismatch':
++        return plan, trace, meta
++    if len(trace)>=PLAN_ATTEMPTS:
++        meta['status']='budget_exhausted'
++        return plan, trace, meta
++    meta.update(attempted=True,status='pending')
++    messages=[dict(role='system',content=REPAIR_SYSTEM),dict(role='user',content=json.dumps(
++        dict(original_question=question,original_tree=plan,diagnostic=before),ensure_ascii=False))]
++    event=dict(stage='relation_repair',attempt=len(trace)+1,messages=messages,before=before)
++    try:
++        raw=llm.generate(messages,max_new_tokens=getattr(llm,'plan_tokens',DEFAULT_PLAN_TOKENS))
++    except Exception as exc:
++        event.update(status='backend_error',raw_output=getattr(llm,'last_raw_output',None) or '',error=str(exc))
++        meta.update(status='backend_error',reason=str(exc))
++        raise RepairBackendError(exc,dict(plan=plan,decomposition_trace=[*trace,event],relation_repair=meta)) from exc
++    event['raw_output']=raw
++    try:
++        candidate=validate_plan(parse_json_object(raw),max_nodes=MAX_PLAN_NODES)
++        old_nodes={n['id']:n for n in plan['nodes']}
++        new_nodes={n['id']:n for n in candidate['nodes']}
++        if candidate['final']!=plan['final'] or set(old_nodes)!=set(new_nodes):
++            raise ValueError('Repair must keep node IDs and final ID unchanged.')
++        if any(set(n['dependencies'])!=set(old_nodes[nid]['dependencies']) for nid,n in new_nodes.items()):
++            raise ValueError('Repair must keep dependency keys unchanged; no silent graph rewrite.')
++        after=diagnose(question,candidate)
++        event['candidate_diagnostic']=after
++        if after['status']!='compatible':
++            raise ValueError('Candidate not positively verified: '+after['reason']+' '+'; '.join(after['errors']))
++        old_errors=semantic_precheck(question,plan)['errors']
++        new_errors=semantic_precheck(question,candidate)['errors']
++        if any(error not in old_errors for error in new_errors):
++            raise ValueError('Candidate introduces a baseline semantic precheck error: '+'; '.join(new_errors))
++    except (ValueError,TypeError) as exc:
++        event.update(status='rejected',error=str(exc))
++        meta.update(status='rejected',reason=str(exc))
++    else:
++        plan=candidate
++        event.update(status='accepted',error='',after=after)
++        meta.update(status='accepted',changed=True,after=after)
++    return plan,[*trace,event],meta
+--- max4/run_control.bat
++++ max4_direction_location_repair_v1/run_control.bat
+@@ -0,0 +1,2 @@
++@echo off
++call "%~dp0run_decomposition_test.bat" --no-relation-repair %*
+--- max4/tests/test_relation_repair.py
++++ max4_direction_location_repair_v1/tests/test_relation_repair.py
+@@ -0,0 +1,248 @@
++import copy
++import io
++import json
++from pathlib import Path
++import tempfile
++import unittest
++from contextlib import redirect_stdout
++from unittest.mock import patch
++import zipfile
++
++import decomposition_pilot as pilot
++from hotpotqa_operadic_rag.relation_repair import diagnose, source_contract, repair_if_needed, RepairBackendError, OPPOSITE
++from hotpotqa_operadic_rag.contracts import parse_json_object
++from hotpotqa_operadic_rag import telemetry
++
++
++def node(nid,text,kind,deps=None):
++    return dict(id=nid,question=text,answer_type=kind,dependencies=deps or {})
++
++
++def tree(*nodes):
++    return dict(nodes=list(nodes),final=nodes[-1]['id'])
++
++
++LOCATION='Which facility was founded in Ontario, Alpha or Beta?'
++DIRECTION='The Vale is a traditional region southeast of a river that is how many km long?'
++BAD_LOCATION=tree(node('q1','When was Alpha founded?','date'),node('q2','When was Beta founded?','date'),
++                  node('q3','Which facility was founded in Ontario: Alpha (founded {{q1}}) or Beta (founded {{q2}})?','work',{'q1':'date','q2':'date'}))
++GOOD_LOCATION=tree(node('q1','Where was Alpha founded?','place'),node('q2','Where was Beta founded?','place'),
++                   node('q3','Which facility was founded in Ontario: Alpha ({{q1}}) or Beta ({{q2}})?','other',{'q1':'place','q2':'place'}))
++BAD_DIRECTION=tree(node('q1','Which river is southeast of the Vale?','other'),
++                   node('q2','How long is the river southeast of the Vale? ({{q1}}) in kilometers?','number',{'q1':'other'}))
++GOOD_DIRECTION=tree(node('q1','Which river is northwest of the Vale?','place'),
++                    node('q2','How long is {{q1}} in kilometers?','number',{'q1':'place'}))
++
++
++class Model:
++    plan_tokens=3072
++    last_raw_output=None
++    def __init__(self,replies): self.replies,self.messages=list(replies),[]
++    def generate(self,messages,**kwargs):
++        self.messages.append(copy.deepcopy(messages))
++        if telemetry._ACTIVE_TRACKER:
++            telemetry._ACTIVE_TRACKER.add_generate_invocation(10)
++        reply=self.replies.pop(0)
++        if isinstance(reply,BaseException):
++            self.last_raw_output=None
++            raise reply
++        if telemetry._ACTIVE_TRACKER: telemetry._ACTIVE_TRACKER.add_completion(5)
++        self.last_raw_output=reply if isinstance(reply,str) else json.dumps(reply)
++        return self.last_raw_output
++    def ask_json(self,prompt): return parse_json_object(self.generate([{'role':'user','content':prompt}]))
++
++
++class DiagnosisTests(unittest.TestCase):
++    def test_known_bad_and_good_location(self):
++        self.assertEqual(diagnose(LOCATION,BAD_LOCATION)['status'],'mismatch')
++        self.assertEqual(diagnose(LOCATION,GOOD_LOCATION)['status'],'compatible')
++
++    def test_known_bad_and_good_direction(self):
++        self.assertEqual(diagnose(DIRECTION,BAD_DIRECTION)['status'],'mismatch')
++        self.assertEqual(diagnose(DIRECTION,GOOD_DIRECTION)['status'],'compatible')
++
++    def test_each_compass_inverse_and_original_endpoint_order(self):
++        for direction,inverse in OPPOSITE.items():
++            q=DIRECTION.replace('southeast',direction)
++            for wording in [f'Which river is {inverse} of the Vale?',f'Which river is the Vale {direction} of?',
++                            f'The Vale is {direction} of which river?']:
++                with self.subTest(direction=direction,wording=wording):
++                    t=copy.deepcopy(GOOD_DIRECTION);t['nodes'][0]['question']=wording
++                    self.assertEqual(diagnose(q,t)['status'],'compatible')
++            t=copy.deepcopy(GOOD_DIRECTION);t['nodes'][0]['question']=f'Which river is {direction} of the Vale?'
++            self.assertEqual(diagnose(q,t)['status'],'mismatch')
++
++    def test_explicit_boolean_location_leaves(self):
++        t=copy.deepcopy(GOOD_LOCATION)
++        for n,entity in zip(t['nodes'][:2],['Alpha','Beta']):
++            n.update(question=f'Was {entity} founded in Ontario?',answer_type='boolean')
++        t['nodes'][-1]['dependencies']={'q1':'boolean','q2':'boolean'}
++        self.assertEqual(diagnose(LOCATION,t)['status'],'compatible')
++
++    def test_source_temporal_negation_exception_and_unknown_abstain(self):
++        for q in ['Which facility was founded in Ontario before 1900, Alpha or Beta?',
++                  'Which facility was not founded in Ontario, Alpha or Beta?',
++                  'Where was Alpha founded?', 'The Vale lies southeast of a river.',
++                  'What type of product is the sponsor of Cup?',
++                  DIRECTION.replace('is a traditional','is not a traditional')]:
++            with self.subTest(question=q):self.assertIsNone(source_contract(q))
++
++    def test_unknown_plan_does_not_get_certified(self):
++        t=copy.deepcopy(GOOD_DIRECTION);t['nodes'][0]['question']='Which river borders the Vale?'
++        self.assertEqual(diagnose(DIRECTION,t)['status'],'unknown')
++        self.assertEqual(diagnose(LOCATION,None)['status'],'unknown')
++
++    def test_extra_source_relation_and_hedging_abstain(self):
++        for q in [DIRECTION.replace('a traditional region', 'a region northeast of a town'),
++                  DIRECTION.replace('is a traditional', 'is possibly a traditional'),
++                  DIRECTION.replace('a traditional region', 'a region near the capital')]:
++            with self.subTest(question=q): self.assertIsNone(source_contract(q))
++
++    def test_entity_mapping_not_global_word_coverage(self):
++        t=copy.deepcopy(GOOD_LOCATION)
++        t['nodes'][-1]['question']='Which facility was founded in Ontario: Alpha ({{q2}}) or Beta ({{q1}})?'
++        self.assertEqual(diagnose(LOCATION,t)['status'],'unknown')
++
++    def test_correct_entity_order_can_be_reversed_with_its_own_slots(self):
++        t=copy.deepcopy(GOOD_LOCATION)
++        t['nodes'][-1]['question']='Which facility was founded in Ontario: Beta ({{q2}}) or Alpha ({{q1}})?'
++        self.assertEqual(diagnose(LOCATION,t)['status'],'compatible')
++
++    def test_mixed_date_location_and_type_relabel_only_not_success(self):
++        t=copy.deepcopy(BAD_LOCATION)
++        t['nodes'][0].update(question='Where was Alpha founded?',answer_type='place')
++        t['nodes'][-1]['dependencies']['q1']='place'
++        self.assertEqual(diagnose(LOCATION,t)['status'],'mismatch')
++        t=copy.deepcopy(BAD_LOCATION)
++        for n in t['nodes'][:2]:n['answer_type']='place'
++        t['nodes'][-1]['dependencies']={'q1':'place','q2':'place'}
++        self.assertEqual(diagnose(LOCATION,t)['status'],'mismatch')
++
++    def test_names_apostrophe_units_and_whitespace(self):
++        q=LOCATION.replace('Alpha',"Valentino's").replace('Ontario','New York')
++        t=json.loads(json.dumps(GOOD_LOCATION).replace('Alpha',"Valentino's").replace('Ontario','New York'))
++        self.assertEqual(diagnose(q,t)['status'],'compatible')
++        for unit in ['km','kilometres','kilometers']:
++            t=copy.deepcopy(GOOD_DIRECTION);t['nodes'][-1]['question']='How many '+unit+' long is {{q1}}?'
++            self.assertEqual(diagnose(DIRECTION,t)['status'],'compatible')
++
++
++class RepairTests(unittest.TestCase):
++    def run_case(self,q,original,proposal):
++        model=Model([original,proposal]);before=copy.deepcopy(original)
++        result=pilot.generate_result(model,q,relation_repair=True)
++        self.assertEqual(original,before)
++        self.assertEqual(len(model.messages),2)
++        self.assertEqual(result['decomposition_trace'][1]['messages'],model.messages[1])
++        return result
++
++    def test_accept_both_supported_repairs_and_preserve_raw(self):
++        for q,bad,good in [(LOCATION,BAD_LOCATION,GOOD_LOCATION),(DIRECTION,BAD_DIRECTION,GOOD_DIRECTION)]:
++            with self.subTest(q=q):
++                r=self.run_case(q,bad,good)
++                self.assertEqual(r['plan'],good)
++                self.assertEqual(r['relation_repair']['status'],'accepted')
++                self.assertEqual(json.loads(r['decomposition_trace'][0]['raw_output']),bad)
++                self.assertEqual(json.loads(r['decomposition_trace'][1]['raw_output']),good)
++
++    def test_no_extra_call_on_compatible_unknown_or_disabled(self):
++        for q,p,enabled in [(LOCATION,GOOD_LOCATION,True),('Who wrote Alpha?',GOOD_LOCATION,True),(LOCATION,BAD_LOCATION,False)]:
++            m=Model([p]);r=pilot.generate_result(m,q,relation_repair=enabled)
++            self.assertEqual(len(m.messages),1)
++            self.assertEqual(r['plan'],p)
++
++    def test_structural_retry_exhausts_shared_budget(self):
++        m=Model([{'nodes':[],'final':'q1'},BAD_LOCATION])
++        r=pilot.generate_result(m,LOCATION,relation_repair=True)
++        self.assertEqual(len(m.messages),2)
++        self.assertEqual(r['relation_repair']['status'],'budget_exhausted')
++        self.assertEqual(r['plan'],BAD_LOCATION)
++
++    def test_drop_placeholder_or_change_graph_is_rejected(self):
++        invalid=copy.deepcopy(GOOD_DIRECTION);invalid['nodes'][-1]['question']='How long is the river in km?'
++        single=tree(node('q1','How long is the river northwest of the Vale in km?','number'))
++        for proposed in [invalid,single]:
++            r=self.run_case(DIRECTION,BAD_DIRECTION,proposed)
++            self.assertEqual(r['relation_repair']['status'],'rejected')
++            self.assertEqual(r['plan'],BAD_DIRECTION)
++
++    def test_failed_repair_does_not_hide_original_error(self):
++        r=self.run_case(DIRECTION,BAD_DIRECTION,BAD_DIRECTION)
++        self.assertEqual(r['relation_repair']['status'],'rejected')
++        self.assertEqual(r['relation_repair']['after']['status'],'mismatch')
++
++    def test_reject_paraphrase_that_evades_detector(self):
++        t=copy.deepcopy(GOOD_DIRECTION);t['nodes'][0]['question']='Which river borders the Vale?'
++        r=self.run_case(DIRECTION,BAD_DIRECTION,t)
++        self.assertEqual(r['relation_repair']['status'],'rejected')
++        self.assertEqual(r['decomposition_trace'][1]['candidate_diagnostic']['status'],'unknown')
++
++    def test_preserve_length_units_target_and_direct_slot_use(self):
++        for wording,kind in [('How long is {{q1}} in miles?','number'),('How long is {{q1}}?','number'),
++                             ('Is {{q1}} long in kilometers?','boolean'),
++                             ('How long is the river southeast of the Vale? ({{q1}}) in kilometers?','number')]:
++            with self.subTest(wording=wording):
++                t=copy.deepcopy(GOOD_DIRECTION);t['nodes'][-1].update(question=wording,answer_type=kind)
++                self.assertEqual(self.run_case(DIRECTION,BAD_DIRECTION,t)['relation_repair']['status'],'rejected')
++
++    def test_location_qualifier_entity_mapping_and_final_name_retained(self):
++        for wording,kind in [('Which facility was founded in Quebec: Alpha ({{q1}}) or Beta ({{q2}})?','other'),
++                             ('Which facility was founded in Ontario: Alpha ({{q2}}) or Beta ({{q1}})?','other'),
++                             (GOOD_LOCATION['nodes'][-1]['question'],'work'),
++                             ('Were Alpha and Beta founded in Ontario? ({{q1}} and {{q2}})','boolean')]:
++            t=copy.deepcopy(GOOD_LOCATION);t['nodes'][-1].update(question=wording,answer_type=kind)
++            self.assertEqual(self.run_case(LOCATION,BAD_LOCATION,t)['relation_repair']['status'],'rejected')
++
++    def test_dependency_type_must_be_proposed_consistently(self):
++        t=copy.deepcopy(GOOD_LOCATION);t['nodes'][-1]['dependencies']={'q1':'date','q2':'date'}
++        r=self.run_case(LOCATION,BAD_LOCATION,t)
++        self.assertEqual(r['relation_repair']['status'],'rejected')
++
++    def test_malformed_payload_and_schema_rejected(self):
++        for proposed in ['not JSON',{'question':'Where?','answer_type':'place'},'null']:
++            self.assertEqual(self.run_case(LOCATION,BAD_LOCATION,proposed)['relation_repair']['status'],'rejected')
++
++    def test_backend_error_preserves_original_and_raw_trace(self):
++        m=Model([BAD_LOCATION,RuntimeError('synthetic offline failure')])
++        with self.assertRaises(RepairBackendError) as c:
++            pilot.generate_result(m,LOCATION,relation_repair=True)
++        self.assertEqual(c.exception.details['plan'],BAD_LOCATION)
++        self.assertEqual(len(c.exception.details['decomposition_trace']),2)
++
++
++class IntegrationTests(unittest.TestCase):
++    def test_cost_reporting_resume_mode_isolation_and_gold_exclusion(self):
++        samples=[dict(question_id='synthetic',question=LOCATION,type='comparison',answer='GOLD_NEVER_SEND',context='EVIDENCE_NEVER_SEND')]
++        m=Model([BAD_LOCATION,GOOD_LOCATION,{'status':'valid','errors':[]}])
++        with tempfile.TemporaryDirectory() as tmp,redirect_stdout(io.StringIO()):
++            dest=Path(tmp)/'pilot';factory=lambda settings:(m,{'backend':'synthetic'})
++            s=pilot.run_pilot(samples,{},dest,model_factory=factory,relation_repair=True)
++            self.assertEqual(s['total_cost']['llm_calls'],3)
++            self.assertEqual(s['valid_on_first_attempt'],1)
++            self.assertEqual(s['relation_repair_status'],{'accepted':1})
++            self.assertNotIn('GOLD_NEVER_SEND',json.dumps(m.messages))
++            self.assertNotIn('EVIDENCE_NEVER_SEND',json.dumps(m.messages))
++            with zipfile.ZipFile(Path(tmp)/'pilot_results.zip') as z:
++                for name in ['source_identity.json','relation_repair.json','relation_repair.md','max4_comparison.json']:
++                    self.assertIn('pilot/'+name,z.namelist())
++                identity=json.loads(z.read('pilot/source_identity.json'))
++                self.assertIn('hotpotqa_operadic_rag/relation_repair.py',identity['recorded_files_sha256'])
++            pilot.run_pilot(samples,{},dest,model_factory=factory,relation_repair=True)
++            self.assertEqual(len(m.messages),3)
++            with self.assertRaisesRegex(ValueError,'settings/code differ'):
++                pilot.run_pilot(samples,{},dest,model_factory=factory,relation_repair=False)
++
++    def test_backend_failure_checkpoint_keeps_plan_and_marks_incomplete(self):
++        samples=[dict(question_id='synthetic',question=LOCATION,type='comparison')]
++        m=Model([BAD_LOCATION,RuntimeError('synthetic failure')])
++        with tempfile.TemporaryDirectory() as tmp,redirect_stdout(io.StringIO()):
++            dest=Path(tmp)/'pilot';factory=lambda settings:(m,{'backend':'synthetic'})
++            with self.assertRaises(RepairBackendError):
++                pilot.run_pilot(samples,{},dest,model_factory=factory,relation_repair=True)
++            record=json.loads((dest/'trees.csv.state/questions/synthetic.json').read_text())
++            self.assertEqual(record['phases']['structure']['status'],'error')
++            self.assertEqual(record['phases']['structure']['result']['plan'],BAD_LOCATION)
++            summary=json.loads((dest/'summary.json').read_text())
++            self.assertEqual(summary['backend_errors'],1)
++            self.assertEqual(summary['incomplete_questions'],1)
++            self.assertEqual(summary['total_cost']['llm_calls'],2)
