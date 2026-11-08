@@ -256,6 +256,30 @@
       "bytes": 301798,
       "sha256": "5f3785518479b71144e5599dc541a036d3a5909b9f66a258e13e4ae5e80bf8f7",
       "kind": "user_supplied_actual_run"
+    },
+    {
+      "id": "max4_role_identity_v1",
+      "path": "history/results/max4_role_identity_v1.zip",
+      "sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+      "bytes": 302845,
+      "status": "analyzed",
+      "report": "history/reports/max4-role-identity-v1-analysis.md",
+      "delivery": [
+        {
+          "path": "results_max4_role_identity_v1.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/results_max4_role_identity_v1.zip",
+          "sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+          "bytes": 302845,
+          "download_verified": true
+        },
+        {
+          "path": "analysis_max4_role_identity_v1_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/analysis_max4_role_identity_v1_FA.txt",
+          "sha256": "942b62be6f00bdd0500a1238fcf436ee7a284dae7b47a649e373fedb41868cc1",
+          "bytes": 9411,
+          "download_verified": true
+        }
+      ]
     }
   ],
   "source_packages": [
@@ -428,16 +452,16 @@
   },
   "current_experiment": {
     "id": "max4_role_identity_v1",
-    "status": "delivered_offline_tested_live_results_pending",
+    "status": "actual_results_received_and_analyzed_pending_user_decision",
     "accepted_baseline": "v3.2.4-max4",
     "experimental_control": "max4_target_phrase_v1",
     "scope": "Conditional identity guidance on top of existing full-role display hint; validator head/type and all other semantic rules unchanged. Assistant-designed implementation of critique13-15.",
     "code_commit": "12a805ebdcaef902e9415af8ca15567d6eae5691",
     "code_sha256": "4abe627b503ac33e071c623dfb52bcf5b0cee609f5120cefe3f1ee25cd51b6a6",
     "offline_tests_passed": 142,
-    "live_model_calls": 0,
+    "live_model_calls": 81,
     "expected_results_file": "results/max4_role_identity_v1_results.zip",
-    "report": "history/reports/max4-role-identity-v1.md",
+    "report": "history/reports/max4-role-identity-v1-analysis.md",
     "preflight": "history/reports/max4-role-identity-v1-preflight.json",
     "changed_prompt_indices": [
       39
@@ -457,7 +481,36 @@
         "bytes": 4696,
         "download_verified": true
       }
-    ]
+    ],
+    "result_artifact": "history/results/max4_role_identity_v1.zip",
+    "result_sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+    "analysis_json": "history/reports/max4-role-identity-v1-analysis.json",
+    "analysis_live_model_calls": 0,
+    "structurally_valid": 38,
+    "total_tokens": 48535,
+    "changed_output_orders": [
+      39
+    ],
+    "recommendation": "Structural improvement in39; same-person semantic composition not established. Keep original accepted baseline pending user decision.",
+    "result_delivery": {
+      "commit": "9688de654ced10ac5db107a8eb776fb71aa9361e",
+      "artifacts": [
+        {
+          "path": "results_max4_role_identity_v1.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/results_max4_role_identity_v1.zip",
+          "sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+          "bytes": 302845,
+          "download_verified": true
+        },
+        {
+          "path": "analysis_max4_role_identity_v1_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/analysis_max4_role_identity_v1_FA.txt",
+          "sha256": "942b62be6f00bdd0500a1238fcf436ee7a284dae7b47a649e373fedb41868cc1",
+          "bytes": 9411,
+          "download_verified": true
+        }
+      ]
+    }
   },
   "experiment_history": [
     {
