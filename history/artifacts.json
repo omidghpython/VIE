@@ -804,5 +804,137 @@
         "download_verified": true
       }
     }
+  ],
+  "independent_max4_experiments": [
+    {
+      "id": "max4_01_structure_messages_v1",
+      "baseline": "v3.2.4-max4",
+      "status": "tested_packaged_live_results_pending",
+      "tests_passed": 131,
+      "source_code_sha256": "b24a445cbe3c4bfd473e5c3a55021a1913f91d1dd4113e0cfe11ba2c87f18e67",
+      "preflight": "history/reports/max4_01_structure_messages_v1-preflight.json",
+      "source_diff": "history/reports/max4_01_structure_messages_v1-source.diff",
+      "delivery": [
+        {
+          "path": "hotpotqa_max4_01_structure_messages_v1.zip",
+          "sha256": "46ad0be04b64d20e6193836a054baaff207027f66e19e022d980fa2c104705b7",
+          "bytes": 282759,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_01_structure_messages_v1.zip",
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_max4_01_structure_messages_v1.txt",
+          "sha256": "11bdec4204df07950713b4000e0fdea13cc70626d593755dcf01efb9c637c9e8",
+          "bytes": 4795,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_01_structure_messages_v1.txt",
+          "download_verified": true
+        }
+      ],
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+    },
+    {
+      "id": "max4_02_relation_diagnostics_v1",
+      "baseline": "v3.2.4-max4",
+      "status": "tested_packaged_live_results_pending",
+      "tests_passed": 138,
+      "source_code_sha256": "2ca041fb8a29bb27e3e533429d2157be1b089dfc86a6e9122ba493633f34714d",
+      "preflight": "history/reports/max4_02_relation_diagnostics_v1-preflight.json",
+      "source_diff": "history/reports/max4_02_relation_diagnostics_v1-source.diff",
+      "delivery": [
+        {
+          "path": "hotpotqa_max4_02_relation_diagnostics_v1.zip",
+          "sha256": "5bce0463891a5a137dff2a7b4f81d5a37bcf67b0e58e9950baa5d2b6d39d5c5c",
+          "bytes": 295749,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_02_relation_diagnostics_v1.zip",
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_max4_02_relation_diagnostics_v1.txt",
+          "sha256": "a54e0d4629d808de1ae7b9a5ab8003ccbd35e528ad212a44175243a1f129b342",
+          "bytes": 5029,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_02_relation_diagnostics_v1.txt",
+          "download_verified": true
+        }
+      ],
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+    },
+    {
+      "id": "max4_03_target_patch_v1",
+      "baseline": "v3.2.4-max4",
+      "status": "tested_packaged_live_results_pending",
+      "tests_passed": 138,
+      "source_code_sha256": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
+      "preflight": "history/reports/max4_03_target_patch_v1-preflight.json",
+      "source_diff": "history/reports/max4_03_target_patch_v1-source.diff",
+      "delivery": [
+        {
+          "path": "hotpotqa_max4_03_target_patch_v1.zip",
+          "sha256": "19235fcfe9616fc5606d9d58a57f589224776d2a36f47293e4b0343b2e574437",
+          "bytes": 287762,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_03_target_patch_v1.zip",
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_max4_03_target_patch_v1.txt",
+          "sha256": "64d9eb7cc32954e7e3d0c03316d49110510408aa70634354dcf7dcbe57f390b1",
+          "bytes": 6768,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_03_target_patch_v1.txt",
+          "download_verified": true
+        }
+      ],
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+    },
+    {
+      "id": "max4_04_constraint_diagnostics_v1",
+      "baseline": "v3.2.4-max4",
+      "status": "tested_packaged_live_results_pending",
+      "tests_passed": 138,
+      "source_code_sha256": "547f1ad893498b9aba558bead0301e72e2b1fb44140cc44c44b98753a7f91ad6",
+      "preflight": "history/reports/max4_04_constraint_diagnostics_v1-preflight.json",
+      "source_diff": "history/reports/max4_04_constraint_diagnostics_v1-source.diff",
+      "delivery": [
+        {
+          "path": "hotpotqa_max4_04_constraint_diagnostics_v1.zip",
+          "sha256": "a40c6b805f7ac23b516c35270742e61b5843944c07225bd7b680c18ccc02a3b5",
+          "bytes": 296885,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_04_constraint_diagnostics_v1.zip",
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_max4_04_constraint_diagnostics_v1.txt",
+          "sha256": "00fc7e662b989bf21425242717e59f11aad908bb9bd76b6c703586db205c10f7",
+          "bytes": 5176,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_04_constraint_diagnostics_v1.txt",
+          "download_verified": true
+        }
+      ],
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+    },
+    {
+      "id": "max4_05_decomposition_diagnostics_v1",
+      "baseline": "v3.2.4-max4",
+      "status": "tested_packaged_live_results_pending",
+      "tests_passed": 134,
+      "source_code_sha256": "4c2f9f9933c39b4740e087e6f9676cfa37bcfde6b450fa8b8ca2e483dc65f9de",
+      "preflight": "history/reports/max4_05_decomposition_diagnostics_v1-preflight.json",
+      "source_diff": "history/reports/max4_05_decomposition_diagnostics_v1-source.diff",
+      "delivery": [
+        {
+          "path": "hotpotqa_max4_05_decomposition_diagnostics_v1.zip",
+          "sha256": "48e0623daa91901bbca539131a32a95e4ca29470d136f1c5353a3d97e6d42c87",
+          "bytes": 295762,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_05_decomposition_diagnostics_v1.zip",
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_max4_05_decomposition_diagnostics_v1.txt",
+          "sha256": "d211610fbe920aa7e3518e072f5db04ce6d94b571c3edf887f9cd76438dc7b9f",
+          "bytes": 5158,
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/eb304676fb44c17ddcb64be217b652a1540f7276/hotpotqa_max4_05_decomposition_diagnostics_v1.txt",
+          "download_verified": true
+        }
+      ],
+      "commit": "eb304676fb44c17ddcb64be217b652a1540f7276"
+    }
   ]
 }

@@ -1,0 +1,184 @@
+test_all_seven_recorded_closing_fences_preserve_the_exact_verdict (test_contracts.ParseTests.test_all_seven_recorded_closing_fences_preserve_the_exact_verdict) ... ok
+test_cleanup_cannot_hide_invalid_json_or_extra_content (test_contracts.ParseTests.test_cleanup_cannot_hide_invalid_json_or_extra_content) ... ok
+test_json_and_whole_fence (test_contracts.ParseTests.test_json_and_whole_fence) ... ok
+test_only_one_stray_closing_fence_is_removed (test_contracts.ParseTests.test_only_one_stray_closing_fence_is_removed) ... ok
+test_reject_duplicates_nonfinite_and_nonobjects (test_contracts.ParseTests.test_reject_duplicates_nonfinite_and_nonobjects) ... ok
+test_bad_field_types_raise_value_error_not_type_error (test_contracts.PlanTests.test_bad_field_types_raise_value_error_not_type_error) ... ok
+test_cycle_rejected (test_contracts.PlanTests.test_cycle_rejected) ... ok
+test_decomposition_contracts_do_not_execute_answers (test_contracts.PlanTests.test_decomposition_contracts_do_not_execute_answers) ... ok
+test_default_accepts_four_nodes_but_rejects_five (test_contracts.PlanTests.test_default_accepts_four_nodes_but_rejects_five) ... ok
+test_exact_fields (test_contracts.PlanTests.test_exact_fields) ... ok
+test_formal_expansion_without_answers (test_contracts.PlanTests.test_formal_expansion_without_answers) ... ok
+test_malformed_and_repeated_slots (test_contracts.PlanTests.test_malformed_and_repeated_slots) ... ok
+test_missing_slots_types_and_self_reference (test_contracts.PlanTests.test_missing_slots_types_and_self_reference) ... ok
+test_no_semantic_claim (test_contracts.PlanTests.test_no_semantic_claim) ... ok
+test_orphan_and_shared_prerequisite_rejected (test_contracts.PlanTests.test_orphan_and_shared_prerequisite_rejected) ... ok
+test_single_and_chain (test_contracts.PlanTests.test_single_and_chain) ... ok
+test_size_and_null (test_contracts.PlanTests.test_size_and_null) ... ok
+test_topologically_sort_without_renumbering (test_contracts.PlanTests.test_topologically_sort_without_renumbering) ... ok
+test_boolean_parser (test_core.CoreTests.test_boolean_parser) ... ok
+test_json_embedded_in_text (test_core.CoreTests.test_json_embedded_in_text) ... ok
+test_json_markdown (test_core.CoreTests.test_json_markdown) ... ok
+test_minmax_constant_values (test_core.CoreTests.test_minmax_constant_values) ... ok
+test_squad_normalization (test_core.CoreTests.test_squad_normalization) ... ok
+test_telemetry_budget (test_core.CoreTests.test_telemetry_budget) ... ok
+test_actual_v32_self_dependency_shape_is_rejected_without_judge (test_decomposition_pilot.PilotTests.test_actual_v32_self_dependency_shape_is_rejected_without_judge) ... ok
+test_backend_error_is_preserved_and_retried_only_explicitly (test_decomposition_pilot.PilotTests.test_backend_error_is_preserved_and_retried_only_explicitly) ... ok
+test_exact_cohort_and_recorded_baseline_gaps_are_preserved (test_decomposition_pilot.PilotTests.test_exact_cohort_and_recorded_baseline_gaps_are_preserved) ... ok
+test_interrupt_during_judge_resumes_without_regenerating_tree_and_counts_cost (test_decomposition_pilot.PilotTests.test_interrupt_during_judge_resumes_without_regenerating_tree_and_counts_cost) ... ok
+test_legacy_12_node_replay_keeps_structure_and_separates_rules_from_model (test_decomposition_pilot.PilotTests.test_legacy_12_node_replay_keeps_structure_and_separates_rules_from_model) ... ok
+test_malformed_judgment_raw_text_survives (test_decomposition_pilot.PilotTests.test_malformed_judgment_raw_text_survives) ... ok
+test_recorded_v32_structural_outputs_replay_for_all_40_without_changing_counts (test_decomposition_pilot.PilotTests.test_recorded_v32_structural_outputs_replay_for_all_40_without_changing_counts) ... ok
+test_restored_complete_example_satisfies_real_tree_contract (test_decomposition_pilot.PilotTests.test_restored_complete_example_satisfies_real_tree_contract) ... ok
+test_resume_refuses_different_budget_and_preserves_results (test_decomposition_pilot.PilotTests.test_resume_refuses_different_budget_and_preserves_results) ... ok
+test_rule_source_is_not_reported_as_a_model_judgment (test_decomposition_pilot.PilotTests.test_rule_source_is_not_reported_as_a_model_judgment) ... ok
+test_single_node_accepted_by_judge_is_visible_not_claimed_success (test_decomposition_pilot.PilotTests.test_single_node_accepted_by_judge_is_visible_not_claimed_success) ... ok
+test_successful_resume_and_report_only_never_load_model (test_decomposition_pilot.PilotTests.test_successful_resume_and_report_only_never_load_model) ... ok
+test_uncertain_is_observed_not_repaired_and_original_question_is_preserved (test_decomposition_pilot.PilotTests.test_uncertain_is_observed_not_repaired_and_original_question_is_preserved) ... ok
+test_vague_reason_retains_actual_model_status_but_reports_uncertainty (test_decomposition_pilot.PilotTests.test_vague_reason_retains_actual_model_status_but_reports_uncertainty) ... ok
+test_category_extraction (test_experiment.TargetExperimentTests.test_category_extraction) ... ok
+test_category_hint (test_experiment.TargetExperimentTests.test_category_hint) ... ok
+test_compatible_root_no_extra_call (test_experiment.TargetExperimentTests.test_compatible_root_no_extra_call) ... ok
+test_disabled_no_extra_call (test_experiment.TargetExperimentTests.test_disabled_no_extra_call) ... ok
+test_end_to_end_telemetry_bundle_resume_and_mode_isolation (test_experiment.TargetExperimentTests.test_end_to_end_telemetry_bundle_resume_and_mode_isolation) ... ok
+test_existing_mid_sentence_targets (test_experiment.TargetExperimentTests.test_existing_mid_sentence_targets) ... ok
+test_failed_patch_is_not_success (test_experiment.TargetExperimentTests.test_failed_patch_is_not_success) ... ok
+test_patch_accepts_only_final_text_and_type (test_experiment.TargetExperimentTests.test_patch_accepts_only_final_text_and_type) ... ok
+test_patch_cannot_hide_target_in_other_type (test_experiment.TargetExperimentTests.test_patch_cannot_hide_target_in_other_type) ... ok
+test_patch_must_explicitly_request_target_in_question (test_experiment.TargetExperimentTests.test_patch_must_explicitly_request_target_in_question) ... ok
+test_possessive_multiword_unsupported_and_other_typed_targets_unchanged (test_experiment.TargetExperimentTests.test_possessive_multiword_unsupported_and_other_typed_targets_unchanged) ... ok
+test_quoted_category_not_target (test_experiment.TargetExperimentTests.test_quoted_category_not_target) ... ok
+test_rejected_patch_keeps_original_and_trace (test_experiment.TargetExperimentTests.test_rejected_patch_keeps_original_and_trace) ... ok
+test_second_structural_attempt_exhausts_budget (test_experiment.TargetExperimentTests.test_second_structural_attempt_exhausts_budget) ... ok
+test_all_ancestors_kept_for_long_chain (test_grounded_revision.BindingTests.test_all_ancestors_kept_for_long_chain) ... ok
+test_cache_conflict_invalidates_dependent_answer (test_grounded_revision.BindingTests.test_cache_conflict_invalidates_dependent_answer) ... ok
+test_malformed_cache_audit_conservatively_reassesses (test_grounded_revision.BindingTests.test_malformed_cache_audit_conservatively_reassesses) ... ok
+test_same_evidence_reuses_answers_without_another_call (test_grounded_revision.BindingTests.test_same_evidence_reuses_answers_without_another_call) ... ok
+test_shared_nationality_retains_each_person_and_property (test_grounded_revision.BindingTests.test_shared_nationality_retains_each_person_and_property) ... ok
+test_all_original_sentences_and_titles_survive_formatting_for_all_40 (test_grounded_revision.EvidenceTests.test_all_original_sentences_and_titles_survive_formatting_for_all_40) ... ok
+test_formatter_rejects_missing_ids_instead_of_dropping_sentences (test_grounded_revision.EvidenceTests.test_formatter_rejects_missing_ids_instead_of_dropping_sentences) ... ok
+test_invalid_citation_does_not_authorize_answer (test_grounded_revision.EvidenceTests.test_invalid_citation_does_not_authorize_answer) ... ok
+test_negative_answer_is_supported_not_insufficient (test_grounded_revision.EvidenceTests.test_negative_answer_is_supported_not_insufficient) ... ok
+test_parse_error_is_logged_for_targeted_review (test_grounded_revision.EvidenceTests.test_parse_error_is_logged_for_targeted_review) ... ok
+test_source_ids_stable_after_second_retrieval (test_grounded_revision.EvidenceTests.test_source_ids_stable_after_second_retrieval) ... ok
+test_changing_only_root_type_does_not_hide_yes_no_question (test_grounded_revision.SemanticTests.test_changing_only_root_type_does_not_hide_yes_no_question) ... ok
+test_clear_root_error_uses_existing_single_repair_and_only_one_model_judgment (test_grounded_revision.SemanticTests.test_clear_root_error_uses_existing_single_repair_and_only_one_model_judgment) ... ok
+test_comparison_example_returns_a_named_person_with_bound_dates (test_grounded_revision.SemanticTests.test_comparison_example_returns_a_named_person_with_bound_dates) ... ok
+test_invalid_repair_cannot_bypass_structure (test_grounded_revision.SemanticTests.test_invalid_repair_cannot_bypass_structure) ... ok
+test_limited_root_check_handles_new_entities_and_abstains_on_ambiguous_forms (test_grounded_revision.SemanticTests.test_limited_root_check_handles_new_entities_and_abstains_on_ambiguous_forms) ... ok
+test_only_final_type_is_checked_not_intermediate_person_for_date_question (test_grounded_revision.SemanticTests.test_only_final_type_is_checked_not_intermediate_person_for_date_question) ... ok
+test_recorded_polarity_and_manga_target_errors_skip_model_calls (test_grounded_revision.SemanticTests.test_recorded_polarity_and_manga_target_errors_skip_model_calls) ... ok
+test_relation_reversal_repaired_then_reviewed_using_original_question (test_grounded_revision.SemanticTests.test_relation_reversal_repaired_then_reviewed_using_original_question) ... ok
+test_same_bad_semantics_after_repair_stops_before_retrieval (test_grounded_revision.SemanticTests.test_same_bad_semantics_after_repair_stops_before_retrieval) ... ok
+test_unreadable_judgment_is_not_acceptance (test_grounded_revision.SemanticTests.test_unreadable_judgment_is_not_acceptance) ... ok
+test_comparison_refuses_different_question (test_grounded_revision.SnapshotComparisonTests.test_comparison_refuses_different_question) ... ok
+test_exact_cohort_and_baseline_counts (test_grounded_revision.SnapshotComparisonTests.test_exact_cohort_and_baseline_counts) ... ok
+test_experiment_uses_snapshot_not_network_dataset (test_grounded_revision.SnapshotComparisonTests.test_experiment_uses_snapshot_not_network_dataset) ... 2026-11-08 11:19:33,818 | INFO | [1/40] 5ab3cecd5542992ade7c6eae (bridge)
+2026-11-08 11:19:33,848 | INFO | [2/40] 5ab42a2b5542996a3a969f5a (bridge)
+2026-11-08 11:19:33,870 | INFO | [3/40] 5a7d3f895542995f4f402248 (bridge)
+2026-11-08 11:19:33,894 | INFO | [4/40] 5a778b345542992a6e59decf (comparison)
+2026-11-08 11:19:33,919 | INFO | [5/40] 5a8ceddb554299441c6b9f85 (comparison)
+2026-11-08 11:19:33,947 | INFO | [6/40] 5a7e05f75542995f4f402394 (comparison)
+2026-11-08 11:19:33,976 | INFO | [7/40] 5ab3306a55429969a97a80fd (comparison)
+2026-11-08 11:19:34,001 | INFO | [8/40] 5a7cfb2755429907fabef084 (bridge)
+2026-11-08 11:19:34,029 | INFO | [9/40] 5ab201765542993be8fa98a4 (bridge)
+2026-11-08 11:19:34,065 | INFO | [10/40] 5adbe27c55429947ff173854 (comparison)
+2026-11-08 11:19:34,101 | INFO | [11/40] 5a8fa4d95542995b4424207b (comparison)
+2026-11-08 11:19:34,139 | INFO | [12/40] 5ac19ff35542991316484b61 (comparison)
+2026-11-08 11:19:34,183 | INFO | [13/40] 5ab484415542990594ba9c44 (comparison)
+2026-11-08 11:19:34,218 | INFO | [14/40] 5abbd34d5542993f40c73bc6 (bridge)
+2026-11-08 11:19:34,261 | INFO | [15/40] 5abce1fa5542993a06baf993 (bridge)
+2026-11-08 11:19:34,308 | INFO | [16/40] 5a77a7db5542995d8318124d (comparison)
+2026-11-08 11:19:34,348 | INFO | [17/40] 5abe94fd55429965af743f37 (comparison)
+2026-11-08 11:19:34,386 | INFO | [18/40] 5a7d598d5542995f4f402262 (comparison)
+2026-11-08 11:19:34,422 | INFO | [19/40] 5ae73ddb554299572ea5478d (bridge)
+2026-11-08 11:19:34,467 | INFO | [20/40] 5ade5a645542997c77adee0d (comparison)
+2026-11-08 11:19:34,512 | INFO | [21/40] 5a87bc3f5542996432c57275 (comparison)
+2026-11-08 11:19:34,560 | INFO | [22/40] 5ae38b115542990afbd1e183 (comparison)
+2026-11-08 11:19:34,608 | INFO | [23/40] 5a89bf18554299669944a591 (comparison)
+2026-11-08 11:19:34,653 | INFO | [24/40] 5ae0a5825542993d6555ebdf (comparison)
+2026-11-08 11:19:34,732 | INFO | [25/40] 5add9bfa5542990dbb2f7e85 (bridge)
+2026-11-08 11:19:34,783 | INFO | [26/40] 5a75a0725542992d0ec05fc9 (bridge)
+2026-11-08 11:19:34,841 | INFO | [27/40] 5ac43e0f554299076e296d8e (comparison)
+2026-11-08 11:19:34,903 | INFO | [28/40] 5a8ea7f25542995085b37468 (comparison)
+2026-11-08 11:19:34,953 | INFO | [29/40] 5a8701b3554299211dda2b9a (bridge)
+2026-11-08 11:19:35,006 | INFO | [30/40] 5ac3dfee554299204fd21eab (bridge)
+2026-11-08 11:19:35,062 | INFO | [31/40] 5a7f7b3b5542992097ad2f81 (comparison)
+2026-11-08 11:19:35,118 | INFO | [32/40] 5ae3d2715542990afbd1e1e9 (comparison)
+2026-11-08 11:19:35,183 | INFO | [33/40] 5ae077735542993d6555eb6d (bridge)
+2026-11-08 11:19:35,252 | INFO | [34/40] 5adf4b335542993a75d264a5 (bridge)
+2026-11-08 11:19:35,324 | INFO | [35/40] 5a776b82554299373536026f (bridge)
+2026-11-08 11:19:35,381 | INFO | [36/40] 5ac0b1835542992a796ded65 (bridge)
+2026-11-08 11:19:35,437 | INFO | [37/40] 5a80afcf554299485f5986b9 (bridge)
+2026-11-08 11:19:35,503 | INFO | [38/40] 5ae254565542992decbdccbb (bridge)
+2026-11-08 11:19:35,569 | INFO | [39/40] 5ae14b0655429920d52343a6 (bridge)
+2026-11-08 11:19:35,632 | INFO | [40/40] 5ae409d955429970de88d89d (bridge)
+2026-11-08 11:19:35,780 | INFO | Experiment completed. Results: /tmp/tmp0i112lgp/results.csv
+ok
+test_snapshot_mismatch_is_rejected (test_grounded_revision.SnapshotComparisonTests.test_snapshot_mismatch_is_rejected) ... ok
+test_ingenious_explicit_birth_date_review_without_reasking_writer (test_grounded_revision.TargetedReviewTests.test_ingenious_explicit_birth_date_review_without_reasking_writer) ... ok
+test_long_root_uses_formatting_only_with_full_evidence (test_grounded_revision.TargetedReviewTests.test_long_root_uses_formatting_only_with_full_evidence) ... ok
+test_short_root_saves_final_generation (test_grounded_revision.TargetedReviewTests.test_short_root_saves_final_generation) ... ok
+test_shortening_prompt_keeps_question_bindings_and_full_text (test_grounded_revision.TargetedReviewTests.test_shortening_prompt_keeps_question_bindings_and_full_text) ... ok
+test_unresolved_tree_gets_one_pass_not_infinite_retry (test_grounded_revision.TargetedReviewTests.test_unresolved_tree_gets_one_pass_not_infinite_retry) ... ok
+test_existing_single_semantic_repair_cannot_bypass_four_node_limit (test_max4.FourNodeTests.test_existing_single_semantic_repair_cannot_bypass_four_node_limit) ... ok
+test_oversized_tree_is_repaired_without_truncating_or_changing_question (test_max4.FourNodeTests.test_oversized_tree_is_repaired_without_truncating_or_changing_question) ... ok
+test_two_oversized_outputs_stop_without_judging (test_max4.FourNodeTests.test_two_oversized_outputs_stop_without_judging) ... ok
+test_v324_replay_preserves_cohort_and_only_changes_oversize_errors (test_max4.FourNodeTests.test_v324_replay_preserves_cohort_and_only_changes_oversize_errors) ... ok
+test_both_failed_structure_attempts_are_visible_without_judge_or_resume_calls (test_review_contract_reporting.ReportingTests.test_both_failed_structure_attempts_are_visible_without_judge_or_resume_calls) ... ok
+test_dynamic_fences_and_raw_whitespace_survive (test_review_contract_reporting.ReportingTests.test_dynamic_fences_and_raw_whitespace_survive) ... ok
+test_legacy_12_node_v323_replay_separates_format_errors_and_keeps_all_traces (test_review_contract_reporting.ReportingTests.test_legacy_12_node_v323_replay_separates_format_errors_and_keeps_all_traces) ... ok
+test_a_specific_semantic_error_is_preserved_not_reclassified (test_review_contract_reporting.ReviewContractTests.test_a_specific_semantic_error_is_preserved_not_reclassified) ... ok
+test_backend_failure_is_not_mislabeled_as_a_json_error (test_review_contract_reporting.ReviewContractTests.test_backend_failure_is_not_mislabeled_as_a_json_error) ... ok
+test_full_pipeline_does_not_repair_a_tree_using_a_format_error (test_review_contract_reporting.ReviewContractTests.test_full_pipeline_does_not_repair_a_tree_using_a_format_error) ... ok
+test_inconsistent_or_missing_fields_never_become_valid (test_review_contract_reporting.ReviewContractTests.test_inconsistent_or_missing_fields_never_become_valid) ... ok
+test_invalid_json_and_empty_output_preserve_raw_and_parse_error (test_review_contract_reporting.ReviewContractTests.test_invalid_json_and_empty_output_preserve_raw_and_parse_error) ... ok
+test_nested_errors_are_not_flattened_or_treated_as_semantic_uncertainty (test_review_contract_reporting.ReviewContractTests.test_nested_errors_are_not_flattened_or_treated_as_semantic_uncertainty) ... ok
+test_prompt_examples_match_the_parser_contract (test_review_contract_reporting.ReviewContractTests.test_prompt_examples_match_the_parser_contract) ... ok
+test_semantic_uncertainty_and_vague_reason_stay_separate (test_review_contract_reporting.ReviewContractTests.test_semantic_uncertainty_and_vague_reason_stay_separate) ... ok
+test_oversized_input_fails_before_generate (test_revision.BudgetTests.test_oversized_input_fails_before_generate) ... ok
+test_separate_budgets_and_no_input_truncation (test_revision.BudgetTests.test_separate_budgets_and_no_input_truncation) ... ok
+test_truncated_output_and_overlong_answer_rejected (test_revision.BudgetTests.test_truncated_output_and_overlong_answer_rejected) ... ok
+test_defaults_and_windows_launcher_match_requested_budgets (test_revision.CLITests.test_defaults_and_windows_launcher_match_requested_budgets) ... ok
+test_failed_run_returns_nonzero_exit (test_revision.CLITests.test_failed_run_returns_nonzero_exit) ... ok
+test_balanced_original_ids_stable_order_and_local_ten (test_revision.DataRetrievalTests.test_balanced_original_ids_stable_order_and_local_ten) ... ok
+test_first_ranks_ten_second_ranks_seven_and_retains_first_three (test_revision.DataRetrievalTests.test_first_ranks_ten_second_ranks_seven_and_retains_first_three) ... ok
+test_first_round_hybrid_scores_all_ten_passages (test_revision.DataRetrievalTests.test_first_round_hybrid_scores_all_ten_passages) ... ok
+test_invalid_scope_and_counts_fail (test_revision.DataRetrievalTests.test_invalid_scope_and_counts_fail) ... ok
+test_second_round_normalizes_only_remaining_seven_before_top_three (test_revision.DataRetrievalTests.test_second_round_normalizes_only_remaining_seven_before_top_three) ... ok
+test_backend_error_is_not_structural_retry (test_revision.MethodTests.test_backend_error_is_not_structural_retry) ... ok
+test_coverage_and_early_stop_sentence_ids (test_revision.MethodTests.test_coverage_and_early_stop_sentence_ids) ... ok
+test_decomposition_repaired_once_and_no_fallback (test_revision.MethodTests.test_decomposition_repaired_once_and_no_fallback) ... ok
+test_shared_second_query_covers_both_branches_and_blocked_root (test_revision.MethodTests.test_shared_second_query_covers_both_branches_and_blocked_root) ... ok
+test_standard_sufficient_stops_after_first (test_revision.MethodTests.test_standard_sufficient_stops_after_first) ... ok
+test_standard_uses_three_then_all_six_without_gold (test_revision.MethodTests.test_standard_uses_three_then_all_six_without_gold) ... ok
+test_unresolved_after_second_abstains_without_unknown_substitution (test_revision.MethodTests.test_unresolved_after_second_abstains_without_unknown_substitution) ... ok
+test_both_fail_are_not_reported_as_success_or_premature (test_revision.ResumeTests.test_both_fail_are_not_reported_as_success_or_premature) ... ok
+test_finished_run_skips_dataset_and_models_and_recovers_csv (test_revision.ResumeTests.test_finished_run_skips_dataset_and_models_and_recovers_csv) ... ok
+test_interrupt_after_a_does_not_repeat_a_on_resume (test_revision.ResumeTests.test_interrupt_after_a_does_not_repeat_a_on_resume) ... ok
+test_invalid_decomposition_trace_survives_failure (test_revision.ResumeTests.test_invalid_decomposition_trace_survives_failure) ... ok
+test_oc_only_resume_preserves_both_core_phases (test_revision.ResumeTests.test_oc_only_resume_preserves_both_core_phases) ... ok
+test_settings_mismatch_and_unowned_csv_preserved (test_revision.ResumeTests.test_settings_mismatch_and_unowned_csv_preserved) ... ok
+test_cleanup_when_stop_raises_and_nested_rejection (test_revision.TelemetryTests.test_cleanup_when_stop_raises_and_nested_rejection) ... ok
+test_context_and_cleanup_on_error (test_revision.TelemetryTests.test_context_and_cleanup_on_error) ... ok
+test_generate_counts_success_and_failure (test_revision.TelemetryTests.test_generate_counts_success_and_failure) ... ok
+test_different_model_or_scripted_results_cannot_claim_live_savings (test_semantic_budget.CostTests.test_different_model_or_scripted_results_cannot_claim_live_savings) ... ok
+test_equal_is_not_less_and_failed_or_empty_answers_do_not_certify_savings (test_semantic_budget.CostTests.test_equal_is_not_less_and_failed_or_empty_answers_do_not_certify_savings) ... ok
+test_full_paired_cost_includes_every_row_and_retries_not_oc_baseline (test_semantic_budget.CostTests.test_full_paired_cost_includes_every_row_and_retries_not_oc_baseline) ... ok
+test_historical_standard_reference_is_full_same_40_not_oc_eight (test_semantic_budget.CostTests.test_historical_standard_reference_is_full_same_40_not_oc_eight) ... ok
+test_ambiguous_targets_do_not_trigger_specific_type_claims (test_semantic_budget.SemanticChecksTests.test_ambiguous_targets_do_not_trigger_specific_type_claims) ... ok
+test_coordinates_not_required_for_qualitative_comparison (test_semantic_budget.SemanticChecksTests.test_coordinates_not_required_for_qualitative_comparison) ... ok
+test_correct_entity_then_property_is_not_rejected (test_semantic_budget.SemanticChecksTests.test_correct_entity_then_property_is_not_rejected) ... ok
+test_description_is_not_passed_as_actor (test_semantic_budget.SemanticChecksTests.test_description_is_not_passed_as_actor) ... ok
+test_existing_one_semantic_repair_budget_handles_binding_error (test_semantic_budget.SemanticChecksTests.test_existing_one_semantic_repair_budget_handles_binding_error) ... ok
+test_person_is_not_reused_as_band (test_semantic_budget.SemanticChecksTests.test_person_is_not_reused_as_band) ... ok
+test_recorded_v322_checks_are_separate_from_judgments (test_semantic_budget.SemanticChecksTests.test_recorded_v322_checks_are_separate_from_judgments) ... ok
+test_root_wording_cannot_be_hidden_by_changing_only_type_label (test_semantic_budget.SemanticChecksTests.test_root_wording_cannot_be_hidden_by_changing_only_type_label) ... ok
+test_all_recorded_trees_retain_every_fragment_and_type_once (test_semantic_budget.TypedExpansionTests.test_all_recorded_trees_retain_every_fragment_and_type_once) ... ok
+test_expansion_size_error_does_not_truncate (test_semantic_budget.TypedExpansionTests.test_expansion_size_error_does_not_truncate) ... ok
+test_full_nested_text_no_duplicate_json_and_original_question_intact (test_semantic_budget.TypedExpansionTests.test_full_nested_text_no_duplicate_json_and_original_question_intact) ... ok
+
+----------------------------------------------------------------------
+Ran 138 tests in 15.503s
+
+OK

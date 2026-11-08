@@ -1,0 +1,224 @@
+--- max4/decomposition_pilot.py
++++ max4_01_structure_messages_v1/decomposition_pilot.py
+@@ -23,6 +23,7 @@
+ from hotpotqa_operadic_rag.decomposition import (
+     PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, generate_plan, review_plan, semantic_precheck,
+ )
++from hotpotqa_operadic_rag.max4_comparison import compare, reference_digest
+ from hotpotqa_operadic_rag.contracts import expand_typed_plan
+ from hotpotqa_operadic_rag.cost_comparison import pilot_token_report
+ from hotpotqa_operadic_rag.telemetry import TelemetryTracker, activate_tracker
+@@ -296,10 +297,14 @@
+     os.replace(temporary, store.output)
+     atomic_json(store.output.parent / 'summary.json', summary)
+     (store.output.parent / 'review.md').write_text('\n'.join(review_text), encoding='utf-8')
++    comparison, comparison_md = compare(store, summary)
++    atomic_json(store.output.parent / 'max4_comparison.json', comparison)
++    (store.output.parent / 'max4_comparison.md').write_text(comparison_md, encoding='utf-8')
+     archive = store.output.parent.with_name(store.output.parent.name + '_results.zip')
+     temporary_zip = archive.with_suffix('.zip.tmp')
+     report_files = [store.output, store.output.parent / 'summary.json', store.output.parent / 'review.md',
+                     store.manifest_path, store.directory / 'samples.json']
++    report_files += [store.output.parent / 'max4_comparison.json', store.output.parent / 'max4_comparison.md']
+     report_files += [store.records_dir / (qid + '.json') for qid in store.manifest['question_ids']]
+     with zipfile.ZipFile(temporary_zip, 'w', zipfile.ZIP_DEFLATED) as z:
+         for path in report_files:
+@@ -316,7 +321,7 @@
+         raise ValueError('Token budgets must be positive integers.')
+     settings = {'schema_version': 4, 'n_samples': len(samples), 'code_sha256': code_digest(),
+         'sample_snapshot_sha256': digest(samples), 'baselines_sha256': digest(baselines),
+-        'direct_reference_sha256': digest(direct_reference()),
++        'direct_reference_sha256': digest(direct_reference()), 'max4_reference_sha256': reference_digest(),
+         'plan_prompt_sha256': hashlib.sha256(PLAN_SYSTEM.encode()).hexdigest(),
+         'review_prompt_sha256': hashlib.sha256(REVIEW_SYSTEM.encode()).hexdigest(),
+         'backend': 'injected_test' if model_factory else 'LocalQwen',
+@@ -354,7 +359,7 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'max4_01_structure_messages_v1'))
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+--- max4/hotpotqa_operadic_rag/contracts.py
++++ max4_01_structure_messages_v1/hotpotqa_operadic_rag/contracts.py
+@@ -84,6 +84,11 @@
+     if not isinstance(data, dict) or set(data) != {"nodes", "final"}:
+         raise ValueError("Plan must contain exactly nodes and final.")
+     nodes = data["nodes"]
++    if isinstance(nodes, list) and len(nodes) > max_nodes:
++        raise ValueError(f"Plan must contain 1..{max_nodes} nodes. "
++                         "Merge condition checks for the same entity into a single node where possible, "
++                         "preserving ALL qualifiers and required intermediate relations. "
++                         "Do not drop constraints or merge different entities merely to fit the limit.")
+     if not isinstance(nodes, list) or not 1 <= len(nodes) <= max_nodes:
+         raise ValueError(f"Plan must contain 1..{max_nodes} nodes.")
+     by_id = {}
+@@ -112,7 +117,13 @@
+         if any(character in SLOT_PATTERN.sub("", question) for character in "{}"):
+             raise ValueError(f"{nid}: malformed or unknown placeholder; use literal {{{{q1}}}} slots.")
+         if set(occurrences) != set(deps):
+-            raise ValueError(f"{nid}: placeholders and declared dependencies must match exactly.")
++            missing_declarations = sorted(set(occurrences) - set(deps))
++            missing_slots = sorted(set(deps) - set(occurrences))
++            raise ValueError(f"{nid}: placeholders and declared dependencies must match exactly. "
++                             f"Slots without dependency declarations: {missing_declarations}; "
++                             f"declared dependencies without question slots: {missing_slots}. "
++                             "Repair the question/dependency mapping while preserving its intended meaning; "
++                             "do not silently discard either side.")
+         if any(count != 1 for count in occurrences.values()):
+             raise ValueError(f"{nid}: each dependency placeholder must occur exactly once in strict-tree mode.")
+         if nid in deps:
+--- max4/hotpotqa_operadic_rag/max4_comparison.py
++++ max4_01_structure_messages_v1/hotpotqa_operadic_rag/max4_comparison.py
+@@ -0,0 +1,46 @@
++"""Report comparison with the recorded original max4; never used in prompts."""
++import hashlib
++import json
++from pathlib import Path
++
++REFERENCE = Path(__file__).resolve().parent.parent / 'evaluation/max4_reference.json'
++
++
++def reference_digest():
++    return hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
++
++
++def compare(store, summary):
++    baseline = json.loads(REFERENCE.read_text(encoding='utf-8'))
++    lookup = {row['question_id']: row for row in baseline['questions']}
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        old = lookup.get(sample['question_id'])
++        phases = store.read(sample['question_id'])['phases']
++        structure = phases.get('structure', {})
++        plan = structure.get('result', {}).get('plan')
++        matched = bool(old and old['question'] == sample['question'])
++        cost = {key: sum(h['telemetry'].get(key, 0) for p in phases.values() for h in p.get('history', []))
++                for key in ('llm_calls', 'total_tokens')}
++        rows.append(dict(order=order, question_id=sample['question_id'], baseline_matched=matched,
++                         baseline_status=old['status'] if matched else None,
++                         current_status=structure.get('status', 'pending'),
++                         plan_identical_to_max4=(plan == old['plan']) if matched and structure.get('status') in ('valid','invalid') else None,
++                         baseline_cost=old['cost'] if matched else None, current_cost=cost))
++    same_cohort = len(rows) == len(baseline['questions']) and all(r['baseline_matched'] for r in rows)
++    complete = not summary['incomplete_questions']
++    report = dict(baseline='v3.2.4-max4', source_result_sha256=baseline['source_result_sha256'],
++                  reference_sha256=reference_digest(), same_cohort=same_cohort, current_run_complete=complete,
++                  metrics_comparable=same_cohort and complete,
++                  baseline_metrics=baseline['metrics'],
++                  current_metrics={k:summary[k] for k in ('structure_status','total_cost','valid_on_first_attempt','root_contract_status')},
++                  questions=rows,
++                  note='Saved original max4 output comparison only. Structural counts and model verdicts are not semantic accuracy. No gold data enters generation.')
++    lines=['# Comparison with original max4', '', report['note'], '',
++           f'Same complete cohort: {report["metrics_comparable"]}', '',
++           '| Case | Baseline structure | Current structure | Identical plan | Baseline tokens | Current tokens |',
++           '|---|---|---|---|---|---|']
++    for row in rows:
++        lines.append(f"| {row['order']} | {row['baseline_status']} | {row['current_status']} | {row['plan_identical_to_max4']} | "
++                     f"{(row['baseline_cost'] or {}).get('total_tokens')} | {row['current_cost']['total_tokens']} |")
++    return report, '\n'.join(lines)
+--- max4/run_decomposition_test.bat
++++ max4_01_structure_messages_v1/run_decomposition_test.bat
+@@ -18,7 +18,7 @@
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send results\max4_01_structure_messages_v1_results.zip for review.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
+--- max4/tests/test_experiment.py
++++ max4_01_structure_messages_v1/tests/test_experiment.py
+@@ -0,0 +1,59 @@
++import copy
++import json
++import unittest
++from hotpotqa_operadic_rag.contracts import validate_plan
++from hotpotqa_operadic_rag.decomposition import generate_plan, DecompositionError
++
++
++class Model:
++    def __init__(self, replies): self.replies, self.messages = list(replies), []
++    def generate(self, messages, **kwargs):
++        self.messages.append(copy.deepcopy(messages)); return json.dumps(self.replies.pop(0))
++
++
++class StructureMessagesTests(unittest.TestCase):
++    def tree(self, text, deps):
++        return dict(nodes=[dict(id='q1', question='Who wrote Alpha?', answer_type='person', dependencies={}),
++                           dict(id='q2', question=text, answer_type='place', dependencies=deps)], final='q2')
++
++    def test_missing_declaration_names_slot(self):
++        tree = self.tree('Where was {{q1}} born?', {})
++        before = copy.deepcopy(tree)
++        with self.assertRaisesRegex(ValueError, "Slots without dependency declarations: \\['q1'\\]"):
++            validate_plan(tree)
++        self.assertEqual(tree, before)
++
++    def test_missing_slot_names_dependency(self):
++        with self.assertRaisesRegex(ValueError, "declared dependencies without question slots: \\['q1'\\]"):
++            validate_plan(self.tree('Where was the author born?', {'q1':'person'}))
++
++    def test_both_sides_are_distinguished(self):
++        with self.assertRaises(ValueError) as c:
++            validate_plan(self.tree('Where was {{q3}} born?', {'q1':'person'}))
++        self.assertIn("Slots without dependency declarations: ['q3']", str(c.exception))
++        self.assertIn("declared dependencies without question slots: ['q1']", str(c.exception))
++
++    def test_cap_guidance_preserves_constraints(self):
++        with self.assertRaises(ValueError) as c:
++            validate_plan({'nodes':[{}]*5,'final':'q5'})
++        for phrase in ['same entity', 'ALL qualifiers', 'different entities']:
++            self.assertIn(phrase, str(c.exception))
++
++    def test_empty_plan_does_not_get_merge_advice(self):
++        with self.assertRaises(ValueError) as c: validate_plan({'nodes':[],'final':'q1'})
++        self.assertEqual(str(c.exception), 'Plan must contain 1..4 nodes.')
++
++    def test_error_enters_second_prompt_without_silent_repair(self):
++        bad = self.tree('Where was {{q1}} born?', {})
++        good = self.tree('Where was {{q1}} born?', {'q1':'person'})
++        model = Model([bad, good])
++        result, trace = generate_plan(model, 'Where was the writer of Alpha born?')
++        self.assertEqual(result, good)
++        self.assertIn("Slots without dependency declarations: ['q1']", model.messages[1][1]['content'])
++        self.assertEqual(json.loads(trace[0]['raw_output']), bad)
++        self.assertEqual(len(model.messages), 2)
++
++    def test_two_attempt_budget_unchanged(self):
++        model = Model([self.tree('Where was {{q1}} born?', {})] * 2)
++        with self.assertRaises(DecompositionError): generate_plan(model, 'Where was the writer born?')
++        self.assertEqual(len(model.messages), 2)
+--- max4/tests/test_max4.py
++++ max4_01_structure_messages_v1/tests/test_max4.py
+@@ -31,7 +31,7 @@
+         self.assertEqual(plan, chain(4))
+         self.assertEqual(len(trace), 2)
+         self.assertEqual(json.loads(trace[0]['raw_output']), chain(5))
+-        self.assertEqual(trace[0]['error'], 'Plan must contain 1..4 nodes.')
++        self.assertTrue(trace[0]['error'].startswith('Plan must contain 1..4 nodes.'))
+         self.assertEqual(model.messages[0][-1]['content'], question)
+         self.assertTrue(model.messages[1][-1]['content'].startswith(question + '\n'))
+         self.assertIn('Plan must contain 1..4 nodes.', model.messages[1][-1]['content'])
+@@ -50,7 +50,7 @@
+             decompose_question(model, 'Which entity completes the chain?')
+         trace = caught.exception.details['decomposition_trace']
+         self.assertEqual(trace[-1]['stage'], 'semantic_repair')
+-        self.assertEqual(trace[-1]['error'], 'Plan must contain 1..4 nodes.')
++        self.assertTrue(trace[-1]['error'].startswith('Plan must contain 1..4 nodes.'))
+         self.assertEqual((len(model.messages), len(model.prompts)), (2, 1))
+ 
+     def test_v324_replay_preserves_cohort_and_only_changes_oversize_errors(self):
+@@ -71,7 +71,8 @@
+                 record = json.loads((output / 'trees.csv.state/questions' /
+                                     (samples[index-1]['question_id'] + '.json')).read_text())
+                 trace = record['phases']['structure']['result']['decomposition_trace']
+-                self.assertEqual([event['error'] for event in trace], ['Plan must contain 1..4 nodes.'] * 2)
++                self.assertEqual(len(trace), 2)
++                self.assertTrue(all(event['error'].startswith('Plan must contain 1..4 nodes.') for event in trace))
+             self.assertFalse(model.plans)
+             self.assertFalse(model.verdicts)
+ 

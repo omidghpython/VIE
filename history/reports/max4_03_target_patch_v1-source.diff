@@ -1,0 +1,448 @@
+--- max4/decomposition_pilot.py
++++ max4_03_target_patch_v1/decomposition_pilot.py
+@@ -1,6 +1,6 @@
+ """Observe tree generation, limited semantic checks and self-judgment on 40 saved questions.
+ 
+-No retriever, answering, semantic repair, or answer-accuracy claim is involved.
++No retriever, answering, or answer-accuracy claim is involved. Optional bounded final-node target patch.
+ The full pipeline's semantic gate is not changed by this diagnostic entry point.
+ """
+ import argparse
+@@ -23,7 +23,9 @@
+ from hotpotqa_operadic_rag.decomposition import (
+     PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, generate_plan, review_plan, semantic_precheck,
+ )
++from hotpotqa_operadic_rag.max4_comparison import compare, reference_digest
+ from hotpotqa_operadic_rag.contracts import expand_typed_plan
++from hotpotqa_operadic_rag.target_patch import maybe_patch
+ from hotpotqa_operadic_rag.cost_comparison import pilot_token_report
+ from hotpotqa_operadic_rag.telemetry import TelemetryTracker, activate_tracker
+ from hotpotqa_operadic_rag.utils import configure_logging, set_seed, check_runtime
+@@ -133,9 +135,12 @@
+         store.write(record)
+ 
+ 
+-def generate_result(llm, question):
++def generate_result(llm, question, target_repair=False):
+     plan, trace = generate_plan(llm, question)
+-    return {'plan': plan, 'decomposition_trace': trace}
++    if not target_repair:
++        return {'plan': plan, 'decomposition_trace': trace}
++    plan, trace, patch = maybe_patch(llm, question, plan, trace, enabled=True)
++    return {'plan': plan, 'decomposition_trace': trace, 'target_patch': patch}
+ 
+ 
+ def review_result(llm, question, plan):
+@@ -169,7 +174,7 @@
+     if not trace:
+         return lines + ['No generation attempt was recorded.', '']
+     for event in trace:
+-        lines += [f"#### Attempt {event['attempt']} ({event.get('status', 'unknown')})", '',
++        lines += [f"#### Attempt {event['attempt']} ({event.get('status', 'unknown')}) / {event.get('stage', 'structure')}", '',
+                   'Exact validation error:',
+                   markdown_code_block(event.get('error') or '(none)'), '',
+                   'Raw model output (unmodified):',
+@@ -256,6 +261,8 @@
+             'Raw model review (unmodified; no code-rule response is substituted):',
+             markdown_code_block(raw_review if raw_review is not None else '(not recorded / model not called)'), '']
+         review_text += structure_trace_markdown(trace)
++        if 'target_patch' in structure.get('result', {}):
++            review_text += ['Target patch audit:', markdown_code_block(json.dumps(structure['result']['target_patch'], ensure_ascii=False, indent=2), 'json'), '']
+         review_text += ['Manual review: pending.', '']
+     summary = {'requested': len(rows), 'structure_status': dict(statuses),
+         'single_node': sum(r['node_count'] == 1 for r in rows),
+@@ -288,6 +295,11 @@
+                 'A pilot below the historical Standard total does not establish full-method savings.'}
+     summary['whole_method_token_condition'] = pilot_token_report(
+         store.samples, store.manifest['settings'], summary['total_cost']['total_tokens'], direct_reference(), incomplete)
++    summary['target_patch_mode'] = store.manifest['settings'].get('target_patch_mode', 'extraction_only')
++    patches = [store.read(s['question_id'])['phases'].get('structure', {}).get('result', {}).get('target_patch', {}) for s in store.samples]
++    summary['target_patch_status'] = dict(Counter(p.get('status', 'not_enabled_or_no_valid_plan') for p in patches))
++    summary['generation_attempts_note'] = 'structure_attempts includes any target patch; total generation calls <= 2. First-attempt count excludes patched trees.'
++    summary['judge_role'] = summary['judge_role'].replace('no semantic repair', 'no judge-driven repair; optional bounded pre-judge root patch')
+     temporary = store.output.with_suffix('.csv.tmp')
+     with temporary.open('w', encoding='utf-8-sig', newline='') as handle:
+         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+@@ -296,10 +308,14 @@
+     os.replace(temporary, store.output)
+     atomic_json(store.output.parent / 'summary.json', summary)
+     (store.output.parent / 'review.md').write_text('\n'.join(review_text), encoding='utf-8')
++    comparison, comparison_md = compare(store, summary)
++    atomic_json(store.output.parent / 'max4_comparison.json', comparison)
++    (store.output.parent / 'max4_comparison.md').write_text(comparison_md, encoding='utf-8')
+     archive = store.output.parent.with_name(store.output.parent.name + '_results.zip')
+     temporary_zip = archive.with_suffix('.zip.tmp')
+     report_files = [store.output, store.output.parent / 'summary.json', store.output.parent / 'review.md',
+                     store.manifest_path, store.directory / 'samples.json']
++    report_files += [store.output.parent / 'max4_comparison.json', store.output.parent / 'max4_comparison.md']
+     report_files += [store.records_dir / (qid + '.json') for qid in store.manifest['question_ids']]
+     with zipfile.ZipFile(temporary_zip, 'w', zipfile.ZIP_DEFLATED) as z:
+         for path in report_files:
+@@ -311,12 +327,12 @@
+ 
+ def run_pilot(samples, baselines, output_dir, *, use_4bit=True, require_cuda=True,
+               max_input_tokens=DEFAULT_MAX_INPUT_TOKENS, intermediate_tokens=DEFAULT_INTERMEDIATE_TOKENS,
+-              plan_tokens=DEFAULT_PLAN_TOKENS, retry_errors=False, report_only=False, model_factory=None):
++              plan_tokens=DEFAULT_PLAN_TOKENS, retry_errors=False, report_only=False, model_factory=None, target_repair=False):
+     if any(type(n) is not int or n < 1 for n in (max_input_tokens, intermediate_tokens, plan_tokens)):
+         raise ValueError('Token budgets must be positive integers.')
+     settings = {'schema_version': 4, 'n_samples': len(samples), 'code_sha256': code_digest(),
+         'sample_snapshot_sha256': digest(samples), 'baselines_sha256': digest(baselines),
+-        'direct_reference_sha256': digest(direct_reference()),
++        'direct_reference_sha256': digest(direct_reference()), 'max4_reference_sha256': reference_digest(),
+         'plan_prompt_sha256': hashlib.sha256(PLAN_SYSTEM.encode()).hexdigest(),
+         'review_prompt_sha256': hashlib.sha256(REVIEW_SYSTEM.encode()).hexdigest(),
+         'backend': 'injected_test' if model_factory else 'LocalQwen',
+@@ -324,6 +340,8 @@
+         'use_4bit': use_4bit, 'require_cuda': require_cuda, 'max_input_tokens': max_input_tokens,
+         'intermediate_tokens': intermediate_tokens, 'plan_tokens': plan_tokens,
+         'max_nodes': MAX_PLAN_NODES, 'plan_attempts': PLAN_ATTEMPTS, 'semantic_repair_attempts': 0}
++    settings['target_patch_mode'] = 'root_patch' if target_repair else 'extraction_only'
++    settings['target_patch_max_calls'] = 1 if target_repair else 0
+     output_dir = Path(output_dir).expanduser().resolve()
+     if report_only and not (output_dir / 'trees.csv.state' / 'manifest.json').exists():
+         raise ValueError('No existing pilot run to report.')
+@@ -340,7 +358,7 @@
+                 continue
+             print(f'[{order}/{len(samples)}] {sample["question_id"]}', flush=True)
+             if should_run(record['phases'].get('structure', {}), retry_errors):
+-                run_phase(store, record, 'structure', lambda: generate_result(llm, sample['question']))
++                run_phase(store, record, 'structure', lambda: generate_result(llm, sample['question'], target_repair=target_repair))
+             if record['phases']['structure']['status'] == 'valid' and should_run(
+                     record['phases'].get('review', {}), retry_errors):
+                 plan = record['phases']['structure']['result']['plan']
+@@ -354,7 +372,9 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=None)
++    parser.add_argument('--target-repair', dest='target_repair', action='store_true', default=False)
++    parser.add_argument('--no-target-repair', dest='target_repair', action='store_false')
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+@@ -364,13 +384,15 @@
+     parser.add_argument('--retry-errors', action='store_true', help='Retry saved backend errors; never repeat terminal structural-invalid results.')
+     parser.add_argument('--report-only', action='store_true', help='Rebuild reports/ZIP from saved outputs; no model load.')
+     args = parser.parse_args()
++    if args.output_dir is None:
++        args.output_dir = str(ROOT / 'results' / ('max4_03_target_patch_v1_repair' if args.target_repair else 'max4_03_target_patch_v1_extract'))
+     configure_logging()
+     try:
+         samples, baselines = load_cohort(args.samples_json)
+         summary = run_pilot(samples, baselines, args.output_dir, use_4bit=args.use_4bit,
+             require_cuda=not args.allow_cpu, max_input_tokens=args.max_input_tokens,
+             intermediate_tokens=args.intermediate_tokens, plan_tokens=args.plan_tokens,
+-            retry_errors=args.retry_errors, report_only=args.report_only)
++            retry_errors=args.retry_errors, report_only=args.report_only, target_repair=args.target_repair)
+     except KeyboardInterrupt:
+         print('Interrupted. Saved phases and a results ZIP are preserved. Rerun the same command to resume.')
+         return 130
+--- max4/hotpotqa_operadic_rag/decomposition.py
++++ max4_03_target_patch_v1/hotpotqa_operadic_rag/decomposition.py
+@@ -124,7 +124,7 @@
+     mode, target = question_answer_mode(question), answer_target(question)
+     if mode == 'boolean':
+         hint = 'Final target: yes/no (boolean).'
+-    elif target and target['type'] != 'other':
++    elif target and (target['type'] != 'other' or re.fullmatch(r'(?:type|kind|sort) of [a-z]+', target['head'])):
+         hint = f"Final target: {target['head']} ({target['type']})."
+     elif mode:
+         hint = 'Final must return the requested name/value, not yes/no.'
+--- max4/hotpotqa_operadic_rag/max4_comparison.py
++++ max4_03_target_patch_v1/hotpotqa_operadic_rag/max4_comparison.py
+@@ -0,0 +1,46 @@
++"""Report comparison with the recorded original max4; never used in prompts."""
++import hashlib
++import json
++from pathlib import Path
++
++REFERENCE = Path(__file__).resolve().parent.parent / 'evaluation/max4_reference.json'
++
++
++def reference_digest():
++    return hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
++
++
++def compare(store, summary):
++    baseline = json.loads(REFERENCE.read_text(encoding='utf-8'))
++    lookup = {row['question_id']: row for row in baseline['questions']}
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        old = lookup.get(sample['question_id'])
++        phases = store.read(sample['question_id'])['phases']
++        structure = phases.get('structure', {})
++        plan = structure.get('result', {}).get('plan')
++        matched = bool(old and old['question'] == sample['question'])
++        cost = {key: sum(h['telemetry'].get(key, 0) for p in phases.values() for h in p.get('history', []))
++                for key in ('llm_calls', 'total_tokens')}
++        rows.append(dict(order=order, question_id=sample['question_id'], baseline_matched=matched,
++                         baseline_status=old['status'] if matched else None,
++                         current_status=structure.get('status', 'pending'),
++                         plan_identical_to_max4=(plan == old['plan']) if matched and structure.get('status') in ('valid','invalid') else None,
++                         baseline_cost=old['cost'] if matched else None, current_cost=cost))
++    same_cohort = len(rows) == len(baseline['questions']) and all(r['baseline_matched'] for r in rows)
++    complete = not summary['incomplete_questions']
++    report = dict(baseline='v3.2.4-max4', source_result_sha256=baseline['source_result_sha256'],
++                  reference_sha256=reference_digest(), same_cohort=same_cohort, current_run_complete=complete,
++                  metrics_comparable=same_cohort and complete,
++                  baseline_metrics=baseline['metrics'],
++                  current_metrics={k:summary[k] for k in ('structure_status','total_cost','valid_on_first_attempt','root_contract_status')},
++                  questions=rows,
++                  note='Saved original max4 output comparison only. Structural counts and model verdicts are not semantic accuracy. No gold data enters generation.')
++    lines=['# Comparison with original max4', '', report['note'], '',
++           f'Same complete cohort: {report["metrics_comparable"]}', '',
++           '| Case | Baseline structure | Current structure | Identical plan | Baseline tokens | Current tokens |',
++           '|---|---|---|---|---|---|']
++    for row in rows:
++        lines.append(f"| {row['order']} | {row['baseline_status']} | {row['current_status']} | {row['plan_identical_to_max4']} | "
++                     f"{(row['baseline_cost'] or {}).get('total_tokens')} | {row['current_cost']['total_tokens']} |")
++    return report, '\n'.join(lines)
+--- max4/hotpotqa_operadic_rag/semantic_checks.py
++++ max4_03_target_patch_v1/hotpotqa_operadic_rag/semantic_checks.py
+@@ -49,6 +49,10 @@
+     # "What is the name of the manga ...?" still requests a work, not a person.
+     tail = re.sub(r'^(?:(?:is|was)\s+)?(?:the\s+)?name of (?:the |a |an )?', '', tail)
+     tail = re.sub(r'^(?:is|was) (?:the |a |an )', '', tail)
++    # Narrow category phrase, not a general parse of arbitrary noun phrases.
++    category = re.match(r'^(type|kind|sort) of ([a-z]+)(?=\s+(?:is|are|was|were|does|do|did|has|have|had)\b|[?.,:]|$)', tail)
++    if category and WORD_TYPE.get(category[2], 'other') == 'other':
++        return {'type': 'other', 'head': category[1] + ' of ' + category[2]}
+     words = re.findall(r"[a-z]+(?:['’]s)?|[?.,:]", tail)
+     stops = {'is', 'are', 'was', 'were', 'did', 'does', 'do', 'has', 'have', 'had',
+              'of', 'in', 'for', 'by', 'that', 'who', 'whom', 'with', 'on', 'from', '?', '.', ',', ':'}
+--- max4/hotpotqa_operadic_rag/target_patch.py
++++ max4_03_target_patch_v1/hotpotqa_operadic_rag/target_patch.py
+@@ -0,0 +1,78 @@
++"""Experimental final-node patch, within the original two-generation budget.
++
++This is a pilot-only intervention. It never changes graph topology or silently
++repairs dependencies. Lexical retention is conservative, not a semantic proof.
++"""
++from copy import deepcopy
++import json
++import re
++from .contracts import parse_json_object, validate_plan
++from .config import MAX_PLAN_NODES, PLAN_ATTEMPTS, DEFAULT_PLAN_TOKENS
++from .decomposition import root_answer_check
++
++
++PATCH_SYSTEM = '''Repair only the final question and its answer_type in the supplied tree.
++Return exactly one JSON object: {"question":"...", "answer_type":"..."}.
++Allowed types: person, organization, place, date, number, work, boolean, other.
++Return the original question's requested entity/value, not a yes/no test.
++Preserve every qualifier, relation, named entity and literal {{qX}} slot already in the final question.
++Keep each slot exactly once. You cannot change IDs, dependencies, other nodes or the final node ID.
++Use the supplied target error. If the fixed graph cannot support a correct answer, do not invent facts.
++No explanation or additional JSON keys.'''
++
++STOP = set('what which who whom is are was were be been being do does did has have had '
++           'a an the name yes no whether'.split())
++
++
++def content_words(text):
++    text = re.sub(r'\{\{q\d+\}\}', '', text.casefold())
++    # Permit simple inflection changes such as provide/provides without deleting content.
++    return {w[:-1] if len(w) > 4 and w.endswith('s') else w
++            for w in re.findall(r"[a-z0-9]+", text) if w not in STOP}
++
++
++def maybe_patch(llm, question, plan, trace, *, enabled):
++    before = root_answer_check(question, plan)
++    meta = dict(enabled=enabled, attempted=False, status='disabled' if not enabled else 'not_needed',
++                root_before=before, root_after=before, changed=False,
++                scope='final question/type only; lexical retention is not semantic certification')
++    if not enabled or before['status'] != 'mismatch':
++        return plan, trace, meta
++    if len(trace) >= PLAN_ATTEMPTS:
++        meta['status'] = 'budget_exhausted'
++        return plan, trace, meta
++    root = next(n for n in plan['nodes'] if n['id'] == plan['final'])
++    messages = [{'role': 'system', 'content': PATCH_SYSTEM}, {'role': 'user', 'content':
++        json.dumps(dict(original_question=question, tree=plan, target_error=before), ensure_ascii=False)}]
++    raw = llm.generate(messages, max_new_tokens=getattr(llm, 'plan_tokens', DEFAULT_PLAN_TOKENS))
++    event = dict(stage='target_root_patch', attempt=len(trace) + 1, raw_output=raw,
++                 messages=messages, root_before=before)
++    meta['attempted'] = True
++    try:
++        patch = parse_json_object(raw)
++        if set(patch) != {'question', 'answer_type'}:
++            raise ValueError('Patch must contain exactly question and answer_type; graph changes are forbidden.')
++        candidate = deepcopy(plan)
++        candidate_root = next(n for n in candidate['nodes'] if n['id'] == candidate['final'])
++        candidate_root.update(patch)
++        candidate = validate_plan(candidate, max_nodes=MAX_PLAN_NODES)
++        missing = sorted(content_words(root['question']) - content_words(patch['question']))
++        if missing:
++            raise ValueError('Conservative retention guard: removed original root content words: ' + ', '.join(missing))
++        after = root_answer_check(question, candidate)
++        event['candidate_root_contract'] = after
++        if after['status'] == 'mismatch':
++            raise ValueError('Target mismatch remains: ' + '; '.join(after['errors']))
++        expected = (before.get('expected_target') or {}).get('type')
++        if expected and expected != 'other':
++            if patch['answer_type'] != expected or (after.get('root_question_target') or {}).get('type') != expected:
++                raise ValueError('Patch must explicitly identify the expected target in both question and answer_type; an unspecified other target is not enough.')
++    except (ValueError, TypeError) as exc:
++        event.update(status='rejected', error=str(exc))
++        meta.update(status='rejected', reason=str(exc))
++        # Preserve the valid original plan; preserve the rejected proposal in trace.
++    else:
++        plan = candidate
++        event.update(status='accepted', error='', root_contract=after)
++        meta.update(status='accepted', changed=True, root_after=after)
++    return plan, [*trace, event], meta
+--- max4/run_decomposition_test.bat
++++ max4_03_target_patch_v1/run_decomposition_test.bat
+@@ -13,12 +13,12 @@
+ )
+ set "HF_HUB_OFFLINE=1"
+ set "TRANSFORMERS_OFFLINE=1"
+-"%PILOT_PYTHON%" decomposition_pilot.py --use-4bit --max-input-tokens 8500 --intermediate-tokens 512 --plan-tokens 3072 %*
++"%PILOT_PYTHON%" decomposition_pilot.py --target-repair --use-4bit --max-input-tokens 8500 --intermediate-tokens 512 --plan-tokens 3072 %*
+ set "PILOT_EXIT=%ERRORLEVEL%"
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send the Results ZIP path printed above.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
+--- max4/run_extraction_only.bat
++++ max4_03_target_patch_v1/run_extraction_only.bat
+@@ -0,0 +1,2 @@
++@echo off
++call "%~dp0run_decomposition_test.bat" --no-target-repair %*
+--- max4/tests/test_experiment.py
++++ max4_03_target_patch_v1/tests/test_experiment.py
+@@ -0,0 +1,128 @@
++import copy
++import io
++import json
++from pathlib import Path
++import tempfile
++import unittest
++from contextlib import redirect_stdout
++from hotpotqa_operadic_rag.semantic_checks import answer_target
++from hotpotqa_operadic_rag.decomposition import plan_instructions, PLAN_SYSTEM
++from hotpotqa_operadic_rag.target_patch import maybe_patch
++from hotpotqa_operadic_rag import telemetry
++from hotpotqa_operadic_rag.contracts import parse_json_object
++import decomposition_pilot as pilot
++
++Q = 'Ari was the former CEO of which company, which provides IT products?'
++TREE = dict(nodes=[dict(id='q1', question='What company was Ari the former CEO of?', answer_type='organization', dependencies={}),
++                  dict(id='q2', question='Does {{q1}} provide IT products?', answer_type='boolean', dependencies={'q1':'organization'})], final='q2')
++GOOD = dict(question='Which company is {{q1}} that provides IT products?', answer_type='organization')
++
++
++class Model:
++    plan_tokens = 3072
++    last_raw_output = None
++    def __init__(self, replies): self.replies, self.messages = list(replies), []
++    def generate(self, messages, **kwargs):
++        self.messages.append(copy.deepcopy(messages))
++        if telemetry._ACTIVE_TRACKER:
++            telemetry._ACTIVE_TRACKER.add_generate_invocation(10)
++            telemetry._ACTIVE_TRACKER.add_completion(5)
++        reply = self.replies.pop(0)
++        self.last_raw_output = reply if isinstance(reply, str) else json.dumps(reply)
++        return self.last_raw_output
++    def ask_json(self, prompt): return parse_json_object(self.generate([{'role':'user','content':prompt}]))
++
++
++class TargetExperimentTests(unittest.TestCase):
++    def test_category_extraction(self):
++        for text, head in [('What type of sprite did Ari portray?', 'type of sprite'),
++                           ('Which kind of product is the sponsor?', 'kind of product'),
++                           ('What sort of material is this?', 'sort of material')]:
++            with self.subTest(text=text): self.assertEqual(answer_target(text), {'type':'other','head':head})
++
++    def test_category_hint(self):
++        self.assertEqual(plan_instructions('What type of sprite did Ari portray?'), PLAN_SYSTEM + '\nFinal target: type of sprite (other).')
++
++    def test_existing_mid_sentence_targets(self):
++        for text, kind in [('Album is by what Mexican actress?', 'person'), (Q, 'organization'),
++                           ('The band had what soul singer as their lead?', 'person')]:
++            with self.subTest(text=text): self.assertEqual(answer_target(text)['type'], kind)
++
++    def test_possessive_multiword_unsupported_and_other_typed_targets_unchanged(self):
++        for question in ["What type of sprite's costume is red?", 'What type of rare sprite is that?', 'What type of company is this?']:
++            with self.subTest(question=question): self.assertEqual(answer_target(question), {'type':'other','head':'type'})
++
++    def test_quoted_category_not_target(self):
++        self.assertEqual(answer_target('"What type of sprite" is by what actor?'), {'type':'person','head':'actor'})
++
++    def test_patch_accepts_only_final_text_and_type(self):
++        model = Model([TREE, GOOD]); before = copy.deepcopy(TREE)
++        result = pilot.generate_result(model, Q, target_repair=True)
++        self.assertEqual(result['target_patch']['status'], 'accepted')
++        self.assertEqual(len(model.messages), 2)
++        self.assertEqual(TREE, before)
++        candidate = copy.deepcopy(result['plan']); candidate['nodes'][-1].update({k:TREE['nodes'][-1][k] for k in GOOD})
++        self.assertEqual(candidate, TREE)
++        event = result['decomposition_trace'][1]
++        self.assertEqual(event['messages'], model.messages[1])
++        self.assertEqual(json.loads(event['raw_output']), GOOD)
++
++    def test_rejected_patch_keeps_original_and_trace(self):
++        for patch in ['not JSON', {'nodes':[]}, dict(question='Which company is {{q1}}?', answer_type='organization'),
++                      dict(question='Which company provides IT products?', answer_type='organization'),
++                      dict(question='Does {{q1}} provide IT products?', answer_type='boolean'),
++                      dict(question=42, answer_type='organization')]:
++            with self.subTest(patch=patch):
++                result = pilot.generate_result(Model([TREE,patch]), Q, target_repair=True)
++                self.assertEqual(result['plan'], TREE)
++                self.assertEqual(result['target_patch']['status'], 'rejected')
++                self.assertTrue(result['decomposition_trace'][1]['error'])
++
++    def test_second_structural_attempt_exhausts_budget(self):
++        model = Model([{'nodes':[],'final':'q1'}, TREE])
++        result = pilot.generate_result(model, Q, target_repair=True)
++        self.assertEqual(len(model.messages), 2)
++        self.assertEqual(result['target_patch']['status'], 'budget_exhausted')
++        self.assertEqual(result['plan'], TREE)
++
++    def test_patch_cannot_hide_target_in_other_type(self):
++        bad = dict(GOOD, answer_type='other')
++        result = pilot.generate_result(Model([TREE, bad]), Q, target_repair=True)
++        self.assertEqual(result['plan'], TREE)
++        self.assertEqual(result['target_patch']['status'], 'rejected')
++
++    def test_patch_must_explicitly_request_target_in_question(self):
++        bad = dict(question='What is {{q1}} that provides IT products?', answer_type='organization')
++        result = pilot.generate_result(Model([TREE, bad]), Q, target_repair=True)
++        self.assertEqual(result['plan'], TREE)
++        self.assertEqual(result['target_patch']['status'], 'rejected')
++
++    def test_disabled_no_extra_call(self):
++        model = Model([TREE]); result = pilot.generate_result(model, Q)
++        self.assertEqual(len(model.messages), 1); self.assertNotIn('target_patch', result)
++
++    def test_compatible_root_no_extra_call(self):
++        tree = copy.deepcopy(TREE); tree['nodes'][-1].update(GOOD)
++        model = Model([tree]); result = pilot.generate_result(model, Q, target_repair=True)
++        self.assertEqual(len(model.messages), 1); self.assertEqual(result['target_patch']['status'], 'not_needed')
++
++    def test_failed_patch_is_not_success(self):
++        result = pilot.generate_result(Model([TREE, dict(question='Which company is {{q1}}?',answer_type='organization')]), Q, target_repair=True)
++        self.assertEqual(result['target_patch']['root_after']['status'], 'mismatch')
++        self.assertFalse(result['target_patch']['changed'])
++
++    def test_end_to_end_telemetry_bundle_resume_and_mode_isolation(self):
++        samples=[dict(question_id='synthetic', question=Q, type='bridge', answer='DO_NOT_USE_GOLD')]
++        model=Model([TREE,GOOD,dict(status='valid',errors=[])])
++        with tempfile.TemporaryDirectory() as tmp, redirect_stdout(io.StringIO()):
++            output=Path(tmp)/'repair'
++            factory=lambda settings:(model,dict(backend='synthetic'))
++            summary=pilot.run_pilot(samples,{},output,model_factory=factory,target_repair=True)
++            self.assertEqual(summary['target_patch_status'], {'accepted':1})
++            self.assertEqual(summary['total_cost']['llm_calls'],3) # two generation + one judge
++            self.assertNotIn('DO_NOT_USE_GOLD',json.dumps(model.messages))
++            self.assertTrue((Path(tmp)/'repair_results.zip').is_file())
++            pilot.run_pilot(samples,{},output,model_factory=factory,target_repair=True)
++            self.assertEqual(len(model.messages),3)
++            with self.assertRaises(ValueError):
++                pilot.run_pilot(samples,{},output,model_factory=factory,target_repair=False)

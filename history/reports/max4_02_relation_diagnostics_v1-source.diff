@@ -1,0 +1,317 @@
+--- max4/decomposition_pilot.py
++++ max4_02_relation_diagnostics_v1/decomposition_pilot.py
+@@ -23,7 +23,9 @@
+ from hotpotqa_operadic_rag.decomposition import (
+     PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, generate_plan, review_plan, semantic_precheck,
+ )
++from hotpotqa_operadic_rag.max4_comparison import compare, reference_digest
+ from hotpotqa_operadic_rag.contracts import expand_typed_plan
++from hotpotqa_operadic_rag.experiment_diagnostics import build_report
+ from hotpotqa_operadic_rag.cost_comparison import pilot_token_report
+ from hotpotqa_operadic_rag.telemetry import TelemetryTracker, activate_tracker
+ from hotpotqa_operadic_rag.utils import configure_logging, set_seed, check_runtime
+@@ -296,10 +298,18 @@
+     os.replace(temporary, store.output)
+     atomic_json(store.output.parent / 'summary.json', summary)
+     (store.output.parent / 'review.md').write_text('\n'.join(review_text), encoding='utf-8')
++    diagnostic, markdown = build_report(store)
++    atomic_json(store.output.parent / 'diagnostics.json', diagnostic)
++    (store.output.parent / 'diagnostics.md').write_text(markdown, encoding='utf-8')
++    comparison, comparison_md = compare(store, summary)
++    atomic_json(store.output.parent / 'max4_comparison.json', comparison)
++    (store.output.parent / 'max4_comparison.md').write_text(comparison_md, encoding='utf-8')
+     archive = store.output.parent.with_name(store.output.parent.name + '_results.zip')
+     temporary_zip = archive.with_suffix('.zip.tmp')
+     report_files = [store.output, store.output.parent / 'summary.json', store.output.parent / 'review.md',
+                     store.manifest_path, store.directory / 'samples.json']
++    report_files += [store.output.parent / 'diagnostics.json', store.output.parent / 'diagnostics.md']
++    report_files += [store.output.parent / 'max4_comparison.json', store.output.parent / 'max4_comparison.md']
+     report_files += [store.records_dir / (qid + '.json') for qid in store.manifest['question_ids']]
+     with zipfile.ZipFile(temporary_zip, 'w', zipfile.ZIP_DEFLATED) as z:
+         for path in report_files:
+@@ -316,7 +326,7 @@
+         raise ValueError('Token budgets must be positive integers.')
+     settings = {'schema_version': 4, 'n_samples': len(samples), 'code_sha256': code_digest(),
+         'sample_snapshot_sha256': digest(samples), 'baselines_sha256': digest(baselines),
+-        'direct_reference_sha256': digest(direct_reference()),
++        'direct_reference_sha256': digest(direct_reference()), 'max4_reference_sha256': reference_digest(),
+         'plan_prompt_sha256': hashlib.sha256(PLAN_SYSTEM.encode()).hexdigest(),
+         'review_prompt_sha256': hashlib.sha256(REVIEW_SYSTEM.encode()).hexdigest(),
+         'backend': 'injected_test' if model_factory else 'LocalQwen',
+@@ -354,7 +364,7 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'max4_02_relation_diagnostics_v1'))
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+--- max4/hotpotqa_operadic_rag/experiment_diagnostics.py
++++ max4_02_relation_diagnostics_v1/hotpotqa_operadic_rag/experiment_diagnostics.py
+@@ -0,0 +1,110 @@
++"""Advisory diagnostics only: never called by generation, validation or judging.
++
++no_violation_found means only that supported patterns passed these narrow checks.
++unknown is an abstention, and suspicious is not a semantic verdict or a rejection.
++"""
++import re
++from collections import Counter
++from .contracts import validate_plan
++
++
++def norm(text):
++    return ' '.join(re.findall(r"[a-z0-9]+", text.casefold()))
++
++
++def finding(code, nodes, reason, **evidence):
++    return dict(code=code, nodes=nodes, reason=reason, evidence=evidence)
++
++
++def analyze(question, plan):
++    try:
++        clean = validate_plan(plan)
++    except (ValueError, TypeError, KeyError) as exc:
++        return dict(status='unknown', supported_checks=[], findings=[], reason='No structurally valid plan: ' + str(exc))
++    supported, findings = inspect(question, clean)
++    return dict(status='suspicious' if findings else ('no_violation_found' if supported else 'unknown'),
++                supported_checks=supported, findings=findings,
++                reason='Advisory pattern checks only; no assertion of complete semantic correctness.')
++
++
++def build_report(store):
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        result = store.read(sample['question_id'])['phases'].get('structure', {}).get('result', {})
++        rows.append(dict(order=order, question_id=sample['question_id'], question=sample['question'],
++                         diagnostic=analyze(sample['question'], result.get('plan'))))
++    report = dict(experiment=EXPERIMENT, role='advisory_only', calls=0,
++                  status_counts=dict(Counter(row['diagnostic']['status'] for row in rows)), questions=rows,
++                  limitation='No automatic rejection, repair, gold answers, or model calls. Unknown patterns abstain.')
++    lines = ['# Advisory diagnostics', '', report['limitation'], '',
++             'no_violation_found covers supported checks only; it is not semantic validity.', '']
++    for row in rows:
++        lines += [f"## {row['order']}. {row['question_id']}: {row['diagnostic']['status']}", '', row['question'], '']
++        lines += [f"- {item['code']} ({', '.join(item['nodes'])}): {item['reason']} Evidence: {item['evidence']}"
++                  for item in row['diagnostic']['findings']]
++        if not row['diagnostic']['findings']:
++            lines += [row['diagnostic']['reason']]
++        lines += ['']
++    return report, '\n'.join(lines)
++
++
++EXPERIMENT = 'max4_02_relation_diagnostics_v1'
++OPPOSITE = dict(north='south', south='north', east='west', west='east',
++                northeast='southwest', southwest='northeast', southeast='northwest', northwest='southeast')
++DIRECTION = '|'.join(sorted(OPPOSITE, key=len, reverse=True))
++
++
++def inspect(question, plan):
++    supported, findings = [], []
++    # Explicit source subject and an indefinite target after a compass relation.
++    source = re.search(r'^(?:the )?(.+?) is\b[^?]*?\b(' + DIRECTION + r') of (?:a|an|the) (river|city|town|region|country)\b',
++                       question, re.I)
++    if source:
++        entity, direction, target = source.groups()
++        entity, direction, target = norm(entity), direction.lower(), target.lower()
++        for node in plan['nodes']:
++            if node['dependencies']:
++                continue
++            text = norm(node['question'])
++            # Known A appears after 'of'; WH B is the subject. Its direction must invert.
++            reverse = re.fullmatch(r'(?:which|what) ' + target + r' is (' + DIRECTION + r') of (?:the )?' + re.escape(entity), text)
++            direct = re.fullmatch(r'(?:which|what) ' + target + r' is (?:the )?' + re.escape(entity) + r' (' + DIRECTION + r') of', text)
++            direct2 = re.fullmatch(r'(?:the )?' + re.escape(entity) + r' is (' + DIRECTION + r') of (?:which|what) ' + target, text)
++            match = reverse or direct or direct2
++            if not match:
++                continue
++            supported.append('direction:' + node['id'])
++            expected = OPPOSITE[direction] if reverse else direction
++            if match[1] != expected:
++                findings.append(finding('direction_role_mismatch', [node['id']],
++                    'Compass direction does not match the ordered entity pair.', known_entity=entity,
++                    original_direction=direction, observed_direction=match[1], expected_direction=expected,
++                    endpoints_reversed=bool(reverse)))
++    # Only the narrow founded-in-place comparison; explicit time in the source abstains.
++    location = re.search(r'\bfounded in ([A-Z][A-Za-z -]*?)[,?]', question)
++    time = re.search(r'\b(?:when|year|date|earlier|later|before|after|\d{4})\b', question, re.I)
++    if location and not time and re.search(r'\bor\b', question, re.I):
++        for node in plan['nodes']:
++            if node['dependencies'] or not re.search(r'\bfound(?:ed|ing)\b', node['question'], re.I):
++                continue
++            text = node['question'].casefold()
++            if re.search(r'\b(?:when|date|year)\b', text):
++                supported.append('founding_dimension:' + node['id'])
++                findings.append(finding('location_replaced_by_time', [node['id']],
++                    'A founding date alone does not supply the requested founding location.', place=location[1]))
++            elif re.search(r'\b(?:where|place|city|state|location)\b', text) or norm(location[1]) in norm(text):
++                supported.append('founding_dimension:' + node['id'])
++    identity = re.search(r'\b(?:what|which) (?:type|kind|sort) of product is\b', question, re.I)
++    production = r'\b(?:produce[sd]?|make[sd]?|manufacture[sd]?)\b'
++    if identity and not re.search(production, question, re.I):
++        for node in plan['nodes']:
++            if 'organization' not in node['dependencies'].values():
++                continue
++            if re.search(production, node['question'], re.I):
++                supported.append('identity_relation:' + node['id'])
++                findings.append(finding('identity_replaced_by_production', [node['id']],
++                    'An organizational input is asked what it produces instead of what type of product it is.',
++                    original_relation='is', observed=node['question']))
++            elif re.search(r'\b(?:type|kind|sort) of product (?:is|was)\b', node['question'], re.I):
++                supported.append('identity_relation:' + node['id'])
++    return supported, findings
+--- max4/hotpotqa_operadic_rag/max4_comparison.py
++++ max4_02_relation_diagnostics_v1/hotpotqa_operadic_rag/max4_comparison.py
+@@ -0,0 +1,46 @@
++"""Report comparison with the recorded original max4; never used in prompts."""
++import hashlib
++import json
++from pathlib import Path
++
++REFERENCE = Path(__file__).resolve().parent.parent / 'evaluation/max4_reference.json'
++
++
++def reference_digest():
++    return hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
++
++
++def compare(store, summary):
++    baseline = json.loads(REFERENCE.read_text(encoding='utf-8'))
++    lookup = {row['question_id']: row for row in baseline['questions']}
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        old = lookup.get(sample['question_id'])
++        phases = store.read(sample['question_id'])['phases']
++        structure = phases.get('structure', {})
++        plan = structure.get('result', {}).get('plan')
++        matched = bool(old and old['question'] == sample['question'])
++        cost = {key: sum(h['telemetry'].get(key, 0) for p in phases.values() for h in p.get('history', []))
++                for key in ('llm_calls', 'total_tokens')}
++        rows.append(dict(order=order, question_id=sample['question_id'], baseline_matched=matched,
++                         baseline_status=old['status'] if matched else None,
++                         current_status=structure.get('status', 'pending'),
++                         plan_identical_to_max4=(plan == old['plan']) if matched and structure.get('status') in ('valid','invalid') else None,
++                         baseline_cost=old['cost'] if matched else None, current_cost=cost))
++    same_cohort = len(rows) == len(baseline['questions']) and all(r['baseline_matched'] for r in rows)
++    complete = not summary['incomplete_questions']
++    report = dict(baseline='v3.2.4-max4', source_result_sha256=baseline['source_result_sha256'],
++                  reference_sha256=reference_digest(), same_cohort=same_cohort, current_run_complete=complete,
++                  metrics_comparable=same_cohort and complete,
++                  baseline_metrics=baseline['metrics'],
++                  current_metrics={k:summary[k] for k in ('structure_status','total_cost','valid_on_first_attempt','root_contract_status')},
++                  questions=rows,
++                  note='Saved original max4 output comparison only. Structural counts and model verdicts are not semantic accuracy. No gold data enters generation.')
++    lines=['# Comparison with original max4', '', report['note'], '',
++           f'Same complete cohort: {report["metrics_comparable"]}', '',
++           '| Case | Baseline structure | Current structure | Identical plan | Baseline tokens | Current tokens |',
++           '|---|---|---|---|---|---|']
++    for row in rows:
++        lines.append(f"| {row['order']} | {row['baseline_status']} | {row['current_status']} | {row['plan_identical_to_max4']} | "
++                     f"{(row['baseline_cost'] or {}).get('total_tokens')} | {row['current_cost']['total_tokens']} |")
++    return report, '\n'.join(lines)
+--- max4/run_decomposition_test.bat
++++ max4_02_relation_diagnostics_v1/run_decomposition_test.bat
+@@ -18,7 +18,7 @@
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send results\max4_02_relation_diagnostics_v1_results.zip for review.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
+--- max4/tests/test_experiment.py
++++ max4_02_relation_diagnostics_v1/tests/test_experiment.py
+@@ -0,0 +1,92 @@
++import copy
++import json
++from pathlib import Path
++import tempfile
++import unittest
++import zipfile
++from hotpotqa_operadic_rag.experiment_diagnostics import analyze, EXPERIMENT
++import decomposition_pilot as pilot
++from hotpotqa_operadic_rag.checkpoint import RunStore
++
++
++def node(nid, question, kind='other', deps=None):
++    return dict(id=nid, question=question, answer_type=kind, dependencies=deps or {})
++
++
++def plan(*nodes):
++    return dict(nodes=list(nodes), final=nodes[-1]['id'])
++
++
++class DiagnosticsTests(unittest.TestCase):
++    def check(self, question, tree, status, code=None):
++        old = copy.deepcopy(tree)
++        result = analyze(question, tree)
++        self.assertEqual(result['status'], status, result)
++        if code:
++            self.assertIn(code, [f['code'] for f in result['findings']])
++        self.assertEqual(tree, old)
++        return result
++
++    def test_invalid_and_missing_plan_abstain(self):
++        self.check('Which river?', None, 'unknown')
++        self.check('Who?', {'nodes': [], 'final': 'q1'}, 'unknown')
++
++    def test_unknown_wording_abstains(self):
++        self.check('Explain the phenomenon.', plan(node('q1', 'Explain the phenomenon.')), 'unknown')
++
++    def test_reports_are_in_archive_and_no_model_load(self):
++        samples = [dict(question_id='synthetic', question='Who wrote Alpha?', type='bridge')]
++        with tempfile.TemporaryDirectory() as tmp:
++            store = RunStore(Path(tmp)/'run/trees.csv', dict(backend='injected_test', n_samples=1), lambda: samples)
++            summary = pilot.export_reports(store, {})
++            self.assertEqual(summary['total_cost']['llm_calls'], 0)
++            with zipfile.ZipFile(Path(tmp)/'run_results.zip') as z:
++                self.assertIn('run/diagnostics.json', z.namelist())
++                self.assertIn('run/diagnostics.md', z.namelist())
++                report = json.loads(z.read('run/diagnostics.json'))
++                self.assertEqual(report['status_counts'], {'unknown': 1})
++                self.assertEqual(report['role'], 'advisory_only')
++
++    def test_same_direction_swapped_endpoints(self):
++        self.check('The Vale is a region southeast of a river that is how many km long?',
++                   plan(node('q1', 'Which river is southeast of the Vale?')), 'suspicious', 'direction_role_mismatch')
++
++    def test_inverse_direction_with_swapped_endpoints_is_supported(self):
++        self.check('The Vale is southeast of a river.', plan(node('q1', 'Which river is northwest of the Vale?')), 'no_violation_found')
++
++    def test_original_direction_with_original_endpoints(self):
++        for text in ['Which river is the Vale southeast of?', 'The Vale is southeast of which river?']:
++            with self.subTest(text=text):
++                self.check('The Vale is southeast of a river.', plan(node('q1', text)), 'no_violation_found')
++
++    def test_direction_unknown_syntax_abstains(self):
++        self.check('The Vale lies beyond a river.', plan(node('q1', 'Which river borders Vale?')), 'unknown')
++
++    def test_compass_hyphen_unsupported_abstains(self):
++        self.check('Vale is south-east of a river.', plan(node('q1', 'Which river is south-east of Vale?')), 'unknown')
++
++    def test_location_replaced_by_time(self):
++        self.check('Which facility was founded in Ontario, Alpha or Beta?',
++                   plan(node('q1', 'When was Alpha founded?', 'date')), 'suspicious', 'location_replaced_by_time')
++
++    def test_location_positive(self):
++        self.check('Which facility was founded in Ontario, Alpha or Beta?',
++                   plan(node('q1', 'Where was Alpha founded?', 'place')), 'no_violation_found')
++
++    def test_original_time_request_not_flagged(self):
++        self.check('Which facility was founded in Ontario earlier, Alpha or Beta?',
++                   plan(node('q1', 'When was Alpha founded?', 'date')), 'unknown')
++
++    def product(self, root):
++        return plan(node('q1', 'Who sponsors Cup?', 'organization'), node('q2', root, 'other', {'q1':'organization'}))
++
++    def test_identity_replaced_by_production(self):
++        self.check('What type of product is the sponsor of Cup?', self.product('What does {{q1}} produce?'),
++                   'suspicious', 'identity_replaced_by_production')
++
++    def test_identity_preserved(self):
++        self.check('What type of product is the sponsor of Cup?', self.product('What type of product is {{q1}}?'), 'no_violation_found')
++
++    def test_original_production_request_abstains(self):
++        self.check('What type of product does the sponsor of Cup produce?', self.product('What does {{q1}} produce?'), 'unknown')
++

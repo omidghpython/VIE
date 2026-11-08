@@ -1,0 +1,510 @@
+{
+  "experiment": "max4_04_constraint_diagnostics_v1",
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "source_code_sha256": "547f1ad893498b9aba558bead0301e72e2b1fb44140cc44c44b98753a7f91ad6",
+  "samples_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "max_nodes": 4,
+  "plan_attempts": 2,
+  "static_prompts_unchanged": true,
+  "saved_output_replay": {
+    "questions": 40,
+    "structure_attempts": 47,
+    "review_decisions": 37,
+    "all_structural_decisions_and_plans_unchanged": true,
+    "trace_metadata_or_error_changed_orders": [],
+    "first_prompt_changed": []
+  },
+  "target_patch_eligibility_on_saved_baseline": [],
+  "advisory_on_saved_baseline": [
+    {
+      "order": 1,
+      "question": "How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 2,
+      "question": "What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "No structurally valid plan: Plan must contain exactly nodes and final."
+      }
+    },
+    {
+      "order": 3,
+      "question": "Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 4,
+      "question": "Who was born first, Susan Oliver or W. S. Van Dyke?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 5,
+      "question": "What profession does Nora Roberts and Elizabeth Hardwick have in common?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 6,
+      "question": "Which was released first, Hot Girls Wanted or China Blue?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 7,
+      "question": "The movies The Boatniks and The Great Locomotive Chase were both made by which production company?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 8,
+      "question": "What year did the director of The Quiet American die?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 9,
+      "question": "Hobart Paving is a single by a band formed in which year ?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 10,
+      "question": "Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 11,
+      "question": "Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 12,
+      "question": "Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 13,
+      "question": "Which facility was founded in Missouri, Discovery Zone or Valentino's?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 14,
+      "question": "The Innviertel is a traditional Austrian region southeast of a river that is how many km long?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 15,
+      "question": "What nationality was the lover of Lord Alfred Douglas ? ",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 16,
+      "question": "Which author was born first, Josephine Tey or Julia Peterkin?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 17,
+      "question": "Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 18,
+      "question": "Which director was also a film editor, Burton L. King or Maheen Zia?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 19,
+      "question": "Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",
+      "diagnostic": {
+        "status": "suspicious",
+        "supported_checks": [
+          "literal_title_coverage"
+        ],
+        "findings": [
+          {
+            "code": "title_not_found_literally",
+            "nodes": [],
+            "reason": "The source title has no literal normalized occurrence in any node; aliases need manual review.",
+            "evidence": {
+              "title": "Hoy Es Manana"
+            }
+          }
+        ],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 20,
+      "question": "Which city is at coastal county-level, Wenling or Ruili?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 21,
+      "question": "Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 22,
+      "question": "Who played a more important role in the church George Albert Smith or Wong Jing?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 23,
+      "question": "Do writers John O'Hara and Bobbie Ann Mason share the same nationality?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 24,
+      "question": "Are George Stevens and Luc Besson American cinematographers?",
+      "diagnostic": {
+        "status": "suspicious",
+        "supported_checks": [
+          "entity_qualifiers:George Stevens",
+          "entity_qualifiers:Luc Besson"
+        ],
+        "findings": [
+          {
+            "code": "entity_qualifier_not_established",
+            "nodes": [
+              "q1"
+            ],
+            "reason": "This subject-specific branch omits part of the joint property. A negative conjunct may still suffice for no; inspect evidence.",
+            "evidence": {
+              "entity": "George Stevens",
+              "required": [
+                "American",
+                "cinematographer"
+              ],
+              "missing": [
+                "cinematographer"
+              ]
+            }
+          },
+          {
+            "code": "entity_qualifier_not_established",
+            "nodes": [
+              "q2"
+            ],
+            "reason": "This subject-specific branch omits part of the joint property. A negative conjunct may still suffice for no; inspect evidence.",
+            "evidence": {
+              "entity": "Luc Besson",
+              "required": [
+                "American",
+                "cinematographer"
+              ],
+              "missing": [
+                "cinematographer"
+              ]
+            }
+          }
+        ],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 25,
+      "question": "What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 26,
+      "question": "Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom \"Married... with Children\"?",
+      "diagnostic": {
+        "status": "no_violation_found",
+        "supported_checks": [
+          "literal_title_coverage"
+        ],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 27,
+      "question": "What country are both Dafeng District and Jixi in?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 28,
+      "question": "Are The Limousines and Faith No More from the same state?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 29,
+      "question": "Werner Christie served under the politician who was also Director-General of what other organization?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 30,
+      "question": "The man known as the voice of \"Elgar\" voices the English character in what Manga inspired by Keitaro Arima?",
+      "diagnostic": {
+        "status": "no_violation_found",
+        "supported_checks": [
+          "literal_title_coverage"
+        ],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 31,
+      "question": "Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 32,
+      "question": "Are Control Room and Meeting Resistance both documentary films that involve Iraq?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "No structurally valid plan: Plan must contain exactly nodes and final."
+      }
+    },
+    {
+      "order": 33,
+      "question": "What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 34,
+      "question": "Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 35,
+      "question": "What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 36,
+      "question": "Bordan Tkachuk was the former CEO of which company, which provides IT products?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 37,
+      "question": "Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?",
+      "diagnostic": {
+        "status": "suspicious",
+        "supported_checks": [
+          "excluded_person:q1"
+        ],
+        "findings": [
+          {
+            "code": "excluded_single_person_became_group",
+            "nodes": [
+              "q1"
+            ],
+            "reason": "A singular excluded-person description became a plural lookup.",
+            "evidence": {
+              "descriptor": "american university administrator and politician from the state of oklahoma"
+            }
+          }
+        ],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 38,
+      "question": "In what year was the writer of the drama \"Ingenious\" born?",
+      "diagnostic": {
+        "status": "no_violation_found",
+        "supported_checks": [
+          "literal_title_coverage"
+        ],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    },
+    {
+      "order": 39,
+      "question": "Bangalore Naatkal starred which actor and photographer?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "No structurally valid plan: Plan must contain exactly nodes and final."
+      }
+    },
+    {
+      "order": 40,
+      "question": "Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?",
+      "diagnostic": {
+        "status": "unknown",
+        "supported_checks": [],
+        "findings": [],
+        "reason": "Advisory pattern checks only; no assertion of complete semantic correctness."
+      }
+    }
+  ],
+  "changed_files_before_packaging": [
+    "decomposition_pilot.py",
+    "run_decomposition_test.bat"
+  ],
+  "added_files_before_packaging": [
+    "VERIFICATION_MAX4_BASELINE.json",
+    "evaluation/max4_reference.json",
+    "evaluation/saved_baseline_diagnostics.json",
+    "evaluation/saved_baseline_diagnostics.md",
+    "hotpotqa_operadic_rag/experiment_diagnostics.py",
+    "hotpotqa_operadic_rag/max4_comparison.py",
+    "tests/test_experiment.py"
+  ],
+  "unchanged_files": 53,
+  "live_model_calls": 0,
+  "live_results": "pending",
+  "semantic_accuracy_measured": false,
+  "note": "Replay uses original recorded outputs, NOT generated experimental outputs. Diagnostic-only changes do not improve those outputs."
+}

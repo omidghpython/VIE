@@ -1,0 +1,13 @@
+{
+  "experiment": "max4_03_target_patch_v1",
+  "tests_passed": 138,
+  "test_command": "python -m unittest discover -s tests -v",
+  "all_original_124_tests_retained": true,
+  "baseline_test_adjustments": "Only cap-message equality assertions changed to prefix checks in variant1; no skipped tests.",
+  "source_code_sha256": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
+  "static_prompts_unchanged": true,
+  "live_model_calls": 0,
+  "live_results": "pending",
+  "native_windows_execution": false,
+  "preflight": "PREFLIGHT.json"
+}

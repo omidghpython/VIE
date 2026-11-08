@@ -1,0 +1,118 @@
+{
+  "experiment": "max4_03_target_patch_v1",
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "source_code_sha256": "e6a499c9e6a487280fb61326cd97cc7af39af057fa98462fc85f19052af9a46e",
+  "samples_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "max_nodes": 4,
+  "plan_attempts": 2,
+  "static_prompts_unchanged": true,
+  "saved_output_replay": {
+    "questions": 40,
+    "structure_attempts": 47,
+    "review_decisions": 37,
+    "all_structural_decisions_and_plans_unchanged": true,
+    "trace_metadata_or_error_changed_orders": [
+      25,
+      33
+    ],
+    "first_prompt_changed": [
+      {
+        "order": 25,
+        "before": "\nFinal must return the requested name/value, not yes/no.",
+        "after": "\nFinal target: type of product (other)."
+      },
+      {
+        "order": 33,
+        "before": "\nFinal must return the requested name/value, not yes/no.",
+        "after": "\nFinal target: type of sprite (other)."
+      }
+    ]
+  },
+  "target_patch_eligibility_on_saved_baseline": [
+    {
+      "order": 19,
+      "patch_eligible": true,
+      "root_contract": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "person",
+          "head": "actress"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "actress"
+        },
+        "errors": [
+          "q2: original target 'actress' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    },
+    {
+      "order": 36,
+      "patch_eligible": true,
+      "root_contract": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "boolean",
+        "expected_target": {
+          "type": "organization",
+          "head": "company"
+        },
+        "root_question_target": null,
+        "errors": [
+          "q2: original question requests a name/value, but the final node has a boolean type or asks yes/no. Rewrite its question and type to return the requested name/value, preserving each entity with its property."
+        ]
+      }
+    },
+    {
+      "order": 40,
+      "patch_eligible": true,
+      "root_contract": {
+        "status": "mismatch",
+        "expected_mode": "value",
+        "root_id": "q2",
+        "root_answer_type": "work",
+        "expected_target": {
+          "type": "person",
+          "head": "singer"
+        },
+        "root_question_target": {
+          "type": "person",
+          "head": "singer"
+        },
+        "errors": [
+          "q2: original target 'singer' requires person, but final answer_type=work. Rewrite its question and type together; retain all original constraints and entity-property links."
+        ]
+      }
+    }
+  ],
+  "advisory_on_saved_baseline": [],
+  "changed_files_before_packaging": [
+    "decomposition_pilot.py",
+    "hotpotqa_operadic_rag/decomposition.py",
+    "hotpotqa_operadic_rag/semantic_checks.py",
+    "run_decomposition_test.bat"
+  ],
+  "added_files_before_packaging": [
+    "PREFLIGHT.json",
+    "VERIFICATION_MAX4_BASELINE.json",
+    "evaluation/max4_reference.json",
+    "hotpotqa_operadic_rag/max4_comparison.py",
+    "hotpotqa_operadic_rag/target_patch.py",
+    "run_extraction_only.bat",
+    "tests/test_experiment.py"
+  ],
+  "unchanged_files": 51,
+  "live_model_calls": 0,
+  "live_results": "pending",
+  "semantic_accuracy_measured": false,
+  "note": "Replay uses original recorded outputs, NOT generated experimental outputs. Diagnostic-only changes do not improve those outputs."
+}

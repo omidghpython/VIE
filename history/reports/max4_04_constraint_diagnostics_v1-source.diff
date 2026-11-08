@@ -1,0 +1,332 @@
+--- max4/decomposition_pilot.py
++++ max4_04_constraint_diagnostics_v1/decomposition_pilot.py
+@@ -23,7 +23,9 @@
+ from hotpotqa_operadic_rag.decomposition import (
+     PLAN_SYSTEM, REVIEW_SYSTEM, DecompositionError, generate_plan, review_plan, semantic_precheck,
+ )
++from hotpotqa_operadic_rag.max4_comparison import compare, reference_digest
+ from hotpotqa_operadic_rag.contracts import expand_typed_plan
++from hotpotqa_operadic_rag.experiment_diagnostics import build_report
+ from hotpotqa_operadic_rag.cost_comparison import pilot_token_report
+ from hotpotqa_operadic_rag.telemetry import TelemetryTracker, activate_tracker
+ from hotpotqa_operadic_rag.utils import configure_logging, set_seed, check_runtime
+@@ -296,10 +298,18 @@
+     os.replace(temporary, store.output)
+     atomic_json(store.output.parent / 'summary.json', summary)
+     (store.output.parent / 'review.md').write_text('\n'.join(review_text), encoding='utf-8')
++    diagnostic, markdown = build_report(store)
++    atomic_json(store.output.parent / 'diagnostics.json', diagnostic)
++    (store.output.parent / 'diagnostics.md').write_text(markdown, encoding='utf-8')
++    comparison, comparison_md = compare(store, summary)
++    atomic_json(store.output.parent / 'max4_comparison.json', comparison)
++    (store.output.parent / 'max4_comparison.md').write_text(comparison_md, encoding='utf-8')
+     archive = store.output.parent.with_name(store.output.parent.name + '_results.zip')
+     temporary_zip = archive.with_suffix('.zip.tmp')
+     report_files = [store.output, store.output.parent / 'summary.json', store.output.parent / 'review.md',
+                     store.manifest_path, store.directory / 'samples.json']
++    report_files += [store.output.parent / 'diagnostics.json', store.output.parent / 'diagnostics.md']
++    report_files += [store.output.parent / 'max4_comparison.json', store.output.parent / 'max4_comparison.md']
+     report_files += [store.records_dir / (qid + '.json') for qid in store.manifest['question_ids']]
+     with zipfile.ZipFile(temporary_zip, 'w', zipfile.ZIP_DEFLATED) as z:
+         for path in report_files:
+@@ -316,7 +326,7 @@
+         raise ValueError('Token budgets must be positive integers.')
+     settings = {'schema_version': 4, 'n_samples': len(samples), 'code_sha256': code_digest(),
+         'sample_snapshot_sha256': digest(samples), 'baselines_sha256': digest(baselines),
+-        'direct_reference_sha256': digest(direct_reference()),
++        'direct_reference_sha256': digest(direct_reference()), 'max4_reference_sha256': reference_digest(),
+         'plan_prompt_sha256': hashlib.sha256(PLAN_SYSTEM.encode()).hexdigest(),
+         'review_prompt_sha256': hashlib.sha256(REVIEW_SYSTEM.encode()).hexdigest(),
+         'backend': 'injected_test' if model_factory else 'LocalQwen',
+@@ -354,7 +364,7 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'max4_04_constraint_diagnostics_v1'))
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+--- max4/hotpotqa_operadic_rag/experiment_diagnostics.py
++++ max4_04_constraint_diagnostics_v1/hotpotqa_operadic_rag/experiment_diagnostics.py
+@@ -0,0 +1,114 @@
++"""Advisory diagnostics only: never called by generation, validation or judging.
++
++no_violation_found means only that supported patterns passed these narrow checks.
++unknown is an abstention, and suspicious is not a semantic verdict or a rejection.
++"""
++import re
++from collections import Counter
++from .contracts import validate_plan
++
++
++def norm(text):
++    return ' '.join(re.findall(r"[a-z0-9]+", text.casefold()))
++
++
++def finding(code, nodes, reason, **evidence):
++    return dict(code=code, nodes=nodes, reason=reason, evidence=evidence)
++
++
++def analyze(question, plan):
++    try:
++        clean = validate_plan(plan)
++    except (ValueError, TypeError, KeyError) as exc:
++        return dict(status='unknown', supported_checks=[], findings=[], reason='No structurally valid plan: ' + str(exc))
++    supported, findings = inspect(question, clean)
++    return dict(status='suspicious' if findings else ('no_violation_found' if supported else 'unknown'),
++                supported_checks=supported, findings=findings,
++                reason='Advisory pattern checks only; no assertion of complete semantic correctness.')
++
++
++def build_report(store):
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        result = store.read(sample['question_id'])['phases'].get('structure', {}).get('result', {})
++        rows.append(dict(order=order, question_id=sample['question_id'], question=sample['question'],
++                         diagnostic=analyze(sample['question'], result.get('plan'))))
++    report = dict(experiment=EXPERIMENT, role='advisory_only', calls=0,
++                  status_counts=dict(Counter(row['diagnostic']['status'] for row in rows)), questions=rows,
++                  limitation='No automatic rejection, repair, gold answers, or model calls. Unknown patterns abstain.')
++    lines = ['# Advisory diagnostics', '', report['limitation'], '',
++             'no_violation_found covers supported checks only; it is not semantic validity.', '']
++    for row in rows:
++        lines += [f"## {row['order']}. {row['question_id']}: {row['diagnostic']['status']}", '', row['question'], '']
++        lines += [f"- {item['code']} ({', '.join(item['nodes'])}): {item['reason']} Evidence: {item['evidence']}"
++                  for item in row['diagnostic']['findings']]
++        if not row['diagnostic']['findings']:
++            lines += [row['diagnostic']['reason']]
++        lines += ['']
++    return report, '\n'.join(lines)
++
++
++EXPERIMENT = 'max4_04_constraint_diagnostics_v1'
++
++
++def inspect(question, plan):
++    supported, findings = [], []
++    nodes = plan['nodes']
++    titles = re.findall(r'"([^"\n]+)"', question)
++    attribution = re.match(r'^(.+?) is by (?:what|which)\b', question, re.I)
++    if attribution:
++        titles.append(attribution[1])
++    for title in titles:
++        supported.append('literal_title_coverage')
++        if not any(norm(title) in norm(n['question']) for n in nodes):
++            findings.append(finding('title_not_found_literally', [],
++                'The source title has no literal normalized occurrence in any node; aliases need manual review.', title=title))
++    # Track each named subject separately; union of unrelated branch words is insufficient.
++    pair = re.fullmatch(r'Are (.+?) and (.+?) ([A-Z][a-z]+) (cinematographers|actors|photographers|directors)\s*\?', question)
++    if pair:
++        left, right, qualifier, role = pair.groups()
++        singular = role[:-1]
++        by_id = {n['id']: n for n in nodes}
++        for entity in (left, right):
++            leaves = [n for n in nodes if not n['dependencies'] and norm(entity) in norm(n['question'])]
++            if not leaves:
++                # Indirect reference / pronoun resolution not supported.
++                continue
++            supported.append('entity_qualifiers:' + entity)
++            # Follow the single-consumer chain while retaining the named subject's binding.
++            linked, frontier = list(leaves), {n['id'] for n in leaves}
++            while frontier:
++                next_nodes = [n for n in nodes if n not in linked and frontier.intersection(n['dependencies'])
++                              and len(n['dependencies']) == 1]
++                linked.extend(next_nodes)
++                frontier = {n['id'] for n in next_nodes}
++            text = ' '.join(norm(n['question']) for n in linked)
++            missing = [word for word in (qualifier.lower(), singular)
++                       if not re.search(r'\b' + re.escape(word) + r's?\b', text)]
++            if missing:
++                findings.append(finding('entity_qualifier_not_established', [n['id'] for n in linked],
++                    'This subject-specific branch omits part of the joint property. A negative conjunct may still suffice for no; inspect evidence.',
++                    entity=entity, required=[qualifier, singular], missing=missing))
++    exclusion = re.match(r'^Who else (?:besides?|other than|except) (?:the|an?|this) (.+?) (?:was|is)\b', question, re.I)
++    if exclusion:
++        descriptor = norm(exclusion[1])
++        key_roles = re.findall(r'\b(administrator|politician|actor|photographer|singer|author)\b', descriptor)
++        candidates = [n for n in nodes if not n['dependencies'] and key_roles and
++                      all(re.search(r'\b' + r + r's?\b', norm(n['question'])) for r in key_roles)]
++        for node in candidates:
++            text = norm(node['question'])
++            supported.append('excluded_person:' + node['id'])
++            if re.search(r'\b(?:else|besides?|except|other than)\b', text):
++                findings.append(finding('exclusion_applied_during_identity_lookup', [node['id']],
++                    'The branch identifying the excluded person already asks for someone else.', descriptor=descriptor))
++            if re.match(r'^who (?:are|were)\b', text) or any(re.search(r'\b' + r + r's\b', text) for r in key_roles):
++                findings.append(finding('excluded_single_person_became_group', [node['id']],
++                    'A singular excluded-person description became a plural lookup.', descriptor=descriptor))
++            # Presence is insufficient: root must explicitly exclude that branch's value.
++            consumers = [n for n in nodes if node['id'] in n['dependencies']]
++            if consumers and not any(re.search(r'(?:besides?|except|other than|apart from)\s+(?:the\s+)?' +
++                                               re.escape('{{' + node['id'] + '}}'), n['question'], re.I)
++                                     for n in consumers):
++                findings.append(finding('excluded_person_binding_unconfirmed', [node['id']] + [n['id'] for n in consumers],
++                    'No supported explicit exclusion of this slot was found; paraphrases require manual review.'))
++    return supported, findings
+--- max4/hotpotqa_operadic_rag/max4_comparison.py
++++ max4_04_constraint_diagnostics_v1/hotpotqa_operadic_rag/max4_comparison.py
+@@ -0,0 +1,46 @@
++"""Report comparison with the recorded original max4; never used in prompts."""
++import hashlib
++import json
++from pathlib import Path
++
++REFERENCE = Path(__file__).resolve().parent.parent / 'evaluation/max4_reference.json'
++
++
++def reference_digest():
++    return hashlib.sha256(REFERENCE.read_bytes()).hexdigest()
++
++
++def compare(store, summary):
++    baseline = json.loads(REFERENCE.read_text(encoding='utf-8'))
++    lookup = {row['question_id']: row for row in baseline['questions']}
++    rows = []
++    for order, sample in enumerate(store.samples, 1):
++        old = lookup.get(sample['question_id'])
++        phases = store.read(sample['question_id'])['phases']
++        structure = phases.get('structure', {})
++        plan = structure.get('result', {}).get('plan')
++        matched = bool(old and old['question'] == sample['question'])
++        cost = {key: sum(h['telemetry'].get(key, 0) for p in phases.values() for h in p.get('history', []))
++                for key in ('llm_calls', 'total_tokens')}
++        rows.append(dict(order=order, question_id=sample['question_id'], baseline_matched=matched,
++                         baseline_status=old['status'] if matched else None,
++                         current_status=structure.get('status', 'pending'),
++                         plan_identical_to_max4=(plan == old['plan']) if matched and structure.get('status') in ('valid','invalid') else None,
++                         baseline_cost=old['cost'] if matched else None, current_cost=cost))
++    same_cohort = len(rows) == len(baseline['questions']) and all(r['baseline_matched'] for r in rows)
++    complete = not summary['incomplete_questions']
++    report = dict(baseline='v3.2.4-max4', source_result_sha256=baseline['source_result_sha256'],
++                  reference_sha256=reference_digest(), same_cohort=same_cohort, current_run_complete=complete,
++                  metrics_comparable=same_cohort and complete,
++                  baseline_metrics=baseline['metrics'],
++                  current_metrics={k:summary[k] for k in ('structure_status','total_cost','valid_on_first_attempt','root_contract_status')},
++                  questions=rows,
++                  note='Saved original max4 output comparison only. Structural counts and model verdicts are not semantic accuracy. No gold data enters generation.')
++    lines=['# Comparison with original max4', '', report['note'], '',
++           f'Same complete cohort: {report["metrics_comparable"]}', '',
++           '| Case | Baseline structure | Current structure | Identical plan | Baseline tokens | Current tokens |',
++           '|---|---|---|---|---|---|']
++    for row in rows:
++        lines.append(f"| {row['order']} | {row['baseline_status']} | {row['current_status']} | {row['plan_identical_to_max4']} | "
++                     f"{(row['baseline_cost'] or {}).get('total_tokens')} | {row['current_cost']['total_tokens']} |")
++    return report, '\n'.join(lines)
+--- max4/run_decomposition_test.bat
++++ max4_04_constraint_diagnostics_v1/run_decomposition_test.bat
+@@ -18,7 +18,7 @@
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send results\max4_04_constraint_diagnostics_v1_results.zip for review.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
+--- max4/tests/test_experiment.py
++++ max4_04_constraint_diagnostics_v1/tests/test_experiment.py
+@@ -0,0 +1,103 @@
++import copy
++import json
++from pathlib import Path
++import tempfile
++import unittest
++import zipfile
++from hotpotqa_operadic_rag.experiment_diagnostics import analyze, EXPERIMENT
++import decomposition_pilot as pilot
++from hotpotqa_operadic_rag.checkpoint import RunStore
++
++
++def node(nid, question, kind='other', deps=None):
++    return dict(id=nid, question=question, answer_type=kind, dependencies=deps or {})
++
++
++def plan(*nodes):
++    return dict(nodes=list(nodes), final=nodes[-1]['id'])
++
++
++class DiagnosticsTests(unittest.TestCase):
++    def check(self, question, tree, status, code=None):
++        old = copy.deepcopy(tree)
++        result = analyze(question, tree)
++        self.assertEqual(result['status'], status, result)
++        if code:
++            self.assertIn(code, [f['code'] for f in result['findings']])
++        self.assertEqual(tree, old)
++        return result
++
++    def test_invalid_and_missing_plan_abstain(self):
++        self.check('Which river?', None, 'unknown')
++        self.check('Who?', {'nodes': [], 'final': 'q1'}, 'unknown')
++
++    def test_unknown_wording_abstains(self):
++        self.check('Explain the phenomenon.', plan(node('q1', 'Explain the phenomenon.')), 'unknown')
++
++    def test_reports_are_in_archive_and_no_model_load(self):
++        samples = [dict(question_id='synthetic', question='Who wrote Alpha?', type='bridge')]
++        with tempfile.TemporaryDirectory() as tmp:
++            store = RunStore(Path(tmp)/'run/trees.csv', dict(backend='injected_test', n_samples=1), lambda: samples)
++            summary = pilot.export_reports(store, {})
++            self.assertEqual(summary['total_cost']['llm_calls'], 0)
++            with zipfile.ZipFile(Path(tmp)/'run_results.zip') as z:
++                self.assertIn('run/diagnostics.json', z.namelist())
++                self.assertIn('run/diagnostics.md', z.namelist())
++                report = json.loads(z.read('run/diagnostics.json'))
++                self.assertEqual(report['status_counts'], {'unknown': 1})
++                self.assertEqual(report['role'], 'advisory_only')
++
++    def test_attributed_title_missing(self):
++        self.check('Lantern Days is by what Mexican actress?', plan(node('q1', 'Who is a Mexican actress?', 'person')),
++                   'suspicious', 'title_not_found_literally')
++
++    def test_attributed_title_present(self):
++        self.check('Lantern Days is by what Mexican actress?', plan(node('q1', 'Who wrote Lantern Days?', 'person')), 'no_violation_found')
++
++    def test_quoted_title_punctuation_normalizes(self):
++        self.check('Who wrote "Lantern... Days"?', plan(node('q1', 'Who wrote Lantern Days?', 'person')), 'no_violation_found')
++
++    def comparison(self, a, b):
++        return plan(node('q1', a, 'boolean'), node('q2', b, 'boolean'),
++                    node('q3', 'Are {{q1}} and {{q2}} both true?', 'boolean', {'q1':'boolean', 'q2':'boolean'}))
++
++    def test_missing_role_each_subject(self):
++        r = self.check('Are Alex One and Blair Two American cinematographers?',
++                       self.comparison('Is Alex One American?', 'Is Blair Two American?'),
++                       'suspicious', 'entity_qualifier_not_established')
++        self.assertEqual(len(r['findings']), 2)
++
++    def test_qualifiers_on_wrong_subject_do_not_count(self):
++        r = self.check('Are Alex One and Blair Two American cinematographers?',
++                       self.comparison('Is Alex One an American cinematographer?', 'Is Blair Two American?'), 'suspicious')
++        self.assertEqual(r['findings'][0]['evidence']['entity'], 'Blair Two')
++
++    def test_qualifiers_preserved(self):
++        self.check('Are Alex One and Blair Two American cinematographers?',
++                   self.comparison('Is Alex One an American cinematographer?', 'Is Blair Two an American cinematographer?'),
++                   'no_violation_found')
++
++    def excluded(self, leaf, root='Who else besides {{q1}} joined Alpha?'):
++        return plan(node('q1', leaf, 'person'), node('q2', root, 'person', {'q1':'person'}))
++
++    def test_plural_excluded_person(self):
++        self.check('Who else beside the American administrator and politician from Ohio was part of Alpha?',
++                   self.excluded('Who were the American administrators and politicians from Ohio?'),
++                   'suspicious', 'excluded_single_person_became_group')
++
++    def test_excluded_person_singular(self):
++        self.check('Who else beside the American administrator and politician from Ohio was part of Alpha?',
++                   self.excluded('Who is the American administrator and politician from Ohio?'), 'no_violation_found')
++
++    def test_premature_exclusion(self):
++        self.check('Who else beside the American politician was part of Alpha?',
++                   self.excluded('Who else is the American politician?'), 'suspicious', 'exclusion_applied_during_identity_lookup')
++
++    def test_unbound_exclusion(self):
++        self.check('Who else beside the American politician was part of Alpha?',
++                   self.excluded('Who is the American politician?', 'Who joined Alpha with {{q1}}?'),
++                   'suspicious', 'excluded_person_binding_unconfirmed')
++
++    def test_unsupported_pronoun_abstains(self):
++        self.check('Who else besides him joined?', plan(node('q1', 'Who joined?', 'person')), 'unknown')
++

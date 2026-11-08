@@ -1,0 +1,45 @@
+{
+  "experiment": "max4_01_structure_messages_v1",
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "source_code_sha256": "b24a445cbe3c4bfd473e5c3a55021a1913f91d1dd4113e0cfe11ba2c87f18e67",
+  "samples_sha256": "5d09d46a4f21fab0a797d9fa127d277c7b3cfe642eb711d81a5c5dca13386bed",
+  "plan_prompt_sha256": "25fe44b669fce923cd6e8f6bcd8f3887a1fccefcb489954a519172d05972bb56",
+  "review_prompt_sha256": "542da456fde1eec35f5e72e1428a0ea3915d307f5ae49f1fba8d977469305918",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "max_nodes": 4,
+  "plan_attempts": 2,
+  "static_prompts_unchanged": true,
+  "saved_output_replay": {
+    "questions": 40,
+    "structure_attempts": 47,
+    "review_decisions": 37,
+    "all_structural_decisions_and_plans_unchanged": true,
+    "trace_metadata_or_error_changed_orders": [
+      2,
+      15,
+      18,
+      32
+    ],
+    "first_prompt_changed": []
+  },
+  "target_patch_eligibility_on_saved_baseline": [],
+  "advisory_on_saved_baseline": [],
+  "changed_files_before_packaging": [
+    "decomposition_pilot.py",
+    "hotpotqa_operadic_rag/contracts.py",
+    "run_decomposition_test.bat",
+    "tests/test_max4.py"
+  ],
+  "added_files_before_packaging": [
+    "VERIFICATION_MAX4_BASELINE.json",
+    "evaluation/max4_reference.json",
+    "hotpotqa_operadic_rag/max4_comparison.py",
+    "tests/test_experiment.py"
+  ],
+  "unchanged_files": 51,
+  "live_model_calls": 0,
+  "live_results": "pending",
+  "semantic_accuracy_measured": false,
+  "note": "Replay uses original recorded outputs, NOT generated experimental outputs. Diagnostic-only changes do not improve those outputs."
+}
