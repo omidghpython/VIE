@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-07",
+  "snapshot_date_tehran": "2026-11-08",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -400,6 +400,26 @@
       "homepage_delivery_commit": "1e23ba43dcaf396e79670661b6edbc21b7fc8b7e",
       "homepage_zip_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.zip",
       "homepage_text_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt"
+    },
+    {
+      "id": "max4_role_identity_v1",
+      "commit": "12a805ebdcaef902e9415af8ca15567d6eae5691",
+      "artifacts": [
+        {
+          "path": "hotpotqa_max4_role_identity_v1.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.zip",
+          "sha256": "8fe6869e44bfc761450879bc37fc62eb83876ab50497d559e1b14dfc9e6c1e64",
+          "bytes": 275080,
+          "download_verified": true
+        },
+        {
+          "path": "hotpotqa_max4_role_identity_v1.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.txt",
+          "sha256": "cd31c9e26679638c851125acd54a435baccf36ea1af183d1a52fbe255cf15643",
+          "bytes": 4696,
+          "download_verified": true
+        }
+      ]
     }
   ],
   "original_v31_source": {
@@ -407,37 +427,37 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "max4_target_phrase_v1",
-    "status": "actual_results_received_and_analyzed_pending_user_next_decision",
-    "accepted_operadic_baseline": "v3.2.4-max4",
-    "scope": "Proposal5 only: display known coordinated person roles; preserve validator head/type, static prompts and budgets.",
-    "package_path": "hotpotqa_max4_target_phrase_v1.zip",
-    "package_sha256": "aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c",
-    "code_sha256": "1778d34806259264f87ff4e7c0a26ef7b4bc2b366425322c02a2a8558f329290",
-    "offline_tests_passed": 135,
-    "live_model_calls": 80,
-    "expected_results_file": "results/max4_target_phrase_v1_results.zip",
-    "verification": "history/max4_target_phrase_v1_verification.json",
-    "protocol": "history/reports/max4-target-phrase-v1-protocol.txt",
-    "input_audit": "history/reports/max4-target-phrase-v1-input-audit.json",
-    "semantic_accuracy_measured_independently": false,
-    "direct_download_verified": true,
-    "code_commit": "52a44265dc37f04ff28c1d608fee09367c592cd9",
-    "download_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.zip",
-    "delivery_commit": "1e23ba43dcaf396e79670661b6edbc21b7fc8b7e",
-    "delivery_branch": "downloads/operadic-decomposition-v0.2.0",
-    "text_guide_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt",
-    "homepage_delivery_verified": true,
-    "analysis_live_model_calls": 0,
-    "result_artifact": "history/results/max4_target_phrase_v1.zip",
-    "report": "history/reports/max4-target-phrase-v1-analysis.md",
-    "analysis_data": "history/reports/max4-target-phrase-v1-analysis.json",
-    "recommendation": "Do not promote: target case39 still splits roles and is structurally invalid; all39 other generation/review outputs identical. Structure37/40 unchanged; tokens47944->47951(+7). Original max4 remains accepted.",
-    "result_delivery_commit": "b7030bf4ba9a9ae5904c169e5d61131256a280c6",
-    "result_download_url": "https://raw.githubusercontent.com/omidghpython/VIE/b7030bf4ba9a9ae5904c169e5d61131256a280c6/results_max4_target_phrase_v1.zip",
-    "analysis_download_url": "https://raw.githubusercontent.com/omidghpython/VIE/b7030bf4ba9a9ae5904c169e5d61131256a280c6/analysis_max4_target_phrase_v1_FA.txt",
-    "result_remote_download_verified": true,
-    "next_user_decision": "pending"
+    "id": "max4_role_identity_v1",
+    "status": "delivered_offline_tested_live_results_pending",
+    "accepted_baseline": "v3.2.4-max4",
+    "experimental_control": "max4_target_phrase_v1",
+    "scope": "Conditional identity guidance on top of existing full-role display hint; validator head/type and all other semantic rules unchanged. Assistant-designed implementation of critique13-15.",
+    "code_commit": "12a805ebdcaef902e9415af8ca15567d6eae5691",
+    "code_sha256": "4abe627b503ac33e071c623dfb52bcf5b0cee609f5120cefe3f1ee25cd51b6a6",
+    "offline_tests_passed": 142,
+    "live_model_calls": 0,
+    "expected_results_file": "results/max4_role_identity_v1_results.zip",
+    "report": "history/reports/max4-role-identity-v1.md",
+    "preflight": "history/reports/max4-role-identity-v1-preflight.json",
+    "changed_prompt_indices": [
+      39
+    ],
+    "artifacts": [
+      {
+        "path": "hotpotqa_max4_role_identity_v1.zip",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.zip",
+        "sha256": "8fe6869e44bfc761450879bc37fc62eb83876ab50497d559e1b14dfc9e6c1e64",
+        "bytes": 275080,
+        "download_verified": true
+      },
+      {
+        "path": "hotpotqa_max4_role_identity_v1.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.txt",
+        "sha256": "cd31c9e26679638c851125acd54a435baccf36ea1af183d1a52fbe255cf15643",
+        "bytes": 4696,
+        "download_verified": true
+      }
+    ]
   },
   "experiment_history": [
     {
@@ -563,6 +583,39 @@
       "semantic_accuracy_measured_independently": false,
       "answer_accuracy_measured": false,
       "recommendation": "Do not promote: target dual-role case39 still splits roles into separate orphan leaves; partial improvements in24/25/9 and regressions in10/18/34. Final structure37->36; pilot tokens47944->52949. No independent semantic accuracy or full RAG measurement."
+    },
+    {
+      "id": "max4_target_phrase_v1",
+      "status": "historical_result_no_improvement_not_promoted",
+      "accepted_operadic_baseline": "v3.2.4-max4",
+      "scope": "Proposal5 only: display known coordinated person roles; preserve validator head/type, static prompts and budgets.",
+      "package_path": "hotpotqa_max4_target_phrase_v1.zip",
+      "package_sha256": "aaff891c018cea4c38bb4696da6b9296119859b8b7fbb4d743d73bb6806dd30c",
+      "code_sha256": "1778d34806259264f87ff4e7c0a26ef7b4bc2b366425322c02a2a8558f329290",
+      "offline_tests_passed": 135,
+      "live_model_calls": 80,
+      "expected_results_file": "results/max4_target_phrase_v1_results.zip",
+      "verification": "history/max4_target_phrase_v1_verification.json",
+      "protocol": "history/reports/max4-target-phrase-v1-protocol.txt",
+      "input_audit": "history/reports/max4-target-phrase-v1-input-audit.json",
+      "semantic_accuracy_measured_independently": false,
+      "direct_download_verified": true,
+      "code_commit": "52a44265dc37f04ff28c1d608fee09367c592cd9",
+      "download_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.zip",
+      "delivery_commit": "1e23ba43dcaf396e79670661b6edbc21b7fc8b7e",
+      "delivery_branch": "downloads/operadic-decomposition-v0.2.0",
+      "text_guide_url": "https://raw.githubusercontent.com/omidghpython/VIE/1e23ba43dcaf396e79670661b6edbc21b7fc8b7e/hotpotqa_max4_target_phrase_v1.txt",
+      "homepage_delivery_verified": true,
+      "analysis_live_model_calls": 0,
+      "result_artifact": "history/results/max4_target_phrase_v1.zip",
+      "report": "history/reports/max4-target-phrase-v1-analysis.md",
+      "analysis_data": "history/reports/max4-target-phrase-v1-analysis.json",
+      "recommendation": "Do not promote: target case39 still splits roles and is structurally invalid; all39 other generation/review outputs identical. Structure37/40 unchanged; tokens47944->47951(+7). Original max4 remains accepted.",
+      "result_delivery_commit": "b7030bf4ba9a9ae5904c169e5d61131256a280c6",
+      "result_download_url": "https://raw.githubusercontent.com/omidghpython/VIE/b7030bf4ba9a9ae5904c169e5d61131256a280c6/results_max4_target_phrase_v1.zip",
+      "analysis_download_url": "https://raw.githubusercontent.com/omidghpython/VIE/b7030bf4ba9a9ae5904c169e5d61131256a280c6/analysis_max4_target_phrase_v1_FA.txt",
+      "result_remote_download_verified": true,
+      "next_user_decision": "pending"
     }
   ],
   "conversation_snapshots": [
@@ -595,6 +648,16 @@
         {
           "path": "history/conversations/2026-11-07-user-copy-of-33-point-response.txt",
           "sha256": "2bb4a3a88f09b269fd24d59ead281da1a3c4466e81e115a88a5de43324751e3a"
+        }
+      ]
+    },
+    {
+      "id": "2026-11-08-before-role-identity-v1",
+      "before_implementation_commit": "0faad04",
+      "files": [
+        {
+          "path": "history/conversations/2026-11-08-before-role-identity-v1.md",
+          "sha256": "532894a50fe4ffb23b04ab5aa46ebd7a5dd9cb3edc823b5025aa8debb70866de"
         }
       ]
     }

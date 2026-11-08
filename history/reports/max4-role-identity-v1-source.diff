@@ -1,0 +1,83 @@
+--- baseline/decomposition_pilot.py
++++ experiment/decomposition_pilot.py
+@@ -354,7 +354,7 @@
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--samples-json', default=str(ROOT / 'evaluation' / 'samples.json'))
+-    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'decomposition_pilot_v3_2_4_max4'))
++    parser.add_argument('--output-dir', default=str(ROOT / 'results' / 'max4_role_identity_v1'))
+     parser.add_argument('--max-input-tokens', type=int, default=DEFAULT_MAX_INPUT_TOKENS)
+     parser.add_argument('--intermediate-tokens', type=int, default=DEFAULT_INTERMEDIATE_TOKENS)
+     parser.add_argument('--plan-tokens', type=int, default=DEFAULT_PLAN_TOKENS)
+--- baseline/hotpotqa_operadic_rag/decomposition.py
++++ experiment/hotpotqa_operadic_rag/decomposition.py
+@@ -3,7 +3,7 @@
+ import re
+ from .config import MAX_PLAN_NODES, PLAN_ATTEMPTS, DEFAULT_PLAN_TOKENS
+ from .contracts import parse_json_object, validate_plan, normalize_json_wrapper, expand_typed_plan
+-from .semantic_checks import answer_target, incompatible_types, geographic_precision_errors, binding_errors
++from .semantic_checks import answer_target, incompatible_types, geographic_precision_errors, binding_errors, TARGET_WORDS
+ 
+ 
+ def compact(value):
+@@ -120,12 +120,48 @@
+             'errors': root['errors'] + bindings + geography}
+ 
+ 
++def target_display_phrase(question, target):
++    """Preserve a narrow coordinated role phrase for display only.
++
++    This is not coreference resolution: copying a phrase does not prove that its
++    roles name one individual. Repeated determiners, plural predicates, modifiers
++    and unfamiliar syntax fall back to the original head. Validator head/type
++    and the complete original question are untouched.
++    """
++    head = target['head']
++    if target['type'] != 'person' or head not in TARGET_WORDS['person'].split():
++        return head
++    text = ' '.join(question.casefold().split())
++    masked = re.sub(r'"[^"\n]*"', ' ', text)
++    wh = re.search(r'\b(?:what|which)\b', masked)
++    if not wh:
++        return head
++    roles = '|'.join(re.escape(word) for word in TARGET_WORDS['person'].split())
++    match = re.match(
++        r'\s*(?P<phrase>' + re.escape(head) + r'(?: and (?:' + roles + r'))+)'
++        r'(?=\s*(?:[?.!]|$)|\s+(?:is|was|has|does|did|who|that)\b)',
++        masked[wh.end():])
++    return match.group('phrase') if match else head
++
++
++ROLE_IDENTITY_HINT = (
++    'Resolve the coordinated roles from Question: one person or distinct people? '
++    'If one person is requested, retain every role as a condition on that same person; '
++    'answers about separate people do not establish that one person satisfies all roles. '
++    'If distinct people are requested, keep their identities separate. '
++    'Matching person types alone do not establish identity. Preserve ambiguity rather than guess.'
++)
++
++
+ def plan_instructions(question):
+     mode, target = question_answer_mode(question), answer_target(question)
+     if mode == 'boolean':
+         hint = 'Final target: yes/no (boolean).'
+     elif target and target['type'] != 'other':
+-        hint = f"Final target: {target['head']} ({target['type']})."
++        phrase = target_display_phrase(question, target)
++        hint = f"Final target: {phrase} ({target['type']})."
++        if phrase != target['head']:
++            hint = ROLE_IDENTITY_HINT + '\n' + hint
+     elif mode:
+         hint = 'Final must return the requested name/value, not yes/no.'
+     else:
+--- baseline/run_decomposition_test.bat
++++ experiment/run_decomposition_test.bat
+@@ -18,7 +18,7 @@
+ echo.
+ if "%PILOT_EXIT%"=="0" (
+   echo Pilot processed all questions. Structural/semantic correctness still needs inspection.
+-  echo Send results\decomposition_pilot_v3_2_4_max4_results.zip for review.
++  echo Send results\max4_role_identity_v1_results.zip for review.
+ ) else (
+   echo Pilot incomplete. Read the error above. Saved phases are preserved.
+   echo Rerun to resume an interruption. Use --retry-errors only after fixing a saved backend error.
