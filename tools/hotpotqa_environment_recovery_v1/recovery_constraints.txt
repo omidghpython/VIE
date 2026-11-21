@@ -1,0 +1,5 @@
+# Recorded max4 Windows runtime; CUDA wheel installed from the official PyTorch index first.
+torch==2.11.0+cu128
+transformers==4.57.6
+accelerate==1.15.0
+bitsandbytes==0.50.2
