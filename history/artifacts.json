@@ -1477,7 +1477,7 @@
       "id": "hotpotqa_environment_recovery_windows_v1",
       "date_tehran": "2026-11-21",
       "pipeline_version": "0.3.0",
-      "status": "delivered_software_verified_live_windows_pending",
+      "status": "withdrawn_from_current_default_branch_at_user_request",
       "delivery_commit": "49fd04aabe9b7427d1fe0cb2f88244319a28de90",
       "delivery": [
         {
@@ -1530,7 +1530,43 @@
       "project_model_calls": 0,
       "final15_questions_executed": 0,
       "report": "history/reports/windows-environment-recovery-v1-2026-11-21.md",
-      "source": "https://github.com/omidghpython/VIE/tree/49fd04aabe9b7427d1fe0cb2f88244319a28de90/tools/hotpotqa_environment_recovery_v1"
+      "source": "https://github.com/omidghpython/VIE/tree/49fd04aabe9b7427d1fe0cb2f88244319a28de90/tools/hotpotqa_environment_recovery_v1",
+      "status_before_withdrawal": "delivered_software_verified_live_windows_pending",
+      "available_on_default_branch": false,
+      "withdrawal": {
+        "date_tehran": "2026-11-21",
+        "commit": "b8c9288e9a08fa699c548997df74691b35c2e5de",
+        "reason": "User already downloaded recovery package and requested removal to avoid confusion.",
+        "scope": "Latest default-branch ZIP, guide, installer source and download links; normal commit without rewriting Git history.",
+        "republish_without_new_user_request": false,
+        "remote_checks": [
+          {
+            "path": "HotpotQA_v0.3_Recovery_Windows_v1.zip",
+            "http_status": 404,
+            "absent": true
+          },
+          {
+            "path": "HotpotQA_Recovery_Windows_v1_FA.txt",
+            "http_status": 404,
+            "absent": true
+          },
+          {
+            "path": "tools/hotpotqa_environment_recovery_v1/restore_environment.py",
+            "http_status": 404,
+            "absent": true
+          },
+          {
+            "path": "README.md",
+            "http_status": 200,
+            "sha256": "4e69cd7b86db31f95437285c4a15329a348480793f0481269665aa8082220180"
+          },
+          {
+            "path": "HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+            "http_status": 200,
+            "sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1"
+          }
+        ]
+      }
     }
   ]
 }
