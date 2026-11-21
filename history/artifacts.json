@@ -1471,5 +1471,66 @@
       "implemented": false,
       "evaluated": false
     }
+  ],
+  "environment_recovery_packages": [
+    {
+      "id": "hotpotqa_environment_recovery_windows_v1",
+      "date_tehran": "2026-11-21",
+      "pipeline_version": "0.3.0",
+      "status": "delivered_software_verified_live_windows_pending",
+      "delivery_commit": "49fd04aabe9b7427d1fe0cb2f88244319a28de90",
+      "delivery": [
+        {
+          "path": "HotpotQA_v0.3_Recovery_Windows_v1.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/49fd04aabe9b7427d1fe0cb2f88244319a28de90/HotpotQA_v0.3_Recovery_Windows_v1.zip",
+          "bytes": 1047994,
+          "sha256": "72f1d9e188f609f98f40eb59fc53c0d5b2bcbc44a7a3f8f865a2f6635fae7a67",
+          "download_verified": true
+        },
+        {
+          "path": "HotpotQA_Recovery_Windows_v1_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/49fd04aabe9b7427d1fe0cb2f88244319a28de90/HotpotQA_Recovery_Windows_v1_FA.txt",
+          "bytes": 6202,
+          "sha256": "8161e7dff10737f295949cae16a4efbdbbcac7fd56a37ed41826cea1cd7d9ba9",
+          "download_verified": true
+        },
+        {
+          "path": "tools/hotpotqa_environment_recovery_v1/RECOVERY_MANIFEST.json",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/49fd04aabe9b7427d1fe0cb2f88244319a28de90/tools/hotpotqa_environment_recovery_v1/RECOVERY_MANIFEST.json",
+          "bytes": 1210,
+          "sha256": "94579e131f8b4197ced3e6b06eca1b857aed016eb8e7681b21a8bf7cbb7b4a2f",
+          "download_verified": true
+        },
+        {
+          "path": "tools/hotpotqa_environment_recovery_v1/restore_environment_windows.bat",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/49fd04aabe9b7427d1fe0cb2f88244319a28de90/tools/hotpotqa_environment_recovery_v1/restore_environment_windows.bat",
+          "bytes": 1234,
+          "sha256": "b943295dbec2bfeceebade96fa8565f6a2d907d8c5e9477d02261d96a88c2640",
+          "download_verified": true
+        },
+        {
+          "path": "tools/hotpotqa_environment_recovery_v1/restore_environment.py",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/49fd04aabe9b7427d1fe0cb2f88244319a28de90/tools/hotpotqa_environment_recovery_v1/restore_environment.py",
+          "bytes": 10478,
+          "sha256": "69e3ad1ed9e23ecdc5cc5835f41d4e475e1f70ffbfba13b6485596e7a465243d",
+          "download_verified": true
+        }
+      ],
+      "source_zip_sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1",
+      "original_package_files_unchanged": 95,
+      "software_tests_source": 11,
+      "software_tests_extracted_delivery": 11,
+      "original_static_verifications": [
+        "run.py verify",
+        "run_rag.py verify"
+      ],
+      "real_windows_execution": false,
+      "real_cuda_execution": false,
+      "real_model_download": false,
+      "project_model_calls": 0,
+      "final15_questions_executed": 0,
+      "report": "history/reports/windows-environment-recovery-v1-2026-11-21.md",
+      "source": "https://github.com/omidghpython/VIE/tree/49fd04aabe9b7427d1fe0cb2f88244319a28de90/tools/hotpotqa_environment_recovery_v1"
+    }
   ]
 }

@@ -14,6 +14,8 @@ Use the 40 original questions for development. Preserve the fixed 15 final quest
 
 Statements inside the unchanged release about chat-only delivery/no GitHub writes describe its build-time status. The new standing user authorization and this publication supersede that delivery restriction. Do not publish cloud-environment configuration without a separate request.
 
+Environment recovery (2026-11-21): for a wiped Windows GPU environment, use the complete HotpotQA_v0.3_Recovery_Windows_v1.zip and restore_environment_windows.bat from the default branch. See history/reports/windows-environment-recovery-v1-2026-11-21.md. Old max4 install_windows.bat omits torch. Python64 and the NVIDIA driver are prerequisites. All 95 original v0.3 files are unchanged; 11 mocked installer tests and static verification passed. Real Windows/CUDA installation and model downloads were not run here. Deleted results/usage logs are not recovered; do not reset final15 exposure by extracting a fresh ZIP.
+
 ---
 
 # Historical project instructions and checkpoints (read with their dates)
