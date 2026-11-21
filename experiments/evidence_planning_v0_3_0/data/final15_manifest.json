@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "role": "heldout",
+  "selection_id": "final15-v1",
+  "question_count": 15,
+  "types": {
+    "bridge": 8,
+    "comparison": 7
+  },
+  "state_count": 75,
+  "question_ids": [
+    "5ae0361155429925eb1afc2c",
+    "5a75e05c55429976ec32bc5f",
+    "5a7a455c5542994f819ef1a7",
+    "5ae224da554299234fd043ee",
+    "5adccd795542990d50227d2c",
+    "5a8361b65542992ef85e22a0",
+    "5a8b57f25542995d1e6f1371",
+    "5ac3165c5542995ef918c10a",
+    "5a8eea4a5542990e94052bb7",
+    "5a7633ad5542992db9473741",
+    "5ac298f9554299657fa28fc9",
+    "5ae2070a5542994d89d5b313",
+    "5ab642845542995eadeeff8e",
+    "5ae7ba7a5542993210983f12",
+    "5a74106b55429979e288289e"
+  ],
+  "public_records_sha256": "6905f483593c0db9a44bddcc45c74b52daffdd74df9f8fa9d2035c6a7e97ab88",
+  "labels_sha256": "4a8905361d1e48711053a7ce69f6017096c64bbeed1e2a18a52f061694c4b036",
+  "originals_sha256": "d07de43205f1e63d4b0cd812f070b6f532c28bfe104034442b6c31e6140af5b8",
+  "registry_sha256": "bc1368f975b6e04dd560c7daabc0448bf8bea87ba4145b23e45f72cdc0e4b2de",
+  "known_exposure_sha256": "12e30c56835692aad8a521939600bb53510bf9a4bb36dfe99bdedd8b97d6e9ce",
+  "source_url": "https://raw.githubusercontent.com/NotAbleToFindAUsername/HotpotQA_Dataset/6ac268e426770b3c13c84566aaf4b55ce9548352/hotpotqa_distractor_validation.pkl",
+  "source_file_sha256": "0d2968ed54b43b0403743de7b2886094943a8938b00908baa728603dcbd8ce64",
+  "source_pool_records": 200,
+  "eligible_pool_records": 199,
+  "selection": {
+    "method": "stratified SHA256 ranking of IDs, no model outcomes",
+    "salt": "VIE-final15-v1-2026-11-21",
+    "counts": {
+      "bridge": 8,
+      "comparison": 7
+    }
+  },
+  "source_note": "Public 200-row mirror of HotpotQA distractor validation; original host was unreachable.",
+  "overlap_check": "IDs and normalized text hashes against all available known project exposures",
+  "overlap_count": 0,
+  "model_calls_at_selection": 0,
+  "novelty_scope": "Unseen in available project development records; not a pretraining-exclusion claim.",
+  "final_run_status": "not_run",
+  "independent_semantic_labels": "pending"
+}

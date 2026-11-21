@@ -1,0 +1,15 @@
+{
+  "version": "0.3.0",
+  "unchanged_baseline_files": 20,
+  "development_questions": 40,
+  "final_questions": 15,
+  "methods": [
+    "standard",
+    "max4",
+    "operadic"
+  ],
+  "live_model_calls": 0,
+  "live_retrieval_calls": 0,
+  "final15_usage_marker_present": false,
+  "note": "Static preflight only; live inference and semantic improvement are not claimed."
+}
