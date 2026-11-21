@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-09",
+  "snapshot_date_tehran": "2026-11-21",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -444,6 +444,58 @@
           "download_verified": true
         }
       ]
+    },
+    {
+      "id": "evidence_planning_v0.3.0",
+      "commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
+      "source_path": "experiments/evidence_planning_v0_3_0",
+      "artifacts": [
+        {
+          "path": "HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+          "sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1",
+          "bytes": 1035058,
+          "download_verified": true
+        },
+        {
+          "path": "HotpotQA_v0.3_Guide_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.3_Guide_FA.txt",
+          "sha256": "e2ed0c83896e0234c697374627ddce2d84e69ef8c839322ffac32143fde2f6ef",
+          "bytes": 4755,
+          "download_verified": true
+        },
+        {
+          "path": "HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
+          "sha256": "0b916953b2295777a09b44a336805b7d4d9913811516a6b19a58ce002e32b177",
+          "bytes": 6837,
+          "download_verified": true
+        }
+      ],
+      "additional_remote_verification": [
+        {
+          "path": "AGENTS.md",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/AGENTS.md",
+          "sha256": "edf3a111d3b837d516987baed2384259a8d48d701c581a6be8644825922a6b91",
+          "bytes": 3588,
+          "download_verified": true
+        },
+        {
+          "path": "OPEN_RESEARCH_TASKS_FA.md",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/OPEN_RESEARCH_TASKS_FA.md",
+          "sha256": "cc9d593cbfb37c4ba61fd90bcf3625f95b8529a3bf257b0a1cc5c121dbdc8a45",
+          "bytes": 2774,
+          "download_verified": true
+        },
+        {
+          "path": "experiments/evidence_planning_v0_3_0/PACKAGE_MANIFEST.json",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/experiments/evidence_planning_v0_3_0/PACKAGE_MANIFEST.json",
+          "sha256": "35e4cf20afc1b7f50af936aed2147724934b924325ddcbf1e1b53e10406bc909",
+          "bytes": 10236,
+          "download_verified": true
+        }
+      ],
+      "unchanged_from_chat_delivery": true
     }
   ],
   "original_v31_source": {
@@ -451,66 +503,46 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "max4_role_identity_v1",
-    "status": "actual_results_received_and_analyzed_pending_user_decision",
+    "id": "evidence_planning_v0.3.0",
+    "status": "implemented_offline_verified_live_evaluation_pending",
     "accepted_baseline": "v3.2.4-max4",
-    "experimental_control": "max4_target_phrase_v1",
-    "scope": "Conditional identity guidance on top of existing full-role display hint; validator head/type and all other semantic rules unchanged. Assistant-designed implementation of critique13-15.",
-    "code_commit": "12a805ebdcaef902e9415af8ca15567d6eae5691",
-    "code_sha256": "4abe627b503ac33e071c623dfb52bcf5b0cee609f5120cefe3f1ee25cd51b6a6",
-    "offline_tests_passed": 142,
-    "live_model_calls": 81,
-    "expected_results_file": "results/max4_role_identity_v1_results.zip",
-    "report": "history/reports/max4-role-identity-v1-analysis.md",
-    "preflight": "history/reports/max4-role-identity-v1-preflight.json",
-    "changed_prompt_indices": [
-      39
-    ],
+    "scope": "Three-method full RAG with frozen max4 trees, active dependency stopping and real local retrieval; one-step structure ablation retained.",
+    "code_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
+    "code_path": "experiments/evidence_planning_v0_3_0",
+    "offline_tests_passed": 88,
+    "live_qwen_calls_during_preparation_and_publication": 0,
+    "live_bge_calls_during_preparation_and_publication": 0,
+    "live_benchmark_metrics": null,
+    "independent_semantic_evaluation": "pending",
+    "final_questions": 15,
+    "final_trial_count": 45,
+    "final15_real_model_inference": false,
+    "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
+    "report": "history/reports/evidence-planning-v03-publication-2026-11-21.md",
+    "delivery_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
     "artifacts": [
       {
-        "path": "hotpotqa_max4_role_identity_v1.zip",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.zip",
-        "sha256": "8fe6869e44bfc761450879bc37fc62eb83876ab50497d559e1b14dfc9e6c1e64",
-        "bytes": 275080,
+        "path": "HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+        "sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1",
+        "bytes": 1035058,
         "download_verified": true
       },
       {
-        "path": "hotpotqa_max4_role_identity_v1.txt",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.txt",
-        "sha256": "cd31c9e26679638c851125acd54a435baccf36ea1af183d1a52fbe255cf15643",
-        "bytes": 4696,
+        "path": "HotpotQA_v0.3_Guide_FA.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.3_Guide_FA.txt",
+        "sha256": "e2ed0c83896e0234c697374627ddce2d84e69ef8c839322ffac32143fde2f6ef",
+        "bytes": 4755,
+        "download_verified": true
+      },
+      {
+        "path": "HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
+        "sha256": "0b916953b2295777a09b44a336805b7d4d9913811516a6b19a58ce002e32b177",
+        "bytes": 6837,
         "download_verified": true
       }
-    ],
-    "result_artifact": "history/results/max4_role_identity_v1.zip",
-    "result_sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
-    "analysis_json": "history/reports/max4-role-identity-v1-analysis.json",
-    "analysis_live_model_calls": 0,
-    "structurally_valid": 38,
-    "total_tokens": 48535,
-    "changed_output_orders": [
-      39
-    ],
-    "recommendation": "Structural improvement in39; same-person semantic composition not established. Keep original accepted baseline pending user decision.",
-    "result_delivery": {
-      "commit": "9688de654ced10ac5db107a8eb776fb71aa9361e",
-      "artifacts": [
-        {
-          "path": "results_max4_role_identity_v1.zip",
-          "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/results_max4_role_identity_v1.zip",
-          "sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
-          "bytes": 302845,
-          "download_verified": true
-        },
-        {
-          "path": "analysis_max4_role_identity_v1_FA.txt",
-          "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/analysis_max4_role_identity_v1_FA.txt",
-          "sha256": "942b62be6f00bdd0500a1238fcf436ee7a284dae7b47a649e373fedb41868cc1",
-          "bytes": 9411,
-          "download_verified": true
-        }
-      ]
-    }
+    ]
   },
   "experiment_history": [
     {
@@ -713,6 +745,15 @@
           "sha256": "532894a50fe4ffb23b04ab5aa46ebd7a5dd9cb3edc823b5025aa8debb70866de"
         }
       ]
+    },
+    {
+      "id": "2026-11-21-github-recording-and-ablation-reminder",
+      "files": [
+        {
+          "path": "history/conversations/2026-11-21-github-recording-and-ablation-reminder.md",
+          "sha256": "75700148d38fd611e70ddc4febc29cc31f3cf52e8bab15fb6020f793bb7a8740"
+        }
+      ]
     }
   ],
   "delivery_policy": {
@@ -720,7 +761,9 @@
     "zip_and_text_separate": true,
     "resolve_default_branch_each_delivery": true,
     "current_default_branch": "downloads/operadic-decomposition-v0.2.0",
-    "user_requested_date_tehran": "2026-11-07"
+    "user_requested_date_tehran": "2026-11-07",
+    "standing_authorization_date_tehran": "2026-11-21",
+    "repeat_permission_required": false
   },
   "phase_one_delivery": {
     "id": "max4_explicit_target_v1",
@@ -1332,6 +1375,101 @@
           "download_verified": true
         }
       ]
+    }
+  ],
+  "prior_current_checkpoints": [
+    {
+      "replaced_on": "2026-11-21",
+      "record": {
+        "id": "max4_role_identity_v1",
+        "status": "actual_results_received_and_analyzed_pending_user_decision",
+        "accepted_baseline": "v3.2.4-max4",
+        "experimental_control": "max4_target_phrase_v1",
+        "scope": "Conditional identity guidance on top of existing full-role display hint; validator head/type and all other semantic rules unchanged. Assistant-designed implementation of critique13-15.",
+        "code_commit": "12a805ebdcaef902e9415af8ca15567d6eae5691",
+        "code_sha256": "4abe627b503ac33e071c623dfb52bcf5b0cee609f5120cefe3f1ee25cd51b6a6",
+        "offline_tests_passed": 142,
+        "live_model_calls": 81,
+        "expected_results_file": "results/max4_role_identity_v1_results.zip",
+        "report": "history/reports/max4-role-identity-v1-analysis.md",
+        "preflight": "history/reports/max4-role-identity-v1-preflight.json",
+        "changed_prompt_indices": [
+          39
+        ],
+        "artifacts": [
+          {
+            "path": "hotpotqa_max4_role_identity_v1.zip",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.zip",
+            "sha256": "8fe6869e44bfc761450879bc37fc62eb83876ab50497d559e1b14dfc9e6c1e64",
+            "bytes": 275080,
+            "download_verified": true
+          },
+          {
+            "path": "hotpotqa_max4_role_identity_v1.txt",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/12a805ebdcaef902e9415af8ca15567d6eae5691/hotpotqa_max4_role_identity_v1.txt",
+            "sha256": "cd31c9e26679638c851125acd54a435baccf36ea1af183d1a52fbe255cf15643",
+            "bytes": 4696,
+            "download_verified": true
+          }
+        ],
+        "result_artifact": "history/results/max4_role_identity_v1.zip",
+        "result_sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+        "analysis_json": "history/reports/max4-role-identity-v1-analysis.json",
+        "analysis_live_model_calls": 0,
+        "structurally_valid": 38,
+        "total_tokens": 48535,
+        "changed_output_orders": [
+          39
+        ],
+        "recommendation": "Structural improvement in39; same-person semantic composition not established. Keep original accepted baseline pending user decision.",
+        "result_delivery": {
+          "commit": "9688de654ced10ac5db107a8eb776fb71aa9361e",
+          "artifacts": [
+            {
+              "path": "results_max4_role_identity_v1.zip",
+              "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/results_max4_role_identity_v1.zip",
+              "sha256": "b71e80055fd5be49a6b7f35ad451e990f3f0fe71f2a40a98168bbd0be8b6b684",
+              "bytes": 302845,
+              "download_verified": true
+            },
+            {
+              "path": "analysis_max4_role_identity_v1_FA.txt",
+              "url": "https://raw.githubusercontent.com/omidghpython/VIE/9688de654ced10ac5db107a8eb776fb71aa9361e/analysis_max4_role_identity_v1_FA.txt",
+              "sha256": "942b62be6f00bdd0500a1238fcf436ee7a284dae7b47a649e373fedb41868cc1",
+              "bytes": 9411,
+              "download_verified": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "ongoing_github_recording_authorization": {
+    "authorized": true,
+    "date_tehran": "2026-11-21",
+    "scope": [
+      "project_versions",
+      "project_explanations",
+      "result_evaluations"
+    ],
+    "repeat_permission_required": false,
+    "supersedes": "earlier_chat_only_no_github_recording_restriction",
+    "source": "history/conversations/2026-11-21-github-recording-and-ablation-reminder.md",
+    "write_access_verified_by_push_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016"
+  },
+  "open_research_tasks": [
+    {
+      "id": "OC-ABLATION-01",
+      "status": "open_deferred",
+      "path": "OPEN_RESEARCH_TASKS_FA.md",
+      "remind_before": [
+        "final_protocol_freeze",
+        "final15_model_evaluation",
+        "causal_dependency_benefit_claim"
+      ],
+      "scheduled_notification": false,
+      "implemented": false,
+      "evaluated": false
     }
   ]
 }
