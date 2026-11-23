@@ -722,3 +722,10 @@ decomp50: تعداد ۵۰، ترکیب۴۲bridge/۸comparison؛ فقط یک سؤ
 
 
 تحویل۰٫۳٫۲: commit `4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342` در شاخهٔ پیش‌فرض؛ [ZIP ثابت](https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip) و [راهنمای ثابت](https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_v0.3.2_Full_Development_FA.txt). SHA256بسته `4420dadb1352d56fe0212d53518ad1a559923b69545343bc49f134c2bb513b09` است. پنج فایل شاملZIP،راهنما،کدrunner،READMEوAGENTS از لینک ثابت دانلود و بایت‌به‌بایت تأیید شدند؛ جزئیات در rag-full-development-v032-delivery-2026-11-24.json ثبت است.
+
+
+## ۲۰۲۶-۱۱-۲۴ — تغییر قدم بعد به اعتبارسنجی۱۵سؤال
+
+کاربر روشن کرد که نتیجه‌های۴۰سؤال را قبلاً دیده و اکنون می‌خواهد۱۵سؤال پردازش‌نشده را برای اعتبارسنجی به کار ببرد. این تصمیم جای پیشنهاد اجرای دوبارهٔ۴۰سؤال را در قدم بعد می‌گیرد. مسیر موجود نسخهٔ۰٫۳٫۲ با configs/rag_final15.json و role=heldout هر۱۵سؤال را با سه روش پردازش می‌کند؛۴۵رکورد از جمله شکست‌ها. run_rag_final15.bat سقف دو سؤال ندارد؛ چون python را ازPATH می‌خواند، برای استفاده از محیط نصب‌شده دستور مستقیم .venv_hotpotqa/Scripts/python.exe نیز ارائه می‌شود. خروجی results/rag_final15 وexport به rag_final15_results.zip است.
+
+کد یا بسته تغییر نکرد؛ مدل زنده اجرا نشد. وضعیت واقعی۱۵سؤال همچنان «نتیجه دریافت نشده/اجرای دستیار صفر» است. پس از مشاهدهٔ نتایج و استفاده برای اصلاح، این مجموعه دیگر آزمون نهاییِ مستقل و دست‌نخورده محسوب نمی‌شود. OC-ABLATION-01 باز می‌ماند و بهبود سه‌روش را نمی‌توان فقط به وابستگی‌ها نسبت داد؛ این یادآوری مانع درخواست صریح فعلی نیست.

@@ -544,10 +544,11 @@
       }
     ],
     "delivery_verification": "history/reports/rag-full-development-v032-delivery-2026-11-24.json",
-    "next_action": "User runs all40 development questions with run_rag_development.bat; new output results/rag_development_v032; export rag_development_v032_results.zip.",
+    "next_action": "User-authorized validation on unused15 via existing rag_final15 config, all3 methods/45 records, results/rag_final15. Live results pending.",
     "remaining": "Model support/negative-prerequisite issues unchanged; no live full-run result yet. Process/storage/integrity/global-initialization failures still stop.",
     "withdrawn_recovery_republished": false,
-    "cancelled_ui_draft_included": false
+    "cancelled_ui_draft_included": false,
+    "final15_validation_authorization": "history/conversations/2026-11-24-final15-validation-request.md"
   },
   "experiment_history": [
     {
