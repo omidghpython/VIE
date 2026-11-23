@@ -712,3 +712,13 @@ decomp50: تعداد ۵۰، ترکیب۴۲bridge/۸comparison؛ فقط یک سؤ
 
 
 تحویل۰٫۳٫۱ در شاخهٔ پیش‌فرض: commit `7689e1a0f41d20980c8306c7d470215a3d147048`. ZIP و راهنما به‌ترتیب SHA256 برابر `eaf4612125632c1c88ec3ca918c0bd40256cbfa38ffec17785ed703ef26f04ca` و `0d22e952722edcc353b90e35d7ff4d74777bfb6f01f043f109112121746287a9` دارند. دریافت شبکه‌ای هر دو و فایل کد/README/AGENTS با وضعیت۲۰۰ و تطبیق بایت‌به‌بایت تأیید شد. [ZIP ثابت](https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip)؛ [راهنمای ثابت](https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/HotpotQA_v0.3.1_Frontier_Fix_FA.txt). گزارش تأیید: history/reports/rag-frontier-fix-delivery-2026-11-24.json.
+
+
+## ۲۰۲۶-۱۱-۲۴ — درخواست اجرای همهٔسؤال‌ها و ادامه پس از شکست؛۰٫۳٫۲
+
+کاربر اجرای تمام سؤال‌ها و حفظ شکست هر روش/سؤال با ادامهٔ بقیه را خواست. سقف دو سؤال از BAT برداشته شد و خطای آماده‌سازی بازیاب هر سؤال که قبلاً کل اجرا را قطع می‌کرد، اکنون با علت ثبت و به رکوردهای شکست تبدیل می‌شود. اجرای پیش‌فرض۴۰سؤال توسعه و۱۲۰رکورد است؛ final15 وارد این اجرا نمی‌شود. رکوردهای شکست در مخرج ارزیابی می‌مانند؛ بازاجرا فقط موارد باقی‌مانده را دنبال می‌کند و setup شکست‌خوردهٔ ثبت‌شده را دوباره اجرا نمی‌کند.
+
+۹۸تست موفق؛ آزمون۴۰سؤالی مصنوعی با پنج نوع شکست به۱۲۰رکورد و آخرین سؤال رسید. خطای ذخیره/قفل/قطع برنامه قابل‌پنهان‌کردن نیست و محافظت مربوط حفظ شد. نتیجهٔ واقعی۰٫۳٫۲ هنوز موجود نیست. خروجی جدا results/rag_development_v032 است؛ کد روش‌ها/پرامپت/درخت/مدل/بودجه و مبنای max4 ثابت‌اند. [شرح و حدود](history/reports/rag-full-development-v032-2026-11-24.md).
+
+
+تحویل۰٫۳٫۲: commit `4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342` در شاخهٔ پیش‌فرض؛ [ZIP ثابت](https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip) و [راهنمای ثابت](https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_v0.3.2_Full_Development_FA.txt). SHA256بسته `4420dadb1352d56fe0212d53518ad1a559923b69545343bc49f134c2bb513b09` است. پنج فایل شاملZIP،راهنما،کدrunner،READMEوAGENTS از لینک ثابت دانلود و بایت‌به‌بایت تأیید شدند؛ جزئیات در rag-full-development-v032-delivery-2026-11-24.json ثبت است.

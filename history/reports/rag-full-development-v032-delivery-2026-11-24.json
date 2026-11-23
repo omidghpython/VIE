@@ -1,0 +1,46 @@
+{
+  "commit": "4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342",
+  "date_tehran": "2026-11-24",
+  "artifacts": [
+    {
+      "path": "HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip",
+      "bytes": 1056729,
+      "sha256": "4420dadb1352d56fe0212d53518ad1a559923b69545343bc49f134c2bb513b09",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.2_Full_Development_FA.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_v0.3.2_Full_Development_FA.txt",
+      "bytes": 7040,
+      "sha256": "514faa03dac9ed6446112372eb5a980f646c7cc8eb0de2e1932c1c525da2e0b7",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "experiments/evidence_planning_v0_3_2/planning_lab/rag_runner.py",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/experiments/evidence_planning_v0_3_2/planning_lab/rag_runner.py",
+      "bytes": 18842,
+      "sha256": "ca7413cd7b8b2f6716aa849db4c5abb379aacc7d8e9ebb323448b7a069c2b772",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/README.md",
+      "bytes": 2365,
+      "sha256": "968590d7818ea179bc2558416251caabde6c7b5eec68d81a03c0c6be6b1be65d",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/AGENTS.md",
+      "bytes": 28577,
+      "sha256": "28a721f9c4f3a019e807f3d94240657d6684ce5fa3ff6d7518a519a626e7dfcb",
+      "http_status": 200,
+      "download_verified": true
+    }
+  ]
+}
