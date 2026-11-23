@@ -16,6 +16,8 @@ Statements inside the unchanged release about chat-only delivery/no GitHub write
 
 Recovery delivery withdrawn by explicit user request (2026-11-21): the user downloaded the recovery package and asked to remove it from GitHub to avoid confusion. Remove its ZIP, separate guide, installer source and current download links from the default branch; keep the original evidence-planning v0.3 release. Do not republish the recovery package unless the user asks again. The original delivery and this withdrawal remain historical records; this is not a pipeline change.
 
+Installation checkpoint 2026-11-23: the user supplied a complete READY log. pip check, RTX3080Ti/CUDA12.8/NF4 probe, pinned Qwen file/tokenizer cache, BGE offline loading and both static verify commands passed. The earlier WinError1314 did not recur; elevation itself is not shown by the log. The Triton FLOP-count warning was nonfatal. Full Qwen generation, research retrieval, three-arm results and final15 evaluation remain unproven. Next launcher is start_development_windows.bat, which runs at most two new development questions per invocation. See history/reports/windows-recovery-ready-2026-11-23.md. This does not reverse withdrawal of the recovery ZIP.
+
 ---
 
 # Historical project instructions and checkpoints (read with their dates)
