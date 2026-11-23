@@ -1,0 +1,12 @@
+{
+  "questions": 15,
+  "types": {
+    "bridge": 8,
+    "comparison": 7
+  },
+  "states": 75,
+  "known_exposure_overlap": 0,
+  "model_calls": 0,
+  "source_url": "https://raw.githubusercontent.com/NotAbleToFindAUsername/HotpotQA_Dataset/6ac268e426770b3c13c84566aaf4b55ce9548352/hotpotqa_distractor_validation.pkl",
+  "scope": "Unseen in available project development records; not a pretraining-exclusion claim."
+}

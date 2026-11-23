@@ -1,0 +1,47 @@
+{
+  "version": "0.3.2",
+  "date_tehran": "2026-11-24",
+  "base_version": "0.3.1",
+  "base_zip_sha256": "eaf4612125632c1c88ec3ca918c0bd40256cbfa38ffec17785ed703ef26f04ca",
+  "changed_original_files": [
+    "FRONTIER_FIX_FA.txt",
+    "PROJECT_PROGRESS_FA.md",
+    "README_FA.md",
+    "START_HERE_FA.txt",
+    "START_RAG_V03_FA.txt",
+    "export_rag_development_results.bat",
+    "planning_lab/rag_cli.py",
+    "planning_lab/rag_runner.py",
+    "run_rag_development.bat"
+  ],
+  "unchanged_baseline_files": 20,
+  "unchanged_data_private_config_provenance": true,
+  "unchanged_method_algorithms_support_checks_and_prompts": true,
+  "unchanged_previous_93_tests": true,
+  "offline_tests_passed": 98,
+  "new_tests": 5,
+  "full_batch_software_test": {
+    "questions": 40,
+    "trials": 120,
+    "synthetic_model": true,
+    "synthetic_questions": true,
+    "real_cpu_bm25": true,
+    "injected_failures": [
+      "model_error_unknown_usage",
+      "retriever_setup_error",
+      "invalid_plan",
+      "budget_exhausted",
+      "abstained"
+    ],
+    "all_records_retained": true,
+    "continued_to_last_question": true,
+    "successful_resume_without_new_calls": true
+  },
+  "fresh_live_qwen_calls": 0,
+  "fresh_live_bge_calls": 0,
+  "final15_used": false,
+  "live_results": "pending",
+  "windows_bat_native_test": false,
+  "source_posix_sha256": "099655452c9819d96f42e32d18dff6fb95c771feeb13239546637ae2cf788c03",
+  "source_windows_sha256": "3f6746954b22045fcda73567a20ae3e5a36ef9b2196b1deb0cdc0ecf9fe2700e"
+}

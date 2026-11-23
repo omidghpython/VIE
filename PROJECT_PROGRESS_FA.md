@@ -1,3 +1,13 @@
+# وضعیت جاری — اجرای کامل توسعه۰٫۳٫۲،۲۴نوامبر۲۰۲۶
+
+به درخواست کاربر، اجراگر اکنون تمام۴۰سؤال توسعه/۱۲۰رکورد را پردازش می‌کند و شکست‌ها حذف نمی‌شوند. خطای هر روش قبلاً ثبت می‌شد؛ سقف دو سؤال حذف و شکست آماده‌سازی بازیاب هر سؤال نیز جدا و قابل‌ادامه شد.۹۸تست آفلاین موفق، شامل اجرای کامل مصنوعی با خطاهای تزریق‌شده؛ نتیجهٔ زنده در انتظار است. قطع برنامه، خطای ذخیره‌سازی و مشکل قفل هویت همچنان توقف معتبرند.
+
+[دانلود۰٫۳٫۲](HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip)؛ [راهنما](HotpotQA_v0.3.2_Full_Development_FA.txt)؛ [کد](experiments/evidence_planning_v0_3_2). اجرا با run_rag_development.bat، خروجی results/rag_development_v032 وexport به rag_development_v032_results.zip است. venv/cache قبلی استفاده می‌شوند و نتایج نسخه‌های قدیمی منتقل نمی‌شوند.۱۵سؤال نهایی مصرف نشده‌اند. مبنا/پرامپت‌ها/درخت‌ها/مدل/بودجه و قواعد شواهد ثابت‌اند؛ خطای معنایی مدل وOC-ABLATION-01 باز می‌مانند.
+
+[گزارش کامل و حدود ادامهٔ اجرا](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/history/reports/rag-full-development-v032-2026-11-24.md). متن زیر سابقه است و دستور دو‌سؤالی آن دیگر جاری نیست.
+
+---
+
 # وضعیت جاری —۲۴ نوامبر۲۰۲۶
 
 نسخهٔ آزمایشی جاری۰٫۳٫۱ است: [ZIP اصلاح کنترل‌گر](HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip)، [راهنمای به‌روزرسانی](HotpotQA_v0.3.1_Frontier_Fix_FA.txt)، [کد](experiments/evidence_planning_v0_3_1). مبنای تجزیه همچنان max4 اصلی است.

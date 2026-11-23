@@ -1,0 +1,88 @@
+{
+  "baseline": "v3.2.4-max4",
+  "history_commit": "d3c5a1522389db5eb07cfb8a3418500e423371cc",
+  "baseline_zip_sha256": "ad77a0d34992910d089f13fa30efee27040132bc3a93e6c8d868a10ef5a0a62b",
+  "results_zip_sha256": "9d96e341c291b334d5daab03fe732c722e1dcfc96837f909d6b9c256ad662e9e",
+  "unchanged_files": [
+    {
+      "path": "baseline/hotpotqa_operadic_rag/__init__.py",
+      "sha256": "51e53f7e814953705977609b006b84de40d166bb212446b08137230fb46765c7"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/checkpoint.py",
+      "sha256": "4ed91b755cb522f3e44473ef6d9b76f07078539c5b2bb3cc9b57fecbda03d8b8"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/cli.py",
+      "sha256": "38dbfabd13d3013fab00bdf7f70bb3acdeee232149618691f7d518f1fe37b273"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/config.py",
+      "sha256": "dd49ed44bcb48a4d6b09bc7482f3de9f4f0597d0b26feea7d052ee4acb41477d"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/contracts.py",
+      "sha256": "1581cb2393cb521ac66307139a3fe0a97f3e4e0c4f2ef9eb7c717eb3863a16b8"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/cost_comparison.py",
+      "sha256": "c533361086aad00fcbfeb754679beffccb624cffb0eefcddd2f8418562675741"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/data.py",
+      "sha256": "3bc170fa82bb0128988c5a3a18fe2f289ba17adf2c79f5271e771ead8003ef7f"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/decomposition.py",
+      "sha256": "332517c5de77e1797a941bae118a6e9377b880c6e85a474544eeca8a8a990dcf"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/experiment.py",
+      "sha256": "6d706926ed58c9ab797153e5693a16e807e6db1f86bab94b0cf3ea960815a5bb"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/llm.py",
+      "sha256": "2ad907e818e4a2ddcc11451fc075da47ae2a655aca12f06d1dc511a15a187272"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/methods/__init__.py",
+      "sha256": "37eb48dfc0b9717581c02559db6c162d5bf6b269de139a67858e02d752b2a07e"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/methods/common.py",
+      "sha256": "7f5bdaa5725f5f28eadc05486d8193dbd45a2aa3bac4b78380b52e03abbce011"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/methods/operadic.py",
+      "sha256": "ac968fe4352c428f2df706cf87d63c6d9f54d5fd4a2fc5f8c541a4544ca5f4e4"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/methods/standard.py",
+      "sha256": "6133cbb8e44297ad1829c2eda03bd9b5a7862190afe00aa747375c2b8470be59"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/metrics.py",
+      "sha256": "86b3a910fcef92525ec8045b8bb8316885b7231818417497e48ea5bbe288b2ab"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/reporting.py",
+      "sha256": "b6a962137e6d3f11483c30e0a5a58bed6b35c4287721087e8a21e65355a190f5"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/retriever.py",
+      "sha256": "821d71fa8714ce9240c440216ebb62438ce31f99f273ef38c4de26ce408db9d1"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/semantic_checks.py",
+      "sha256": "d1ace4d4a5860d801028669016432da0e45394b4e5a44310891a7a25088f9a0d"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/telemetry.py",
+      "sha256": "a489bbdc8c28f11f996d3030be9772785e504612518eb38951ce5c8c3b0d1602"
+    },
+    {
+      "path": "baseline/hotpotqa_operadic_rag/utils.py",
+      "sha256": "468f87c726e6fa9c3296817c01c658a8743abb8a07ab2437b75dc53e38818357"
+    }
+  ]
+}
