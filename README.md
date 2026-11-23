@@ -1,15 +1,17 @@
 # HotpotQA / VIE
 
-Current research release: **Evidence Planning v0.3.0**. Accepted decomposition baseline: **v3.2.4-max4**.
+Current experimental release: **Evidence Planning v0.3.1 — retrieval frontier fix**. Accepted decomposition baseline: **v3.2.4-max4**.
 
-- [Persian current status and continuation instructions](PROJECT_PROGRESS_FA.md)
+- [Download v0.3.1 ZIP](HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip)
+- [Persian update and run guide](HotpotQA_v0.3.1_Frontier_Fix_FA.txt)
+- [Browsable v0.3.1 source](experiments/evidence_planning_v0_3_1)
+- [Persian current status](PROJECT_PROGRESS_FA.md)
+- [Analysis of the actual v0.3 debug traces](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/history/reports/rag-debug-analysis-2026-11-24.md)
 - [Open research reminder: full-loop dependency control](OPEN_RESEARCH_TASKS_FA.md)
-- [Download v0.3 ZIP](HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip)
-- [Persian run guide](HotpotQA_v0.3_Guide_FA.txt)
-- [Audit of v0.2 and changes in v0.3](HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt)
-- [Browsable v0.3 source](experiments/evidence_planning_v0_3_0)
 - [Complete durable project history](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/PROJECT_PROGRESS_FA.md)
 
-The release implements three-method RAG, actual local retrieval and an active dependency stopping gate. **88 offline tests passed; live Qwen/BGE results and independent semantic evaluation remain pending.** Software tests are not accuracy results. The 15 final questions remain unused for model inference in the delivered record.
+The patch gives other ready unresolved branches a retrieval turn before repeatedly targeting one branch, and checks the budget before recording another retrieve decision. **93 offline tests passed. No new live result for the patch is available yet.** Prompts, frozen trees, evidence gates, model and budgets remain unchanged. Model evidence errors and the unsupported negative prerequisite in the observed comparison question remain open.
 
-The full-loop dependency ablation is an open research task, not a completed result. Earlier downloads remain available in this repository. The unchanged v0.3 archive retains its original build-time notes; the user authorized ongoing GitHub recording on 2026-11-21.
+The original v0.3 has six real trial records from two development questions (24 model calls, 8 retrieval calls, 12,602 tokens), reproduced exactly from saved traces. This is not a complete benchmark. New runs use `results/rag_development_v031`; keep old results and reuse the installed venv/model cache. Final15 remains unused for model inference. Recovery and the cancelled console redesign are not part of this release.
+
+Previous release: [original v0.3 ZIP](HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip), [v0.3 guide](HotpotQA_v0.3_Guide_FA.txt), [v0.2 audit / v0.3 changes](HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt), [v0.3 source](experiments/evidence_planning_v0_3_0). Earlier releases remain historical records; no decomposition baseline promotion is claimed.

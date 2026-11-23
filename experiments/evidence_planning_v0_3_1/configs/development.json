@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "development",
+  "protocol": "one_step_structure_ablation_v1",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "allow_model_download": false,
+  "seed": 42,
+  "max_input_tokens": 8500,
+  "max_output_tokens": 2048,
+  "max_model_calls_per_trial": 1
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "split": "development",
+  "baseline": "v3.2.4-max4",
+  "cases_sha256": "67a98d1886ff16416a77abedaadb7e376fd597a2737194270aca915a62dd0230",
+  "labels_sha256": "bdbe5284506e3244b368bcae078e677f7356641d1e90a144454658c61b301310",
+  "questions_sha256": "70f4c2539a13622278e90e54187eb57d8f51b2a03f39ede72f0dbaa0b9e358e0",
+  "question_count": 40,
+  "case_count": 200,
+  "valid_questions": 37,
+  "invalid_questions": 3,
+  "conditions": [
+    "full_context",
+    "empty",
+    "support_removed",
+    "one_support_retained",
+    "distractor_documents"
+  ],
+  "evidence_origin": "HotpotQA context; controlled offline evidence deletion",
+  "independent_semantic_labels": "pending",
+  "retrieval_executed": false,
+  "generalization_claim_permitted": false
+}

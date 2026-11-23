@@ -1,3 +1,15 @@
+# وضعیت جاری —۲۴ نوامبر۲۰۲۶
+
+نسخهٔ آزمایشی جاری۰٫۳٫۱ است: [ZIP اصلاح کنترل‌گر](HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip)، [راهنمای به‌روزرسانی](HotpotQA_v0.3.1_Frontier_Fix_FA.txt)، [کد](experiments/evidence_planning_v0_3_1). مبنای تجزیه همچنان max4 اصلی است.
+
+از فایل rag_debug.zip،۶نتیجهٔ واقعی۰٫۳ با۲۴فراخوانی/۸بازیابی/۱۲۶۰۲توکن تأیید شد. توقف Operadic در سؤال دوم ناشی از سقف۲بازیابی و پیش‌نیازهای حل‌نشده بود. شاهد Maheen حاضر بود اما مدل اشتباه کرد؛ هر دو بازیابی نیز صرف q1 شده بودند. اصلاح۰٫۳٫۱ چرخش منصفانهٔ شاخه‌های آماده و بررسی سقف پیش از ثبت retrieve را اضافه می‌کند؛۹۳تست آفلاین موفق است، ولی نتیجهٔ زندهٔ اصلاح هنوز دریافت نشده. خطای معنایی مدل و اثبات منفی Burton بازند؛ حل کامل ادعا نمی‌شود.
+
+۲۰فایل مبنا،همهٔ پرامپت‌ها،درخت‌ها،داده‌ها،سقف‌ها و قواعد پشتیبانی ثابت‌اند. نتیجهٔ جدید در results/rag_development_v031 ذخیره می‌شود و checkpoint قدیمی نباید به آن منتقل شود. venv/cache نصب‌شده قابل استفاده‌اند؛Recovery دوباره منتشر نشده و بازطراحی کنسول لغو است.۱۵سؤال نهایی مصرف نشده‌اند؛OC-ABLATION-01 باز است. [تحلیل و بازپخش کامل](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/history/reports/rag-debug-analysis-2026-11-24.md).
+
+متن زیر سابقهٔ پیشین است و وضعیت جاری بالا بر آن تقدم دارد.
+
+---
+
 # نقطهٔ ادامهٔ پروژهٔ HotpotQA — ۲۱ نوامبر ۲۰۲۶
 
 مرجع کامل تاریخچه و تصمیم‌ها: [PROJECT_PROGRESS_FA.md در شاخهٔ docs/hotpotqa-progress](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/PROJECT_PROGRESS_FA.md).

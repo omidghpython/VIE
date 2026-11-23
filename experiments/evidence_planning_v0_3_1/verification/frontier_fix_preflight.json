@@ -1,0 +1,27 @@
+{
+  "version": "0.3.1",
+  "date_tehran": "2026-11-24",
+  "original_zip_sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1",
+  "changed_original_files": [
+    "PROJECT_PROGRESS_FA.md",
+    "README_FA.md",
+    "START_HERE_FA.txt",
+    "START_RAG_V03_FA.txt",
+    "planning_lab/rag_cli.py",
+    "planning_lab/rag_methods.py",
+    "run_rag_development.bat"
+  ],
+  "unchanged_baseline_files": 20,
+  "unchanged_data_private_config_provenance": true,
+  "unchanged_support_checker_and_prompts": true,
+  "unchanged_original_88_tests": true,
+  "offline_tests_passed": 93,
+  "live_model_calls": 0,
+  "live_retrieval_calls": 0,
+  "synthetic_test_bm25_retrieval": true,
+  "final15_used": false,
+  "source_posix_sha256": "7d8d84c6b40859351da8b3f8f70c8a2a5d41b4575fcee49e05febf050b5d5f4f",
+  "source_windows_sha256": "01dd7b39cf21d5744481e55b857d2588292c7cc0c6034cdebbfca0ab70b53f73",
+  "changed_query_live_result": "pending",
+  "windows_bat_native_execution": "not_run_on_linux"
+}

@@ -1,0 +1,9 @@
+# Use the existing CUDA-enabled baseline environment. Offline checks need Python 3.10+ and NumPy.
+torch>=2.4,<3
+transformers==4.57.6
+accelerate>=1.0,<2
+bitsandbytes>=0.43,<1
+safetensors>=0.4
+numpy>=1.26,<3
+rank-bm25==0.2.2
+sentence-transformers>=3.0,<6
