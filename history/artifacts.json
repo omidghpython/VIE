@@ -1,5 +1,5 @@
 {
-  "snapshot_date_tehran": "2026-11-21",
+  "snapshot_date_tehran": "2026-11-24",
   "accepted_baseline": "v3.2.4-max4",
   "independent_judge_decision": "pending_user_decision; not installed or implemented",
   "results": [
@@ -503,13 +503,15 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "evidence_planning_v0.3.0",
-    "status": "partial_live_development_summary_received_detailed_traces_pending",
+    "id": "evidence_planning_v0.3.1",
+    "status": "offline_verified_partial_scheduler_fix_live_result_pending",
     "accepted_baseline": "v3.2.4-max4",
-    "scope": "Three-method full RAG with frozen max4 trees, active dependency stopping and real local retrieval; one-step structure ablation retained.",
-    "code_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
-    "code_path": "experiments/evidence_planning_v0_3_0",
-    "offline_tests_passed": 88,
+    "scope": "Least-targeted ready unresolved retrieval frontier; budget check before logging retrieval. All prompts, frozen trees, support gates and budgets unchanged.",
+    "code_commit": "7689e1a0f41d20980c8306c7d470215a3d147048",
+    "code_path": "experiments/evidence_planning_v0_3_1",
+    "offline_tests_passed": 93,
+    "unchanged_original_tests": 88,
+    "new_tests": 5,
     "live_qwen_calls_during_preparation_and_publication": 0,
     "live_bge_calls_during_preparation_and_publication": 0,
     "live_benchmark_metrics": null,
@@ -518,42 +520,32 @@
     "final_trial_count": 45,
     "final15_real_model_inference": false,
     "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
-    "report": "history/reports/evidence-planning-v03-publication-2026-11-21.md",
-    "delivery_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
+    "report": "history/reports/rag-debug-analysis-2026-11-24.md",
+    "preflight": "history/reports/rag-frontier-fix-preflight-2026-11-24.json",
+    "delivery_commit": "7689e1a0f41d20980c8306c7d470215a3d147048",
     "artifacts": [
       {
-        "path": "HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
-        "sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1",
-        "bytes": 1035058,
+        "path": "HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip",
+        "bytes": 1046059,
+        "sha256": "eaf4612125632c1c88ec3ca918c0bd40256cbfa38ffec17785ed703ef26f04ca",
+        "http_status": 200,
         "download_verified": true
       },
       {
-        "path": "HotpotQA_v0.3_Guide_FA.txt",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.3_Guide_FA.txt",
-        "sha256": "e2ed0c83896e0234c697374627ddce2d84e69ef8c839322ffac32143fde2f6ef",
-        "bytes": 4755,
-        "download_verified": true
-      },
-      {
-        "path": "HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
-        "sha256": "0b916953b2295777a09b44a336805b7d4d9913811516a6b19a58ce002e32b177",
-        "bytes": 6837,
+        "path": "HotpotQA_v0.3.1_Frontier_Fix_FA.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/HotpotQA_v0.3.1_Frontier_Fix_FA.txt",
+        "bytes": 6962,
+        "sha256": "0d22e952722edcc353b90e35d7ff4d74777bfb6f01f043f109112121746287a9",
+        "http_status": 200,
         "download_verified": true
       }
     ],
-    "latest_live_development_report": "history/reports/rag-first-two-development-2026-11-23.md",
-    "latest_live_development_summary": {
-      "questions": 2,
-      "records": 6,
-      "llm_calls": 24,
-      "retrieval_calls": 8,
-      "total_tokens": 12602,
-      "answered": 5,
-      "budget_exhausted": 1,
-      "semantic_accuracy_confirmed": false
-    }
+    "delivery_verification": "history/reports/rag-frontier-fix-delivery-2026-11-24.json",
+    "next_action": "User reruns same first two development questions / all three methods into results/rag_development_v031; no final15 run.",
+    "remaining": "Model false negative, malformed support reply, unsupported negative prerequisite; no guarantee of new answered status.",
+    "withdrawn_recovery_republished": false,
+    "cancelled_ui_draft_included": false
   },
   "experiment_history": [
     {
@@ -1453,6 +1445,59 @@
           ]
         }
       }
+    },
+    {
+      "id": "evidence_planning_v0.3.0",
+      "status": "partial_live_development_detailed_traces_audited",
+      "accepted_baseline": "v3.2.4-max4",
+      "scope": "Three-method full RAG with frozen max4 trees, active dependency stopping and real local retrieval; one-step structure ablation retained.",
+      "code_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
+      "code_path": "experiments/evidence_planning_v0_3_0",
+      "offline_tests_passed": 88,
+      "live_qwen_calls_during_preparation_and_publication": 0,
+      "live_bge_calls_during_preparation_and_publication": 0,
+      "live_benchmark_metrics": null,
+      "independent_semantic_evaluation": "pending",
+      "final_questions": 15,
+      "final_trial_count": 45,
+      "final15_real_model_inference": false,
+      "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
+      "report": "history/reports/evidence-planning-v03-publication-2026-11-21.md",
+      "delivery_commit": "631db7efdbaaffbbb3204db7d1d85b75da9a8016",
+      "artifacts": [
+        {
+          "path": "HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip",
+          "sha256": "077b907ec7b417327769d449f849e3b30fc4afb3eee664df67920567d7423fa1",
+          "bytes": 1035058,
+          "download_verified": true
+        },
+        {
+          "path": "HotpotQA_v0.3_Guide_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.3_Guide_FA.txt",
+          "sha256": "e2ed0c83896e0234c697374627ddce2d84e69ef8c839322ffac32143fde2f6ef",
+          "bytes": 4755,
+          "download_verified": true
+        },
+        {
+          "path": "HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/631db7efdbaaffbbb3204db7d1d85b75da9a8016/HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt",
+          "sha256": "0b916953b2295777a09b44a336805b7d4d9913811516a6b19a58ce002e32b177",
+          "bytes": 6837,
+          "download_verified": true
+        }
+      ],
+      "latest_live_development_report": "history/reports/rag-debug-analysis-2026-11-24.md",
+      "latest_live_development_summary": {
+        "questions": 2,
+        "records": 6,
+        "llm_calls": 24,
+        "retrieval_calls": 8,
+        "total_tokens": 12602,
+        "answered": 5,
+        "budget_exhausted": 1,
+        "semantic_accuracy_confirmed": false
+      }
     }
   ],
   "ongoing_github_recording_authorization": {
@@ -1698,7 +1743,7 @@
     {
       "id": "rag_first_two_development_2026_11_23",
       "date_tehran": "2026-11-23",
-      "status": "partial_live_development_summary_received_detailed_traces_pending",
+      "status": "partial_live_development_detailed_traces_audited",
       "version": "0.3.0",
       "source": {
         "original_bytes": 6180,
@@ -1858,7 +1903,36 @@
       "next_required_evidence": "Full results/rag_development folder including trials, calls, RAG_LOCK.json and runtime.json",
       "pipeline_changed": false,
       "console_redesign": "cancelled_by_user_unpublished_draft_only",
-      "analysis_report": "history/reports/rag-first-two-development-2026-11-23.md"
+      "analysis_report": "history/reports/rag-debug-analysis-2026-11-24.md",
+      "debug_artifact": {
+        "path": "history/results/rag-debug-v03-2026-11-24.zip",
+        "bytes": 182793,
+        "sha256": "51158954b759b65c0d28e0a854f78a00c949a18ff3069becc73f9158288eef99",
+        "original_unmodified": true
+      },
+      "exact_trial_replays": 6,
+      "model_call_journals_verified": 24,
+      "retrieval_call_journals_verified": 8,
+      "source_windows_sha256": "549100c2357e686ffb5f1e512e9822e97121eb67c7deb179624e29ceb869ec2f",
+      "source_match_confirmed": true,
+      "audit_json": "history/reports/rag-debug-audit-2026-11-24.json",
+      "semantic_evaluation": "Two-case diagnostic only; independent evaluation and full benchmark pending"
+    }
+  ],
+  "rag_runtime_issues": [
+    {
+      "id": "RAG-BUDGET-001",
+      "status": "diagnosed_partial_code_fix_semantic_limits_open",
+      "actual_reason": "retrieval_calls",
+      "scheduler_repetition": "fixed_and_offline_tested_v0.3.1",
+      "post_budget_retrieve_log": "fixed_and_offline_tested_v0.3.1",
+      "new_live_result": "pending",
+      "remaining": [
+        "model_rejects_visible_editor_evidence",
+        "one_malformed_support_reply",
+        "unsupported_negative_prerequisite_in_frozen_plan"
+      ],
+      "report": "history/reports/rag-debug-analysis-2026-11-24.md"
     }
   ]
 }

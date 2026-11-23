@@ -1,0 +1,177 @@
+{
+  "source_windows_sha256": "549100c2357e686ffb5f1e512e9822e97121eb67c7deb179624e29ceb869ec2f",
+  "package_files_verified": 94,
+  "unchanged_baseline_files": 20,
+  "development_questions_verified": 40,
+  "fresh_model_calls": 0,
+  "fresh_retrieval_calls": 0,
+  "final15_used": false,
+  "trials": [
+    {
+      "question_id": "5a7d3f895542995f4f402248",
+      "method": "max4",
+      "status": "answered",
+      "answer": "mountain Banshee",
+      "error": null,
+      "costs": {
+        "llm_calls": 2,
+        "retrieval_calls": 1,
+        "prompt_tokens": 1008,
+        "completion_tokens": 26,
+        "total_tokens": 1034,
+        "known_tokens": 1034,
+        "unknown_usage": false,
+        "shared_plan_debit": {
+          "llm_calls": 1,
+          "total_tokens": 652
+        },
+        "charged_llm_calls": 3,
+        "charged_total_tokens": 1686,
+        "generation_seconds": 3.4462761000002047,
+        "retrieval_seconds": 0.0767327999999452
+      },
+      "exact_replay": true,
+      "model_calls": 2,
+      "retrieval_calls": 1
+    },
+    {
+      "question_id": "5a7d3f895542995f4f402248",
+      "method": "operadic",
+      "status": "answered",
+      "answer": "mountain Banshee",
+      "error": null,
+      "costs": {
+        "llm_calls": 4,
+        "retrieval_calls": 1,
+        "prompt_tokens": 2467,
+        "completion_tokens": 196,
+        "total_tokens": 2663,
+        "known_tokens": 2663,
+        "unknown_usage": false,
+        "shared_plan_debit": {
+          "llm_calls": 1,
+          "total_tokens": 652
+        },
+        "charged_llm_calls": 5,
+        "charged_total_tokens": 3315,
+        "generation_seconds": 21.045720800000026,
+        "retrieval_seconds": 0.06758949999994002
+      },
+      "exact_replay": true,
+      "model_calls": 4,
+      "retrieval_calls": 1
+    },
+    {
+      "question_id": "5a7d3f895542995f4f402248",
+      "method": "standard",
+      "status": "answered",
+      "answer": "Banshee",
+      "error": null,
+      "costs": {
+        "llm_calls": 3,
+        "retrieval_calls": 1,
+        "prompt_tokens": 1326,
+        "completion_tokens": 27,
+        "total_tokens": 1353,
+        "known_tokens": 1353,
+        "unknown_usage": false,
+        "shared_plan_debit": {
+          "llm_calls": 0,
+          "total_tokens": 0
+        },
+        "charged_llm_calls": 3,
+        "charged_total_tokens": 1353,
+        "generation_seconds": 8.0340048999999,
+        "retrieval_seconds": 0.05349690000002738
+      },
+      "exact_replay": true,
+      "model_calls": 3,
+      "retrieval_calls": 1
+    },
+    {
+      "question_id": "5a7d598d5542995f4f402262",
+      "method": "max4",
+      "status": "answered",
+      "answer": "Maheen Zia",
+      "error": null,
+      "costs": {
+        "llm_calls": 4,
+        "retrieval_calls": 1,
+        "prompt_tokens": 1551,
+        "completion_tokens": 70,
+        "total_tokens": 1621,
+        "known_tokens": 1621,
+        "unknown_usage": false,
+        "shared_plan_debit": {
+          "llm_calls": 2,
+          "total_tokens": 1713
+        },
+        "charged_llm_calls": 6,
+        "charged_total_tokens": 3334,
+        "generation_seconds": 8.252361199999996,
+        "retrieval_seconds": 0.029488500000070417
+      },
+      "exact_replay": true,
+      "model_calls": 4,
+      "retrieval_calls": 1
+    },
+    {
+      "question_id": "5a7d598d5542995f4f402262",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "answer": "",
+      "error": "retrieval_calls",
+      "costs": {
+        "llm_calls": 8,
+        "retrieval_calls": 2,
+        "prompt_tokens": 4162,
+        "completion_tokens": 486,
+        "total_tokens": 4648,
+        "known_tokens": 4648,
+        "unknown_usage": false,
+        "shared_plan_debit": {
+          "llm_calls": 2,
+          "total_tokens": 1713
+        },
+        "charged_llm_calls": 10,
+        "charged_total_tokens": 6361,
+        "generation_seconds": 49.265424000000166,
+        "retrieval_seconds": 0.10666560000026948
+      },
+      "exact_replay": true,
+      "model_calls": 8,
+      "retrieval_calls": 2
+    },
+    {
+      "question_id": "5a7d598d5542995f4f402262",
+      "method": "standard",
+      "status": "answered",
+      "answer": "Burton L. King",
+      "error": null,
+      "costs": {
+        "llm_calls": 3,
+        "retrieval_calls": 2,
+        "prompt_tokens": 1242,
+        "completion_tokens": 41,
+        "total_tokens": 1283,
+        "known_tokens": 1283,
+        "unknown_usage": false,
+        "shared_plan_debit": {
+          "llm_calls": 0,
+          "total_tokens": 0
+        },
+        "charged_llm_calls": 3,
+        "charged_total_tokens": 1283,
+        "generation_seconds": 4.638673699999799,
+        "retrieval_seconds": 0.15906780000000253
+      },
+      "exact_replay": true,
+      "model_calls": 3,
+      "retrieval_calls": 2
+    }
+  ],
+  "actual_llm_calls": 24,
+  "actual_retrieval_calls": 8,
+  "actual_total_tokens": 12602,
+  "execution_complete": false
+}

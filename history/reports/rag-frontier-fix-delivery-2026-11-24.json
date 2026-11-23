@@ -1,0 +1,46 @@
+{
+  "commit": "7689e1a0f41d20980c8306c7d470215a3d147048",
+  "date_tehran": "2026-11-24",
+  "artifacts": [
+    {
+      "path": "HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip",
+      "bytes": 1046059,
+      "sha256": "eaf4612125632c1c88ec3ca918c0bd40256cbfa38ffec17785ed703ef26f04ca",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.1_Frontier_Fix_FA.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/HotpotQA_v0.3.1_Frontier_Fix_FA.txt",
+      "bytes": 6962,
+      "sha256": "0d22e952722edcc353b90e35d7ff4d74777bfb6f01f043f109112121746287a9",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "experiments/evidence_planning_v0_3_1/planning_lab/rag_methods.py",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/experiments/evidence_planning_v0_3_1/planning_lab/rag_methods.py",
+      "bytes": 9385,
+      "sha256": "cd3062420262f81ab69b85482f9679d8f7725812ec6ff6977de3e978271cfe53",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/README.md",
+      "bytes": 2001,
+      "sha256": "dc2429621ffe788bd7db8272a30160393a06cd60fadcdfcdea58b7504b926518",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/7689e1a0f41d20980c8306c7d470215a3d147048/AGENTS.md",
+      "bytes": 27286,
+      "sha256": "5190cd433bcd9c31f42c699d59b048a751c782d2aa19631f0275330ff1224aac",
+      "http_status": 200,
+      "download_verified": true
+    }
+  ]
+}
