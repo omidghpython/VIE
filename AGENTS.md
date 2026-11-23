@@ -18,6 +18,8 @@ Recovery delivery withdrawn by explicit user request (2026-11-21): the user down
 
 Installation checkpoint 2026-11-23: the user supplied a complete READY log. pip check, RTX3080Ti/CUDA12.8/NF4 probe, pinned Qwen file/tokenizer cache, BGE offline loading and both static verify commands passed. The earlier WinError1314 did not recur; elevation itself is not shown by the log. The Triton FLOP-count warning was nonfatal. Full Qwen generation, research retrieval, three-arm results and final15 evaluation remain unproven. Next launcher is start_development_windows.bat, which runs at most two new development questions per invocation. See history/reports/windows-recovery-ready-2026-11-23.md. This does not reverse withdrawal of the recovery ZIP.
 
+LATEST TASK 2026-11-23: the user cancelled the max4-style console redesign ("leave that, fix the error"). Its isolated local draft was never published; do not resume or ship it. Active package remains v0.3.0. User then supplied a live two-development-question console report: 6 records, 24 physical LLM calls, 8 retrieval calls, 12602 tokens; Standard/max4 each answered2, Operadic answered1 + budget_exhausted1. Qwen/RAG now has partial live execution evidence. No answer correctness is established. Issue RAG-BUDGET-001 is OPEN: exact BudgetExceeded reason and raw calls are missing, request results/rag_development trials/calls/runtime/lock before making a targeted repair. Do not raise budgets or relax support gates just to remove this status. Null accuracy/coverage is expected for 6/120 records. Final15 remains unused. See history/reports/rag-first-two-development-2026-11-23.md.
+
 ---
 
 # Historical project instructions and checkpoints (read with their dates)

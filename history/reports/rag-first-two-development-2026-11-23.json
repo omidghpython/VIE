@@ -1,0 +1,165 @@
+{
+  "id": "rag_first_two_development_2026_11_23",
+  "date_tehran": "2026-11-23",
+  "status": "partial_live_development_summary_received_detailed_traces_pending",
+  "version": "0.3.0",
+  "source": {
+    "original_bytes": 6180,
+    "original_sha256": "86a9e6a32b32af579da42d14a2abfcbeb7588a07bc98edffecde134ce168f974",
+    "archived_log": "history/logs/rag-first-two-development-2026-11-23-sanitized.txt",
+    "archived_sha256": "8ee7426814227e4f198bc77d21e7439f370f21e1980ee8b4aba0e9e735ae125f",
+    "sanitization": "Windows profile replaced; CRLF normalized"
+  },
+  "preflight": {
+    "version": "0.3.0",
+    "unchanged_baseline_files": 20,
+    "development_questions": 40,
+    "final_questions": 15,
+    "methods": [
+      "standard",
+      "max4",
+      "operadic"
+    ],
+    "live_model_calls": 0,
+    "live_retrieval_calls": 0,
+    "final15_usage_marker_present": false,
+    "note": "Static preflight only; live inference and semantic improvement are not claimed."
+  },
+  "execution": {
+    "protocol": "closed_loop_three_arm_rag_v1",
+    "role": "development",
+    "question_count": 40,
+    "expected_trials": 120,
+    "recorded_trials": 6,
+    "execution_complete": false,
+    "actual_llm_calls": 24,
+    "actual_retrieval_calls": 8,
+    "actual_total_tokens": 12602,
+    "shared_plan_calls": 0,
+    "shared_retriever_setup_seconds": 3.784261699999888,
+    "cost_scope": "Physical calls count shared final-plan generation once; per-method charged cost includes it in each tree arm.",
+    "independent_semantic_evaluation_complete": false,
+    "methods": [
+      "standard",
+      "max4",
+      "operadic"
+    ]
+  },
+  "report": {
+    "execution": {
+      "protocol": "closed_loop_three_arm_rag_v1",
+      "role": "development",
+      "question_count": 40,
+      "expected_trials": 120,
+      "recorded_trials": 6,
+      "execution_complete": false,
+      "actual_llm_calls": 24,
+      "actual_retrieval_calls": 8,
+      "actual_total_tokens": 12602,
+      "shared_plan_calls": 0,
+      "shared_retriever_setup_seconds": 3.784261699999888,
+      "cost_scope": "Physical calls count shared final-plan generation once; per-method charged cost includes it in each tree arm.",
+      "independent_semantic_evaluation_complete": false,
+      "methods": [
+        "standard",
+        "max4",
+        "operadic"
+      ]
+    },
+    "metrics": {
+      "standard": {
+        "recorded_questions": 2,
+        "expected_questions": 40,
+        "statuses": {
+          "answered": 2
+        },
+        "answer_accuracy": null,
+        "answer_f1": null,
+        "answer_accuracy_definition": "Exact Match over ALL questions, including failures and abstentions; F1 reported separately.",
+        "supporting_fact_coverage": null,
+        "llm_calls": 6,
+        "retrieval_calls": 3,
+        "actual_tokens": 2636,
+        "charged_tokens_with_shared_plan": 2636,
+        "execution_seconds": 13.259174899999834,
+        "charged_execution_seconds_with_plan": 13.259174899999834,
+        "time_scope": "Online runtime excludes shared model/index setup. Historical development-plan generation time is not comparable; charged time is null for those arms.",
+        "uncited_answer_rate": 0.0,
+        "premature_stopping": null,
+        "citation_faithfulness": null,
+        "independent_semantic_review": "pending"
+      },
+      "max4": {
+        "recorded_questions": 2,
+        "expected_questions": 40,
+        "statuses": {
+          "answered": 2
+        },
+        "answer_accuracy": null,
+        "answer_f1": null,
+        "answer_accuracy_definition": "Exact Match over ALL questions, including failures and abstentions; F1 reported separately.",
+        "supporting_fact_coverage": null,
+        "llm_calls": 6,
+        "retrieval_calls": 2,
+        "actual_tokens": 2655,
+        "charged_tokens_with_shared_plan": 5020,
+        "execution_seconds": 11.987601199999972,
+        "charged_execution_seconds_with_plan": null,
+        "time_scope": "Online runtime excludes shared model/index setup. Historical development-plan generation time is not comparable; charged time is null for those arms.",
+        "uncited_answer_rate": 0.0,
+        "premature_stopping": null,
+        "citation_faithfulness": null,
+        "independent_semantic_review": "pending"
+      },
+      "operadic": {
+        "recorded_questions": 2,
+        "expected_questions": 40,
+        "statuses": {
+          "answered": 1,
+          "budget_exhausted": 1
+        },
+        "answer_accuracy": null,
+        "answer_f1": null,
+        "answer_accuracy_definition": "Exact Match over ALL questions, including failures and abstentions; F1 reported separately.",
+        "supporting_fact_coverage": null,
+        "llm_calls": 12,
+        "retrieval_calls": 3,
+        "actual_tokens": 7311,
+        "charged_tokens_with_shared_plan": 9676,
+        "execution_seconds": 70.87256850000017,
+        "charged_execution_seconds_with_plan": null,
+        "time_scope": "Online runtime excludes shared model/index setup. Historical development-plan generation time is not comparable; charged time is null for those arms.",
+        "uncited_answer_rate": 0.0,
+        "premature_stopping": null,
+        "citation_faithfulness": null,
+        "independent_semantic_review": "pending"
+      }
+    },
+    "caveats": [
+      "Retrieved gold-fact coverage is not semantic sufficiency.",
+      "Citation IDs and support-verifier model verdicts are not independent ground truth.",
+      "The three methods differ in more than graph visibility; use the retained one-step ablation for that narrower comparison.",
+      "No answer-success or novelty claim is implied by offline software tests."
+    ],
+    "paired_answer_comparisons": []
+  },
+  "budget_issue": {
+    "id": "RAG-BUDGET-001",
+    "method": "operadic",
+    "execution_question_number": 2,
+    "status": "open_precise_budget_reason_pending_trial",
+    "observed_status": "budget_exhausted",
+    "precise_error_field_received": false
+  },
+  "interpretation": {
+    "fatal_crash_observed": false,
+    "answered_records": 5,
+    "answered_means_correct": false,
+    "final15_evaluated": false,
+    "full_answer_accuracy_available": false
+  },
+  "next_required_evidence": "Full results/rag_development folder including trials, calls, RAG_LOCK.json and runtime.json",
+  "pipeline_changed": false,
+  "console_redesign": "cancelled_by_user_unpublished_draft_only",
+  "analysis_report": "history/reports/rag-first-two-development-2026-11-23.md"
+}

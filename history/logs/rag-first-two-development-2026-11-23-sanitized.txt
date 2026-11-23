@@ -1,0 +1,146 @@
+PS C:\Users\<USER>\Desktop\HotpotQA_v0.3_Recovery_Windows_v1\hotpotqa_evidence_planning_v3> .\start_development_windows.bat
+{
+  "version": "0.3.0",
+  "unchanged_baseline_files": 20,
+  "development_questions": 40,
+  "final_questions": 15,
+  "methods": [
+    "standard",
+    "max4",
+    "operadic"
+  ],
+  "live_model_calls": 0,
+  "live_retrieval_calls": 0,
+  "final15_usage_marker_present": false,
+  "note": "Static preflight only; live inference and semantic improvement are not claimed."
+}
+`torch_dtype` is deprecated! Use `dtype` instead!
+W1123 17:39:03.470000 6500 .venv_hotpotqa\Lib\site-packages\torch\utils\flop_counter.py:29] triton not found; flop counting will not work for triton kernels
+C:\Users\<USER>\Desktop\HotpotQA_v0.3_Recovery_Windows_v1\hotpotqa_evidence_planning_v3\.venv_hotpotqa\Lib\site-packages\accelerate\utils\modeling.py:818: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:39.)
+  _ = torch.tensor([0], device=i)
+Loading checkpoint shards: 100%|█████████████████████████████████████████████████████████| 4/4 [02:13<00:00, 33.28s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+1: standard: answered
+1: max4: answered
+1: operadic: answered
+2: max4: answered
+2: operadic: budget_exhausted
+2: standard: answered
+{
+  "protocol": "closed_loop_three_arm_rag_v1",
+  "role": "development",
+  "question_count": 40,
+  "expected_trials": 120,
+  "recorded_trials": 6,
+  "execution_complete": false,
+  "actual_llm_calls": 24,
+  "actual_retrieval_calls": 8,
+  "actual_total_tokens": 12602,
+  "shared_plan_calls": 0,
+  "shared_retriever_setup_seconds": 3.784261699999888,
+  "cost_scope": "Physical calls count shared final-plan generation once; per-method charged cost includes it in each tree arm.",
+  "independent_semantic_evaluation_complete": false,
+  "methods": [
+    "standard",
+    "max4",
+    "operadic"
+  ]
+}
+{
+  "execution": {
+    "protocol": "closed_loop_three_arm_rag_v1",
+    "role": "development",
+    "question_count": 40,
+    "expected_trials": 120,
+    "recorded_trials": 6,
+    "execution_complete": false,
+    "actual_llm_calls": 24,
+    "actual_retrieval_calls": 8,
+    "actual_total_tokens": 12602,
+    "shared_plan_calls": 0,
+    "shared_retriever_setup_seconds": 3.784261699999888,
+    "cost_scope": "Physical calls count shared final-plan generation once; per-method charged cost includes it in each tree arm.",
+    "independent_semantic_evaluation_complete": false,
+    "methods": [
+      "standard",
+      "max4",
+      "operadic"
+    ]
+  },
+  "metrics": {
+    "standard": {
+      "recorded_questions": 2,
+      "expected_questions": 40,
+      "statuses": {
+        "answered": 2
+      },
+      "answer_accuracy": null,
+      "answer_f1": null,
+      "answer_accuracy_definition": "Exact Match over ALL questions, including failures and abstentions; F1 reported separately.",
+      "supporting_fact_coverage": null,
+      "llm_calls": 6,
+      "retrieval_calls": 3,
+      "actual_tokens": 2636,
+      "charged_tokens_with_shared_plan": 2636,
+      "execution_seconds": 13.259174899999834,
+      "charged_execution_seconds_with_plan": 13.259174899999834,
+      "time_scope": "Online runtime excludes shared model/index setup. Historical development-plan generation time is not comparable; charged time is null for those arms.",
+      "uncited_answer_rate": 0.0,
+      "premature_stopping": null,
+      "citation_faithfulness": null,
+      "independent_semantic_review": "pending"
+    },
+    "max4": {
+      "recorded_questions": 2,
+      "expected_questions": 40,
+      "statuses": {
+        "answered": 2
+      },
+      "answer_accuracy": null,
+      "answer_f1": null,
+      "answer_accuracy_definition": "Exact Match over ALL questions, including failures and abstentions; F1 reported separately.",
+      "supporting_fact_coverage": null,
+      "llm_calls": 6,
+      "retrieval_calls": 2,
+      "actual_tokens": 2655,
+      "charged_tokens_with_shared_plan": 5020,
+      "execution_seconds": 11.987601199999972,
+      "charged_execution_seconds_with_plan": null,
+      "time_scope": "Online runtime excludes shared model/index setup. Historical development-plan generation time is not comparable; charged time is null for those arms.",
+      "uncited_answer_rate": 0.0,
+      "premature_stopping": null,
+      "citation_faithfulness": null,
+      "independent_semantic_review": "pending"
+    },
+    "operadic": {
+      "recorded_questions": 2,
+      "expected_questions": 40,
+      "statuses": {
+        "answered": 1,
+        "budget_exhausted": 1
+      },
+      "answer_accuracy": null,
+      "answer_f1": null,
+      "answer_accuracy_definition": "Exact Match over ALL questions, including failures and abstentions; F1 reported separately.",
+      "supporting_fact_coverage": null,
+      "llm_calls": 12,
+      "retrieval_calls": 3,
+      "actual_tokens": 7311,
+      "charged_tokens_with_shared_plan": 9676,
+      "execution_seconds": 70.87256850000017,
+      "charged_execution_seconds_with_plan": null,
+      "time_scope": "Online runtime excludes shared model/index setup. Historical development-plan generation time is not comparable; charged time is null for those arms.",
+      "uncited_answer_rate": 0.0,
+      "premature_stopping": null,
+      "citation_faithfulness": null,
+      "independent_semantic_review": "pending"
+    }
+  },
+  "caveats": [
+    "Retrieved gold-fact coverage is not semantic sufficiency.",
+    "Citation IDs and support-verifier model verdicts are not independent ground truth.",
+    "The three methods differ in more than graph visibility; use the retained one-step ablation for that narrower comparison.",
+    "No answer-success or novelty claim is implied by offline software tests."
+  ],
+  "paired_answer_comparisons": []
+}
