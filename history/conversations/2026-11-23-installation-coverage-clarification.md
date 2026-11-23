@@ -15,3 +15,13 @@
 تطبیق کد: planning_lab/backend.py از torch و Transformers برای Qwen با device_map=auto و NF4 استفاده می‌کند؛ Accelerate و BitsAndBytes برای همین مسیر بارگذاری و safetensors برای وزن‌ها لازم‌اند. configs/rag_development.json بازیاب hybrid را انتخاب می‌کند؛ planning_lab/rag_retrieval.py و baseline/hotpotqa_operadic_rag/retriever.py از SentenceTransformer/BGE، NumPy و BM25 استفاده می‌کنند. پس در۸ نیازمندی اصلی، موردی برای حذف بدون تغییر مسیر فعلی شناسایی نشد. تکرار دو نام در فایل آزمون قابل ساده‌سازی است اما حذف آن تعداد بسته‌های نصب‌شده را کم نمی‌کند؛ هیچ تغییری اعمال نشد.
 
 تعداد واقعی بسته‌ها و نسخه‌های نصب‌شده در ماشین کاربر ارائه نشده است. نام‌های بیشتر در خروجی pip می‌توانند وابستگی‌های غیرمستقیم باشند؛ استفاده‌نشدن مستقیم در کد پروژه دلیل کافی برای اضافی‌بودن بسته نیست. بسته‌های مشخصِ غیرضروری فقط با فهرست نصب‌شده و بررسی وابستگی‌ها قابل تعیین‌اند. برای ادامه می‌توان از داخل پوشهٔ پروژه خروجی `.\.venv_hotpotqa\Scripts\python.exe -m pip list` را دریافت کرد. این بررسی کد بود، نه نصب/حذف بسته یا تأیید اجرای واقعی روی GPU؛ ZIP بازیابی دوباره منتشر نشد.
+
+## دریافت نام بسته‌های در حال نصب و تطبیق وابستگی‌ها
+
+کاربر سپس خط Installing collected packages را فرستاد؛۲۶نام آن عبارت‌اند از:
+
+urllib3, threadpoolctl, safetensors, regex, pyyaml, psutil, packaging, numpy, narwhals, idna, colorama, cloudpickle, charset_normalizer, certifi, tqdm, scipy, requests, rank-bm25, joblib, scikit-learn, huggingface-hub, bitsandbytes, tokenizers, accelerate, transformers, sentence-transformers
+
+این خط شامل۷ مورد از۸ وابستگی مستقیم برنامه است؛ torch طبق ترتیب نصاب در مرحلهٔ قبلی جدا نصب می‌شود.۱۹ نام دیگر با زنجیرهٔ وابستگی‌های کتابخانه‌های اصلی هم‌خوان‌اند. به‌ویژه metadata رسمی Sentence-Transformers5.7.0، وابستگی scikit-learn/scipy را دارد؛ scikit-learn1.9.1 به narwhals/joblib/threadpoolctl و joblib1.6.0 به cloudpickle وابسته‌اند. Transformers4.57.6 به tokenizers/regex/pyyaml/packaging و کتابخانه‌های دانلود وابسته است؛ Requests به urllib3/idna/charset_normalizer/certifi و tqdm روی Windows به colorama وابسته‌اند. Accelerate1.15.0 نیز psutil را نیاز دارد.
+
+این داده‌ها از PyPI واقعاً دریافت شدند؛ نسخه‌های داخل خط ارسالی کاربر دیده نمی‌شوند، بنابراین نسخه‌های آزاد انتخاب‌شده در بررسی metadata، نسخهٔ مشاهده‌شدهٔ نصب کاربر معرفی نشدند. Sentence-Transformers بررسی‌شده زیر۶ و huggingface-hub بررسی‌شده زیر۱ انتخاب شدند تا با requirements و Transformers4.57.6 سازگار باشند. مورد مشخصاً اضافی در فهرست ارائه‌شده شناسایی نشد و حذف بسته‌ای پیشنهاد نشد. خط Installing پایان موفق نصب یا READY نیست؛ هنوز لاگ پایان نصب دریافت نشده است. هیچ بسته، فایل پایپ‌لاین یا ZIP تغییر/بازنشر نشد.
