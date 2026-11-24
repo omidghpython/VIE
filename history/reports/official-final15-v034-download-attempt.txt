@@ -1,0 +1,6 @@
+[DATA] Downloading original HotpotQA: https://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json
+[DATA] Downloading original HotpotQA: http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json
+PREPARATION FAILED: RuntimeError: Original dataset download failed; no substitute selected.
+https://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json: URLError: <urlopen error Tunnel connection failed: 403 Forbidden>
+http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_dev_distractor_v1.json: HTTPError: HTTP Error 403: Forbidden
+Retry later or use --source PATH_TO_ORIGINAL_JSON; its checksum must match.

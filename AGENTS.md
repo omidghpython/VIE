@@ -1,3 +1,11 @@
+# Current task: original HotpotQA selection v0.3.4 (2026-11-24)
+
+User explicitly requests 15 NEW questions from the original dataset using the original40 sampling procedure and fixed seed. This authorizes a new cohort, not reuse/reset of the exposed mirror15. Source experiments/evidence_planning_v0_3_4: official CMU JSON download, pinned historical SHA256/bytes, 7405 rows, seed42 sorted-ID per-type shuffle then combined shuffle, 8bridge/7comparison after known-exposure exclusions. Reproduce exact original40 IDs/order/content before selecting. No mirror fallback. Old releases/results/usage records remain historical.
+
+IMPORTANT: actual original download blocked by HTTP403 in builder environment, including escalated request. No new real15 selected or model inference performed. Package is a preparation workflow, not a ready official cohort. User runs prepare_official_final15.bat (or --source original JSON, SHA checked), then run_rag_final15.bat. Separate results/rag_official_final15_seed42. Once prepared, reruns verify only, never reset usage. 109 tests passed;7 real-cohort checks skipped pending source. No scientific improvement claim. Models, prompts, baseline20 and decision algorithms unchanged. OC-ABLATION-01 remains open. Do not claim current15 are selected until READY/provenance manifest is actually verified. Download ZIP/TXT at default root, preserve previous releases.
+
+---
+
 # HotpotQA project continuity — current instructions, 2026-11-24
 
 Read PROJECT_PROGRESS_FA.md first, then the current PROJECT_PROGRESS_FA.md and AGENTS.md on the canonical history branch `docs/hotpotqa-progress` in `omidghpython/VIE`. Read OPEN_RESEARCH_TASKS_FA.md before planning an evaluation. Earlier dated instructions and immutable package notes are historical when superseded by this checkpoint.

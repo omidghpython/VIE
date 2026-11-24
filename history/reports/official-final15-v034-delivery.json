@@ -1,0 +1,29 @@
+{
+  "commit": "a8618071c29c4da3c216516c4a6b59964226ae8b",
+  "artifacts": [
+    {
+      "path": "HotpotQA_Evidence_Planning_v0.3.4_Official_Final15.zip",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a8618071c29c4da3c216516c4a6b59964226ae8b/HotpotQA_Evidence_Planning_v0.3.4_Official_Final15.zip",
+      "sha256": "82ea79b6b8d9926a94c38c46e32d3e77b1fc53252a27c54bfc7e0f627ec49c2c",
+      "bytes": 1009265,
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.4_Official_Final15_FA.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a8618071c29c4da3c216516c4a6b59964226ae8b/HotpotQA_v0.3.4_Official_Final15_FA.txt",
+      "sha256": "1cd2e058628a2c6a4fd7200210e9366193adfed755b40c534e97a9ee363f97c0",
+      "bytes": 4417,
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "experiments/evidence_planning_v0_3_4/tools/prepare_official_final15.py",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a8618071c29c4da3c216516c4a6b59964226ae8b/experiments/evidence_planning_v0_3_4/tools/prepare_official_final15.py",
+      "sha256": "9b9d6237abb72e76ff2d1871fb7d2f8640bcbca6b89e13bbc3b8618021550a77",
+      "bytes": 10464,
+      "http_status": 200,
+      "download_verified": true
+    }
+  ]
+}
