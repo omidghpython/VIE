@@ -1,3 +1,9 @@
+## نتیجهٔ واقعی۰٫۳٫۴
+
+[تحلیل فارسی](HotpotQA_v0.3.4_Official15_Analysis_FA.txt) · [جدول سؤال‌ها](HotpotQA_v0.3.4_Official15_Per_Question.csv) · [اصل نتیجه](HotpotQA_v0.3.4_Official15_Results.zip)
+
+۴۵اجرا کامل؛کنترل‌گر هیچ پاسخ نهایی نداد. ممیزی مرجع و منشأ انتخاب به metadataغایب نیاز دارد؛تحلیل مسیر اجرا تأیید شده است.
+
 ## نسخهٔ۰٫۳٫۴: انتخاب از دیتاست اصلی با seed=42
 
 [بستهٔ آماده‌سازی و اجرا](HotpotQA_Evidence_Planning_v0.3.4_Official_Final15.zip) · [راهنمای فارسی](HotpotQA_v0.3.4_Official_Final15_FA.txt)

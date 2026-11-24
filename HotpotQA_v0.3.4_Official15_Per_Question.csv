@@ -1,0 +1,16 @@
+﻿number,question_id,question,standard_status,standard_answer,standard_tokens,max4_status,max4_answer,max4_tokens,operadic_status,operadic_answer,operadic_tokens
+1,5abe731255429965af743f0e,What profession does Matt Thiessen and George Thorogood have in common?,answered,Singer-songwriter,3292,answered,"musician, singer, songwriter",5848,budget_exhausted,,7003
+2,5a749e1855429979e28829c3,"Which tennis player is older, Emilio Sánchez or Andrei Olhovskiy?",answered,Emilio Sánchez,1209,answered,Emilio Sánchez,2013,budget_exhausted,,11303
+3,5ab4b7d15542996a3a969fbc,"Who was this American Founding Father, a proponent of democracy, republicanism, and individual rights, examined Ice Age fossils of Kentucky's Big Bone Lick?",answered,Thomas Jefferson,3358,answered,Thomas Jefferson,2106,budget_exhausted,,6317
+4,5a72239a55429971e9dc92cf,Who was soldier Archie A. Peck's commanding officer during the Meuse-Argonne Offensive?,answered,Empty response.,3917,answered,John J. Pershing,7140,budget_exhausted,,2275
+5,5a8b42be55429949d91db515,What profession does John Lanchester and Alan Dean Foster have in common?,answered,Novelist,1981,answered,writer,5360,budget_exhausted,,5184
+6,5a8e3dc05542995085b37401,"Which case was decided first, Selle v. Gibb or Reynolds v. Sims?",answered,Reynolds v. Sims,2776,answered,Reynolds v. Sims,2685,budget_exhausted,,7038
+7,5ae1fa2b5542997f29b3c1df,"Who collaborated with Rihanna on the album release ""Numb""?",answered,Rob Dougan,4595,answered,Eminem,2702,budget_exhausted,,5934
+8,5ae328f45542991a06ce993c,"On which station did the 2014 South Korean television series, starring the main rapper of boyband SS501, air?",answered,KBS2,1596,answered,KBS2,2037,budget_exhausted,,2647
+9,5a8b7e9c5542995d1e6f13c1,Psychopsis and Aubrieta are both genuses of which type of plants?,answered,Flowering plants,3952,answered,orchids and flowering plants,2886,budget_exhausted,,14319
+10,5ab8ae585542991b5579efd8,"In which year was the choreographer for ""Best Foot Forward"" born?",answered,1912,2293,abstained,,2538,budget_exhausted,,1522
+11,5a8b2f2b5542995d1e6f12fa,"What are these two Malaysian businesses, Theme Park Hotel and Genting Highlands, considered?",answered,Entertainment destinations,1498,answered,hotels,1466,budget_exhausted,,4804
+12,5ae43d7f5542996836b02c59,"Which director, John Schlesinger or Barbara Albert, was also a writer and film producer?",answered,Barbara Albert,2238,answered,Barbara Albert,6043,budget_exhausted,,6481
+13,5a7e7c725542991319bc94be,In what year did Farda Amiga win a race at the Saratoga Race course?,answered,Empty response.,2630,answered,2001,5357,budget_exhausted,,1781
+14,5ac048ea554299294b218f74,Who did Fredric Rieders tesify agains who had killed as many as 60 patients and recieved three consecutive life terms to be served in Florence Colorado?,answered,Michael Swango,3385,invalid_plan,,0,invalid_plan,,0
+15,5a7ced4355429909bec76895,"Which was released first, Gasland or To Shoot an Elephant?",answered,To Shoot an Elephant,1436,answered,To Shoot an Elephant,2270,budget_exhausted,,13431

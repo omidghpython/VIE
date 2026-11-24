@@ -1,0 +1,124 @@
+گزارش اجرای جدید ۱۵ سؤال — نسخهٔ۰٫۳٫۴ — ۲۴ نوامبر۲۰۲۶
+
+حدود تأیید:
+۴۵/۴۵ رکورد کامل است. هویت کد Windows با نسخهٔ منتشرشده مطابق است.۱۵ طرح و۴۵ اجرای روش‌ها با پاسخ‌های ذخیره‌شده دقیقاً بازپخش شدند؛۲۱۱فراخوانی مدل و۷۵بازیابی تطبیق دارند. هیچ مدل یا بازیابی تازه‌ای انجام نشد.۱۵شناسه جدید شامل۸bridge و۷comparison هستند و با سابقهٔ در دسترس پروژه،از جمله۱۵سؤال mirror قبلی، هم‌پوشانی شناسه/متن ندارند.
+
+محدودیت منشأ و ارزیابی:
+ZIP شامل runtime_questions و lock است اما final15_manifest،final15_labels،final15_original_records و split_registry نیست. بنابراین انتخاب از فایل اصلی،seed42 و بازتولید۴۰سؤال از روی این ZIP مستقلاً بازسازی نشد. پیام آماده‌سازی کاربر تأیید مجموعهٔ موجود را نشان می‌دهد. کد آماده‌ساز،هش رسمی را الزام می‌کند،ولی خود گزارش انتخاب در پیوست نیست. امتیازهای EM/F1/پوشش زیر از گزارش برنامه نقل می‌شوند؛ پاسخ مرجع دراختیار نیست و بازشماری مستقل ممکن نشد. هیچ برچسب یا نمره‌ای اصلاح نشد.
+
+نتایج گزارش‌شده:
+Standard: EM=۸/۱۵ (۵۳٫۳۳٪)،F1=۵۷٫۷۸٪،پوشش شاهد=۹۴٫۴۴٪؛۱۵answered شامل۲پاسخ لفظی Empty response.
+max4: EM=۵/۱۵ (۳۳٫۳۳٪)،F1=۴۵٫۵۶٪،پوشش=۸۶٫۶۷٪؛۱۳answered،۱abstained،۱invalid_plan.
+Operadic: EM=۰/۱۵،F1=۰،پوشش=۹۳٫۳۳٪؛۱۴budget_exhausted و۱invalid_plan؛هیچ پاسخ نهایی ندارد. تمام۱۴توقف دقیقاً به سقف retrieval_calls مربوط‌اند،نه سقف توکن یا تعداد فراخوانی مدل.
+Citation Faithfulness و Premature Stopping هنوز null و بررسی مستقل درانتظار است. پوشش شاهد بالا به معنی کفایت معنایی یا استفادهٔ درست از شاهد نیست.
+
+هزینه‌های مستقلاً کنترل‌شده:
+Standard:۴۵فراخوانی مدل،۲۷بازیابی،۴۰۱۵۶توکن،۱۲۷٫۵۲ثانیه.
+max4:۶۲فراخوانی مدل،۲۰بازیابی،۵۰۴۵۱توکن؛با احتساب طرح۶۳۷۱۱توکن؛زمان اجرا۲۲۴٫۳۹ثانیه و با طرح۵۱۱٫۶۰ثانیه.
+Operadic:۸۶فراخوانی مدل،۲۸بازیابی،۹۰۰۳۹توکن؛با طرح۱۰۳۲۹۹توکن؛زمان اجرا۹۱۵٫۴۶ثانیه و با طرح۱۲۰۲٫۶۷ثانیه.
+طرح مشترک:۱۸فراخوانی،۱۳۲۶۰توکن،حدود۲۸۷٫۲۱ثانیه. مجموع فیزیکی۲۱۱فراخوانی مدل،۷۵بازیابی و۱۹۳۹۰۶توکن است؛طرح مشترک فقط یک‌بار شمرده شده است.زمان‌ها هزینهٔ بارگذاری مدل و آماده‌سازی مشترک را شامل نمی‌شوند؛آماده‌سازی مشترک بازیاب۱۱٫۵۷ثانیه است.
+
+یافته‌های مشخص از trace:
+۱. سؤال مقایسهٔ سن Emilio Sánchez و Andrei Olhovskiy: هر دو تاریخ تولد به‌درستی پشتیبانی و به گره مقایسه منتقل شدند. مدل بررسی شواهد به‌اشتباه فرد متولد۱۹۶۶را بزرگ‌تر از فرد متولد۱۹۶۵دانست و پاسخ Emilio را رد کرد. بنابراین وابستگی واقعاً مصرف شده،اما بررسی معنایی خراب است.
+۲. سؤال Psychopsis و Aubrieta: مدل پاسخ orchids را برای Psychopsis رد کرد،درحالی‌که در توضیح خودش genus of orchids را نقل کرد؛قفل پیش‌نیاز مانع اجرای گره نهایی شد. max4 نیز به‌جای دستهٔ مشترک،orchids and flowering plants تولید کرد.
+۳. سؤال Thomas Jefferson: نام پاسخ در candidate موجود بود اما گواهی پشتیبانی با خطای قرارداد رد شد. معتبر نبودن قرارداد با اشتباه معنایی و نبود شاهد یکسان نیست.
+۴. سؤال Farda Amiga: درخت پرسش کلی سال پیروزی را به پرسش محل مسابقه متصل کرده و قید هدف اصلی را به‌خوبی حفظ نکرده است. تشخیص نارسایی و دو بازیابی رخ داد؛اصلاح درخت دراین تحلیل انجام نشد.
+۵. سؤال Fredric Rieders: طرح پس از دو تلاش نامعتبر ماند؛هر دو روش درختی شکست ثبت کردند و سؤال بعد پردازش شد. Standard پاسخ Michael Swango تولید کرد.
+۶. Standard در سؤال فرمانده Archie Peck و سال پیروزی Farda Amiga متن literal Empty response. را answered ثبت کرده است؛answered تضمین پاسخ معنادار یا درست نیست.
+
+تفسیر:
+این اجرای کنترل‌گر جدید، بهبود پاسخ نهایی را نشان نمی‌دهد. گره‌های وابسته و دروازهٔ توقف در اجرا فعال‌اند؛اما ردهای نادرست،قواعد گواهی و محدودیت دو بازیابی باعث بی‌پاسخ‌ماندن می‌شوند. صرفاً افزایش بودجه راه‌حل تأییدشده نیست. OC-ABLATION-01 برای جداکردن اثر خود وابستگی‌ها همچنان باز است. مقایسهٔ امتیاز این مجموعه با۱۵سؤال قبلی یک مقایسهٔ کنترل‌شدهٔ نسخه‌ها نیست؛سؤال‌ها متفاوت‌اند.
+
+وضعیت: کد/مدل/پرامپت/بودجه تغییر نکرد. مبنای پذیرفته‌شده max4 حفظ شد. این۱۵سؤال اکنون اجرا و مشاهده شده‌اند؛اگر از نتیجه برای تنظیم استفاده شود،دیگر آزمون نهاییِ تازه نیستند. برای تکمیل ممیزی،فایل‌های منشأ و مرجع لازم‌اند؛نیازی به اجرای دوبارهٔ مدل نیست.
+
+نتایج تک‌تک سؤال‌ها (بدون حدس پاسخ مرجع):
+
+1. What profession does Matt Thiessen and George Thorogood have in common?
+شناسه: 5abe731255429965af743f0e
+standard: answered؛ پاسخ: Singer-songwriter؛ توکن: 3292
+max4: answered؛ پاسخ: musician, singer, songwriter؛ توکن: 5848
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 7003
+
+2. Which tennis player is older, Emilio Sánchez or Andrei Olhovskiy?
+شناسه: 5a749e1855429979e28829c3
+standard: answered؛ پاسخ: Emilio Sánchez؛ توکن: 1209
+max4: answered؛ پاسخ: Emilio Sánchez؛ توکن: 2013
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 11303
+
+3. Who was this American Founding Father, a proponent of democracy, republicanism, and individual rights, examined Ice Age fossils of Kentucky's Big Bone Lick?
+شناسه: 5ab4b7d15542996a3a969fbc
+standard: answered؛ پاسخ: Thomas Jefferson؛ توکن: 3358
+max4: answered؛ پاسخ: Thomas Jefferson؛ توکن: 2106
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 6317
+
+4. Who was soldier Archie A. Peck's commanding officer during the Meuse-Argonne Offensive?
+شناسه: 5a72239a55429971e9dc92cf
+standard: answered؛ پاسخ: Empty response.؛ توکن: 3917
+max4: answered؛ پاسخ: John J. Pershing؛ توکن: 7140
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 2275
+
+5. What profession does John Lanchester and Alan Dean Foster have in common?
+شناسه: 5a8b42be55429949d91db515
+standard: answered؛ پاسخ: Novelist؛ توکن: 1981
+max4: answered؛ پاسخ: writer؛ توکن: 5360
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 5184
+
+6. Which case was decided first, Selle v. Gibb or Reynolds v. Sims?
+شناسه: 5a8e3dc05542995085b37401
+standard: answered؛ پاسخ: Reynolds v. Sims؛ توکن: 2776
+max4: answered؛ پاسخ: Reynolds v. Sims؛ توکن: 2685
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 7038
+
+7. Who collaborated with Rihanna on the album release "Numb"?
+شناسه: 5ae1fa2b5542997f29b3c1df
+standard: answered؛ پاسخ: Rob Dougan؛ توکن: 4595
+max4: answered؛ پاسخ: Eminem؛ توکن: 2702
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 5934
+
+8. On which station did the 2014 South Korean television series, starring the main rapper of boyband SS501, air?
+شناسه: 5ae328f45542991a06ce993c
+standard: answered؛ پاسخ: KBS2؛ توکن: 1596
+max4: answered؛ پاسخ: KBS2؛ توکن: 2037
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 2647
+
+9. Psychopsis and Aubrieta are both genuses of which type of plants?
+شناسه: 5a8b7e9c5542995d1e6f13c1
+standard: answered؛ پاسخ: Flowering plants؛ توکن: 3952
+max4: answered؛ پاسخ: orchids and flowering plants؛ توکن: 2886
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 14319
+
+10. In which year was the choreographer for "Best Foot Forward" born?
+شناسه: 5ab8ae585542991b5579efd8
+standard: answered؛ پاسخ: 1912؛ توکن: 2293
+max4: abstained؛ پاسخ: —؛ توکن: 2538
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 1522
+
+11. What are these two Malaysian businesses, Theme Park Hotel and Genting Highlands, considered?
+شناسه: 5a8b2f2b5542995d1e6f12fa
+standard: answered؛ پاسخ: Entertainment destinations؛ توکن: 1498
+max4: answered؛ پاسخ: hotels؛ توکن: 1466
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 4804
+
+12. Which director, John Schlesinger or Barbara Albert, was also a writer and film producer?
+شناسه: 5ae43d7f5542996836b02c59
+standard: answered؛ پاسخ: Barbara Albert؛ توکن: 2238
+max4: answered؛ پاسخ: Barbara Albert؛ توکن: 6043
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 6481
+
+13. In what year did Farda Amiga win a race at the Saratoga Race course?
+شناسه: 5a7e7c725542991319bc94be
+standard: answered؛ پاسخ: Empty response.؛ توکن: 2630
+max4: answered؛ پاسخ: 2001؛ توکن: 5357
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 1781
+
+14. Who did Fredric Rieders tesify agains who had killed as many as 60 patients and recieved three consecutive life terms to be served in Florence Colorado?
+شناسه: 5ac048ea554299294b218f74
+standard: answered؛ پاسخ: Michael Swango؛ توکن: 3385
+max4: invalid_plan؛ پاسخ: —؛ توکن: 0
+operadic: invalid_plan؛ پاسخ: —؛ توکن: 0
+
+15. Which was released first, Gasland or To Shoot an Elephant?
+شناسه: 5a7ced4355429909bec76895
+standard: answered؛ پاسخ: To Shoot an Elephant؛ توکن: 1436
+max4: answered؛ پاسخ: To Shoot an Elephant؛ توکن: 2270
+operadic: budget_exhausted؛ پاسخ: —؛ توکن: 13431
