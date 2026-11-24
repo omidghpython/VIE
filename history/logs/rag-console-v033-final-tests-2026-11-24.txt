@@ -1,0 +1,13 @@
+test_cli_shows_model_setup_before_trial_progress_and_writes_same_report (test_console.ConsoleTests.test_cli_shows_model_setup_before_trial_progress_and_writes_same_report) ... ok
+test_mutating_or_failing_observer_cannot_change_inputs_or_saved_events (test_console.ConsoleTests.test_mutating_or_failing_observer_cannot_change_inputs_or_saved_events) ... ok
+test_pause_resume_has_global_question_numbers_and_skips_finished_records (test_console.ConsoleTests.test_pause_resume_has_global_question_numbers_and_skips_finished_records) ... ok
+test_question_setup_failure_is_visible_and_later_questions_continue (test_console.ConsoleTests.test_question_setup_failure_is_visible_and_later_questions_continue) ... ok
+test_replayed_calls_are_labelled_without_extra_model_or_retrieval_work (test_console.ConsoleTests.test_replayed_calls_are_labelled_without_extra_model_or_retrieval_work) ... ok
+test_unknown_usage_and_refused_stop_remain_failures_with_console_enabled (test_console.ConsoleTests.test_unknown_usage_and_refused_stop_remain_failures_with_console_enabled) ... ok
+test_unwritable_console_file_does_not_disable_terminal_or_execution (test_console.ConsoleTests.test_unwritable_console_file_does_not_disable_terminal_or_execution) ... ok
+test_visible_and_silent_execution_have_identical_research_results (test_console.ConsoleTests.test_visible_and_silent_execution_have_identical_research_results) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.565s
+
+OK

@@ -1,0 +1,1348 @@
+این فایل فقط پیش‌نمایش ساختگی نمایش کنسول است؛ سؤال‌ها و پاسخ‌ها مصنوعی‌اند و نتیجهٔ اعتبارسنجی۱۵سؤال پروژه نیست.
+
+SYNTHETIC CONSOLE PREVIEW: 15 invented examples, scripted model replies, CPU BM25.
+NOT the real validation15, NOT Qwen/GPU inference or measured model accuracy.
+
+2026-11-24 06:09:49,425 | INFO | HotpotQA Evidence Planning 0.3.3 SYNTHETIC PREVIEW | baseline v3.2.4-max4
+2026-11-24 06:09:49,425 | INFO | Python: 3.12.14 | /workspace/hotpotqa_v031_testenv/bin/python
+2026-11-24 06:09:49,425 | INFO | Methods: Standard RAG / max4 / Operadic | split: heldout (synthetic) | questions: 15
+2026-11-24 06:09:49,425 | INFO | Shared budget per question/method: LLM=24 | tokens=48000 | retrieval=2 | top_k=3
+2026-11-24 06:09:49,425 | INFO | Session cap: all remaining new questions | Output: <temporary-synthetic-workspace>/results
+2026-11-24 06:09:49,425 | INFO | [SETUP] Synthetic backend ready; real models are NOT loaded in this preview
+2026-11-24 06:09:49,437 | INFO | [1/15] synthetic-validation-3 (bridge) | methods pending: standard, max4, operadic
+2026-11-24 06:09:49,437 | INFO | Question: Where was the director of Example Film born? [Synthetic example 3]
+2026-11-24 06:09:49,437 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,440 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,441 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,443 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,443 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,443 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,443 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,445 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,445 | INFO | --- standard: START ---
+2026-11-24 06:09:49,448 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 3]
+2026-11-24 06:09:49,450 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,452 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,453 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,453 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,454 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,455 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,456 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,456 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,457 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,458 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,460 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,460 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.010210473000370257 s
+2026-11-24 06:09:49,460 | INFO | --- max4: START ---
+2026-11-24 06:09:49,462 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 3] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,464 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,465 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,466 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,467 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,468 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,468 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 3] Information needed: Dana birthplace
+2026-11-24 06:09:49,470 | INFO | [RETRIEVAL] evidence passage IDs: [3, 7, 4]
+2026-11-24 06:09:49,471 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,472 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,473 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,474 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,474 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,475 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,476 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,478 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,478 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.014572485999451601 s
+2026-11-24 06:09:49,479 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,480 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 3] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,480 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 3] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,482 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,483 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,483 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,484 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,484 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,484 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,486 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,486 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,486 | INFO | [NODE q1] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,486 | INFO | [NODE q2] BLOCKED | missing prerequisites: ['q1']
+2026-11-24 06:09:49,486 | INFO | [STOP GATE] allowed=False | unresolved=['q1', 'q2'] | invalid inputs=[]
+2026-11-24 06:09:49,487 | INFO | [DECISION] retrieve | target=q1 | Dana birthplace
+2026-11-24 06:09:49,487 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,488 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,488 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,488 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,489 | INFO | [LLM 3] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,490 | INFO | [LLM 3] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,490 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,491 | INFO | [LLM 4] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,492 | INFO | [LLM 4] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,492 | INFO | [NODE q1] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,492 | INFO | [NODE q2] BLOCKED | missing prerequisites: ['q1']
+2026-11-24 06:09:49,492 | INFO | [STOP GATE] allowed=False | unresolved=['q1', 'q2'] | invalid inputs=[]
+2026-11-24 06:09:49,492 | INFO | [DECISION] budget_exhausted | target=- | retrieval_calls
+2026-11-24 06:09:49,495 | INFO | --- operadic: budget_exhausted | answer: (none) ---
+2026-11-24 06:09:49,495 | INFO | operadic cost: actual LLM=4 | retrieval=2 | tokens=480 | charged tokens incl. plan=600 | wall=0.012002299000414496 s
+2026-11-24 06:09:49,495 | WARNING | operadic: retrieval_calls
+2026-11-24 06:09:49,495 | INFO | [2/15] synthetic-validation-7 (bridge) | methods pending: max4, operadic, standard
+2026-11-24 06:09:49,495 | INFO | Question: Where was the director of Example Film born? [Synthetic example 7]
+2026-11-24 06:09:49,495 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,497 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,498 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,499 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,499 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,499 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,499 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,501 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,501 | INFO | --- max4: START ---
+2026-11-24 06:09:49,503 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 7] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,504 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,506 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,507 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,508 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,508 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,509 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 7] Information needed: Dana birthplace
+2026-11-24 06:09:49,510 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,511 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,512 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,513 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,514 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,514 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,515 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,516 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,518 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,518 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.013771745000667579 s
+2026-11-24 06:09:49,518 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,520 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 7] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,521 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 7] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,523 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,523 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,523 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,524 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,525 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,525 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,526 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,527 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,527 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,527 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,527 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,529 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,530 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,530 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,530 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,530 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,530 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,532 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,532 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,532 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,532 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,533 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,534 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,534 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,534 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,535 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,535 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,535 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,535 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,536 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,537 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,537 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,538 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,539 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,539 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,539 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,541 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,543 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,543 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,543 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,543 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,544 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,549 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,552 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,552 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.02888105399961205 s
+2026-11-24 06:09:49,552 | INFO | --- standard: START ---
+2026-11-24 06:09:49,554 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 7]
+2026-11-24 06:09:49,556 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,557 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,558 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,558 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,560 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,561 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,562 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,562 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,563 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,564 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,565 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,566 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.00974067599963746 s
+2026-11-24 06:09:49,566 | INFO | [3/15] synthetic-validation-0 (bridge) | methods pending: operadic, standard, max4
+2026-11-24 06:09:49,566 | INFO | Question: Where was the director of Example Film born? [Synthetic example 0]
+2026-11-24 06:09:49,566 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,568 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,569 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,569 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,569 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,569 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,570 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,571 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,571 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,574 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 0] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,574 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 0] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,576 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,576 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,576 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,578 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,578 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,578 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,580 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,581 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,581 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,581 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,581 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,582 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,583 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,583 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,583 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,583 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,583 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,585 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,585 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,585 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,585 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,586 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,587 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,587 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,588 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,588 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,589 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,589 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,589 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,589 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,590 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,590 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,591 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,592 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,592 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,592 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,593 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,594 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,595 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,595 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,595 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,596 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,596 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,600 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,600 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.022777490000407852 s
+2026-11-24 06:09:49,600 | INFO | --- standard: START ---
+2026-11-24 06:09:49,602 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 0]
+2026-11-24 06:09:49,604 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,606 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,607 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,607 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,609 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,610 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,611 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,611 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,611 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,612 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,614 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,614 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.010896875000071304 s
+2026-11-24 06:09:49,614 | INFO | --- max4: START ---
+2026-11-24 06:09:49,616 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 0] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,618 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,619 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,620 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,621 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,622 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,622 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 0] Information needed: Dana birthplace
+2026-11-24 06:09:49,624 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,625 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,626 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,627 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,627 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,628 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,628 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,629 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,631 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,631 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.013738842000748264 s
+2026-11-24 06:09:49,632 | INFO | [4/15] synthetic-validation-11 (bridge) | methods pending: standard, max4, operadic
+2026-11-24 06:09:49,632 | INFO | Question: Where was the director of Example Film born? [Synthetic example 11]
+2026-11-24 06:09:49,632 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,634 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,635 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,636 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,636 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,636 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,636 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,638 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,638 | INFO | --- standard: START ---
+2026-11-24 06:09:49,640 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 11]
+2026-11-24 06:09:49,642 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,643 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,644 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,644 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,645 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,647 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,647 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,647 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,648 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,649 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,651 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,651 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009817380999265879 s
+2026-11-24 06:09:49,651 | INFO | --- max4: START ---
+2026-11-24 06:09:49,653 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 11] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,656 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,657 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,658 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,659 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,660 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,660 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 11] Information needed: Dana birthplace
+2026-11-24 06:09:49,662 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,663 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,664 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,665 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,665 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,666 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,667 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,668 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,670 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,670 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.014877023999360972 s
+2026-11-24 06:09:49,670 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,672 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 11] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,672 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 11] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,674 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,675 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,675 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,676 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,677 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,677 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,678 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,678 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,678 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,679 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,679 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,680 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,681 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,681 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,681 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,681 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,681 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,683 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,683 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,683 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,683 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,684 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,684 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,685 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,685 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,686 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,686 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,686 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,686 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,687 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,688 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,688 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,689 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,690 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,690 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,690 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,691 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,692 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,692 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,692 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,692 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,694 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,695 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,697 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,697 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.022712702999342582 s
+2026-11-24 06:09:49,698 | INFO | [5/15] synthetic-validation-10 (bridge) | methods pending: max4, operadic, standard
+2026-11-24 06:09:49,698 | INFO | Question: Where was the director of Example Film born? [Synthetic example 10]
+2026-11-24 06:09:49,698 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,700 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,701 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,702 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,702 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,702 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,702 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,704 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,704 | INFO | --- max4: START ---
+2026-11-24 06:09:49,706 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 10] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,708 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,710 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,711 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,712 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,713 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,713 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 10] Information needed: Dana birthplace
+2026-11-24 06:09:49,714 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,715 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,716 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,717 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,718 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,718 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,719 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,721 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,723 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,723 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.01509258799978852 s
+2026-11-24 06:09:49,723 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,724 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 10] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,725 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 10] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,726 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,727 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,727 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,728 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,729 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,729 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,730 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,731 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,731 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,731 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,731 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,732 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,733 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,733 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,734 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,734 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,734 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,736 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,736 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,736 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,736 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,737 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,737 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,737 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,738 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,739 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,739 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,739 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,739 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,740 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,741 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,741 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,742 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,743 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,743 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,743 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,744 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,745 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,745 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,745 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,745 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,746 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,747 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,750 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,750 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.02326616699974693 s
+2026-11-24 06:09:49,750 | INFO | --- standard: START ---
+2026-11-24 06:09:49,752 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 10]
+2026-11-24 06:09:49,754 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,755 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,756 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,756 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,758 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,759 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,759 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,759 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,760 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,761 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,763 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,763 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.00941840100040281 s
+2026-11-24 06:09:49,763 | INFO | [6/15] synthetic-validation-12 (bridge) | methods pending: operadic, standard, max4
+2026-11-24 06:09:49,763 | INFO | Question: Where was the director of Example Film born? [Synthetic example 12]
+2026-11-24 06:09:49,764 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,765 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,766 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,767 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,767 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,767 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,767 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,769 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,769 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,771 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 12] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,771 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 12] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,773 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,773 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,773 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,774 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,775 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,775 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,776 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,777 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,777 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,777 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,777 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,778 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,779 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,779 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,779 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,779 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,780 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,781 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,781 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,781 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,781 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,782 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,783 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,783 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,784 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,785 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,785 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,785 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,785 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,786 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,787 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,787 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,788 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,789 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,789 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,789 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,790 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,791 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,791 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,791 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,791 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,792 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,793 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,796 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,796 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.022732483000254433 s
+2026-11-24 06:09:49,796 | INFO | --- standard: START ---
+2026-11-24 06:09:49,798 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 12]
+2026-11-24 06:09:49,800 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,801 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,802 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,802 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,804 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,805 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,805 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,805 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,806 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,807 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,809 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,809 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009256256999833568 s
+2026-11-24 06:09:49,809 | INFO | --- max4: START ---
+2026-11-24 06:09:49,811 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 12] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,812 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,813 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,814 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,815 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,816 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,816 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 12] Information needed: Dana birthplace
+2026-11-24 06:09:49,818 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,819 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,820 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,821 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,821 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,822 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,823 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,825 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,827 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,827 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.014115017999756674 s
+2026-11-24 06:09:49,827 | INFO | [7/15] synthetic-validation-6 (bridge) | methods pending: standard, max4, operadic
+2026-11-24 06:09:49,827 | INFO | Question: Where was the director of Example Film born? [Synthetic example 6]
+2026-11-24 06:09:49,827 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,831 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,832 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,833 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,833 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,833 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,833 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,835 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,835 | INFO | --- standard: START ---
+2026-11-24 06:09:49,837 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 6]
+2026-11-24 06:09:49,839 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,841 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,841 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,842 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,843 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,844 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,845 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,845 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,846 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,847 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,848 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,848 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009546223000143073 s
+2026-11-24 06:09:49,848 | INFO | --- max4: START ---
+2026-11-24 06:09:49,850 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 6] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,852 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,853 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,854 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,855 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,856 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,856 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 6] Information needed: Dana birthplace
+2026-11-24 06:09:49,858 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,859 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,860 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,861 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,862 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,862 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,863 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,864 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,866 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,866 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.01375204199939617 s
+2026-11-24 06:09:49,866 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,868 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 6] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,868 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 6] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,870 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,870 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,870 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,871 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,872 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,872 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,873 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,874 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,874 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,874 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,874 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,875 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,876 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,876 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,876 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,876 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,876 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,878 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,878 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,878 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,878 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,879 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,880 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,880 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,881 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,882 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,882 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,882 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,882 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,883 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,884 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,884 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,885 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,886 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,886 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,886 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,887 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,888 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,888 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,888 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,888 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,889 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,890 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,893 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,893 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.02272012400044332 s
+2026-11-24 06:09:49,894 | INFO | [8/15] synthetic-validation-13 (bridge) | methods pending: max4, operadic, standard
+2026-11-24 06:09:49,894 | INFO | Question: Where was the director of Example Film born? [Synthetic example 13]
+2026-11-24 06:09:49,894 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,896 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,896 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,897 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,897 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,897 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,897 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,899 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,899 | INFO | --- max4: START ---
+2026-11-24 06:09:49,900 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 13] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,902 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,903 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,904 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,905 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,906 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,906 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 13] Information needed: Dana birthplace
+2026-11-24 06:09:49,908 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,909 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,910 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,911 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,912 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,912 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,913 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,914 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,916 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:49,916 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.013453200999720138 s
+2026-11-24 06:09:49,916 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,918 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 13] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,918 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 13] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,920 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,920 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,920 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,921 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,922 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,922 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,923 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,924 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,924 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,924 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,924 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,925 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,926 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,926 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,926 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,926 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,927 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,928 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,928 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,928 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,928 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,930 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,931 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,931 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,932 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,933 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,933 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,933 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,933 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,934 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,935 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,935 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,936 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,937 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,937 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,937 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,938 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,939 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,939 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,939 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,939 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,940 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,941 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,944 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,944 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.023513178000030166 s
+2026-11-24 06:09:49,945 | INFO | --- standard: START ---
+2026-11-24 06:09:49,946 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 13]
+2026-11-24 06:09:49,948 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,950 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,951 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,951 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,952 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,953 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:49,954 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:49,954 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,955 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,956 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,958 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:49,958 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.010485595999853103 s
+2026-11-24 06:09:49,959 | INFO | [9/15] synthetic-validation-14 (bridge) | methods pending: operadic, standard, max4
+2026-11-24 06:09:49,959 | INFO | Question: Where was the director of Example Film born? [Synthetic example 14]
+2026-11-24 06:09:49,959 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:49,960 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:49,961 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,962 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:49,962 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:49,962 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:49,962 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:49,964 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:49,964 | INFO | --- operadic: START ---
+2026-11-24 06:09:49,967 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 14] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,967 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 14] Information needed: Who directed Example Film?
+2026-11-24 06:09:49,969 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,969 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,969 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,970 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,971 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,971 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,973 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,973 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,974 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,974 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,974 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,975 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,976 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,976 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:49,976 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:49,976 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:49,977 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:49,978 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:49,979 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:49,979 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:49,979 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:49,979 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,980 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,980 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:49,981 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:49,982 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,982 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:49,982 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:49,982 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:49,983 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,984 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,984 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:49,985 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:49,986 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,986 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:49,986 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:49,987 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:49,987 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,988 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:49,988 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:49,988 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:49,989 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:49,990 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,993 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:49,993 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.023083109999788576 s
+2026-11-24 06:09:49,993 | INFO | --- standard: START ---
+2026-11-24 06:09:49,994 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 14]
+2026-11-24 06:09:49,996 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:49,998 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:49,998 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:49,999 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,000 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,001 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,002 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,002 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,003 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,004 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,006 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,006 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009539813999253965 s
+2026-11-24 06:09:50,006 | INFO | --- max4: START ---
+2026-11-24 06:09:50,008 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 14] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,010 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,012 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,013 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,014 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,014 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,015 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 14] Information needed: Dana birthplace
+2026-11-24 06:09:50,016 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,017 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,018 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,019 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,020 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,020 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,021 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,022 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,024 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,024 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.01436359099989204 s
+2026-11-24 06:09:50,025 | INFO | [10/15] synthetic-validation-2 (bridge) | methods pending: standard, max4, operadic
+2026-11-24 06:09:50,025 | INFO | Question: Where was the director of Example Film born? [Synthetic example 2]
+2026-11-24 06:09:50,025 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:50,026 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:50,027 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,028 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:50,028 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:50,028 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:50,028 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:50,030 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:50,030 | INFO | --- standard: START ---
+2026-11-24 06:09:50,033 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 2]
+2026-11-24 06:09:50,035 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,037 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,037 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,037 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,039 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,040 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,041 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,041 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,042 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,043 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,045 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,045 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009920206000060716 s
+2026-11-24 06:09:50,045 | INFO | --- max4: START ---
+2026-11-24 06:09:50,047 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 2] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,050 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,051 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,052 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,053 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,054 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,054 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 2] Information needed: Dana birthplace
+2026-11-24 06:09:50,056 | INFO | [RETRIEVAL] evidence passage IDs: [3, 6, 4]
+2026-11-24 06:09:50,057 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,057 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,058 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,059 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,060 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,061 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,061 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,065 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,065 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.014317591999315482 s
+2026-11-24 06:09:50,065 | INFO | --- operadic: START ---
+2026-11-24 06:09:50,067 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 2] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,067 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 2] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,069 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,069 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,069 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,071 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,072 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,072 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,073 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,074 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,074 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,074 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,074 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,076 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,076 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,076 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:50,077 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:50,077 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:50,077 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,078 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,078 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:50,079 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,079 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,079 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,080 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,080 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,081 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,082 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,082 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,082 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,082 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,083 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,084 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,084 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:50,085 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,086 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,086 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:50,086 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:50,087 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:50,088 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,088 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:50,088 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:50,088 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,089 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,090 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,093 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:50,093 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.023004982999736967 s
+2026-11-24 06:09:50,093 | INFO | [11/15] synthetic-validation-8 (bridge) | methods pending: max4, operadic, standard
+2026-11-24 06:09:50,093 | INFO | Question: Where was the director of Example Film born? [Synthetic example 8]
+2026-11-24 06:09:50,093 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:50,095 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:50,096 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,097 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:50,097 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:50,097 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:50,097 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:50,098 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:50,098 | INFO | --- max4: START ---
+2026-11-24 06:09:50,100 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 8] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,102 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,103 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,104 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,105 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,106 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,106 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 8] Information needed: Dana birthplace
+2026-11-24 06:09:50,107 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,108 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,109 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,110 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,111 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,111 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,112 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,113 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,115 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,115 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.013273010999910184 s
+2026-11-24 06:09:50,115 | INFO | --- operadic: START ---
+2026-11-24 06:09:50,117 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 8] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,118 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 8] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,120 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,120 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,120 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,121 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,122 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,122 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,123 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,124 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,124 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,124 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,124 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,125 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,126 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,126 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:50,126 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:50,126 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:50,127 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,128 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,128 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:50,128 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,128 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,129 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,130 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,130 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,131 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,132 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,132 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,132 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,132 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,133 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,134 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,134 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:50,135 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,136 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,136 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:50,136 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:50,137 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:50,138 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,138 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:50,138 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:50,138 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,139 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,140 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,143 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:50,143 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.02267933399980393 s
+2026-11-24 06:09:50,143 | INFO | --- standard: START ---
+2026-11-24 06:09:50,145 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 8]
+2026-11-24 06:09:50,147 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,148 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,149 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,149 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,151 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,151 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,152 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,152 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,153 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,154 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,156 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,156 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009361325000099896 s
+2026-11-24 06:09:50,156 | INFO | [12/15] synthetic-validation-1 (bridge) | methods pending: operadic, standard, max4
+2026-11-24 06:09:50,156 | INFO | Question: Where was the director of Example Film born? [Synthetic example 1]
+2026-11-24 06:09:50,156 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:50,158 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:50,159 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,160 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:50,160 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:50,160 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:50,160 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:50,161 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:50,161 | INFO | --- operadic: START ---
+2026-11-24 06:09:50,163 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 1] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,164 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 1] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,166 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,166 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,166 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,167 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,168 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,168 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,169 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,170 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,170 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,170 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,170 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,172 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,173 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,173 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:50,173 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:50,173 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:50,174 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,175 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,176 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:50,176 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,176 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,177 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,178 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,178 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,179 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,179 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,180 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,180 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,180 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,181 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,183 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,183 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:50,185 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,185 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,185 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:50,186 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:50,186 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:50,187 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,187 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:50,187 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:50,187 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,189 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,190 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,193 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:50,193 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.02655950100051996 s
+2026-11-24 06:09:50,193 | INFO | --- standard: START ---
+2026-11-24 06:09:50,194 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 1]
+2026-11-24 06:09:50,196 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,198 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,198 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,199 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,200 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,201 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,202 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,202 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,203 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,204 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,206 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,206 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.009382717000335106 s
+2026-11-24 06:09:50,206 | INFO | --- max4: START ---
+2026-11-24 06:09:50,208 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 1] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,210 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,212 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,212 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,213 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,214 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,215 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 1] Information needed: Dana birthplace
+2026-11-24 06:09:50,217 | INFO | [RETRIEVAL] evidence passage IDs: [3, 5, 4]
+2026-11-24 06:09:50,218 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,219 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,220 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,221 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,221 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,222 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,223 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,225 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,225 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.015531418999671587 s
+2026-11-24 06:09:50,226 | INFO | [13/15] synthetic-validation-9 (bridge) | methods pending: standard, max4, operadic
+2026-11-24 06:09:50,226 | INFO | Question: Where was the director of Example Film born? [Synthetic example 9]
+2026-11-24 06:09:50,226 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:50,228 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:50,229 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,230 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:50,230 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:50,230 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:50,230 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:50,233 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:50,233 | INFO | --- standard: START ---
+2026-11-24 06:09:50,235 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 9]
+2026-11-24 06:09:50,237 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,238 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,239 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,239 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,241 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,242 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,243 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,243 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,244 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,245 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,248 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,248 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.01124897499994404 s
+2026-11-24 06:09:50,248 | INFO | --- max4: START ---
+2026-11-24 06:09:50,249 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 9] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,251 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,253 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,254 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,255 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,256 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,256 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 9] Information needed: Dana birthplace
+2026-11-24 06:09:50,258 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,259 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,260 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,261 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,262 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,262 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,263 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,264 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,266 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,266 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.01492287299970485 s
+2026-11-24 06:09:50,266 | INFO | --- operadic: START ---
+2026-11-24 06:09:50,268 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 9] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,268 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 9] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,270 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,270 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,270 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,271 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,272 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,272 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,273 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,277 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,277 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,277 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,277 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,278 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,279 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,279 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:50,279 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:50,279 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:50,279 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,281 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,281 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:50,281 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,281 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,282 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,283 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,283 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,284 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,285 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,285 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,285 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,285 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,286 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,287 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,287 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:50,288 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,289 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,289 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:50,289 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:50,290 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:50,291 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,291 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:50,291 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:50,291 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,292 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,293 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,296 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:50,296 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.025533568000355444 s
+2026-11-24 06:09:50,297 | INFO | [14/15] synthetic-validation-4 (bridge) | methods pending: max4, operadic, standard
+2026-11-24 06:09:50,297 | INFO | Question: Where was the director of Example Film born? [Synthetic example 4]
+2026-11-24 06:09:50,297 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:50,299 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:50,299 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,300 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:50,300 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:50,300 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:50,300 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:50,302 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:50,302 | INFO | --- max4: START ---
+2026-11-24 06:09:50,304 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 4] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,306 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,308 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,309 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,310 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,311 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,311 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 4] Information needed: Dana birthplace
+2026-11-24 06:09:50,312 | INFO | [RETRIEVAL] evidence passage IDs: [3, 8, 4]
+2026-11-24 06:09:50,313 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,314 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,315 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,316 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,316 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,317 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,318 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,320 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,320 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.013875437000024249 s
+2026-11-24 06:09:50,320 | INFO | --- operadic: START ---
+2026-11-24 06:09:50,322 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 4] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,322 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 4] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,325 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,325 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,325 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,326 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,327 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,327 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,328 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,330 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,330 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,330 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,330 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,331 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,332 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,332 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:50,333 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:50,333 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:50,333 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,335 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,335 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:50,335 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,335 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,336 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,337 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,337 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,338 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,339 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,339 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,340 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,340 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,341 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,342 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,342 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:50,343 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,344 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,344 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:50,344 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:50,345 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:50,346 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,346 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:50,346 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:50,346 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,348 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,349 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,352 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:50,352 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.026757308999549423 s
+2026-11-24 06:09:50,352 | INFO | --- standard: START ---
+2026-11-24 06:09:50,354 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 4]
+2026-11-24 06:09:50,357 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,358 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,359 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,360 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,364 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,365 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,366 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,366 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,367 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,369 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,372 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,372 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.014936617999410373 s
+2026-11-24 06:09:50,372 | INFO | [15/15] synthetic-validation-5 (bridge) | methods pending: operadic, standard, max4
+2026-11-24 06:09:50,372 | INFO | Question: Where was the director of Example Film born? [Synthetic example 5]
+2026-11-24 06:09:50,373 | INFO | [PHASE] unchanged_max4_plan
+2026-11-24 06:09:50,376 | INFO | [LLM 1] unchanged_max4_plan | running | input=100 | max_output=3072
+2026-11-24 06:09:50,378 | INFO | [LLM 1] unchanged_max4_plan | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,382 | INFO | [PLAN] valid | unchanged_max4_generate_plan | historical/shared budget debit: calls=1 tokens=120
+2026-11-24 06:09:50,382 | INFO |   q1 <- (none) | Who directed Example Film?
+2026-11-24 06:09:50,382 | INFO |   q2 <- q1 | Where was {{q1}} born?
+2026-11-24 06:09:50,382 | INFO | [SETUP] Preparing the shared question-local retrieval index
+2026-11-24 06:09:50,395 | INFO | [SETUP] Question-local index ready
+2026-11-24 06:09:50,395 | INFO | --- operadic: START ---
+2026-11-24 06:09:50,397 | INFO | [DECISION] retrieve | target=q1 | Where was the director of Example Film born? [Synthetic example 5] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,398 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 5] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,404 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,404 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,404 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,405 | INFO | [LLM 1] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,406 | INFO | [LLM 1] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,406 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,407 | INFO | [LLM 2] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,408 | INFO | [LLM 2] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,408 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,408 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,408 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,410 | INFO | [LLM 3] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,411 | INFO | [LLM 3] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,411 | INFO | [NODE q2] insufficient (model assessment) | answer=(none) | refs=[]
+2026-11-24 06:09:50,411 | INFO | [STOP GATE] allowed=False | unresolved=['q2'] | invalid inputs=[]
+2026-11-24 06:09:50,411 | INFO | [DECISION] retrieve | target=q2 | Dana birthplace
+2026-11-24 06:09:50,411 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,415 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,415 | INFO | [CACHE] Recheck previous bindings after evidence change: ['q1']
+2026-11-24 06:09:50,415 | INFO | [NODE q1] inputs={} | Who directed Example Film?
+2026-11-24 06:09:50,415 | INFO | [PHASE] node_assessment:q1
+2026-11-24 06:09:50,416 | INFO | [LLM 4] node_assessment:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,417 | INFO | [LLM 4] node_assessment:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,417 | INFO | [PHASE] node_support:q1
+2026-11-24 06:09:50,418 | INFO | [LLM 5] node_support:q1 | running | input=100 | max_output=512
+2026-11-24 06:09:50,419 | INFO | [LLM 5] node_support:q1 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,419 | INFO | [NODE q1] supported (model assessment) | answer=Dana | refs=['0:0']
+2026-11-24 06:09:50,419 | INFO | [NODE q2] inputs={'q1': 'Dana'} | Where was Dana born?
+2026-11-24 06:09:50,419 | INFO | [PHASE] node_assessment:q2
+2026-11-24 06:09:50,420 | INFO | [LLM 6] node_assessment:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,421 | INFO | [LLM 6] node_assessment:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,421 | INFO | [PHASE] node_support:q2
+2026-11-24 06:09:50,424 | INFO | [LLM 7] node_support:q2 | running | input=100 | max_output=512
+2026-11-24 06:09:50,425 | INFO | [LLM 7] node_support:q2 | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,425 | INFO | [NODE q2] supported (model assessment) | answer=Bruma | refs=['3:0', '0:0']
+2026-11-24 06:09:50,425 | INFO | [PHASE] original_goal_support
+2026-11-24 06:09:50,427 | INFO | [LLM 8] original_goal_support | running | input=100 | max_output=512
+2026-11-24 06:09:50,429 | INFO | [LLM 8] original_goal_support | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,430 | INFO | [STOP GATE] allowed=True | unresolved=[] | invalid inputs=[]
+2026-11-24 06:09:50,430 | INFO | [DECISION] stop | target=- | verified_goal_and_dependency_closure
+2026-11-24 06:09:50,430 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,431 | INFO | [LLM 9] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,433 | INFO | [LLM 9] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,437 | INFO | --- operadic: answered | answer: Bruma ---
+2026-11-24 06:09:50,437 | INFO | operadic cost: actual LLM=9 | retrieval=2 | tokens=1080 | charged tokens incl. plan=1200 | wall=0.035898176999580755 s
+2026-11-24 06:09:50,437 | INFO | --- standard: START ---
+2026-11-24 06:09:50,438 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 5]
+2026-11-24 06:09:50,440 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,442 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,442 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,443 | INFO | [RETRIEVAL 2] running | query: Dana birthplace
+2026-11-24 06:09:50,445 | INFO | [RETRIEVAL] evidence passage IDs: [3, 4, 5]
+2026-11-24 06:09:50,449 | INFO | [LLM 2] baseline | running | input=100 | max_output=150
+2026-11-24 06:09:50,449 | INFO | [LLM 2] baseline | completed | input=100 output=2 | seconds=0.001
+2026-11-24 06:09:50,449 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,452 | INFO | [LLM 3] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,454 | INFO | [LLM 3] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,457 | INFO | --- standard: answered | answer: Bruma ---
+2026-11-24 06:09:50,457 | INFO | standard cost: actual LLM=3 | retrieval=2 | tokens=342 | charged tokens incl. plan=342 | wall=0.016459569000289775 s
+2026-11-24 06:09:50,458 | INFO | --- max4: START ---
+2026-11-24 06:09:50,460 | INFO | [RETRIEVAL 1] running | query: Where was the director of Example Film born? [Synthetic example 5] Information needed: Who directed Example Film?
+2026-11-24 06:09:50,462 | INFO | [RETRIEVAL] evidence passage IDs: [1, 2, 0]
+2026-11-24 06:09:50,463 | INFO | [LLM 1] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,464 | INFO | [LLM 1] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,465 | INFO | [LLM 2] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,466 | INFO | [LLM 2] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,466 | INFO | [RETRIEVAL 2] running | query: Where was the director of Example Film born? [Synthetic example 5] Information needed: Dana birthplace
+2026-11-24 06:09:50,468 | INFO | [RETRIEVAL] evidence passage IDs: [3, 9, 4]
+2026-11-24 06:09:50,469 | INFO | [LLM 3] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,470 | INFO | [LLM 3] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,471 | INFO | [LLM 4] baseline | running | input=100 | max_output=512
+2026-11-24 06:09:50,472 | INFO | [LLM 4] baseline | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,472 | INFO | [PHASE] common_final_citations
+2026-11-24 06:09:50,473 | INFO | [LLM 5] common_final_citations | running | input=100 | max_output=512
+2026-11-24 06:09:50,474 | INFO | [LLM 5] common_final_citations | completed | input=100 output=20 | seconds=0.001
+2026-11-24 06:09:50,476 | INFO | --- max4: answered | answer: Bruma ---
+2026-11-24 06:09:50,476 | INFO | max4 cost: actual LLM=5 | retrieval=2 | tokens=600 | charged tokens incl. plan=720 | wall=0.014553117000104976 s
+2026-11-24 06:09:50,489 | INFO | RUN COMPLETE | saved method records: 45/45
+2026-11-24 06:09:50,489 | INFO | Recorded physical usage: LLM=265 | retrieval=90 | tokens=31530
+2026-11-24 06:09:50,489 | INFO | Saved answers/statuses are not independent semantic validation.
+2026-11-24 06:09:50,489 | INFO | Completion counts stored records, including failures.

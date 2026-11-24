@@ -503,52 +503,77 @@
     "sha256": "dd44f3bd5ee35239c433214cf714cd32bd0158a51d580ee2a56ec5ab45728a45"
   },
   "current_experiment": {
-    "id": "evidence_planning_v0.3.2",
-    "status": "offline_verified_full_development_failure_continuation_live_result_pending",
+    "id": "evidence_planning_v0.3.3",
+    "status": "console_verified_live_validation_pending",
     "accepted_baseline": "v3.2.4-max4",
-    "scope": "All40 development questions / 120 records; per-question retriever setup exception isolation; retained method failures and failure-denominator accounting.",
-    "code_commit": "4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342",
-    "code_path": "experiments/evidence_planning_v0_3_2",
-    "offline_tests_passed": 98,
-    "unchanged_previous_tests": 93,
-    "new_tests": 5,
-    "synthetic_full_batch_questions": 40,
-    "synthetic_full_batch_trials": 120,
+    "scope": "Read-only max4-style console observers adapted to v0.3.2; validation15 remains the authorized next workflow.",
+    "code_commit": "bdcde276b12fa3e541dd36bf5e037a5a2fd34792",
+    "code_path": "experiments/evidence_planning_v0_3_3",
+    "offline_tests_passed": 106,
+    "test_runs": [
+      {
+        "full_suite_before_two_added_tests": 104
+      },
+      {
+        "final_console_suite": 8
+      }
+    ],
+    "unchanged_previous_tests": 98,
+    "console_tests": 8,
+    "report": "history/reports/rag-console-v033-2026-11-24.md",
+    "preflight": "history/reports/rag-console-v033-preflight-2026-11-24.json",
+    "reference": "history/reports/rag-console-max4-reference-2026-11-24.json",
     "live_qwen_calls_during_preparation_and_publication": 0,
     "live_bge_calls_during_preparation_and_publication": 0,
     "live_benchmark_metrics": null,
-    "independent_semantic_evaluation": "pending",
+    "final15_real_model_inference": false,
     "final_questions": 15,
     "final_trial_count": 45,
-    "final15_real_model_inference": false,
+    "final15_validation_authorization": "history/conversations/2026-11-24-final15-validation-request.md",
+    "renewed_ui_authorization": "history/conversations/2026-11-24-max4-console-request-renewed.md",
+    "independent_semantic_evaluation": "pending",
     "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
-    "report": "history/reports/rag-full-development-v032-2026-11-24.md",
-    "preflight": "history/reports/rag-full-development-v032-preflight-2026-11-24.json",
-    "delivery_commit": "4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342",
+    "delivery_commit": "bdcde276b12fa3e541dd36bf5e037a5a2fd34792",
     "artifacts": [
       {
-        "path": "HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip",
-        "bytes": 1056729,
-        "sha256": "4420dadb1352d56fe0212d53518ad1a559923b69545343bc49f134c2bb513b09",
+        "path": "HotpotQA_Evidence_Planning_v0.3.3_Max4_Console.zip",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_Evidence_Planning_v0.3.3_Max4_Console.zip",
+        "bytes": 1083309,
+        "sha256": "6a05190a8db7372e548d9440bce850d07ba3ffeb5ea64066cc7640685f581396",
         "http_status": 200,
         "download_verified": true
       },
       {
-        "path": "HotpotQA_v0.3.2_Full_Development_FA.txt",
-        "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_v0.3.2_Full_Development_FA.txt",
-        "bytes": 7040,
-        "sha256": "514faa03dac9ed6446112372eb5a980f646c7cc8eb0de2e1932c1c525da2e0b7",
+        "path": "HotpotQA_v0.3.3_Max4_Console_FA.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_v0.3.3_Max4_Console_FA.txt",
+        "bytes": 6598,
+        "sha256": "8ce9b4204057eb492ab9b5c68702c91392532bcad8b303384390ae8c5185d58c",
+        "http_status": 200,
+        "download_verified": true
+      },
+      {
+        "path": "HotpotQA_v0.3.3_Console_Preview_SYNTHETIC.txt",
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_v0.3.3_Console_Preview_SYNTHETIC.txt",
+        "bytes": 128322,
+        "sha256": "0a49d9fe865d6bb9d8765878229428c808cb268e79d8ec60d205c36a80a0733f",
         "http_status": 200,
         "download_verified": true
       }
     ],
-    "delivery_verification": "history/reports/rag-full-development-v032-delivery-2026-11-24.json",
-    "next_action": "User-authorized validation on unused15 via existing rag_final15 config, all3 methods/45 records, results/rag_final15. Live results pending.",
-    "remaining": "Model support/negative-prerequisite issues unchanged; no live full-run result yet. Process/storage/integrity/global-initialization failures still stop.",
+    "delivery_verification": "history/reports/rag-console-v033-delivery-2026-11-24.json",
+    "synthetic_preview": {
+      "questions": 15,
+      "records": 45,
+      "real_heldout_used": 0,
+      "model": "ScriptBackend",
+      "retriever": "CPU BM25 on invented data",
+      "verification": "history/reports/rag-console-v033-preview-verification-2026-11-24.json"
+    },
+    "next_action": "User starts authorized validation15 with run_rag_final15.bat if unused; preserve existing marker/locks and original source if already started. Export rag_final15_results.zip.",
+    "native_windows_bat_test": false,
+    "wall_time_includes_console_overhead": true,
     "withdrawn_recovery_republished": false,
-    "cancelled_ui_draft_included": false,
-    "final15_validation_authorization": "history/conversations/2026-11-24-final15-validation-request.md"
+    "previous_ui_cancellation_superseded": true
   },
   "experiment_history": [
     {
@@ -1546,6 +1571,54 @@
       "remaining": "Model false negative, malformed support reply, unsupported negative prerequisite; no guarantee of new answered status.",
       "withdrawn_recovery_republished": false,
       "cancelled_ui_draft_included": false
+    },
+    {
+      "id": "evidence_planning_v0.3.2",
+      "status": "offline_verified_full_development_failure_continuation_live_result_pending",
+      "accepted_baseline": "v3.2.4-max4",
+      "scope": "All40 development questions / 120 records; per-question retriever setup exception isolation; retained method failures and failure-denominator accounting.",
+      "code_commit": "4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342",
+      "code_path": "experiments/evidence_planning_v0_3_2",
+      "offline_tests_passed": 98,
+      "unchanged_previous_tests": 93,
+      "new_tests": 5,
+      "synthetic_full_batch_questions": 40,
+      "synthetic_full_batch_trials": 120,
+      "live_qwen_calls_during_preparation_and_publication": 0,
+      "live_bge_calls_during_preparation_and_publication": 0,
+      "live_benchmark_metrics": null,
+      "independent_semantic_evaluation": "pending",
+      "final_questions": 15,
+      "final_trial_count": 45,
+      "final15_real_model_inference": false,
+      "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
+      "report": "history/reports/rag-full-development-v032-2026-11-24.md",
+      "preflight": "history/reports/rag-full-development-v032-preflight-2026-11-24.json",
+      "delivery_commit": "4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342",
+      "artifacts": [
+        {
+          "path": "HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip",
+          "bytes": 1056729,
+          "sha256": "4420dadb1352d56fe0212d53518ad1a559923b69545343bc49f134c2bb513b09",
+          "http_status": 200,
+          "download_verified": true
+        },
+        {
+          "path": "HotpotQA_v0.3.2_Full_Development_FA.txt",
+          "url": "https://raw.githubusercontent.com/omidghpython/VIE/4a5dc2bd6f5ecc03cb4be9f7fb44aa6b66640342/HotpotQA_v0.3.2_Full_Development_FA.txt",
+          "bytes": 7040,
+          "sha256": "514faa03dac9ed6446112372eb5a980f646c7cc8eb0de2e1932c1c525da2e0b7",
+          "http_status": 200,
+          "download_verified": true
+        }
+      ],
+      "delivery_verification": "history/reports/rag-full-development-v032-delivery-2026-11-24.json",
+      "next_action": "User-authorized validation on unused15 via existing rag_final15 config, all3 methods/45 records, results/rag_final15. Live results pending.",
+      "remaining": "Model support/negative-prerequisite issues unchanged; no live full-run result yet. Process/storage/integrity/global-initialization failures still stop.",
+      "withdrawn_recovery_republished": false,
+      "cancelled_ui_draft_included": false,
+      "final15_validation_authorization": "history/conversations/2026-11-24-final15-validation-request.md"
     }
   ],
   "ongoing_github_recording_authorization": {

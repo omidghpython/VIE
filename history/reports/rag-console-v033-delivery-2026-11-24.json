@@ -1,0 +1,54 @@
+{
+  "commit": "bdcde276b12fa3e541dd36bf5e037a5a2fd34792",
+  "date_tehran": "2026-11-24",
+  "artifacts": [
+    {
+      "path": "HotpotQA_Evidence_Planning_v0.3.3_Max4_Console.zip",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_Evidence_Planning_v0.3.3_Max4_Console.zip",
+      "bytes": 1083309,
+      "sha256": "6a05190a8db7372e548d9440bce850d07ba3ffeb5ea64066cc7640685f581396",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.3_Max4_Console_FA.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_v0.3.3_Max4_Console_FA.txt",
+      "bytes": 6598,
+      "sha256": "8ce9b4204057eb492ab9b5c68702c91392532bcad8b303384390ae8c5185d58c",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.3_Console_Preview_SYNTHETIC.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_v0.3.3_Console_Preview_SYNTHETIC.txt",
+      "bytes": 128322,
+      "sha256": "0a49d9fe865d6bb9d8765878229428c808cb268e79d8ec60d205c36a80a0733f",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "experiments/evidence_planning_v0_3_3/planning_lab/rag_runner.py",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/experiments/evidence_planning_v0_3_3/planning_lab/rag_runner.py",
+      "bytes": 19839,
+      "sha256": "eb8188a79ff1d80bcdfcdbfd6eea3f2d139ffdba28c5fea1d5cffe1c807e301f",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/README.md",
+      "bytes": 2029,
+      "sha256": "ea23ae54456f45dbf933afcf8a675b560d0e63c503ab95a65ddd4c289e610837",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/AGENTS.md",
+      "bytes": 30461,
+      "sha256": "de82f6e31c4fcda658e5d4eec904cfb9e1e5a9e6fc661112f36561cfeb088572",
+      "http_status": 200,
+      "download_verified": true
+    }
+  ]
+}

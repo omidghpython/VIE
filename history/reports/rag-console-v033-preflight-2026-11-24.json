@@ -1,0 +1,53 @@
+{
+  "version": "0.3.3",
+  "date_tehran": "2026-11-24",
+  "base_version": "0.3.2",
+  "base_zip_sha256": "4420dadb1352d56fe0212d53518ad1a559923b69545343bc49f134c2bb513b09",
+  "changed_original_files": [
+    "FRONTIER_FIX_FA.txt",
+    "FULL_DEVELOPMENT_FA.txt",
+    "PROJECT_PROGRESS_FA.md",
+    "README_FA.md",
+    "START_HERE_FA.txt",
+    "START_RAG_V03_FA.txt",
+    "export_rag_development_results.bat",
+    "export_rag_final15_results.bat",
+    "planning_lab/rag_cli.py",
+    "planning_lab/rag_runner.py",
+    "planning_lab/rag_runtime.py",
+    "run_rag_development.bat",
+    "run_rag_final15.bat"
+  ],
+  "unchanged_baseline_files": 20,
+  "unchanged_data_configs_provenance": true,
+  "unchanged_methods_prompts_support_and_evaluation": true,
+  "unchanged_original_tests": 98,
+  "console_tests": 8,
+  "distinct_tests_passed": 106,
+  "test_runs": [
+    {
+      "suite": "full_before_two_additional_console_tests",
+      "passed": 104
+    },
+    {
+      "suite": "final_console_suite",
+      "passed": 8
+    }
+  ],
+  "preserved_runner_functions": [
+    "prepare_retriever",
+    "setup_failure_trial",
+    "validate_rag_config",
+    "freeze_rag",
+    "load_questions",
+    "execution_summary"
+  ],
+  "live_qwen_calls": 0,
+  "live_real_heldout15_calls": 0,
+  "synthetic_preview_questions": 15,
+  "synthetic_preview_records": 45,
+  "native_windows_bat_test": false,
+  "wall_time_note": "Includes console IO overhead; timing equality is not claimed.",
+  "source_posix_sha256": "4a30042cd11922b5b8cf86a2587fb199cb53bc3bac886768f779440ae16547f0",
+  "source_windows_sha256": "2b6626f91afabe75751ec68178e03f7a0a2313485e7bfc7a0a51afe984a86bf4"
+}
