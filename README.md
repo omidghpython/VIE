@@ -1,3 +1,11 @@
+## نسخهٔ۰٫۳٫۴: انتخاب از دیتاست اصلی با seed=42
+
+[بستهٔ آماده‌سازی و اجرا](HotpotQA_Evidence_Planning_v0.3.4_Official_Final15.zip) · [راهنمای فارسی](HotpotQA_v0.3.4_Official_Final15_FA.txt)
+
+دانلود اصلی در محیط دستیار با۴۰۳متوقف شد؛۱۵سؤال تازه هنوز انتخاب نشده‌اند. ابتداprepare_official_final15.batرا روی سیستم خود اجرا کنید؛ پس ازREADY،run_rag_final15.bat. فایل اصلی باchecksumتاریخی کنترل می‌شود؛mirrorجایگزین نمی‌شود.۱۰۹تست موفق و۷بررسی واقعی درانتظار دانلود. مبنا/روش‌ها/بودجه‌ها ثابت‌اند؛ داده‌های قدیمی حفظ شده‌اند.
+
+---
+
 # HotpotQA / VIE
 
 Data provenance: selected15 are an exact sample from a pinned third-party200-row mirror labelled HotpotQA distractor validation (8bridge/7comparison). Official-release fidelity is not independently established; question/reference inconsistencies are documented. [Provenance audit](HotpotQA_v0.3.3_Validation15_Provenance.json).

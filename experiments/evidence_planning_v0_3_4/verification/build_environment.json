@@ -1,0 +1,20 @@
+{
+  "version": "0.3.0",
+  "date_tehran": "2026-11-21",
+  "python": "3.12.14",
+  "tests_passed": 88,
+  "tests_failed": 0,
+  "tests_skipped": 0,
+  "actual_qwen_calls": 0,
+  "actual_bge_embedding_calls": 0,
+  "retrieval_software_tested": [
+    "BM25 on synthetic documents",
+    "original HybridRetriever with synthetic encoder"
+  ],
+  "final15_real_model_inference": false,
+  "torch_installed": false,
+  "unchanged_baseline_python_files": 20,
+  "source_final15_unchanged": true,
+  "development_trees_unchanged": true,
+  "caveat": "Software tests use synthetic language outputs; no real benchmark accuracy or model token usage is claimed."
+}

@@ -1,0 +1,59 @@
+{
+  "fresh_model_calls": 0,
+  "fresh_retrieval_calls": 0,
+  "final15_used": false,
+  "changed_query_live_result": "pending",
+  "unchanged_recorded_paths": [
+    {
+      "question_id": "5a7d3f895542995f4f402248",
+      "method": "max4",
+      "model_calls_replayed": 2,
+      "answer": "mountain Banshee",
+      "status": "answered"
+    },
+    {
+      "question_id": "5a7d3f895542995f4f402248",
+      "method": "operadic",
+      "model_calls_replayed": 4,
+      "answer": "mountain Banshee",
+      "status": "answered"
+    },
+    {
+      "question_id": "5a7d3f895542995f4f402248",
+      "method": "standard",
+      "model_calls_replayed": 3,
+      "answer": "Banshee",
+      "status": "answered"
+    },
+    {
+      "question_id": "5a7d598d5542995f4f402262",
+      "method": "max4",
+      "model_calls_replayed": 4,
+      "answer": "Maheen Zia",
+      "status": "answered"
+    },
+    {
+      "question_id": "5a7d598d5542995f4f402262",
+      "method": "standard",
+      "model_calls_replayed": 3,
+      "answer": "Burton L. King",
+      "status": "answered"
+    }
+  ],
+  "changed_path": {
+    "question_id": "5a7d598d5542995f4f402262",
+    "original_targets": [
+      "q1",
+      "q1"
+    ],
+    "new_targets": [
+      "q1",
+      "q2"
+    ],
+    "second_query": "Did Maheen Zia edit films?",
+    "prefix_model_calls_replayed": 4,
+    "reused_changed_query_ranking": false,
+    "outcome": "Replay deliberately refused at the changed second query; no patched model answer claimed."
+  },
+  "old_source_output_resume_refused": true
+}
