@@ -1,0 +1,10 @@
+{
+  "torch_available": false,
+  "transformers_available": false,
+  "nvidia_smi_available": false,
+  "live_model_calls": 0,
+  "final15_live_model_calls": 0,
+  "live_result_status": "not_run",
+  "offline_test_count": 57,
+  "final_lifecycle_test_data": "synthetic questions only; real final15 checked only for identity/schema/split integrity"
+}

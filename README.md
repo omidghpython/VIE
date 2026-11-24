@@ -1,19 +1,17 @@
 # HotpotQA / VIE
 
-Current experimental release: **Evidence Planning v0.3.2 — full development run and failure continuation**. Accepted decomposition baseline: **v3.2.4-max4**.
+Current release: **Evidence Planning v0.3.3 — max4-style console**. Accepted decomposition baseline: **v3.2.4-max4**.
 
-- [Download v0.3.2 ZIP](HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip)
-- [Persian update and full-run guide](HotpotQA_v0.3.2_Full_Development_FA.txt)
-- [Browsable v0.3.2 source](experiments/evidence_planning_v0_3_2)
-- [Persian current status](PROJECT_PROGRESS_FA.md)
-- [Analysis of the actual v0.3 debug traces](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/history/reports/rag-debug-analysis-2026-11-24.md)
-- [Open research reminder: full-loop dependency control](OPEN_RESEARCH_TASKS_FA.md)
-- [Complete durable project history](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/PROJECT_PROGRESS_FA.md)
+- [Download current ZIP](HotpotQA_Evidence_Planning_v0.3.3_Max4_Console.zip)
+- [Persian run guide](HotpotQA_v0.3.3_Max4_Console_FA.txt)
+- [Synthetic console preview — not actual validation results](HotpotQA_v0.3.3_Console_Preview_SYNTHETIC.txt)
+- [Current source](experiments/evidence_planning_v0_3_3)
+- [Current Persian status](PROJECT_PROGRESS_FA.md)
+- [Durable history](https://github.com/omidghpython/VIE/blob/docs/hotpotqa-progress/PROJECT_PROGRESS_FA.md)
+- [Open dependency-control reminder](OPEN_RESEARCH_TASKS_FA.md)
 
-The development launcher now runs **all 40 development questions / 120 method records**. Method errors, budget exhaustion, abstentions and invalid plans remain recorded; per-question retriever setup exceptions are now recorded and isolated so later questions continue. Persisted successes and failures are skipped on resume. Storage/identity failures and process interruption remain stopping conditions. **98 offline tests passed**, including a synthetic full 40-question run with mixed failures. No live result for v0.3.2 is available yet. Algorithms, prompts, trees, evidence gates and per-trial budgets remain unchanged.
+The user renewed the console request and chose validation on the unused15. The reference max4 ZIP was downloaded and hash-verified. Its timestamp/level and question-number style is adapted to all three methods, with model/retrieval/node/failure/cost updates and console.log. This display change preserves v0.3.2 failure continuation, method algorithms, prompts, trees, data and budgets. **106 distinct offline tests pass; no new actual Qwen/heldout15 results are claimed.** Preview data and model replies are synthetic. Native Windows/GPU execution remains unverified.
 
-The original v0.3 has six real trial records from two development questions (24 model calls, 8 retrieval calls, 12,602 tokens), reproduced exactly from saved traces. This is not a complete benchmark. New runs use `results/rag_development_v032`; keep old results and reuse the installed venv/model cache. Final15 remains unused for model inference. Recovery and the cancelled console redesign are not part of this release.
+For the authorized validation, run `run_rag_final15.bat` using the existing venv: 15 questions / 45 method records, failures retained, output `results/rag_final15`. Existing usage markers and source locks remain binding; do not restart a consumed set as unseen to upgrade display. Development remains available via `run_rag_development.bat`: all40 /120records into `results/rag_development_v033`.
 
-Previous release: [original v0.3 ZIP](HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip), [v0.3 guide](HotpotQA_v0.3_Guide_FA.txt), [v0.2 audit / v0.3 changes](HotpotQA_v0.2_Audit_v0.3_Changes_FA.txt), [v0.3 source](experiments/evidence_planning_v0_3_0). Earlier releases remain historical records; no decomposition baseline promotion is claimed.
-
-Previous frontier correction: [v0.3.1 ZIP](HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip), [guide](HotpotQA_v0.3.1_Frontier_Fix_FA.txt).
+Earlier releases remain historical: [v0.3.2](HotpotQA_Evidence_Planning_v0.3.2_Full_Development.zip), [v0.3.1](HotpotQA_Evidence_Planning_v0.3.1_Frontier_Fix.zip), [v0.3](HotpotQA_Evidence_Planning_v0.3_Three_Method_RAG.zip). The withdrawn Recovery package is not republished. Model semantic failures and full-loop dependency ablation remain open; console completion is not answer correctness.

@@ -1,0 +1,14 @@
+{
+  "baseline": "v3.2.4-max4",
+  "unchanged_source_files": 20,
+  "questions": 40,
+  "cases": 200,
+  "valid_questions": 37,
+  "invalid_questions": 3,
+  "matched_input_pairs": 185,
+  "model_calls": 0,
+  "retrieval_calls": 0,
+  "heldout_final_questions": 15,
+  "heldout_states": 75,
+  "known_exposure_overlap": 0
+}

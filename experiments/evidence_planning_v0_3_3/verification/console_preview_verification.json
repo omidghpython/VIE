@@ -1,0 +1,15 @@
+{
+  "synthetic": true,
+  "questions": 15,
+  "records": 45,
+  "statuses": {
+    "answered": 44,
+    "budget_exhausted": 1
+  },
+  "real_model_calls": 0,
+  "real_heldout_questions_used": 0,
+  "real_gpu_used": false,
+  "model": "ScriptBackend",
+  "retrieval": "real CPU BM25 over invented passages",
+  "full_log": "console_preview.txt"
+}
