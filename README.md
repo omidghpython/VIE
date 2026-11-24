@@ -1,5 +1,7 @@
 # HotpotQA / VIE
 
+Data provenance: selected15 are an exact sample from a pinned third-party200-row mirror labelled HotpotQA distractor validation (8bridge/7comparison). Official-release fidelity is not independently established; question/reference inconsistencies are documented. [Provenance audit](HotpotQA_v0.3.3_Validation15_Provenance.json).
+
 Latest actual results: [Persian analysis](HotpotQA_v0.3.3_Validation15_Analysis_FA.txt), [per-question CSV](HotpotQA_v0.3.3_Validation15_Per_Question.csv), [original result ZIP](HotpotQA_v0.3.3_Validation15_Results.zip). 199 physical model calls,69 retrievals,165792tokens. No controller improvement established; reference-quality caveats are documented.
 
 Current release: **Evidence Planning v0.3.3 — max4-style console**. Accepted decomposition baseline: **v3.2.4-max4**.

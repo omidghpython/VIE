@@ -1,0 +1,18 @@
+{
+  "source_url": "https://raw.githubusercontent.com/NotAbleToFindAUsername/HotpotQA_Dataset/6ac268e426770b3c13c84566aaf4b55ce9548352/hotpotqa_distractor_validation.pkl",
+  "source_sha256": "0d2968ed54b43b0403743de7b2886094943a8938b00908baa728603dcbd8ce64",
+  "source_bytes": 1254382,
+  "source_pool_records": 200,
+  "eligible_records": 199,
+  "selected_records": 15,
+  "selected_counts": {
+    "bridge": 8,
+    "comparison": 7
+  },
+  "selection_reproduced_exactly": true,
+  "original_records_match_mirror_exactly": true,
+  "known_exposure_overlap": 0,
+  "source_scope": "Third-party 200-record mirror labelled HotpotQA distractor validation, not direct official-host download or full validation sampling.",
+  "official_dataset_crosscheck": "Not established: Hugging Face dataset-server filter request rejected with HTTP tunnel403.",
+  "no_source_data_or_labels_modified": true
+}
