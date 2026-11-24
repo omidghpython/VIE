@@ -1,0 +1,37 @@
+{
+  "commit": "a71a299cb9ce349d3a1488185af7ad1849c2990b",
+  "artifacts": [
+    {
+      "path": "HotpotQA_v0.3.3_Validation15_Results.zip",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Results.zip",
+      "bytes": 852025,
+      "sha256": "c4deab630bf24359f3a039b354c3d598ddbd27d81f7b5f1e78b66aa02bbc0483",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.3_Validation15_Analysis_FA.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Analysis_FA.txt",
+      "bytes": 19842,
+      "sha256": "06bf7263a6ee9ff0dcac9b32cfef554dba7fab57b1344ecf1755b5adcc5497ee",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.3_Validation15_Per_Question.csv",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Per_Question.csv",
+      "bytes": 7952,
+      "sha256": "415787dc0ff9b7e55329017e868b5053bcb32b1409f2ed117fedbac076af021f",
+      "http_status": 200,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.3_Validation15_Provenance.json",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Provenance.json",
+      "bytes": 880,
+      "sha256": "919cc9247dc9fec26c9aa7ae7531179092280b8de3cd3d311cc3aa6638c23379",
+      "http_status": 200,
+      "download_verified": true
+    }
+  ]
+}

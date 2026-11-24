@@ -504,9 +504,9 @@
   },
   "current_experiment": {
     "id": "evidence_planning_v0.3.3",
-    "status": "console_verified_live_validation_pending",
+    "status": "live_validation_analyzed_controller_underperformance",
     "accepted_baseline": "v3.2.4-max4",
-    "scope": "Read-only max4-style console observers adapted to v0.3.2; validation15 remains the authorized next workflow.",
+    "scope": "Analyze user-provided 45-trial validation export; no pipeline or frozen baseline changes.",
     "code_commit": "bdcde276b12fa3e541dd36bf5e037a5a2fd34792",
     "code_path": "experiments/evidence_planning_v0_3_3",
     "offline_tests_passed": 106,
@@ -525,8 +525,15 @@
     "reference": "history/reports/rag-console-max4-reference-2026-11-24.json",
     "live_qwen_calls_during_preparation_and_publication": 0,
     "live_bge_calls_during_preparation_and_publication": 0,
-    "live_benchmark_metrics": null,
-    "final15_real_model_inference": false,
+    "live_benchmark_metrics": {
+      "raw_EM": {
+        "standard": 0.5333333333333333,
+        "max4": 0.26666666666666666,
+        "operadic": 0
+      },
+      "independent_semantic_metrics": "pending"
+    },
+    "final15_real_model_inference": true,
     "final_questions": 15,
     "final_trial_count": 45,
     "final15_validation_authorization": "history/conversations/2026-11-24-final15-validation-request.md",
@@ -569,11 +576,88 @@
       "retriever": "CPU BM25 on invented data",
       "verification": "history/reports/rag-console-v033-preview-verification-2026-11-24.json"
     },
-    "next_action": "User starts authorized validation15 with run_rag_final15.bat if unused; preserve existing marker/locks and original source if already started. Export rag_final15_results.zip.",
+    "next_action": "Review semantic failures and source/reference fidelity; preserve used-split markers. Do not reuse these 15 as unseen after tuning.",
     "native_windows_bat_test": false,
     "wall_time_includes_console_overhead": true,
     "withdrawn_recovery_republished": false,
-    "previous_ui_cancellation_superseded": true
+    "previous_ui_cancellation_superseded": true,
+    "final15_now_exposed": true,
+    "latest_live_validation": {
+      "id": "validation15-v033-2026-11-24",
+      "questions": 15,
+      "trial_records": 45,
+      "source_match_confirmed": true,
+      "exact_plan_replays": 15,
+      "exact_trial_replays": 45,
+      "fresh_model_calls_during_analysis": 0,
+      "fresh_retrieval_calls_during_analysis": 0,
+      "actual_model_calls": 199,
+      "actual_retrieval_calls": 69,
+      "actual_tokens": 165792,
+      "raw_exact_matches": {
+        "standard": 8,
+        "max4": 4,
+        "operadic": 0
+      },
+      "independent_semantic_review": "pending",
+      "citation_faithfulness": null,
+      "premature_stopping": null,
+      "operadic_statuses": {
+        "budget_exhausted": 13,
+        "answered_incorrectly": 1,
+        "invalid_plan": 1
+      },
+      "questions_now_exposed": true,
+      "source_provenance": {
+        "type": "third_party_200_record_mirror_labelled_hotpotqa_distractor_validation",
+        "bridge": 8,
+        "comparison": 7,
+        "mirror_hash_and_exact_selection_verified": true,
+        "fidelity_to_official_release": "not_verified"
+      },
+      "report": "history/reports/validation15-v033-analysis-2026-11-24.md",
+      "audit": "history/reports/validation15-v033-audit-2026-11-24.json",
+      "provenance": "history/reports/validation15-v033-provenance-2026-11-24.json",
+      "results": "history/results/validation15-v033-2026-11-24.zip",
+      "delivery": {
+        "commit": "a71a299cb9ce349d3a1488185af7ad1849c2990b",
+        "artifacts": [
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Results.zip",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Results.zip",
+            "bytes": 852025,
+            "sha256": "c4deab630bf24359f3a039b354c3d598ddbd27d81f7b5f1e78b66aa02bbc0483",
+            "http_status": 200,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Analysis_FA.txt",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Analysis_FA.txt",
+            "bytes": 19842,
+            "sha256": "06bf7263a6ee9ff0dcac9b32cfef554dba7fab57b1344ecf1755b5adcc5497ee",
+            "http_status": 200,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Per_Question.csv",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Per_Question.csv",
+            "bytes": 7952,
+            "sha256": "415787dc0ff9b7e55329017e868b5053bcb32b1409f2ed117fedbac076af021f",
+            "http_status": 200,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Provenance.json",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Provenance.json",
+            "bytes": 880,
+            "sha256": "919cc9247dc9fec26c9aa7ae7531179092280b8de3cd3d311cc3aa6638c23379",
+            "http_status": 200,
+            "download_verified": true
+          }
+        ]
+      },
+      "pipeline_changed": false
+    }
   },
   "experiment_history": [
     {
@@ -785,7 +869,8 @@
           "sha256": "75700148d38fd611e70ddc4febc29cc31f3cf52e8bab15fb6020f793bb7a8740"
         }
       ]
-    }
+    },
+    "history/conversations/2026-11-24-final15-results-and-dataset-question.md"
   ],
   "delivery_policy": {
     "location": "repository_default_branch_root",
@@ -2047,7 +2132,7 @@
       "actual_reason": "retrieval_calls",
       "scheduler_repetition": "fixed_and_offline_tested_v0.3.1",
       "post_budget_retrieve_log": "fixed_and_offline_tested_v0.3.1",
-      "new_live_result": "pending",
+      "new_live_result": "v0.3.3 validation15: 13 controller retrieval-budget stops; semantic gate problems remain",
       "remaining": [
         "model_rejects_visible_editor_evidence",
         "one_malformed_support_reply",
@@ -2064,7 +2149,86 @@
       "synthetic_full_batch_records": 120,
       "all_question_denominators_preserved": true,
       "global_failure_boundaries_preserved": true,
-      "report": "history/reports/rag-full-development-v032-2026-11-24.md"
+      "report": "history/reports/rag-full-development-v032-2026-11-24.md",
+      "validation15_observation": "45/45 records completed; no injected runtime failure in this live run"
+    }
+  ],
+  "live_validation_runs": [
+    {
+      "id": "validation15-v033-2026-11-24",
+      "questions": 15,
+      "trial_records": 45,
+      "source_match_confirmed": true,
+      "exact_plan_replays": 15,
+      "exact_trial_replays": 45,
+      "fresh_model_calls_during_analysis": 0,
+      "fresh_retrieval_calls_during_analysis": 0,
+      "actual_model_calls": 199,
+      "actual_retrieval_calls": 69,
+      "actual_tokens": 165792,
+      "raw_exact_matches": {
+        "standard": 8,
+        "max4": 4,
+        "operadic": 0
+      },
+      "independent_semantic_review": "pending",
+      "citation_faithfulness": null,
+      "premature_stopping": null,
+      "operadic_statuses": {
+        "budget_exhausted": 13,
+        "answered_incorrectly": 1,
+        "invalid_plan": 1
+      },
+      "questions_now_exposed": true,
+      "source_provenance": {
+        "type": "third_party_200_record_mirror_labelled_hotpotqa_distractor_validation",
+        "bridge": 8,
+        "comparison": 7,
+        "mirror_hash_and_exact_selection_verified": true,
+        "fidelity_to_official_release": "not_verified"
+      },
+      "report": "history/reports/validation15-v033-analysis-2026-11-24.md",
+      "audit": "history/reports/validation15-v033-audit-2026-11-24.json",
+      "provenance": "history/reports/validation15-v033-provenance-2026-11-24.json",
+      "results": "history/results/validation15-v033-2026-11-24.zip",
+      "delivery": {
+        "commit": "a71a299cb9ce349d3a1488185af7ad1849c2990b",
+        "artifacts": [
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Results.zip",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Results.zip",
+            "bytes": 852025,
+            "sha256": "c4deab630bf24359f3a039b354c3d598ddbd27d81f7b5f1e78b66aa02bbc0483",
+            "http_status": 200,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Analysis_FA.txt",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Analysis_FA.txt",
+            "bytes": 19842,
+            "sha256": "06bf7263a6ee9ff0dcac9b32cfef554dba7fab57b1344ecf1755b5adcc5497ee",
+            "http_status": 200,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Per_Question.csv",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Per_Question.csv",
+            "bytes": 7952,
+            "sha256": "415787dc0ff9b7e55329017e868b5053bcb32b1409f2ed117fedbac076af021f",
+            "http_status": 200,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.3_Validation15_Provenance.json",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a71a299cb9ce349d3a1488185af7ad1849c2990b/HotpotQA_v0.3.3_Validation15_Provenance.json",
+            "bytes": 880,
+            "sha256": "919cc9247dc9fec26c9aa7ae7531179092280b8de3cd3d311cc3aa6638c23379",
+            "http_status": 200,
+            "download_verified": true
+          }
+        ]
+      },
+      "pipeline_changed": false
     }
   ]
 }

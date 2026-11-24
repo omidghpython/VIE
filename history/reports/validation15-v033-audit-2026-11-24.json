@@ -1,0 +1,530 @@
+{
+  "source_matches_v033_windows": true,
+  "questions_match_fixed15": true,
+  "exact_plan_replays": 15,
+  "exact_trial_replays": 45,
+  "report_regenerated_exactly": true,
+  "model_call_journals_verified": 199,
+  "retrieval_call_journals_verified": 69,
+  "fresh_model_calls": 0,
+  "fresh_search_calls": 0,
+  "execution": {
+    "protocol": "closed_loop_three_arm_rag_v1",
+    "role": "heldout",
+    "question_count": 15,
+    "expected_trials": 45,
+    "recorded_trials": 45,
+    "execution_complete": true,
+    "actual_llm_calls": 199,
+    "actual_retrieval_calls": 69,
+    "actual_total_tokens": 165792,
+    "shared_plan_calls": 17,
+    "shared_retriever_setup_seconds": 12.423728900000185,
+    "cost_scope": "Physical calls count shared final-plan generation once; per-method charged cost includes it in each tree arm.",
+    "independent_semantic_evaluation_complete": false,
+    "methods": [
+      "standard",
+      "max4",
+      "operadic"
+    ]
+  },
+  "plans": [
+    {
+      "question_id": "5ae0361155429925eb1afc2c",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 653
+    },
+    {
+      "question_id": "5a75e05c55429976ec32bc5f",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 677
+    },
+    {
+      "question_id": "5a7a455c5542994f819ef1a7",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 717
+    },
+    {
+      "question_id": "5ae224da554299234fd043ee",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 730
+    },
+    {
+      "question_id": "5adccd795542990d50227d2c",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 700
+    },
+    {
+      "question_id": "5a8361b65542992ef85e22a0",
+      "model_calls": 2,
+      "status": "valid",
+      "tokens": 1446
+    },
+    {
+      "question_id": "5a8b57f25542995d1e6f1371",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 717
+    },
+    {
+      "question_id": "5ac3165c5542995ef918c10a",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 686
+    },
+    {
+      "question_id": "5a8eea4a5542990e94052bb7",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 734
+    },
+    {
+      "question_id": "5a7633ad5542992db9473741",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 731
+    },
+    {
+      "question_id": "5ac298f9554299657fa28fc9",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 718
+    },
+    {
+      "question_id": "5ae2070a5542994d89d5b313",
+      "model_calls": 2,
+      "status": "invalid",
+      "tokens": 1847
+    },
+    {
+      "question_id": "5ab642845542995eadeeff8e",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 729
+    },
+    {
+      "question_id": "5ae7ba7a5542993210983f12",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 723
+    },
+    {
+      "question_id": "5a74106b55429979e288289e",
+      "model_calls": 1,
+      "status": "valid",
+      "tokens": 679
+    }
+  ],
+  "trials": [
+    {
+      "question_id": "5ae0361155429925eb1afc2c",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 1427
+    },
+    {
+      "question_id": "5ae0361155429925eb1afc2c",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 2,
+      "retrieval_calls": 1,
+      "tokens": 1097
+    },
+    {
+      "question_id": "5ae0361155429925eb1afc2c",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 4,
+      "retrieval_calls": 2,
+      "tokens": 3960
+    },
+    {
+      "question_id": "5a75e05c55429976ec32bc5f",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2974
+    },
+    {
+      "question_id": "5a75e05c55429976ec32bc5f",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 2002
+    },
+    {
+      "question_id": "5a75e05c55429976ec32bc5f",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 5,
+      "retrieval_calls": 2,
+      "tokens": 5557
+    },
+    {
+      "question_id": "5a7a455c5542994f819ef1a7",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 1148
+    },
+    {
+      "question_id": "5a7a455c5542994f819ef1a7",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 4,
+      "retrieval_calls": 1,
+      "tokens": 1935
+    },
+    {
+      "question_id": "5a7a455c5542994f819ef1a7",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 9,
+      "retrieval_calls": 2,
+      "tokens": 7612
+    },
+    {
+      "question_id": "5ae224da554299234fd043ee",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2638
+    },
+    {
+      "question_id": "5ae224da554299234fd043ee",
+      "method": "max4",
+      "status": "abstained",
+      "error": null,
+      "model_calls": 5,
+      "retrieval_calls": 2,
+      "tokens": 4517
+    },
+    {
+      "question_id": "5ae224da554299234fd043ee",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 5,
+      "retrieval_calls": 2,
+      "tokens": 4784
+    },
+    {
+      "question_id": "5adccd795542990d50227d2c",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2345
+    },
+    {
+      "question_id": "5adccd795542990d50227d2c",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 1590
+    },
+    {
+      "question_id": "5adccd795542990d50227d2c",
+      "method": "operadic",
+      "status": "answered",
+      "error": null,
+      "model_calls": 8,
+      "retrieval_calls": 2,
+      "tokens": 9289
+    },
+    {
+      "question_id": "5a8361b65542992ef85e22a0",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 3268
+    },
+    {
+      "question_id": "5a8361b65542992ef85e22a0",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 2245
+    },
+    {
+      "question_id": "5a8361b65542992ef85e22a0",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 6,
+      "retrieval_calls": 2,
+      "tokens": 6797
+    },
+    {
+      "question_id": "5a8b57f25542995d1e6f1371",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2391
+    },
+    {
+      "question_id": "5a8b57f25542995d1e6f1371",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 4,
+      "retrieval_calls": 1,
+      "tokens": 1931
+    },
+    {
+      "question_id": "5a8b57f25542995d1e6f1371",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 8,
+      "retrieval_calls": 2,
+      "tokens": 6801
+    },
+    {
+      "question_id": "5ac3165c5542995ef918c10a",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 1285
+    },
+    {
+      "question_id": "5ac3165c5542995ef918c10a",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 1539
+    },
+    {
+      "question_id": "5ac3165c5542995ef918c10a",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 6,
+      "retrieval_calls": 2,
+      "tokens": 4682
+    },
+    {
+      "question_id": "5a8eea4a5542990e94052bb7",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2857
+    },
+    {
+      "question_id": "5a8eea4a5542990e94052bb7",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 5,
+      "retrieval_calls": 1,
+      "tokens": 3454
+    },
+    {
+      "question_id": "5a8eea4a5542990e94052bb7",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 4,
+      "retrieval_calls": 2,
+      "tokens": 4206
+    },
+    {
+      "question_id": "5a7633ad5542992db9473741",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 2114
+    },
+    {
+      "question_id": "5a7633ad5542992db9473741",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 4,
+      "retrieval_calls": 1,
+      "tokens": 3266
+    },
+    {
+      "question_id": "5a7633ad5542992db9473741",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 8,
+      "retrieval_calls": 2,
+      "tokens": 9335
+    },
+    {
+      "question_id": "5ac298f9554299657fa28fc9",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2448
+    },
+    {
+      "question_id": "5ac298f9554299657fa28fc9",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 4,
+      "retrieval_calls": 1,
+      "tokens": 2552
+    },
+    {
+      "question_id": "5ac298f9554299657fa28fc9",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 8,
+      "retrieval_calls": 2,
+      "tokens": 7718
+    },
+    {
+      "question_id": "5ae2070a5542994d89d5b313",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2734
+    },
+    {
+      "question_id": "5ae2070a5542994d89d5b313",
+      "method": "max4",
+      "status": "invalid_plan",
+      "error": "Decomposition remained structurally invalid after two attempts.",
+      "model_calls": 0,
+      "retrieval_calls": 0,
+      "tokens": 0
+    },
+    {
+      "question_id": "5ae2070a5542994d89d5b313",
+      "method": "operadic",
+      "status": "invalid_plan",
+      "error": "Decomposition remained structurally invalid after two attempts.",
+      "model_calls": 0,
+      "retrieval_calls": 0,
+      "tokens": 0
+    },
+    {
+      "question_id": "5ab642845542995eadeeff8e",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 951
+    },
+    {
+      "question_id": "5ab642845542995eadeeff8e",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 4,
+      "retrieval_calls": 1,
+      "tokens": 2207
+    },
+    {
+      "question_id": "5ab642845542995eadeeff8e",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 8,
+      "retrieval_calls": 2,
+      "tokens": 6012
+    },
+    {
+      "question_id": "5ae7ba7a5542993210983f12",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 4028
+    },
+    {
+      "question_id": "5ae7ba7a5542993210983f12",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 1,
+      "tokens": 2554
+    },
+    {
+      "question_id": "5ae7ba7a5542993210983f12",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 4,
+      "retrieval_calls": 2,
+      "tokens": 5566
+    },
+    {
+      "question_id": "5a74106b55429979e288289e",
+      "method": "standard",
+      "status": "answered",
+      "error": null,
+      "model_calls": 3,
+      "retrieval_calls": 2,
+      "tokens": 2027
+    },
+    {
+      "question_id": "5a74106b55429979e288289e",
+      "method": "max4",
+      "status": "answered",
+      "error": null,
+      "model_calls": 5,
+      "retrieval_calls": 2,
+      "tokens": 4101
+    },
+    {
+      "question_id": "5a74106b55429979e288289e",
+      "method": "operadic",
+      "status": "budget_exhausted",
+      "error": "retrieval_calls",
+      "model_calls": 2,
+      "retrieval_calls": 2,
+      "tokens": 1361
+    }
+  ]
+}

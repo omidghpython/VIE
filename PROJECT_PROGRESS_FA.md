@@ -737,3 +737,15 @@ decomp50: تعداد ۵۰، ترکیب۴۲bridge/۸comparison؛ فقط یک سؤ
 
 
 انتشار۰٫۳٫۳ درcommit `bdcde276b12fa3e541dd36bf5e037a5a2fd34792` شاخهٔ پیش‌فرض انجام شد. [ZIP ثابت](https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_Evidence_Planning_v0.3.3_Max4_Console.zip)، [راهنما](https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_v0.3.3_Max4_Console_FA.txt) و [پیش‌نمایش صریحاً ساختگی](https://raw.githubusercontent.com/omidghpython/VIE/bdcde276b12fa3e541dd36bf5e037a5a2fd34792/HotpotQA_v0.3.3_Console_Preview_SYNTHETIC.txt). هشZIP `6a05190a8db7372e548d9440bce850d07ba3ffeb5ea64066cc7640685f581396` است. هر سه artifact وکدrunner/README/AGENTS از شبکه دانلود و بایت‌به‌بایت تأیید شدند. جزئیات درrag-console-v033-delivery-2026-11-24.json است.
+
+
+## ۲۰۲۶-۱۱-۲۴ — دریافت و تحلیل اجرای واقعی۱۵سؤال
+
+کاربرrag_final15_results.zipرا فرستاد. نسخهٔ۰٫۳٫۳/۱۵سؤال ثابت و منبعWindows تطبیق دارند؛۱۵درخت و۴۵trial/۱۹۹فراخوانی/۶۹بازیابی دقیقاً بازپخش و گزارش بازتولید شد. کل مصرف واقعی۱۶۵۷۹۲توکن،شامل۱۲۴۸۷توکن/۱۷فراخوانی طرح مشترک است. هیچ مدل تازه درتحلیل اجرا نشد.
+
+EMخام:Standard۸/۱۵،max4۴/۱۵،کنترل‌گر۰/۱۵. کنترل‌گر۱۳توقف برretrieval_calls،۱invalid_planو۱پاسخRabatغلط دارد؛شاهدBeijingدرشواهد موجود بود. رد نادرست پاسخ درست درمقایسهٔتاریخ مرگ هم مشاهده شد.۱۳ردقرارداد گواهی،ناپایداری بازبررسی و هدف‌گذاری غلط برخی درخت‌ها ثبت شدند. Standardچهاربارliteral Empty responseراansweredثبت کرده است. چند مرجع/صورت سؤال و تطبیقtrue/yesیاMumbai/Maharashtraنیازمندممیزی‌اند؛نمره‌ها پس ازدیدننتیجه تغییرنکردند. داوری مستقل CitationFaithfulness/PrematureStoppingهنوزتکمیل نشده است.
+
+این کنترل‌گر قابل‌ارتقا به روش برتر نیست؛مبناmax4تغییرنکرد،کد/پرامپت/بودجه/داده اصلاح نشد.۱۵سؤال اکنون اجرا و مشاهده‌شده‌اند؛برای اصلاح بعدی اعتبارسنجی/توسعه محسوب می‌شوند،نه آزمون نهاییِ تازه. OC-ABLATION-01باز است. [گزارش کامل](history/reports/validation15-v033-analysis-2026-11-24.md)،[بازپخش](history/reports/validation15-v033-audit-2026-11-24.json)،[جدول۱۵سؤال](history/reports/validation15-v033-per-question-2026-11-24.csv).
+
+
+تکمیل پاسخ دربارهٔ منشأ:۱۵سؤال ازmirrorعمومی۲۰۰رکوردی منتسب بهHotpotQA distractor validationانتخاب شده‌اند؛۸bridge/۷comparisonاز۱۹۹رکورد واجدشرایط. دانلوددوباره/hashو انتخابSHA256و برابریهر۱۵رکورد باmirrorتأییدشد. دانلودمستقیم رسمی درزمانساخت نبوده و درخواست فعلی تطبیق رسمی نیزHTTP tunnel403گرفت؛تطابق رسمی هنوزاثبات نشده است. اشکال‌های متن/مرجع درهمانmirrorوجود دارند. گزارش نباید این اجرا را ارزیابیِاصالت‌تأییدشده رویHotpotQAرسمی معرفی کند. [ثبتمنشأ](history/reports/validation15-v033-provenance-2026-11-24.json).
