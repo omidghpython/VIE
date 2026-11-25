@@ -1,0 +1,167 @@
+[
+  {
+    "number": 1,
+    "question": "What profession does Matt Thiessen and George Thorogood have in common?",
+    "reference": "musician",
+    "standard_answer": "Singer-songwriter",
+    "standard_EM": 0.0,
+    "max4_answer": "musician, singer, songwriter",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 2,
+    "question": "Which tennis player is older, Emilio Sánchez or Andrei Olhovskiy?",
+    "reference": "Emilio Ángel Sánchez Vicario",
+    "standard_answer": "Emilio Sánchez",
+    "standard_EM": 0.0,
+    "max4_answer": "Emilio Sánchez",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 3,
+    "question": "Who was this American Founding Father, a proponent of democracy, republicanism, and individual rights, examined Ice Age fossils of Kentucky's Big Bone Lick?",
+    "reference": "Thomas Jefferson",
+    "standard_answer": "Thomas Jefferson",
+    "standard_EM": 1.0,
+    "max4_answer": "Thomas Jefferson",
+    "max4_EM": 1.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 4,
+    "question": "Who was soldier Archie A. Peck's commanding officer during the Meuse-Argonne Offensive?",
+    "reference": "Major Charles White Whittlesey",
+    "standard_answer": "Empty response.",
+    "standard_EM": 0.0,
+    "max4_answer": "John J. Pershing",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 5,
+    "question": "What profession does John Lanchester and Alan Dean Foster have in common?",
+    "reference": "novelist",
+    "standard_answer": "Novelist",
+    "standard_EM": 1.0,
+    "max4_answer": "writer",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 6,
+    "question": "Which case was decided first, Selle v. Gibb or Reynolds v. Sims?",
+    "reference": "1964",
+    "standard_answer": "Reynolds v. Sims",
+    "standard_EM": 0.0,
+    "max4_answer": "Reynolds v. Sims",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 7,
+    "question": "Who collaborated with Rihanna on the album release \"Numb\"?",
+    "reference": "Eminem",
+    "standard_answer": "Rob Dougan",
+    "standard_EM": 0.0,
+    "max4_answer": "Eminem",
+    "max4_EM": 1.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 8,
+    "question": "On which station did the 2014 South Korean television series, starring the main rapper of boyband SS501, air?",
+    "reference": "KBS2",
+    "standard_answer": "KBS2",
+    "standard_EM": 1.0,
+    "max4_answer": "KBS2",
+    "max4_EM": 1.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 9,
+    "question": "Psychopsis and Aubrieta are both genuses of which type of plants?",
+    "reference": "flowering plants",
+    "standard_answer": "Flowering plants",
+    "standard_EM": 1.0,
+    "max4_answer": "orchids and flowering plants",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 10,
+    "question": "In which year was the choreographer for \"Best Foot Forward\" born?",
+    "reference": "1912",
+    "standard_answer": "1912",
+    "standard_EM": 1.0,
+    "max4_answer": "",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 11,
+    "question": "What are these two Malaysian businesses, Theme Park Hotel and Genting Highlands, considered?",
+    "reference": "resort",
+    "standard_answer": "Entertainment destinations",
+    "standard_EM": 0.0,
+    "max4_answer": "hotels",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 12,
+    "question": "Which director, John Schlesinger or Barbara Albert, was also a writer and film producer?",
+    "reference": "Barbara Albert",
+    "standard_answer": "Barbara Albert",
+    "standard_EM": 1.0,
+    "max4_answer": "Barbara Albert",
+    "max4_EM": 1.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 13,
+    "question": "In what year did Farda Amiga win a race at the Saratoga Race course?",
+    "reference": "(foaled February 1, 1999)",
+    "standard_answer": "Empty response.",
+    "standard_EM": 0.0,
+    "max4_answer": "2001",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 14,
+    "question": "Who did Fredric Rieders tesify agains who had killed as many as 60 patients and recieved three consecutive life terms to be served in Florence Colorado?",
+    "reference": "Michael Swango",
+    "standard_answer": "Michael Swango",
+    "standard_EM": 1.0,
+    "max4_answer": "",
+    "max4_EM": 0.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  },
+  {
+    "number": 15,
+    "question": "Which was released first, Gasland or To Shoot an Elephant?",
+    "reference": "To Shoot an Elephant",
+    "standard_answer": "To Shoot an Elephant",
+    "standard_EM": 1.0,
+    "max4_answer": "To Shoot an Elephant",
+    "max4_EM": 1.0,
+    "operadic_answer": "",
+    "operadic_EM": 0.0
+  }
+]

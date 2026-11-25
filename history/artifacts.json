@@ -555,7 +555,7 @@
         }
       ]
     },
-    "next_action": "Obtain selection manifest, labels, original records and split registry; no model rerun.",
+    "next_action": "Review reference inconsistencies and semantic node correctness without retrospective score changes.",
     "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
     "results_directory": "results/rag_official_final15_seed42",
     "runtime_algorithms_and_budgets_changed": false,
@@ -571,7 +571,7 @@
         "max4": 5,
         "operadic": 0
       },
-      "reference_metrics_independently_verified": false,
+      "reference_metrics_independently_verified": true,
       "source_v034_verified": true,
       "official_selection_independently_verified": false,
       "exact_trial_replays": 45,
@@ -601,10 +601,22 @@
             "download_verified": true
           }
         ]
-      }
+      },
+      "report_regenerated_exactly": true,
+      "max4_correct_EM_question_numbers": [
+        3,
+        7,
+        8,
+        12,
+        15
+      ],
+      "reference_inconsistencies": [
+        6,
+        13
+      ]
     },
     "max4_root_cause_report": "history/reports/2026-11-25-max4_root_cause_FA.txt",
-    "metadata_received_status": "wrong_old_mirror15_zero_ID_overlap"
+    "metadata_received_status": "second_upload_matches_current_run"
   },
   "experiment_history": [
     {
