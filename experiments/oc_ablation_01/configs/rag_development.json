@@ -1,0 +1,16 @@
+{
+  "protocol": "oc_ablation_01_dev40",
+  "role": "development",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+  "allow_model_download": false,
+  "seed": 42,
+  "retriever": "hybrid",
+  "max_input_tokens": 8500,
+  "intermediate_tokens": 512,
+  "answer_tokens": 150,
+  "max_total_tokens": 48000,
+  "max_llm_calls": 24,
+  "max_retrieval_calls": 2,
+  "top_k": 3
+}
