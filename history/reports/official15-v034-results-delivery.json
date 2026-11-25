@@ -1,0 +1,27 @@
+{
+  "verified_date_tehran": "2026-11-25",
+  "commit": "a57d894ce2ce29c16dc6bca348a80ef04f0b31b4",
+  "artifacts": [
+    {
+      "path": "HotpotQA_v0.3.4_Official15_Analysis_FA.txt",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a57d894ce2ce29c16dc6bca348a80ef04f0b31b4/HotpotQA_v0.3.4_Official15_Analysis_FA.txt",
+      "sha256": "db8fe3dfd8de49a2d23072fe5c6dc972a3d4c9a25e1377ce5f36f5e44c42ce67",
+      "bytes": 11107,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.4_Official15_Per_Question.csv",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a57d894ce2ce29c16dc6bca348a80ef04f0b31b4/HotpotQA_v0.3.4_Official15_Per_Question.csv",
+      "sha256": "a6c2664e3640bcf55208ea855f145d2051f394d4fed11bfa2124b2dc22bfe1a4",
+      "bytes": 3067,
+      "download_verified": true
+    },
+    {
+      "path": "HotpotQA_v0.3.4_Official15_Results.zip",
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/a57d894ce2ce29c16dc6bca348a80ef04f0b31b4/HotpotQA_v0.3.4_Official15_Results.zip",
+      "sha256": "ce5284c8541844b4d34742e0565c86eaf0650b8d4bd4c9b66ee0bdb9a189c1aa",
+      "bytes": 953558,
+      "download_verified": true
+    }
+  ]
+}

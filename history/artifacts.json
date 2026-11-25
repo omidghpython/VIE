@@ -504,7 +504,7 @@
   },
   "current_experiment": {
     "id": "evidence_planning_v0.3.4",
-    "status": "preparation_code_delivered_original_dataset_download_blocked",
+    "status": "actual_run_replayed_reference_and_selection_metadata_missing",
     "accepted_baseline": "v3.2.4-max4",
     "code_commit": "a8618071c29c4da3c216516c4a6b59964226ae8b",
     "code_path": "experiments/evidence_planning_v0_3_4",
@@ -515,13 +515,13 @@
     "real_cohort_checks": "pending_original_dataset_download",
     "seed": 42,
     "final_questions_requested": 15,
-    "final_questions_selected": 0,
+    "final_questions_selected": 15,
     "types": {
       "bridge": 8,
       "comparison": 7
     },
     "original40_reproduction": "required_by_preparer_not_yet_verified_on_full_source",
-    "final15_real_model_inference": false,
+    "final15_real_model_inference": true,
     "old15_exposed_and_excluded": true,
     "live_model_calls": 0,
     "live_retrieval_calls": 0,
@@ -555,10 +555,54 @@
         }
       ]
     },
-    "next_action": "Run prepare_official_final15.bat on user machine; verify READY before running run_rag_final15.bat. Local original JSON accepted with --source only after checksum validation.",
+    "next_action": "Obtain selection manifest, labels, original records and split registry; no model rerun.",
     "full_loop_dependency_ablation": "open_deferred_OC-ABLATION-01",
     "results_directory": "results/rag_official_final15_seed42",
-    "runtime_algorithms_and_budgets_changed": false
+    "runtime_algorithms_and_budgets_changed": false,
+    "questions_now_exposed": true,
+    "latest_result": {
+      "report": "history/reports/official15-v034-analysis-2026-11-24.txt",
+      "audit": "history/reports/official15-v034-audit-2026-11-24.json",
+      "actual_model_calls": 211,
+      "actual_retrieval_calls": 75,
+      "actual_tokens": 193906,
+      "reported_EM": {
+        "standard": 8,
+        "max4": 5,
+        "operadic": 0
+      },
+      "reference_metrics_independently_verified": false,
+      "source_v034_verified": true,
+      "official_selection_independently_verified": false,
+      "exact_trial_replays": 45,
+      "raw_zip_sha256": "ce5284c8541844b4d34742e0565c86eaf0650b8d4bd4c9b66ee0bdb9a189c1aa",
+      "delivery": {
+        "commit": "a57d894ce2ce29c16dc6bca348a80ef04f0b31b4",
+        "artifacts": [
+          {
+            "path": "HotpotQA_v0.3.4_Official15_Analysis_FA.txt",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a57d894ce2ce29c16dc6bca348a80ef04f0b31b4/HotpotQA_v0.3.4_Official15_Analysis_FA.txt",
+            "sha256": "db8fe3dfd8de49a2d23072fe5c6dc972a3d4c9a25e1377ce5f36f5e44c42ce67",
+            "bytes": 11107,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.4_Official15_Per_Question.csv",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a57d894ce2ce29c16dc6bca348a80ef04f0b31b4/HotpotQA_v0.3.4_Official15_Per_Question.csv",
+            "sha256": "a6c2664e3640bcf55208ea855f145d2051f394d4fed11bfa2124b2dc22bfe1a4",
+            "bytes": 3067,
+            "download_verified": true
+          },
+          {
+            "path": "HotpotQA_v0.3.4_Official15_Results.zip",
+            "url": "https://raw.githubusercontent.com/omidghpython/VIE/a57d894ce2ce29c16dc6bca348a80ef04f0b31b4/HotpotQA_v0.3.4_Official15_Results.zip",
+            "sha256": "ce5284c8541844b4d34742e0565c86eaf0650b8d4bd4c9b66ee0bdb9a189c1aa",
+            "bytes": 953558,
+            "download_verified": true
+          }
+        ]
+      }
+    }
   },
   "experiment_history": [
     {
