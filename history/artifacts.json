@@ -2361,6 +2361,25 @@
     },
     "node_rounds": 57,
     "independent_review": "pending",
-    "live_calls": 0
+    "live_calls": 0,
+    "external_model_reviews": {
+      "url": "https://raw.githubusercontent.com/omidghpython/VIE/06e6c4f821fca170b2104d5c042afa7ffd6d21f9/Max4_Claude_Gemini_Comparison.csv",
+      "sha256": "5e2141c2739c6826c3a52174bff8286729641e994e3feb833073054e30195b72",
+      "paired": 72,
+      "final_agreement": 11,
+      "node_agreement": 40,
+      "exact_model_versions": "unknown",
+      "jointly_supported_finals": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        12,
+        15
+      ]
+    }
   }
 }
