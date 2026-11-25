@@ -1,0 +1,73 @@
+﻿review_id,case,key,task,claude,gemini,claude_reason,gemini_reason,claude_refs,gemini_refs
+54afb06f4c8e60,1,1,final,supported,supported,Both are musician singer songwriter,"هر دو هنرمند در متن به عنوان musician, singer and songwriter تعریف شده‌اند.",4:0;5:0,"4:0, 5:0"
+952dd8b6999c85,1,1/1/q1,node,unsupported,supported,Answer empty but 4:0 gives the profession,اطلاعات شغل مت تیسن به طور شفاف در شواهد متن آورده شده است.,4:0,4:0
+c79154260865e2,1,1/1/q2,node,unsupported,supported,Answer empty but 5:0 gives the profession,متن شواهد کافی برای شغل جورج ثوروگود را در بر دارد.,5:0,5:0
+3577c9205b5c1b,1,1/1/q3,node,blocked,blocked,q1 and q2 are null,متغیرهای پیش‌نیاز q1 و q2 مقداردهی نشده‌اند.,,
+7d313572ddda0b,1,1/2/q1,node,supported,supported,4:0 states Thiessen is a musician singer and songwriter (5:0 is extra),متن مت تیسن را موسیقی‌دان، خواننده و ترانه‌سرا معرفی کرده است.,4:0,4:0
+4557cccd6d8a8d,1,1/2/q2,node,supported,supported,Thorogood is a musician singer songwriter,"متن جورج ثوروگود را musician, singer and songwriter معرفی می‌کند.",5:0,5:0
+9fc921eef9a617,1,1/2/q3,node,supported,supported,Both are musician singer songwriter,هر دو به عنوان موسیقی‌دان، خواننده و ترانه‌سرا معرفی شده و با پیش‌فرض‌ها هم‌خوان هستند.,4:0;5:0,"4:0, 5:0"
+3c5fe8297fa485,2,2,final,supported,supported,Emilio born 1965-05-29 and Olhovskiy born 1966-04-15 so Emilio is older,سانچز متولد مه ۱۹۶۵ و اولهوفسکی متولد آوریل ۱۹۶۶ است، بنابراین سانچز مسن‌تر است.,9:0;3:0,"9:0, 3:0"
+bbeaba176ddb1e,2,2/1/q1,node,supported,supported,Born 29 May 1965,تاریخ تولد امیلیو سانچز ۲۹ مه ۱۹۶۵ در متن تأیید شده است.,9:0,9:0
+681a4add8de1c3,2,2/1/q2,node,supported,supported,Born 15 April 1966,تاریخ تولد آندری اولهوفسکی ۱۵ آوریل ۱۹۶۶ ثبت شده است.,3:0,3:0
+5cb92425483848,2,2/1/q3,node,supported,supported,1965 birth precedes 1966 birth,تطبیق تاریخ تولد ۱۹۶۵ در برابر ۱۹۶۶ مسن‌تر بودن سانچز را تأیید می‌کند.,9:0;3:0,"9:0, 3:0"
+2bbb5402efc491,3,3,final,supported,supported,Jefferson matches the description and studied Big Bone Lick fossils,شواهد تعلق القاب بنیان‌گذار و بررسی فسیل‌های بیگ بون لیک توسط جفرسون را تأیید می‌کنند.,3:2;8:4;8:5,"3:0, 3:2, 8:5"
+0431ec550c2b83,3,3/1/q1,node,supported,supported,Jefferson is the proponent of democracy and studied Big Bone Lick fossils,هر دو گزاره دموکراسی و بررسی فسیل‌ها برای توماس جفرسون اثبات شده است.,3:2;8:5,"3:2, 8:5"
+cf7f123382c706,4,4,final,supported,unsupported,Peck served in the Meuse-Argonne Offensive and the AEF was commanded by Pershing; Whittlesey led only the Lost Battalion so the answer is acceptable but not the immediate commander,پرشینگ فرمانده ارتش بود و هیچ شواهدی مبنی بر فرمانده مستقیم آرچی پک بودن وجود ندارد.,8:1;2:5,"2:5, 8:1"
+a8ac89aedb89dd,4,4/1/q1,node,unsupported,supported,Answer empty but evidence describes Peck,اطلاعات مربوط به سرباز بودن آرچی پک در شواهد متن موجود است.,8:0;8:1,"8:0, 8:1"
+5c2f354988bffa,4,4/1/q2,node,blocked,blocked,Entity q1 is null so the commanding officer question cannot be answered,به دلیل نامشخص بودن متغیر q1، روند پاسخ مسدود شده است.,,
+52962dae94d2b5,4,4/2/q1,node,unsupported,supported,Answer empty but evidence says Peck was a private in the 77th Division,اطلاعات مربوط به هویت و خدمت پیاده‌نظام آرچی پک در لشکر ۷۷ در شواهد موجود است.,8:0;8:1,"8:0, 8:1"
+a412e43e086c34,4,4/2/q2,node,blocked,blocked,q1 is null,به دلیل نامشخص بودن موجودیت q1 روند مسدود شده است.,,
+8931768b1db7f3,4,4/3/q1,node,unsupported,unsupported,Subquestion asks who Peck was; he was a private in the 77th Division; the cited Pershing sentence does not answer it,جمله ارجاع‌شده فرمانده کل AEF را معرفی می‌کند، نه هویت خود Archie Peck را.,8:0;8:1,"2:5, 8:1"
+cba4de5f3736e0,4,4/3/q2,node,ambiguous,unsupported,Binding q1=Pershing is circular; cited sentence says Pershing commanded the AEF but does not link Peck,پرشینگ فرمانده کل بود، نه فرمانده مستقیم برای متغیر ورودی و ارجاع ناقص است.,2:5,2:5
+1faa172b62ab82,5,5,final,supported,supported,Lanchester is a journalist and novelist and Foster is a writer; common profession is writer,آلن دین فاستر به صراحت نویسنده و جان لنچستر نیز رمان‌نویس/نویسنده معرفی شده‌اند.,5:0;1:0,"1:0, 5:0"
+5006e94d42185a,5,5/1/q1,node,unsupported,supported,Answer empty but 5:0 says novelist,شواهد برای تعیین حرفه جان لنچستر (روزنامه‌نگار و رمان‌نویس) کامل است.,5:0,5:0
+557e9ec4fd399c,5,5/1/q2,node,supported,supported,Foster is a writer,در شواهد صراحتاً از آلن دین فاستر به عنوان نویسنده یاد شده است.,1:0,1:0
+a976bc8d4a4e21,5,5/1/q3,node,blocked,blocked,q1 (Lanchester profession) is null,پیش‌نیاز شغل لنچستر (q1) نامشخص مانده است.,,
+12a1b414d3e409,5,5/2/q1,node,supported,supported,Lanchester is a journalist and novelist,متن به صراحت جان لنچستر را رمان‌نویس (novelist) معرفی می‌کند.,5:0,5:0
+d4a81e4d77bad0,5,5/2/q2,node,supported,supported,Foster is an American writer,فاستر به عنوان نویسنده داستان‌های علمی‌تخیلی و فانتزی تأیید شده است.,1:0,1:0
+3a8a0ff4468951,5,5/2/q3,node,supported,supported,Writer and novelist share the writing profession,شواهد مؤید شغل نویسندگی/رمان‌نویسی مشترک هر دو شخص است.,1:0;5:0,"1:0, 5:0"
+69ffc6edf43ba3,6,6,final,supported,supported,Reynolds v. Sims 1964 precedes Selle v. Gibb 1984,رینولدز علیه سیمز در سال ۱۹۶۴ و سل علیه گیب در سال ۱۹۸۴ صادر شده است.,0:0;5:1,"0:0, 5:1"
+5df5ee2c0e0f6c,6,6/1/q1,node,supported,supported,Selle v. Gibb decided 1984,سال تصمیم‌گیری پرونده سل علیه گیب صراحتاً ۱۹۸۴ درج شده است.,5:1,5:1
+5eb22e1acd2d14,6,6/1/q2,node,unsupported,supported,Answer 1964 is correct but cited 0:1 lacks the date which is in 0:0,متن تصریح می‌کند که پرونده در سال ۱۹۶۴ در دیوان عالی ایالات متحده مطرح شد.,0:0,0:0
+f141fb51573117,6,6/1/q3,node,unsupported,supported,Answer is right but cited 0:1 has no date; the years are in 0:0 (1964) and 5:1 (1984),با مقایسه سال‌های ۱۹۶۴ و ۱۹۸۴ در شواهد، پرونده Reynolds v. Sims زودتر تصمیم‌گیری شده است.,0:0;5:1,"0:0, 5:1"
+fd0fbb82e8da69,7,7,final,supported,supported,Numb features Eminem,امینم به عنوان خواننده همکار ریحانا در ترانه/انتشار Numb تأیید شده است.,4:1;5:2,4:1
+b54d00a1c20897,7,7/1/q1,node,unsupported,unsupported,Asks for an album title; answer Eminem is a person; evidence gives Unapologetic,سؤال عنوان آلبوم را می‌خواهد اما نام امینم پاسخ داده شده است.,4:0;4:1,4:1
+e8c9ffdd6696ab,7,7/1/q2,node,ambiguous,unsupported,Binding q1=Eminem is wrong (album should be Numb); cited 4:1 supports Eminem for the intended question,جمله ارجاع‌شده خواننده همکار را امینم معرفی می‌کند، اما q1 نام آلبوم نیست.,4:1;5:2,4:1
+fdd9c833e9b60c,8,8,final,supported,supported,Kim Hyun-joong is SS501 main rapper and Inspiring Generation (2014) aired on KBS2,کیم هیون-جونگ رپر اصلی گروه در سریال سال ۲۰۱۴ شبکه KBS2 بازی کرده است.,9:0;2:0;2:1,"9:0, 2:1"
+98111b118a3a3f,8,8/1/q1,node,unsupported,unsupported,Asks who the rapper is; answer KBS2 is a station; evidence says Kim Hyun-joong,پاسخ داده شده نام شبکه است، در حالی که سؤال رپر اصلی گروه را خواسته بود.,9:0,2:1
+db04a242149326,8,8/1/q2,node,unsupported,unsupported,Question asks which series; answer KBS2 is a station and binding is wrong; 5:1 is a 2009 show,پاسخ ارائه شده نام شبکه است، نه عنوان سریال تلویزیونی ۲۰۱۴ کره جنوبی.,2:0;2:1,2:1
+471ba8bff84ac1,8,8/1/q3,node,ambiguous,unsupported,Binding q2=KBS2 is wrong; 2:1 gives KBS2 but the link to Kim Hyun-joong (9:0) is not cited,متغیر q2 به جای بازیگر با نام شبکه پر شده و پاسخ نامربوط است.,2:1;9:0,2:1
+f987ff9c37f9ff,9,9,final,underspecified,underspecified,Answer lists orchids and flowering plants rather than one shared type,پاسخ دو سرده را جداگانه پاسخ داده و نوع مشترک گیاهی واحدی را مشخص نکرده است.,8:0;9:0,"8:0, 9:0"
+306018aabcf568,9,9/1/q1,node,supported,supported,Psychopsis is a genus of orchids,متن بیان می‌کند که سایکوپسیس سرده‌ای از ارکیده‌ها (orchids) است.,8:0,8:0
+8e4ea59658a55e,9,9/1/q2,node,supported,supported,Aubrieta is a genus of flowering plants,اوبریتا به عنوان سرده‌ای از گیاهان گل‌دار (flowering plants) معرفی شده است.,9:0,9:0
+6e03043dfa53eb,9,9/1/q3,node,ambiguous,supported,Each genus is supported separately but the answer lists two types instead of one shared type,تلفیق نوع هر دو گیاه به درستی از شواهد استخراج شده است.,8:0;9:0,"8:0, 9:0"
+ffdd3fa30dbbc5,10,10,final,no_answer,supported,Answer empty though context shows Gene Kelly choreographed and was born in 1912,طراح رقص ژن کلی است و تاریخ تولد او در سال ۱۹۱۲ در متن وجود دارد.,0:2;7:0,"0:2, 7:0"
+fc39b67287972b,10,10/1/q1,node,unsupported,supported,Answer empty but 0:2 states choreography by Gene Kelly,در شواهد دور، نام ژن کلی به عنوان طراح رقص تئاتر موزیکال سال ۱۹۴۱ ذکر شده است.,0:2,0:2
+ba7220c2e3534c,10,10/1/q2,node,blocked,blocked,q1 is null,متغیر پیش‌نیاز q1 ارائه نشده است.,,
+21c0dce16b4653,10,10/2/q1,node,unsupported,supported,Answer empty but evidence names Gene Kelly,شواهد برای پاسخ به طراح رقص (Gene Kelly) در متن موجود است.,0:2,0:2
+a95401e0d6c8a7,10,10/2/q2,node,blocked,blocked,Prerequisite choreographer (q1) is null so the birth year cannot be asked yet,متغیر q1 مقداردهی نشده و پاسخ به پیش‌نیاز وابسته است.,,
+1c1b83e5f78477,10,10/3/q1,node,unsupported,supported,Answer empty but evidence names Gene Kelly as choreographer,متن تئاتر موزیکال ۱۹۴۱ به صراحت طراحی رقص توسط ژن کلی را پوشش می‌دهد.,0:2,0:2
+915568c758bbe1,10,10/3/q2,node,blocked,blocked,Prerequisite choreographer q1 is null,مقدار متغیر q1 خالی (null) بوده و پاسخ وابسته به مرحله قبل است.,,
+b4011e280fa6e7,11,11,final,unsupported,incorrect,Theme Park Hotel is a hotel but Genting Highlands is described as a hill resort; text does not show both are hotels,متن، Theme Park Hotel را هتل ولی Genting Highlands را یک اقامتگاه تپه‌ای معرفی می‌کند، نه هر دو را هتل.,0:0;5:0,"0:0, 5:0"
+f353e6ec76f33b,11,11/1/q1,node,supported,supported,Theme Park Hotel is a hotel,هتل تم پارک مستقیماً هتل معرفی شده است.,0:0,0:0
+47393e17461bac,11,11/1/q2,node,unsupported,unsupported,Cited sentences describe hotels inside Genting Highlands; 5:0 elsewhere calls it a hill resort,شواهد ارجاع‌شده موقعیت گنتینگ هایلندز را هتل اثبات نمی‌کنند بلکه هتل‌ها در آن قرار دارند.,0:0;1:0,"0:0, 1:0"
+dd4cf4a570d358,11,11/1/q3,node,unsupported,unsupported,Bindings are category words; cited sentences cover Theme Park Hotel and Maxims Hotel and never show Genting Highlands is a hotel,شواهد ارجاع‌شده متعلق به هتل مکسیمز است و برای گنتینگ هایلندز صدق نمی‌کند.,0:0;1:0,"0:0, 1:0"
+29a90b8e952799,12,12,final,supported,supported,Albert is writer producer and director; Schlesinger passage lists none of writing or producing,باربارا آلبرت هم‌زمان نویسنده، تهیه‌کننده و کارگردان ذکر شده، در حالی که شلزینجر تهیه‌کننده نبوده است.,5:0;8:0,"5:0, 8:0"
+4444ab489e4ce5,12,12/1/q1,node,ambiguous,unsupported,Malformed question and no evidence of Schlesinger writing or producing works,شواهد ارائه‌شده هیچ اثر تألیفی یا تهیه‌کنندگی برای جان شلزینجر ذکر نمی‌کند.,8:0,8:0
+1581f459d5a2c6,12,12/1/q2,node,unsupported,unsupported,Answer is a name not works; 5:0 gives roles but no works,متن تنها شغل باربارا آلبرت را ذکر کرده و نامی از آثار وی نبرده است.,5:0,5:0
+0964b61bd602c1,12,12/1/q3,node,blocked,blocked,q1 is null so the comparison cannot be made,متغیر پیش‌نیاز q1 نامشخص است.,,
+8748603ca2af38,12,12/2/q1,node,unsupported,unsupported,Answer is a name not works; cited sentences show no writing or producing by Schlesinger,جملات ارجاع‌شده آثار نویسندگی و تهیه‌کنندگی شلزینجر را اثبات نمی‌کنند.,4:4;2:4,"4:1, 2:4"
+d3662a5e13bb93,12,12/2/q2,node,unsupported,unsupported,Answer is a name not works; 5:0 gives no works,زیرسؤال نام آثار را خواسته ولی پاسخ خود شخص باربارا آلبرت ذکر شده است.,5:0,5:0
+a1d89347227dd2,12,12/2/q3,node,supported,supported,Albert is writer film-producer and director; Schlesinger text shows none,متن باربارا آلبرت را نویسنده و تهیه‌کننده و کارگردان معرفی کرده است.,5:0,5:0
+fb663d51adec62,13,13,final,incorrect,incorrect,2001 debut win not at Saratoga; Alabama Stakes (Saratoga) win came the following season 2002,پیروزی در کورس ساراتوگا در مسابقات آلاباما استیکز (سال ۲۰۰۲) رخ داده نه ۲۰۰۱.,1:1;1:3;8:1,"1:3, 8:1"
+c0ef1085d91ffe,13,13/1/q1,node,ambiguous,supported,Evidence shows wins in 2001 and 2002; question underspecified,شواهد لازم برای پیروزی فردا امیگا در سال ۲۰۰۱ در دور موجود است.,1:1;1:2,1:1
+9e1724d7226b11,13,13/1/q2,node,blocked,blocked,q1 year is null,پیش‌نیاز سال (q1) در دسترس نبوده است.,,
+48685931df4748,13,13/2/q1,node,ambiguous,supported,No Saratoga constraint; evidence shows wins in several years,در متن پیروزی اسب در سال ۲۰۰۱ در اولین حضورش قید شده است.,1:1;1:2,1:1
+aa58c350715071,13,13/2/q2,node,blocked,blocked,q1 year is null,پیش‌نیاز q1 تعیین نشده است.,,
+5f70af7928d0f3,13,13/3/q1,node,supported,supported,1:1 states a 2001 debut win,متن تصریح دارد که فردا امیگا اولین برد خود را در سال ۲۰۰۱ تجربه کرد.,1:1,1:1
+d8b8a161cd434e,13,13/3/q2,node,unsupported,unsupported,Question asks a race course; answer 2001 is a year and cited sentence names no course,پاسخ داده‌شده سال است در حالی که سؤال پیست سوارکاری را خواسته بود.,1:1,1:1
+291f320295c636,14,14,final,no_answer,supported,Answer empty though evidence identifies Michael Swango,مایکل سوانگو با شواهد ۶۰ قربانی و حبس در فلورانس کلرادو تطابق دارد.,5:3;8:1;8:2,"5:3, 8:2"
+bcb70b1c23b0d8,15,15,final,supported,supported,To Shoot an Elephant 2009 precedes Gasland 2010,مستند To Shoot an Elephant در سال ۲۰۰۹ و فیلم Gasland در سال ۲۰۱۰ منتشر شده است.,5:0;7:0,"5:0, 7:0"
+a669040275fa48,15,15/1/q1,node,supported,supported,Gasland is a 2010 film,متن انتشار گسلند را در سال ۲۰۱۰ تأیید می‌کند.,7:0,7:0
+4be739911c50e2,15,15/1/q2,node,supported,supported,5:0 gives 2009,سال انتشار مستند To Shoot an Elephant صراحتاً ۲۰۰۹ ذکر شده است.,5:0,5:0
+fd59304b824db8,15,15/1/q3,node,supported,supported,2009 precedes 2010,مقایسه سال‌های ۲۰۰۹ و ۲۰۱۰ تقدم مستند To Shoot an Elephant را اثبات می‌کند.,5:0;7:0,"5:0, 7:0"
