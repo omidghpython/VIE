@@ -1,0 +1,80 @@
+تکمیل ممیزی مرجع و ریشه‌یابی max4 — ۲۵ نوامبر۲۰۲۶
+
+metadata دوم با اجرای۰٫۳٫۴ تطابق دارد. SHA فایل labels برابر۶c06fd519d013572bde16eb24b365e26ce32d5da6ea1f0bf8da7771c3cb91f21 است (رقم اول در نمایش لاتین:6). تمام۱۵ شناسه،originals،labels،registry وknown exposure مطابق manifest هستند؛دادهٔ عمومی از رکوردهای منتخب بازسازی و باruntime_questions تطبیق شد. کل rag_report شاملEM/F1/پوشش و مقایسه‌های زوجی دقیقاً بازتولید شد. هیچ مدل یا بازیابی تازه اجرا نشد.
+
+منشأ ثبت‌شده: فایل اصلی۷۴۰۵رکوردی،seed42،۸bridgeو۷comparison،۷۳۰۱واجدشرایط،فایل محلی باSHA تاریخی رسمی،بازتولید۴۰سؤال=true. این‌ها درmanifest ثبت شده‌اند و کد منتشرشده آن‌ها را الزام می‌کند. فایل کامل۷۴۰۵رکوردی درپیوست نیست؛انتخاب ازکل استخر و بازتولید۴۰سؤال دراین محیط مستقلاً اجرا نشد. final_run_status=not_runوضعیت زمان ساخت مجموعه است؛نتیجهٔ واقعی موجود نشان می‌دهد این مجموعه اکنون اجرا و مشاهده شده است.
+
+EM قطعی max4: سؤال‌های۳،۷،۸،۱۲،۱۵؛جمع۵/۱۵. Standard۸/۱۵ وOperadic۰/۱۵ نیز تأیید شدند. این نمره‌ها خام و نسبت به همین پاسخ‌های مرجع‌اند؛نمرهٔ معنایی مستقل نیستند.
+
+تفکیک خطاهای نمره‌دهی از مسیر اجرا:
+۱. مرجع musician؛خروجی musician, singer, songwriter. هر سه حرفه در متن هر دو فرد موجود است؛EMبه‌دلیل پاسخ گسترده‌تر صفر است،نه لزوماً نادرستی معنایی.
+۲. مرجع Emilio Ángel Sánchez Vicario؛خروجی Emilio Sánchez. متن زندگینامه و عنوانپاراگراف نشان می‌دهند نام کامل و کوتاه همان فرد است؛مقایسهٔتاریخ‌ها هم درست است. این شکستEMرا نباید شکست استدلال محسوب کرد.
+۵. مرجع novelist؛خروجی writer. خروجی عمومی‌تر است و لزوماً معادل دقیق رمان‌نویس نیست؛پذیرش یا رد معنایی نیازمند قاعدهٔ ارزیابی ازپیش‌تعیین‌شده است.
+۶. سؤال می‌پرسد کدام پرونده زودتر رأی گرفت؛مرجع۱۹۶۴است،ولی max4نام Reynolds v. Simsرا می‌دهد. سال مرجع با نوع پاسخخواسته‌شده ناسازگار است. پاسخمدل با تاریخ‌های۱۹۶۴/۱۹۸۴موجود سازگار است؛بااین‌حال نوعریشهbooleanوارجاع جملهٔنادرست همچنان ایرادهای واقعی‌اند.
+۱۳. سؤال سالپیروزی درSaratogaرا می‌خواهد؛مرجع دقیقاً '(foaled February 1, 1999)' است،یعنی تاریخ تولد اسب. این مرجع برای سؤال فعلی نامتناسب است؛اما خروجی۲۰۰۱هم با رویدادSaratogaپشتیبانی نشده و طرح/بازیابی معیوب است. خراببودن مرجع،مدل را دراینمورد درست نمی‌کند.
+
+سؤال‌های۴،۹،۱۱خروجی نهایی دارایاشکال دارند؛۱۰خودداری باوجود بازیابی شاهدGeneKelly/۱۹۱۲است؛۱۴طرحنامعتبر است؛۱۳هم خطایمدل وهمناسازگاریمرجع دارد. اینتفکیک،جایگزین داوری مستقل نیست و ازآن نمرهٔ جدید نساخته‌ایم. سؤال‌های۷،۸،۱۲EMدرست دارند اما مسیرمیانی ناسالم است؛بنابراین حتی پنجEMنیز بهمعنی پنجاستدلال سالم نیست.
+
+جدول کامل:
+
+1. What profession does Matt Thiessen and George Thorogood have in common?
+مرجع: musician
+max4: musician, singer, songwriter | EM=0
+
+2. Which tennis player is older, Emilio Sánchez or Andrei Olhovskiy?
+مرجع: Emilio Ángel Sánchez Vicario
+max4: Emilio Sánchez | EM=0
+
+3. Who was this American Founding Father, a proponent of democracy, republicanism, and individual rights, examined Ice Age fossils of Kentucky's Big Bone Lick?
+مرجع: Thomas Jefferson
+max4: Thomas Jefferson | EM=1
+
+4. Who was soldier Archie A. Peck's commanding officer during the Meuse-Argonne Offensive?
+مرجع: Major Charles White Whittlesey
+max4: John J. Pershing | EM=0
+
+5. What profession does John Lanchester and Alan Dean Foster have in common?
+مرجع: novelist
+max4: writer | EM=0
+
+6. Which case was decided first, Selle v. Gibb or Reynolds v. Sims?
+مرجع: 1964
+max4: Reynolds v. Sims | EM=0
+
+7. Who collaborated with Rihanna on the album release "Numb"?
+مرجع: Eminem
+max4: Eminem | EM=1
+
+8. On which station did the 2014 South Korean television series, starring the main rapper of boyband SS501, air?
+مرجع: KBS2
+max4: KBS2 | EM=1
+
+9. Psychopsis and Aubrieta are both genuses of which type of plants?
+مرجع: flowering plants
+max4: orchids and flowering plants | EM=0
+
+10. In which year was the choreographer for "Best Foot Forward" born?
+مرجع: 1912
+max4: بدون پاسخ | EM=0
+
+11. What are these two Malaysian businesses, Theme Park Hotel and Genting Highlands, considered?
+مرجع: resort
+max4: hotels | EM=0
+
+12. Which director, John Schlesinger or Barbara Albert, was also a writer and film producer?
+مرجع: Barbara Albert
+max4: Barbara Albert | EM=1
+
+13. In what year did Farda Amiga win a race at the Saratoga Race course?
+مرجع: (foaled February 1, 1999)
+max4: 2001 | EM=0
+
+14. Who did Fredric Rieders tesify agains who had killed as many as 60 patients and recieved three consecutive life terms to be served in Florence Colorado?
+مرجع: Michael Swango
+max4: بدون پاسخ | EM=0
+
+15. Which was released first, Gasland or To Shoot an Elephant?
+مرجع: To Shoot an Elephant
+max4: To Shoot an Elephant | EM=1
+
+وضعیت کار: نمره‌ها و گزارش اکنون بازشماری شدند؛محدودیت قبلی نبود مرجع برطرف شد. منشأ ناسازگاری پاسخ‌های۶و۱۳نسبت به فایل کامل منبع هنوز مستقلاً بررسی نشده؛هیچ goldاصلاح یا بازنویسی نشد. تشخیص علت مسیرهایmax4درگزارش قبلی حفظ و بااین تکمیل خوانده شود. برای ادامه،اول سیاست alias/پاسخ گسترده‌تر و ناسازگاریمرجع روشن شود،سپس ارزیابی صحتگره‌ها؛بدونادعای دقت معنایی جدید یا بهبودروش.
