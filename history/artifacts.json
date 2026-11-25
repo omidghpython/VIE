@@ -2347,5 +2347,20 @@
       },
       "pipeline_changed": false
     }
-  ]
+  ],
+  "max4_offline_node_review": {
+    "artifacts": {
+      "Max4_Offline_Audit.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/c426e4668cc6cf4bb909254a2c1677643b066bb0/Max4_Offline_Audit.zip",
+        "sha256": "f13d251b427330224c9bc07ba915d14a61a36c317c4206dcae57cf7cc24a22a8"
+      },
+      "Max4_Offline_Audit_FA.txt": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/c426e4668cc6cf4bb909254a2c1677643b066bb0/Max4_Offline_Audit_FA.txt",
+        "sha256": "396720beb135db02c06240d4cc25edf4d325b0843c184a8a2d82b76b427262aa"
+      }
+    },
+    "node_rounds": 57,
+    "independent_review": "pending",
+    "live_calls": 0
+  }
 }
