@@ -602,7 +602,9 @@
           }
         ]
       }
-    }
+    },
+    "max4_root_cause_report": "history/reports/2026-11-25-max4_root_cause_FA.txt",
+    "metadata_received_status": "wrong_old_mirror15_zero_ID_overlap"
   },
   "experiment_history": [
     {

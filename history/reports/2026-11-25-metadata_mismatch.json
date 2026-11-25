@@ -1,0 +1,8 @@
+{
+  "metadata_selection_id": "final15-v1",
+  "metadata_source_records": 200,
+  "overlapping_question_ids": 0,
+  "supplied_labels_sha256": "5df3e0d2557cfda3b0c7fe6e22f571547091b3602660936704f83312ddbc567c",
+  "required_labels_sha256": "6c06fd519d013572bde16eb24b365e26ce32d5da6ea1f0bf8da7771c3cb91f21",
+  "matches_current_run": false
+}

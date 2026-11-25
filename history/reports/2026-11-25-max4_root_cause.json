@@ -1,0 +1,137 @@
+[
+  {
+    "number": 1,
+    "question": "What profession does Matt Thiessen and George Thorogood have in common?",
+    "answer": "musician, singer, songwriter",
+    "diagnosis": "پاسخ با شاهد سازگار؛ اختلاف سطح پاسخ محتمل",
+    "observation": "در دور اول،متن هر دو شخص حاضر بود اما q1 به‌جای استخراج حرفهٔ او،نیاز به حرفهٔ George را اعلام کرد؛q2 نیز حل نشد. در دور دوم، با حفظ همان دو شرح شغل و افزودن متن‌های دیگر، musician, singer, songwriter به‌عنوان اشتراک برگردانده شد. شاهدهای4:0و5:0 همین سه حرفه را برای هر دو می‌گویند. ارجاع7:0در q2 به آلبوم مربوط است و اضافی است.",
+    "root_cause": "پاسخ نهایی را نمی‌توان صرفاً ازروی EM غلط معنایی دانست؛ممکن است مرجع عبارت کوتاه‌تری بخواهد. ریشهٔ تأخیر: اختلاط نیاز سؤال اصلی با زیرسؤال و رد شاهد موجود در دور اول. نوع work برای حرفه نیز مبهم است،اما علت قطعی افت امتیاز اثبات نشده.",
+    "retrieval_rounds": 2
+  },
+  {
+    "number": 2,
+    "question": "Which tennis player is older, Emilio Sánchez or Andrei Olhovskiy?",
+    "answer": "Emilio Sánchez",
+    "diagnosis": "زنجیرهٔ مقایسه سالم",
+    "observation": "q1=1965-05-29از9:0؛q2=1966-04-15از3:0؛q3=Emilio Sánchez. هر دو تاریخ و مقایسه درست با یک بازیابی به پاسخ رسیدند.",
+    "root_cause": "خطای مقایسهٔ سن که قبلاً گزارش شد مربوط به بررسی شواهد در روش Operadic جدید بود،نه max4. در این max4 مشکل مشخصی در مسیر پاسخ پیدا نشد؛EMفردی بدونمرجع تعیین نمی‌شود.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 3,
+    "question": "Who was this American Founding Father, a proponent of democracy, republicanism, and individual rights, examined Ice Age fossils of Kentucky's Big Bone Lick?",
+    "answer": "Thomas Jefferson",
+    "diagnosis": "پاسخ مستند؛ بدون تجزیهٔ واقعی",
+    "observation": "طرح فقط یک گره دارد و Thomas Jefferson با جملهٔ عقاید سیاسی3:2،مطالعهٔ فسیل‌ها8:5 و ارتباط Big Bone Lickدر6:5 پاسخ داده شد. یک بازیابی کافی بود.",
+    "root_cause": "این مورد شاهد موفقیت پاسخ‌گویی است،اما چون وابستگی بین زیرسؤال‌ها وجود ندارد،موفقیت مدل‌سازی وابستگی یا ترکیب چندگرهی را اثبات نمی‌کند.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 4,
+    "question": "Who was soldier Archie A. Peck's commanding officer during the Meuse-Argonne Offensive?",
+    "answer": "John J. Pershing",
+    "diagnosis": "خطای موجودیت و سطح رابطه؛ شکست معنایی آشکار",
+    "observation": "طرح به‌جای یافتن یگان و فرمانده آن،ابتدا می‌پرسد خود Archie چه کسی بود. دور اول شاهد Lost Battalionغایب است؛دور دوم متن1با نام Charles White Whittlesey بازیابی می‌شود. پس از دو دور بی‌پاسخ،بازبینی q1=John J. Pershingمی‌دهد وq2هم همان نام را تکرار می‌کند. شاهد2:5فرمانده کل AEFرا معرفی می‌کند،نه فرمانده یگان Peck.",
+    "root_cause": "پیوند لازم در8:1 و1:2درمتن‌های بازیابی‌شده موجود است. مشکل نهایی کمبود شاهد نیست؛مدل Archieرا با Pershingجایگزین کرده و سطح فرماندهی را اشتباه گرفته است. کنترل وجود ارجاع این خطا را نمی‌گیرد. بازبینی روی همان شاهد،خطا را به پاسخ قابل‌قبول برای کد تبدیل کرده است.",
+    "retrieval_rounds": 2
+  },
+  {
+    "number": 5,
+    "question": "What profession does John Lanchester and Alan Dean Foster have in common?",
+    "answer": "writer",
+    "diagnosis": "پاسخ کلی‌تر؛ مشکل نیازسنجی و cache",
+    "observation": "از همان دور اول متن5:0می‌گویدLanchesterروزنامه‌نگار و رمان‌نویس است و1:0Fosterرا نویسنده معرفی می‌کند. بااین‌حال q1بی‌پاسخ و missing_queryآن دربارهFosterاست. دور دوم q1=novelist،q2=writer وq3=writer. cache auditپاسخ writerرا با دلیل مبهم specific conflictرد می‌کند و مدل دوباره همان writerرا تولید می‌کند.",
+    "root_cause": "writerاز شواهد قابل‌دفاع است ولی نسبت به novelistعمومی‌تر است؛بدونمرجع نمی‌توان EMیا پذیرش معنایی را قطعی کرد. بازیابی دوم و بازتولید cacheازنظر این شواهد ضرورت اثبات‌شده ندارند.",
+    "retrieval_rounds": 2
+  },
+  {
+    "number": 6,
+    "question": "Which case was decided first, Selle v. Gibb or Reynolds v. Sims?",
+    "answer": "Reynolds v. Sims",
+    "diagnosis": "نتیجهٔ مقایسه سازگار؛ نوع ریشه و ارجاع معیوب",
+    "observation": "q1=1984،q2=1964،پاسخ Reynolds v. Simsاست. نوع ریشه booleanثبت شده،درحالی‌که سؤال نام پرونده می‌خواهد. q2وq3به0:1ارجاع می‌دهند که تاریخ۱۹۶۴درآن نیست؛تاریخ در0:0وجود دارد.",
+    "root_cause": "ترکیب تاریخ‌ها جواب مناسبی داده،اما درستی جواب با درستی قرارداد نوع و استناد یکسان نیست. وجود متن مناسب در همانپاراگراف،ارجاع جملهٔ غلط را صحیح نمی‌کند.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 7,
+    "question": "Who collaborated with Rihanna on the album release \"Numb\"?",
+    "answer": "Eminem",
+    "diagnosis": "جواب مستند با زنجیرهٔ خراب",
+    "observation": "قیدNumbاز طرح فرعی حذف شده؛q1نام آلبوم می‌خواهد ولی Eminemمی‌گیرد. q2همکاری روی آلبوم{{q1}}را می‌پرسد و دوبارهEminemمی‌گیرد. متن4:1مستقیماً خوانندهٔ مهمانNumbرا Eminemمعرفی می‌کند.",
+    "root_cause": "شاهد پاسخ اصلی حاضر است،ولی شخص به جای اثر در bindingنشسته و پذیرفته شده. این پاسخ،دلیل معتبر بودن مسیر ترکیبی نیست؛با پاسخ‌گویی مستقیم به سؤال اصلی سازگار است.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 8,
+    "question": "On which station did the 2014 South Korean television series, starring the main rapper of boyband SS501, air?",
+    "answer": "KBS2",
+    "diagnosis": "سه گره با یک پاسخ نهایی؛ شکست تبعیت از زیرسؤال",
+    "observation": "گره شخص=q1،گره سریال=q2 وگره شبکه=q3هرسهKBS2پاسخ می‌دهند. متن‌های9:0و2:0و2:1به‌ترتیب Kim Hyun-joong،Inspiring GenerationوKBS2را دراختیار دارند. متنq3نیز سریالq2را به‌اشتباه در جای بازیگر قرار داده است.",
+    "root_cause": "درپیام‌های ذخیره‌شده،NodeوBindingsواقعاً ارسال شده‌اند؛مسئله حذف تصادفی ورودی توسط wrapperنیست. مدل پاسخ اصلی را در گره‌های نامرتبط تکرار کرده و کد نوعperson/workرا بررسی معنایی نکرده است. اثر علّی نمایش سؤال اصلی نیازمند آزمایش کنترل‌شده است.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 9,
+    "question": "Psychopsis and Aubrieta are both genuses of which type of plants?",
+    "answer": "orchids and flowering plants",
+    "diagnosis": "اتصال لفظی به جای یافتن دستهٔ مشترک",
+    "observation": "q1=orchidsاز8:0 وq2=flowering plantsاز9:0. ریشه به‌جای استخراج طبقهٔ مشترک،orchids and flowering plantsرا کنار هم گذاشته و باهمین پاسخ متوقف شده است.",
+    "root_cause": "دو پاسخ میانی در دو سطح رده‌بندی‌اند؛ترکیب به عمل انتزاع/اشتراک نیاز دارد. ریشه این عمل را انجام نداده است. برای پشتیبانی صرفاًمتنیِ تعمیم orchidsبه flowering plants ممکن است شاهد دیگری لازم باشد؛جوابمرجع غایب است.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 10,
+    "question": "In which year was the choreographer for \"Best Foot Forward\" born?",
+    "answer": "",
+    "diagnosis": "شاهد کافی بازیابی شده؛ استخراج گره اول شکست خورده",
+    "observation": "طرح اثر→طراح رقص→سال تولد معقول است. متن0:2از دور اولGene Kellyرا طراح معرفی می‌کند. دور دوم متن7:0تولد۱۹۱۲را اضافه می‌کند. باوجوداین q1درهرسه ارزیابی،ازجمله بازبینی،insufficientاست وq2blockedمی‌ماند. نیازهایq1به‌جای نام طراح،سال تولد را درخواست می‌کنند.",
+    "root_cause": "قفل وابستگی ازنظر اجرا درست عمل کرده؛خطای اصلی ناتوانی در پاسخ به زیرسؤال و اختلاط آن با هدف اصلی است. نسبت‌دادن این مورد به ناکافی بودن تعدادبازیابی با شواهد موجود سازگار نیست.",
+    "retrieval_rounds": 2
+  },
+  {
+    "number": 11,
+    "question": "What are these two Malaysian businesses, Theme Park Hotel and Genting Highlands, considered?",
+    "answer": "hotels",
+    "diagnosis": "اتصال ویژگی به موجودیت اشتباه و توقف زود",
+    "observation": "سه متن اول[0,3,1]شامل هتل‌های واقع درGentingهستند؛متن مستقلGentingHighlandsباindex5بازیابی نشده است. q1=hotel،q2=a hotelباارجاع بهThemeParkHotelوMaximsHotel،وq3=hotels. برنامه پس از همان دور اول متوقف می‌شود.",
+    "root_cause": "مدل رابطهٔ located inرا به is aتبدیل کرده و ویژگی هتل را به مکان نسبت داده است. متن5در کل پیکرهGentingراhill resortمی‌نامد. هم نقص بازیابیِ شاهد موجودیت دوم داریم،هم اعتماد زودهنگام به استناد نامرتبط. ادعای عددی PrematureStoppingمستقل هنوز نداریم.",
+    "retrieval_rounds": 1
+  },
+  {
+    "number": 12,
+    "question": "Which director, John Schlesinger or Barbara Albert, was also a writer and film producer?",
+    "answer": "Barbara Albert",
+    "diagnosis": "پاسخ مستند؛ طرح و پاسخ‌های میانی ناسازگار",
+    "observation": "سؤال نقش مشترک یک شخص را می‌خواهد،ولی برگ‌ها فهرست آثار نوشته/تولیدشده می‌خواهند. خروجی برگ‌ها به‌جای آثار،John SchlesingerوBarbara Albertاست. شاهد5:0صریحاً نقش‌هایBarbaraرا می‌گوید. برایSchlesingerبه جملهٔ تولید فیلم‌هایش توسطJosephJanniارجاع داده می‌شود؛این تهیه‌کننده‌بودنSchlesingerرا ثابت نمی‌کند.",
+    "root_cause": "جوابBarbaraبا شاهد مستقیم سازگار است،اما مسیر میانی نوعاًغلط و ارجاع آن نامرتبط است. cache auditنیز پاسخBarbaraرا رد و ارزیابی بعدی همان را تکرار کرده؛موفقیت نهایی به معنی اصلاح فرآیند نیست.",
+    "retrieval_rounds": 2
+  },
+  {
+    "number": 13,
+    "question": "In what year did Farda Amiga win a race at the Saratoga Race course?",
+    "answer": "2001",
+    "diagnosis": "هدف ریشه عوض شده؛ پل بازیابی گم و سال نامرتبط پذیرفته شده",
+    "observation": "طرحq1سال یک پیروزی عمومی را می‌پرسد وq2محل مسابقهٔ آن سال را؛درحالی‌که هدف اصلیسالِرویداد درSaratogaاست. متن8AlabamaStakesپیوند لازم باSaratogaرا دارد،اما درششپاراگراف بازیابی‌شده نیست. بازبینی از1:1سال۲۰۰۱،مربوط به شروع مسابقه،را می‌گیرد و حتیq2مکان نیز۲۰۰۱پاسخ می‌دهد.",
+    "root_cause": "این مورد ترکیب سه خطاست:حذف قید رویداد،کمبود پل دربازیابی وپذیرش مقدار نامرتبط با نوع place. متنFardaفصل بعد از۲۰۰۱ وAlabamaStakesرا ذکر می‌کند؛برایپیوند دقیق باید متن8هم مصرف شود. پاسخ۲۰۰۱بااتصال شاهد موجود توجیه نشده است.",
+    "retrieval_rounds": 2
+  },
+  {
+    "number": 14,
+    "question": "Who did Fredric Rieders tesify agains who had killed as many as 60 patients and recieved three consecutive life terms to be served in Florence Colorado?",
+    "answer": "",
+    "diagnosis": "شکست ساختاری قبل از بازیابی",
+    "observation": "تلاش اولfinal=q1است،اماq2وq3ازq1مصرف می‌کنند؛خطا: final must be the root and cannot be consumed by another node. تلاش دومq4سهdependencyاعلام می‌کند ولی درپرسش هیچ{{q1}}/{{q2}}/{{q3}}ندارد؛خطای placeholders and declared dependencies must match exactly.",
+    "root_cause": "طرح پس از دو تلاش رد شده؛max4هیچ بازیابی یاپاسخ‌گویی انجام نداده واین شکست درمخرج۱۵باقی مانده است. هیچ نشانه‌ای ازخرابیCUDA،نصبیاکمبودحافظهدراین مورد نیست. هزینهٔ طرح۱۶۴۹توکن/۲فراخوانی است.",
+    "retrieval_rounds": 0
+  },
+  {
+    "number": 15,
+    "question": "Which was released first, Gasland or To Shoot an Elephant?",
+    "answer": "To Shoot an Elephant",
+    "diagnosis": "زنجیرهٔ مقایسه سالم",
+    "observation": "q1=2010از7:0؛q2=2009از5:0؛پاسخTo Shoot an Elephantبا مقایسهٔسال‌ها بهدست آمده است. یکبازیابی،انتقال پاسخ‌های میانی وارجاع بهدو متن دیده می‌شود.",
+    "root_cause": "مشکل مشخصی در اینمسیر مشاهده نشد؛همچنان تعیینEMرسمی وابسته به مرجع همین اجراست.",
+    "retrieval_rounds": 1
+  }
+]
