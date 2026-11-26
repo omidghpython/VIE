@@ -2411,11 +2411,29 @@
       "HotpotQA_OC_ABLATION_01_Dev40_Paired.csv": {
         "url": "https://raw.githubusercontent.com/omidghpython/VIE/cefade5f79ed4ab2c0ad5e90bbb08f5ccaceb884/HotpotQA_OC_ABLATION_01_Dev40_Paired.csv",
         "sha256": "ab3eff79248b347b19c8311a9aae7bedb908ca7e71ce342f54f1645a16dcdb17"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Gemini.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/99d38747e29b30bae9109b59c59f4ddab8c47484/HotpotQA_OC_ABLATION_01_Dev40_Gemini.zip",
+        "sha256": "2724f440e11c001324c33e9435cf51f00e52787cb469cb9f6e838deb2e452e1e"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Blind_Batches.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/99d38747e29b30bae9109b59c59f4ddab8c47484/HotpotQA_OC_ABLATION_01_Dev40_Blind_Batches.zip",
+        "sha256": "b18e65f211d327f35e4e3c89eda0aacf42d94b797b1b756fac8d75d329ae51cb"
       }
     },
     "development_questions": 40,
     "paired_trials": 80,
     "smoke": "80 scripted LLM records with actual CPU BM25",
-    "live_result": "80/80 recorded, 2/40 exact matches per arm; blinded semantic review pending"
+    "live_result": "80/80 recorded, 2/40 exact matches per arm; blinded semantic review pending",
+    "review_status": {
+      "gemini_rows": 661,
+      "dependent_outcome": {
+        "better": 0,
+        "worse": 5,
+        "tie": 32,
+        "unrated": 3
+      },
+      "second_reviewer": "incomplete; no ratings submitted"
+    }
   }
 }
