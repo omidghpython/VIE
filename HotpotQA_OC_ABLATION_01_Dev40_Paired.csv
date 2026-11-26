@@ -1,0 +1,41 @@
+﻿case,question_id,question,dependent_status,dependent_answer,dependent_error,dependent_llm_calls,dependent_retrieval_calls,dependent_total_tokens,independent_status,independent_answer,independent_error,independent_llm_calls,independent_retrieval_calls,independent_total_tokens
+1,5ab3cecd5542992ade7c6eae,How do the Peter Laufer books Forbidden Creatures and No Animals Were Harmed differ in their focus on animals?,budget_exhausted,,retrieval_calls,8,2,9032,execution_error,,ValueError: Final answer exceeds five whitespace-delimited words; not silently truncated.,13,2,16709
+2,5ab42a2b5542996a3a969f5a,What is the name of the historic figure whom participated in surveying the borders of the District of Columbia and had a premier African American recreation center named after him?,invalid_plan,,Frozen tree invalid,0,0,0,invalid_plan,,Frozen tree invalid,0,0,0
+3,5a7d3f895542995f4f402248,Pandora- The World of Avatar includes a ride that allows guest to take flight on what animal?,answered,mountain Banshee,,4,1,2664,answered,mountain Banshee,,4,1,2664
+4,5a778b345542992a6e59decf,"Who was born first, Susan Oliver or W. S. Van Dyke?",budget_exhausted,,retrieval_calls,10,2,10785,budget_exhausted,,retrieval_calls,12,2,9820
+5,5a8ceddb554299441c6b9f85,What profession does Nora Roberts and Elizabeth Hardwick have in common?,budget_exhausted,,retrieval_calls,5,2,3748,budget_exhausted,,retrieval_calls,9,2,6959
+6,5a7e05f75542995f4f402394,"Which was released first, Hot Girls Wanted or China Blue?",budget_exhausted,,retrieval_calls,8,2,7777,budget_exhausted,,retrieval_calls,12,2,11711
+7,5ab3306a55429969a97a80fd,The movies The Boatniks and The Great Locomotive Chase were both made by which production company?,budget_exhausted,,retrieval_calls,8,2,6932,budget_exhausted,,retrieval_calls,12,2,10636
+8,5a7cfb2755429907fabef084,What year did the director of The Quiet American die?,budget_exhausted,,retrieval_calls,3,2,3926,budget_exhausted,,retrieval_calls,6,2,7536
+9,5ab201765542993be8fa98a4,Hobart Paving is a single by a band formed in which year ?,answered,1990,,6,2,7967,answered,1990,,6,2,7967
+10,5adbe27c55429947ff173854,"Which university has more campuses, Dalhousie University or California State Polytechnic University, Pomona?",budget_exhausted,,retrieval_calls,8,2,8162,budget_exhausted,,retrieval_calls,12,2,12484
+11,5a8fa4d95542995b4424207b,"Which airport is busier, Palm Springs International Airport or Trenton–Mercer Airport?",budget_exhausted,,retrieval_calls,7,2,7785,budget_exhausted,,retrieval_calls,11,2,12255
+12,5ac19ff35542991316484b61,"Which was published or broadcast first, The Graveyard Book of Phineas and Ferb?",budget_exhausted,,retrieval_calls,8,2,11990,budget_exhausted,,retrieval_calls,12,2,18062
+13,5ab484415542990594ba9c44,"Which facility was founded in Missouri, Discovery Zone or Valentino's?",budget_exhausted,,retrieval_calls,10,2,11122,budget_exhausted,,retrieval_calls,12,2,13068
+14,5abbd34d5542993f40c73bc6,The Innviertel is a traditional Austrian region southeast of a river that is how many km long?,budget_exhausted,,retrieval_calls,4,2,3318,budget_exhausted,,retrieval_calls,8,2,7261
+15,5abce1fa5542993a06baf993,What nationality was the lover of Lord Alfred Douglas ? ,budget_exhausted,,retrieval_calls,4,2,3426,budget_exhausted,,retrieval_calls,7,2,6037
+16,5a77a7db5542995d8318124d,"Which author was born first, Josephine Tey or Julia Peterkin?",budget_exhausted,,retrieval_calls,8,2,6143,budget_exhausted,,retrieval_calls,12,2,9934
+17,5abe94fd55429965af743f37,Were both Sinclair Research and the Wave Mate Bullet founded in the 1970s?,budget_exhausted,,retrieval_calls,8,2,9650,budget_exhausted,,retrieval_calls,12,2,14635
+18,5a7d598d5542995f4f402262,"Which director was also a film editor, Burton L. King or Maheen Zia?",budget_exhausted,,retrieval_calls,8,2,5199,budget_exhausted,,retrieval_calls,12,2,8006
+19,5ae73ddb554299572ea5478d,"Hoy Es Manana is by what Mexican Actress and singer, who is the current First Lady of Chiapas State, Mexico?",budget_exhausted,,retrieval_calls,4,2,3429,budget_exhausted,,retrieval_calls,8,2,6941
+20,5ade5a645542997c77adee0d,"Which city is at coastal county-level, Wenling or Ruili?",budget_exhausted,,retrieval_calls,8,2,7353,budget_exhausted,,retrieval_calls,12,2,11174
+21,5a87bc3f5542996432c57275,"Which is located farther West, the Cascade Locks and Canal or Lake Worth Lagoon?",budget_exhausted,,retrieval_calls,4,2,3172,budget_exhausted,,retrieval_calls,8,2,6858
+22,5ae38b115542990afbd1e183,Who played a more important role in the church George Albert Smith or Wong Jing?,budget_exhausted,,retrieval_calls,8,2,6149,budget_exhausted,,retrieval_calls,12,2,9384
+23,5a89bf18554299669944a591,Do writers John O'Hara and Bobbie Ann Mason share the same nationality?,budget_exhausted,,retrieval_calls,8,2,5311,budget_exhausted,,retrieval_calls,12,2,8165
+24,5ae0a5825542993d6555ebdf,Are George Stevens and Luc Besson American cinematographers?,budget_exhausted,,retrieval_calls,8,2,7351,budget_exhausted,,retrieval_calls,12,2,11157
+25,5add9bfa5542990dbb2f7e85,What type of product is the sponsor of the Premiership Rugby Sevens SeriesSeries ? ,budget_exhausted,,retrieval_calls,4,2,3503,budget_exhausted,,retrieval_calls,8,2,7208
+26,5a75a0725542992d0ec05fc9,"Disorganized Crime included what cast member best known for playing Al Bundy on the Fox Network sitcom ""Married... with Children""?",budget_exhausted,,retrieval_calls,4,2,3814,budget_exhausted,,retrieval_calls,4,2,3814
+27,5ac43e0f554299076e296d8e,What country are both Dafeng District and Jixi in?,budget_exhausted,,retrieval_calls,10,2,8665,budget_exhausted,,retrieval_calls,11,2,9078
+28,5a8ea7f25542995085b37468,Are The Limousines and Faith No More from the same state?,budget_exhausted,,retrieval_calls,8,2,7257,budget_exhausted,,retrieval_calls,12,2,11078
+29,5a8701b3554299211dda2b9a,Werner Christie served under the politician who was also Director-General of what other organization?,budget_exhausted,,retrieval_calls,4,2,3996,budget_exhausted,,retrieval_calls,8,2,8477
+30,5ac3dfee554299204fd21eab,"The man known as the voice of ""Elgar"" voices the English character in what Manga inspired by Keitaro Arima?",budget_exhausted,,retrieval_calls,3,2,3114,budget_exhausted,,retrieval_calls,7,2,7841
+31,5a7f7b3b5542992097ad2f81,"Which restaurant chain's headquarters is further north, Pizza Inn or Papa Gino's?",budget_exhausted,,retrieval_calls,8,2,6811,budget_exhausted,,retrieval_calls,12,2,10319
+32,5ae3d2715542990afbd1e1e9,Are Control Room and Meeting Resistance both documentary films that involve Iraq?,invalid_plan,,Frozen tree invalid,0,0,0,invalid_plan,,Frozen tree invalid,0,0,0
+33,5ae077735542993d6555eb6d,What type of sprite did Milada Šubrtová portray in Antonín Dvořák's reknowned opera?,budget_exhausted,,retrieval_calls,4,2,4626,budget_exhausted,,retrieval_calls,8,2,9423
+34,5adf4b335542993a75d264a5,Paul DeBoy is known for an appearance in the Western action-adventure game developed by which company?,budget_exhausted,,retrieval_calls,6,2,6516,budget_exhausted,,retrieval_calls,8,2,7562
+35,5a776b82554299373536026f,What is the official currency in the country that hosts the Asahi-Ryokuken Yomiuri Memorial tournament?,budget_exhausted,,retrieval_calls,4,2,3802,budget_exhausted,,retrieval_calls,8,2,7628
+36,5ac0b1835542992a796ded65,"Bordan Tkachuk was the former CEO of which company, which provides IT products?",budget_exhausted,,retrieval_calls,3,2,3549,budget_exhausted,,retrieval_calls,7,2,8094
+37,5a80afcf554299485f5986b9,Who else beside the  American university administrator and politician from the state of Oklahoma was part of the  Boren-McCurdy proposals?,budget_exhausted,,retrieval_calls,3,2,2911,budget_exhausted,,retrieval_calls,6,2,5535
+38,5ae254565542992decbdccbb,"In what year was the writer of the drama ""Ingenious"" born?",budget_exhausted,,retrieval_calls,4,2,5261,budget_exhausted,,retrieval_calls,8,2,10583
+39,5ae14b0655429920d52343a6,Bangalore Naatkal starred which actor and photographer?,invalid_plan,,Frozen tree invalid,0,0,0,invalid_plan,,Frozen tree invalid,0,0,0
+40,5ae409d955429970de88d89d,Greetings! We're The Monitors was the debut album by the band who had what soul and R&B singer as their lead?,budget_exhausted,,retrieval_calls,6,2,9686,budget_exhausted,,retrieval_calls,8,2,9378
