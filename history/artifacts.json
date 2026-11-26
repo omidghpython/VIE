@@ -2399,11 +2399,23 @@
       "HotpotQA_OC_ABLATION_01_Dev40_FA.txt": {
         "url": "https://raw.githubusercontent.com/omidghpython/VIE/00045e7c81ae05edd41db274199a2b1437722631/HotpotQA_OC_ABLATION_01_Dev40_FA.txt",
         "sha256": "c3f8f0a7ae426f46c19204adad3e29c311b2454c03464fe035732463ae45ce7a"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Results.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/cefade5f79ed4ab2c0ad5e90bbb08f5ccaceb884/HotpotQA_OC_ABLATION_01_Dev40_Results.zip",
+        "sha256": "a923d1748e7503704894c594eb7cc8be3566df976ca70981c51205617ec5fad5"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Results_FA.txt": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/cefade5f79ed4ab2c0ad5e90bbb08f5ccaceb884/HotpotQA_OC_ABLATION_01_Dev40_Results_FA.txt",
+        "sha256": "4d86c3b9e9ea39daea3c80d50b27863628d9682ba9e4651af8034cc86e33aca5"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Paired.csv": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/cefade5f79ed4ab2c0ad5e90bbb08f5ccaceb884/HotpotQA_OC_ABLATION_01_Dev40_Paired.csv",
+        "sha256": "ab3eff79248b347b19c8311a9aae7bedb908ca7e71ce342f54f1645a16dcdb17"
       }
     },
     "development_questions": 40,
     "paired_trials": 80,
     "smoke": "80 scripted LLM records with actual CPU BM25",
-    "live_result": "pending GPU run"
+    "live_result": "80/80 recorded, 2/40 exact matches per arm; blinded semantic review pending"
   }
 }
