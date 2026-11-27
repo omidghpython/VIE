@@ -2435,6 +2435,14 @@
       "HotpotQA_OC_ABLATION_01_Dev40_Six_Decisions_FA.txt": {
         "url": "https://raw.githubusercontent.com/omidghpython/VIE/7d82d2512aadde8296b8c600220f8c729ca651a4/HotpotQA_OC_ABLATION_01_Dev40_Six_Decisions_FA.txt",
         "sha256": "53da502a165a84a275d509b157bd8e22edbad22a90ab99bef9954f75d5e1c50c"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Budget_Audit.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/832287d8306ec58e3ddd66159ad4159c7ec1b4dc/HotpotQA_OC_ABLATION_01_Dev40_Budget_Audit.zip",
+        "sha256": "b725479eb73b28f14c088824074f71c93f934a71816def22cadc6148c9aca0ad"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Budget_Audit_FA.txt": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/832287d8306ec58e3ddd66159ad4159c7ec1b4dc/HotpotQA_OC_ABLATION_01_Dev40_Budget_Audit_FA.txt",
+        "sha256": "189826ec746dbbb444ff41f0e6f415ed38db3456783b8b89a788a3fb1484193d"
       }
     },
     "development_questions": 40,
@@ -2483,6 +2491,23 @@
         },
         "scope": "Retrospective replacement of six action_appropriate fields; original ratings archived."
       }
+    },
+    "retrieval_budget_audit": {
+      "scope": "All 69 retrieval-capped trials of the registered development40, post hoc evidence and trace review",
+      "per_arm": {
+        "dependent": {
+          "supported": 23,
+          "gap": 9,
+          "ambiguous": 3
+        },
+        "independent": {
+          "supported": 24,
+          "gap": 7,
+          "ambiguous": 3
+        }
+      },
+      "supported_with_cited_evidence_after_one_retrieval": 41,
+      "gap_with_identified_unretrieved_premise_in_pool": 8
     }
   }
 }
