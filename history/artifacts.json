@@ -2419,12 +2419,20 @@
       "HotpotQA_OC_ABLATION_01_Dev40_Blind_Batches.zip": {
         "url": "https://raw.githubusercontent.com/omidghpython/VIE/99d38747e29b30bae9109b59c59f4ddab8c47484/HotpotQA_OC_ABLATION_01_Dev40_Blind_Batches.zip",
         "sha256": "b18e65f211d327f35e4e3c89eda0aacf42d94b797b1b756fac8d75d329ae51cb"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Claude_Gemini.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/23c99ebc7945a36f3e771f0235813af540631e01/HotpotQA_OC_ABLATION_01_Dev40_Claude_Gemini.zip",
+        "sha256": "5f63bbdb8538b6bfa4f752fc03d1ceff382414eeed3ce406c232d4fbaf4f23e2"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Claude_Gemini_FA.txt": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/23c99ebc7945a36f3e771f0235813af540631e01/HotpotQA_OC_ABLATION_01_Dev40_Claude_Gemini_FA.txt",
+        "sha256": "839da9cb0eac9aff7ae0a68fcd56c2fe2906051139797fcbec0ad04d0b8f7ba9"
       }
     },
     "development_questions": 40,
     "paired_trials": 80,
     "smoke": "80 scripted LLM records with actual CPU BM25",
-    "live_result": "80/80 recorded, 2/40 exact matches per arm; blinded semantic review pending",
+    "live_result": "80/80 recorded, 2/40 exact matches per arm; two Dev40 ratings compared",
     "review_status": {
       "gemini_rows": 661,
       "dependent_outcome": {
@@ -2433,7 +2441,28 @@
         "tie": 32,
         "unrated": 3
       },
-      "second_reviewer": "incomplete; no ratings submitted"
+      "second_reviewer": "Claude CSV supplied, complete",
+      "claude_rows": 661,
+      "claude_raw_sha256": "e64dcfdf5de5fe3955aa60dbe3c84c1e525a264848039c8a272f239915dd2c2f",
+      "claude_dependent_outcome": {
+        "better": 0,
+        "worse": 5,
+        "tie": 31,
+        "unrated": 4
+      },
+      "gemini_dependent_outcome": {
+        "better": 0,
+        "worse": 5,
+        "tie": 32,
+        "unrated": 3
+      },
+      "jointly_rated_questions": 36,
+      "agreement_on_jointly_rated_questions": 34,
+      "action_appropriate_agreement": {
+        "same": 213,
+        "total": 219,
+        "cohen_kappa": 0.9457
+      }
     }
   }
 }
