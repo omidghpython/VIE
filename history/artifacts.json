@@ -2427,6 +2427,14 @@
       "HotpotQA_OC_ABLATION_01_Dev40_Claude_Gemini_FA.txt": {
         "url": "https://raw.githubusercontent.com/omidghpython/VIE/23c99ebc7945a36f3e771f0235813af540631e01/HotpotQA_OC_ABLATION_01_Dev40_Claude_Gemini_FA.txt",
         "sha256": "839da9cb0eac9aff7ae0a68fcd56c2fe2906051139797fcbec0ad04d0b8f7ba9"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Six_Decisions.zip": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/7d82d2512aadde8296b8c600220f8c729ca651a4/HotpotQA_OC_ABLATION_01_Dev40_Six_Decisions.zip",
+        "sha256": "0f3e65e2b3d6fcb2a8eecb5f7396c5cd5f3084fc3afbb20d5348fba3e60f12a5"
+      },
+      "HotpotQA_OC_ABLATION_01_Dev40_Six_Decisions_FA.txt": {
+        "url": "https://raw.githubusercontent.com/omidghpython/VIE/7d82d2512aadde8296b8c600220f8c729ca651a4/HotpotQA_OC_ABLATION_01_Dev40_Six_Decisions_FA.txt",
+        "sha256": "53da502a165a84a275d509b157bd8e22edbad22a90ab99bef9954f75d5e1c50c"
       }
     },
     "development_questions": 40,
@@ -2462,6 +2470,18 @@
         "same": 213,
         "total": 219,
         "cohen_kappa": 0.9457
+      },
+      "action_disagreement_audit": {
+        "disputed_rows": 6,
+        "appropriate": 5,
+        "unknown": 1,
+        "sensitivity_counts": {
+          "better": 0,
+          "worse": 4,
+          "tie": 32,
+          "unrated": 4
+        },
+        "scope": "Retrospective replacement of six action_appropriate fields; original ratings archived."
       }
     }
   }
